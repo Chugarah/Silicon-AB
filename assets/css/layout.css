@@ -1,0 +1,66 @@
+.container {
+  background-color: rgb(234, 234, 205);
+  /* With 100% is fallback incase we are using older browsers. Code is 
+    being readd from top to bottom in CSS
+    */
+  width: 100%;
+  width: 100dvw;
+}
+
+.container-half {
+  min-width: 50%;
+  min-height: 50dvw;
+}
+
+/* Header Container Height */
+.container-header {
+  min-height: 4.75rem;
+  position: relative;
+}
+/* AI Generated  */
+.container-header img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  width: 100px;
+}
+
+/* Footer Container Height */
+.container-footer {
+  min-height: 8.125rem;
+}
+/* Footer Container Height */
+.container-banner {
+  min-height: 54.75rem;
+}
+
+.container-content {
+  width: 81.25rem;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-left {
+  float: left;
+}
+.container-right {
+  float: right;
+}
+
+.background-grey {
+  background-color: cadetblue;
+}
+
+.background-red {
+  background-color: rgb(204, 83, 164);
+}
+
+.background-blue {
+  background-color: rgb(142, 103, 184);
+}
