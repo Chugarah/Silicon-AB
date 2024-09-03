@@ -1,0 +1,18 @@
+/* Lets import some Fonts */
+
+/* Font For the menu*/
+@font-face {
+  font-family: "Manrope", sans-serif;
+  src: url("/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf");
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.font-size-standard {
+  font-size: 1rem;
+}
+
+.font-color-header-a {
+  color: 33354d;
+}

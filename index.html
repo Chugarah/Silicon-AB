@@ -12,42 +12,58 @@
     <link rel="stylesheet" href="./assets/css/components.css" />
   </head>
   <body>
-    <header aria-label="Navigation & Logo">
-      <!-- Main Container för Header-->
-      <div class="container container-header">
-        <!-- Child Container-->
-        <div class="container-content container-header background-grey center">
-          <!-- 2 Containers, one left and other right-->
-          <div
-            class="container-header background-red container-half container-left"
-          >
-            <!-- Logo -->
-            <div class="container-header container-left container-half">
-              <img
-                class="logo"
-                src="./assets/media/img/logo.svg"
-                alt="Silicon Logo"
-              />
-            </div>
-            <div class="container-header container-left container-half">
-              <nav>
-                <ul>
-                  <li>
-                    <a href="">Howdy</a>
-                  </li>
-                </ul>
-              </nav>
+    <div class="container">
+      <!-- Using Grid för General Layout-->
+      <div class="grid">
+        <header aria-label="Navigation & Logo">
+          <!-- Grid Header -->
+          <div class="header-content">
+            <!-- Header Flex Box-->
+            <div class="header-content-flex flex-center">
+              <div class="flex-box">
+                <!-- Logo & Nav Flex Box-->
+                <div class="header-content-flex flex-gap-sm-a vertical-center">
+                  <!-- Logo -->
+                  <div class="logo">
+                    <img
+                      src="./assets/media/img/logo.svg"
+                      alt="Logo Silicon AB"
+                    />
+                  </div>
+                  <!-- Logo End -->
+                  <!-- Navigation-->
+                  <div class="nav vertical-center font-size-standard">
+                    <nav aria-label="Navigation Menu">
+                      <ul class="main-menu">
+                        <li><a href="#">Features</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <!-- Navigation End -->
+                </div>
+                <!-- Logo & Nav Flex Box END-->
+              </div>
+              <div class="flex-box">
+                <!-- Buttons Flex Box-->
+                <div
+                  class="header-content-flex flex-gap-sm-a vertical-center flex-right-horizontal"
+                >
+                  <div class="dark-mode-switch">
+                    <label class="font-size-standard">Dark Mode</label>
+                    <input type="checkbox" name="dark-mode" value="false" />
+                  </div>
+                  <div>
+                    <button class="btn-sign-in-up">Sign in / up</button>
+                  </div>
+                </div>
+                <!-- Buttons Flex Box END-->
+              </div>
             </div>
           </div>
-          <div
-            class="container-header background-blue container-half container-left"
-          >
-            Dark Mode & B
-          </div>
-        </div>
+        </header>
+        <main aria-label="Main Content"></main>
+        <footer aria-label="Footer, Copyright and Company information"></footer>
       </div>
-    </header>
-    <main aria-label="Main Content"></main>
-    <footer aria-label="Footer, Copyright and Company information"></footer>
+    </div>
   </body>
 </html>

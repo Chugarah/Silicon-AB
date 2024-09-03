@@ -1,5 +1,4 @@
 .container {
-  background-color: rgb(234, 234, 205);
   /* With 100% is fallback incase we are using older browsers. Code is 
     being readd from top to bottom in CSS
     */
@@ -17,16 +16,6 @@
   min-height: 4.75rem;
   position: relative;
 }
-/* AI Generated  */
-.container-header img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-100%, -50%);
-  max-width: 100%;
-  max-height: 100%;
-  width: 100px;
-}
 
 /* Footer Container Height */
 .container-footer {
@@ -35,22 +24,6 @@
 /* Footer Container Height */
 .container-banner {
   min-height: 54.75rem;
-}
-
-.container-content {
-  width: 81.25rem;
-}
-
-.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.container-left {
-  float: left;
-}
-.container-right {
-  float: right;
 }
 
 .background-grey {
@@ -64,3 +37,48 @@
 .background-blue {
   background-color: rgb(142, 103, 184);
 }
+
+/* GRID Layout */
+.grid {
+  display: grid;
+  grid-area: "header-content";
+  grid-template-rows: auto 1fr auto;
+}
+
+/* FLEX Layout */
+.flex-center {
+  justify-content: center;
+}
+
+.flex-right-horizontal {
+  justify-content: flex-end;
+}
+/* 40px Gap */
+.flex-gap-sm-a {
+  /* Same as REM Parent Container in Pixel / 16 */
+  gap: 2.5em;
+}
+
+/* 40px Gap */
+.flex-gap-sm-b {
+  /* Same as REM Parent Container in Pixel / 16 */
+  gap: 1.875em;
+}
+
+.header-content-flex {
+  display: flex;
+  flex-direction: row;
+  min-height: 4.75rem;
+}
+
+.flex-box {
+  width: 40.625rem;
+}
+
+/* Responsive Design */
+@media (width < 300px) {
+  body {
+    background-color: blue;
+  }
+}
+/* Responsive Design END */
