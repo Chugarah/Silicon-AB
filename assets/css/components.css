@@ -9,7 +9,9 @@
   list-style: none;
   justify-content: space-between;
 }
-
+.mobile-menu {
+  display: none;
+}
 .main-menu li a {
   font-family: "Manrope", sans-serif;
   text-decoration: none;
@@ -55,3 +57,26 @@
   background-color: white;
 }
 /* Other Fancy Stuff END */
+
+/* Responsive Design */
+/* Header */
+@container header (width < 1300px) {
+  .mobile-menu {
+    display: block;
+  }
+  .dark-mode-switch {
+    width: 8.86625em;
+  }
+}
+@container header (width < 768px) {
+  .mobile-menu {
+    display: block;
+  }
+  .dark-mode-switch label {
+    display: none;
+  }
+  .dark-mode-switch {
+    width: 2.875em;
+  }
+}
+/* Responsive Design END */

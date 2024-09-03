@@ -71,14 +71,46 @@
   min-height: 4.75rem;
 }
 
+.header-wrapper {
+  container-type: inline-size;
+  container-name: header;
+}
+
 .flex-box {
-  width: 40.625rem;
+  min-width: 40.625rem;
 }
 
 /* Responsive Design */
-@media (width < 300px) {
-  body {
-    background-color: blue;
+/* Header */
+@container header (width < 1300px) {
+  .flex-box {
+    min-width: 24rem;
+  }
+  .nav,
+  .btn-sign-in-up {
+    display: none;
+  }
+
+  /* 72px/2 Gap */
+  .flex-gap-sm-b {
+    /* Same as REM Parent Container in Pixel / 16 */
+    gap: 0em;
+    justify-content: flex-end;
+  }
+}
+@container header (width < 768px) {
+  .flex-box {
+    min-width: 12.1875rem;
+  }
+  .nav {
+    display: none;
+  }
+
+  /* 40px Gap */
+  .flex-gap-sm-b {
+    /* Same as REM Parent Container in Pixel / 16 */
+    justify-content: flex-end;
+    gap: 0em;
   }
 }
 /* Responsive Design END */
