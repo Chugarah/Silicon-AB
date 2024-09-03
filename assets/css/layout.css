@@ -6,25 +6,11 @@
   width: 100dvw;
 }
 
-.container-half {
-  min-width: 50%;
-  min-height: 50dvw;
-}
-
-/* Header Container Height */
-.container-header {
-  min-height: 4.75rem;
-  position: relative;
-}
-
 /* Footer Container Height */
 .container-footer {
   min-height: 8.125rem;
 }
 /* Footer Container Height */
-.container-banner {
-  min-height: 54.75rem;
-}
 
 .background-grey {
   background-color: cadetblue;
@@ -41,7 +27,9 @@
 /* GRID Layout */
 .grid {
   display: grid;
-  grid-area: "header-content";
+  grid-template-areas:
+    "grid-header"
+    "grid-banner-content";
   grid-template-rows: auto 1fr auto;
 }
 
@@ -69,6 +57,8 @@
   display: flex;
   flex-direction: row;
   min-height: 4.75rem;
+  justify-content: space-between;
+  max-width: 81.25rem;
 }
 
 .header-wrapper {
@@ -77,18 +67,32 @@
 }
 
 .flex-box {
-  min-width: 40.625rem;
+  justify-content: space-around;
+  /* min-width: 40.625rem;*/
 }
+
+/* Banner Content */
+.banner-content-flex {
+  display: flex;
+  flex-direction: row;
+  min-height: 54.75rem;
+}
+/* Banner Content END */
 
 /* Responsive Design */
 /* Header */
 @container header (width < 1300px) {
   .flex-box {
-    min-width: 24rem;
+    min-width: 24.8125rem;
+    padding-left: 1.9375rem;
+    padding-right: 1.9375rem;
   }
   .nav,
   .btn-sign-in-up {
     display: none;
+  }
+  .flex-gap-sm-a {
+    justify-content: flex-start;
   }
 
   /* 72px/2 Gap */
@@ -101,6 +105,8 @@
 @container header (width < 768px) {
   .flex-box {
     min-width: 12.1875rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
   .nav {
     display: none;
