@@ -20,6 +20,7 @@
 
 .main-menu li a:hover {
   color: #6366f1;
+  transition: cubic-bezier(1, 0, 0, 1);
 }
 
 .main-menu li a:active {
@@ -49,8 +50,27 @@
   color: white;
 }
 
+/* Buttons Promotion & Banner Content */
+
+.inline-block img {
+  height: auto;
+}
+
+/* Links */
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
 /* Form Elements End *
 
+
+/* Images  */
+.img-store-apps {
+  width: 22.9rem;
+  height: 3.150625rem;
+}
+/* Images End */
 
 /* Other Fancy Stuff */
 .primary-background-color {
@@ -79,4 +99,11 @@
     width: 2.875em;
   }
 }
+
+/* Banner & Promotion */
+@container main (width < 1300px) {
+}
+@container main (width < 768px) {
+}
+
 /* Responsive Design END */

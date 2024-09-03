@@ -6,6 +6,10 @@
   width: 100dvw;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 /* Footer Container Height */
 .container-footer {
   min-height: 8.125rem;
@@ -34,8 +38,17 @@
 }
 
 /* FLEX Layout */
+
+.flex {
+  display: flex;
+}
+
 .flex-center {
   justify-content: center;
+}
+
+.flex-items-center {
+  align-items: center;
 }
 
 .flex-right-horizontal {
@@ -58,12 +71,15 @@
   flex-direction: row;
   min-height: 4.75rem;
   justify-content: space-between;
-  max-width: 81.25rem;
 }
 
 .header-wrapper {
   container-type: inline-size;
   container-name: header;
+}
+.main-wrapper {
+  container-type: inline-size;
+  container-name: main;
 }
 
 .flex-box {
@@ -75,9 +91,45 @@
 .banner-content-flex {
   display: flex;
   flex-direction: row;
-  min-height: 54.75rem;
 }
+
+.banner-content-flex {
+  /* https://cssgradient.io/ */
+  background: rgb(99, 102, 241);
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.1026785714285714) 0%,
+    rgba(218, 70, 239, 0.052258403361344574) 42%,
+    rgba(241, 244, 253, 0.07466736694677867) 83%
+  );
+}
+
 /* Banner Content END */
+
+/* Paddings & Margins */
+
+/* Widths */
+.with-4 {
+  width: 4em;
+}
+
+.padding-top-bottom-2 {
+  padding: 2.5rem 0 2.5rem 0;
+}
+
+.padding-top-2 {
+  padding: 2.5rem 0 0 0;
+}
+
+.padding-top-1 {
+  padding: 1rem 0 0 0;
+}
+
+.padding-right-1 {
+  padding-right: 1.25em;
+}
+
+/* Paddings */
 
 /* Responsive Design */
 /* Header */
@@ -117,6 +169,29 @@
     /* Same as REM Parent Container in Pixel / 16 */
     justify-content: flex-end;
     gap: 0em;
+  }
+}
+
+/* Banner & Promotion */
+@container main (width < 1300px) {
+  .flex-banner-box {
+    padding-left: 1.9375rem;
+    padding-right: 1.9375rem;
+  }
+  .content-max-width {
+    max-width: 24.375rem;
+  }
+}
+@container main (width < 768px) {
+  .banner-content-flex {
+    flex-direction: column;
+  }
+  .flex-banner-box {
+    padding-left: 1.9375rem;
+    padding-right: 1.9375rem;
+  }
+  .content-max-width {
+    max-width: 24.375rem;
   }
 }
 /* Responsive Design END */

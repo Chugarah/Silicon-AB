@@ -13,3 +13,7 @@ html {
 .margin-center {
   margin: 0 auto;
 }
+
+.content-max-width {
+  max-width: 81.25rem;
+}
