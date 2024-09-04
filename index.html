@@ -12,44 +12,45 @@
     <link rel="stylesheet" href="./assets/css/components.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container margin-center">
       <!-- Using Grid för General Layout-->
-      <div class="grid">
+      <div class="main-grid">
         <header aria-label="Navigation & Logo">
           <!-- Grid Header -->
           <div class="header-content grid-header">
             <div class="header-wrapper">
-              <!-- Header Flex Box-->
-              <div class="header-content-flex margin-center content-max-width">
-                <div class="flex-box">
-                  <!-- Logo & Nav Flex Box-->
-                  <div
-                    class="header-content-flex flex-gap-sm-a vertical-center"
-                  >
-                    <!-- Logo -->
-                    <div class="logo">
-                      <img
-                        src="./assets/media/img/logo.svg"
-                        alt="Logo Silicon AB"
-                      />
+              <!-- Grid Logo & Navigation -->
+              <div class="header-grid">
+                <div class="logo-nav">
+                  <div class="header-content-flex">
+                    <!-- Logo & Nav Flex Box-->
+                    <div
+                      class="header-content-flex flex-gap-sm-a vertical-center"
+                    >
+                      <!-- Logo -->
+                      <div class="logo">
+                        <img
+                          src="./assets/media/img/logo.svg"
+                          alt="Logo Silicon AB"
+                        />
+                      </div>
+                      <!-- Logo End -->
+                      <!-- Navigation-->
+                      <div class="nav vertical-center font-size-standard">
+                        <nav aria-label="Navigation Menu">
+                          <ul class="main-menu">
+                            <li><a href="#">Features</a></li>
+                          </ul>
+                        </nav>
+                      </div>
+                      <!-- Navigation End -->
                     </div>
-                    <!-- Logo End -->
-                    <!-- Navigation-->
-                    <div class="nav vertical-center font-size-standard">
-                      <nav aria-label="Navigation Menu">
-                        <ul class="main-menu">
-                          <li><a href="#">Features</a></li>
-                        </ul>
-                      </nav>
-                    </div>
-                    <!-- Navigation End -->
+                    <!-- Logo & Nav Flex Box END-->
                   </div>
-                  <!-- Logo & Nav Flex Box END-->
                 </div>
-                <div class="flex-box">
-                  <!-- Buttons Flex Box-->
+                <div class="header-extra-menu">
                   <div
-                    class="header-content-flex flex-gap-sm-b vertical-center flex-right-horizontal"
+                    class="header-content-flex flex-gap-sm-a vertical-center flex-right-horizontal"
                   >
                     <div class="dark-mode-switch">
                       <label class="font-size-standard">Dark Mode</label>
@@ -65,85 +66,49 @@
                       />
                     </div>
                   </div>
-                  <!-- Buttons Flex Box END-->
                 </div>
               </div>
+              <!-- Grid Logo & Navigation End-->
             </div>
           </div>
+          <!-- Grid Header End -->
         </header>
         <main aria-label="Main Content">
           <div class="main-wrapper">
             <section aria-label="Promotion Banner Content">
-              <!-- Banner / Promotion Content-->
-              <div class="grid-banner-content">
-                <!-- Flex Content-->
-                <div
-                  class="banner-content-flex margin-center content-max-width"
-                >
-                  <div class="flex-banner-box">
-                    <h1
-                      class="padding-top-2 font-color-heading extra-bold promo-size-text-a text-center"
-                    >
-                      Manage All Your Money in One App
-                    </h1>
-                  </div>
-                  <div class="flex-banner-box">
-                    <p
-                      class="padding-top-bottom-2 font-color-text font-regular font-size-regular text-center"
-                    >
-                      We offer you a new generation of the mobile banking. Save,
-                      spend & manage money in your pocket.
-                    </p>
-                  </div>
-                  <div class="flex-banner-box text-center">
-                    <a
-                      href="#"
-                      class="flex flex-center flex-items-center text-decoration-none"
-                    >
-                      <img
-                        src="/assets/media/img/app-apple-store.svg"
-                        alt="Apple
-                    Store Link"
-                      />
-                    </a>
-                    <a
-                      href="#"
-                      class="flex flex-center flex-items-center text-decoration-none"
-                    >
-                      <img
-                        class="padding-top-1"
-                        src="/assets/media/img/app-android-store.svg"
-                        alt="Android
-                  Store Link"
-                      />
-                    </a>
-                  </div>
-                  <div class="flex-banner-box text-center padding-top-bottom-2">
-                    <div class="inline-block">
-                      <a
-                        href="#"
-                        class="flex flex-center flex-items-center text-decoration-none"
-                      >
-                        <img
-                          class="with-4 padding-right-1"
-                          src="/assets/media/img/arrow-button.svg"
-                          alt="Arrow Down"
-                        />
-                        <span class="font-link-small font-color-text"
-                          >Discover more</span
-                        >
-                      </a>
-                    </div>
-                  </div>
-                  <div class="flex-banner-box"></div>
+              <!-- Main Grid -->
+              <div class="grid-main">
+                <!-- Banner & Promotion Content -->
+                <div class="banner-promotion-grid">
+                  <div class="promotion-title">Promotion text</div>
+                  <div class="promotion-text-app">Text & App Links</div>
+                  <div class="promotion-link">Discover more</div>
+                  <div class="promotion-image">Phone Image</div>
                 </div>
-                <!-- Flex Content End-->
+                <!-- Banner & Promotion Content End-->
+
+                <!-- Features Content -->
+                <div class="app-features-grid">
+                  <div class="app-features-companies">lorem200</div>
+                  <div class="app-features-phone-image">Big Fucking Phone</div>
+                  <div class="app-features-text">Features Text</div>
+                </div>
+
+                <!-- Features Content End -->
               </div>
-              <!-- Banner / Promotion Content End-->
+              <!-- Main Grid End -->
             </section>
           </div>
         </main>
-        <footer aria-label="Footer, Copyright and Company information"></footer>
+        <footer aria-label="Footer, Copyright and Company information">
+          <div class="footer-wrapper">
+            <section aria-label="Promotion Banner Content">
+              <!-- Main Grid -->
+              <div class="grid-footer"></div>
+              <!-- Main Grid End -->
+            </section>
+          </div>
+        </footer>
       </div>
     </div>
   </body>

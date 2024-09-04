@@ -2,8 +2,7 @@
   /* With 100% is fallback incase we are using older browsers. Code is 
     being readd from top to bottom in CSS
     */
-  width: 100%;
-  width: 100dvw;
+  max-width: 81.25rem;
 }
 
 .inline-block {
@@ -29,12 +28,86 @@
 }
 
 /* GRID Layout */
-.grid {
+
+/* Main */
+.main-grid {
   display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-areas:
     "grid-header"
-    "grid-banner-content";
-  grid-template-rows: auto 1fr auto;
+    "main"
+    "footer";
+  grid-auto-flow: row;
+  gap: 0rem;
+}
+.grid-header {
+  grid-area: "grid-header";
+}
+.grid-main {
+  grid-area: "grid-main";
+}
+.grid-footer {
+  grid-area: "grid-footer";
+}
+
+/* Header */
+.header-grid {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr 1fr;
+  gap: 0rem;
+  grid-template-areas: "logo-nav header-extra-menu";
+}
+.logo-nav {
+  grid-area: logo-nav;
+}
+.header-extra-menu {
+  grid-area: header-extra-menu;
+}
+
+/* Banner & Promotion */
+.banner-promotion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0rem;
+  grid-template-areas:
+    "promotion-title ."
+    "promotion-text-app  ."
+    "promotion-link promotion-image";
+}
+.promotion-title {
+  grid-area: promotion-title;
+}
+.promotion-text-app {
+  grid-area: promotion-text-app;
+}
+.promotion-link {
+  grid-area: promotion-link;
+}
+.promotion-image {
+  grid-area: promotion-image;
+}
+
+/* App Features */
+.app-features-grid {
+  display: grid;
+  grid-column: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0rem;
+  grid-template-areas:
+    "app-features-companies app-features-companies"
+    "app-features-phone-image app-features-text";
+}
+.app-features-companies {
+  grid-area: app-features-companies;
+}
+.app-features-phone-image {
+  grid-area: app-features-phone-image;
+}
+.app-features-text {
+  grid-area: app-features-text;
 }
 
 /* FLEX Layout */
@@ -70,7 +143,6 @@
   display: flex;
   flex-direction: row;
   min-height: 4.75rem;
-  justify-content: space-between;
 }
 
 .header-wrapper {
@@ -80,6 +152,10 @@
 .main-wrapper {
   container-type: inline-size;
   container-name: main;
+}
+.footer-wrapper {
+  container-type: inline-size;
+  container-name: footer;
 }
 
 .flex-box {
@@ -134,17 +210,16 @@
 /* Responsive Design */
 /* Header */
 @container header (width < 1300px) {
-  .flex-box {
-    min-width: 24.8125rem;
-    padding-left: 1.9375rem;
-    padding-right: 1.9375rem;
+  .header-content-flex {
+    padding-left: 1.09375rem;
+    padding-right: 1.09375rem;
   }
   .nav,
   .btn-sign-in-up {
     display: none;
   }
   .flex-gap-sm-a {
-    justify-content: flex-start;
+    gap: 0rem;
   }
 
   /* 72px/2 Gap */
@@ -153,12 +228,19 @@
     gap: 0em;
     justify-content: flex-end;
   }
+
+  .container {
+    /* With 100% is fallback incase we are using older browsers. Code is 
+      being readd from top to bottom in CSS
+      */
+    max-width: 48rem;
+  }
 }
 @container header (width < 768px) {
   .flex-box {
     min-width: 12.1875rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 1.09375rem;
+    padding-right: 1.09375rem;
   }
   .nav {
     display: none;
