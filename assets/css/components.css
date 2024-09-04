@@ -11,6 +11,7 @@
 }
 .mobile-menu {
   display: none;
+  color: #3e4265;
 }
 .main-menu li a {
   font-family: "Manrope", sans-serif;
@@ -33,6 +34,9 @@
 }
 /* Header End* /
 
+
+
+
 /* Form Elements */
 
 /* Label */
@@ -43,11 +47,23 @@
 
 /* Button */
 .btn-sign-in-up {
-  width: 8.75em;
-  height: 2.25em;
+  padding: 0.5625em 1.25em;
   background-color: #6366f1;
   border-radius: 0.5dvh;
   color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  border-radius: 0.25em;
+}
+
+/* Images */
+.apps-image-links-small {
+  display: block;
+}
+.apps-image-links-normal {
+  display: none;
 }
 
 /* Buttons Promotion & Banner Content */
@@ -87,16 +103,19 @@
   .dark-mode-switch {
     width: 8.86625em;
   }
+  .btn-sign-in-up {
+    display: none;
+  }
 }
 @container header (width < 768px) {
   .mobile-menu {
     display: block;
   }
-  .dark-mode-switch label {
-    display: none;
-  }
   .dark-mode-switch {
     width: 2.875em;
+  }
+  .dark-mode-label {
+    display: none;
   }
 }
 

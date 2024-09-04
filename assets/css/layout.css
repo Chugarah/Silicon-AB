@@ -32,7 +32,7 @@
 /* Main */
 .main-grid {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
   grid-template-columns: 1fr;
   grid-template-areas:
     "grid-header"
@@ -42,13 +42,13 @@
   gap: 0rem;
 }
 .grid-header {
-  grid-area: "grid-header";
+  grid-area: grid-header;
 }
 .grid-main {
-  grid-area: "grid-main";
+  grid-area: grid-main;
 }
 .grid-footer {
-  grid-area: "grid-footer";
+  grid-area: grid-footer;
 }
 
 /* Header */
@@ -66,16 +66,27 @@
   grid-area: header-extra-menu;
 }
 
+.dark-mode-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Banner & Promotion */
 .banner-promotion-grid {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
   gap: 0rem;
   grid-template-areas:
     "promotion-title ."
     "promotion-text-app  ."
     "promotion-link promotion-image";
+  /* Guessing and trying to emulate size and position from Figma*/
+
+  padding-top: 9.75em;
+  padding-bottom: 3.1em;
 }
 .promotion-title {
   grid-area: promotion-title;
@@ -85,9 +96,32 @@
 }
 .promotion-link {
   grid-area: promotion-link;
+  padding-top: 13em;
 }
 .promotion-image {
   grid-area: promotion-image;
+}
+.promotion-title,
+.promotion-text-app {
+  max-width: 32.875em;
+}
+
+/* AI Generated */
+.banner-promotion-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background: radial-gradient(
+    125% 125% at 50% 110%,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(218, 70, 239, 0.05) 42%,
+    rgba(241, 244, 253, 0.07) 83%
+  );
+  z-index: -1; /* Placera bakgrunden bakom innehållet */
 }
 
 /* App Features */
@@ -110,10 +144,20 @@
   grid-area: app-features-text;
 }
 
+/* Apps Link Flex */
+.flex-banner-app-links-box {
+  display: flex;
+  padding-top: 3.125em;
+}
+
 /* FLEX Layout */
 
 .flex {
   display: flex;
+}
+
+.flex-direction-column {
+  flex-direction: column;
 }
 
 .flex-center {
@@ -169,17 +213,6 @@
   flex-direction: row;
 }
 
-.banner-content-flex {
-  /* https://cssgradient.io/ */
-  background: rgb(99, 102, 241);
-  background: radial-gradient(
-    circle,
-    rgba(99, 102, 241, 0.1026785714285714) 0%,
-    rgba(218, 70, 239, 0.052258403361344574) 42%,
-    rgba(241, 244, 253, 0.07466736694677867) 83%
-  );
-}
-
 /* Banner Content END */
 
 /* Paddings & Margins */
@@ -187,6 +220,10 @@
 /* Widths */
 .with-4 {
   width: 4em;
+}
+
+.padding-top-bottom-15 {
+  padding: 1.875rem 0 1.875rem 0;
 }
 
 .padding-top-bottom-2 {
@@ -203,6 +240,12 @@
 
 .padding-right-1 {
   padding-right: 1.25em;
+}
+.padding-left-1 {
+  padding-left: 1.25em;
+}
+.padding-right-05 {
+  padding-right: 0.5em;
 }
 
 /* Paddings */
@@ -256,7 +299,7 @@
 
 /* Banner & Promotion */
 @container main (width < 1300px) {
-  .flex-banner-box {
+  .flex-banner-app-links-box {
     padding-left: 1.9375rem;
     padding-right: 1.9375rem;
   }
@@ -268,7 +311,7 @@
   .banner-content-flex {
     flex-direction: column;
   }
-  .flex-banner-box {
+  .flex-banner-app-links-box {
     padding-left: 1.9375rem;
     padding-right: 1.9375rem;
   }
