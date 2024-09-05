@@ -1,3 +1,6 @@
+/* Lets import some vars */
+@import url(/assets/css/vars.css);
+
 .vertical-center {
   align-items: center;
 }
@@ -11,46 +14,43 @@
 }
 .mobile-menu {
   display: none;
-  color: #3e4265;
+  color: var(--icon-color-1);
 }
 .main-menu li a {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-family);
   text-decoration: none;
-  color: #33354d;
+  color: var(--link-color);
 }
 
 .main-menu li a:hover {
-  color: #6366f1;
+  color: var(--link-color-hover);
   transition: cubic-bezier(1, 0, 0, 1);
 }
 
 .main-menu li a:active {
-  color: #33354d;
+  color: var(--link-color-active);
 }
 
 /* Dark Mode Switch */
 .dark-mode-switch {
-  width: 8.9375em;
+  width: var(--dark-mode-switch-size);
 }
 /* Header End* /
-
-
 
 
 /* Form Elements */
 
 /* Label */
 .dark-mode-switch label {
-  font-family: "Manrope", sans-serif;
-  color: #565973;
+  font-family: var(--font-family);
+  color: var(--font-primary);
 }
 
 /* Button */
 .btn-sign-in-up {
-  padding: 0.5625em 1.25em;
-  background-color: #6366f1;
-  border-radius: 0.5dvh;
-  color: white;
+  padding: var(--padding-056) var(--padding-11);
+  background-color: var(--btn-primary-color);
+  color: var(--root-color);
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -64,6 +64,13 @@
 }
 .apps-image-links-normal {
   display: none;
+}
+
+.iphone-1 {
+  position: absolute;
+  top: 9.5em;
+  right: 0em;
+  transform: translate(0%, 0%);
 }
 
 /* Buttons Promotion & Banner Content */
@@ -80,29 +87,13 @@
 
 /* Form Elements End *
 
-
-/* Images  */
-.img-store-apps {
-  width: 22.9rem;
-  height: 3.150625rem;
-}
-/* Images End */
-
-/* Other Fancy Stuff */
-.primary-background-color {
-  background-color: white;
-}
-/* Other Fancy Stuff END */
-
 /* Responsive Design */
 /* Header */
 @container header (width < 1300px) {
   .mobile-menu {
     display: block;
   }
-  .dark-mode-switch {
-    width: 8.86625em;
-  }
+
   .btn-sign-in-up {
     display: none;
   }
@@ -112,7 +103,7 @@
     display: block;
   }
   .dark-mode-switch {
-    width: 2.875em;
+    width: var(--dark-mode-switch-size-s);
   }
   .dark-mode-label {
     display: none;

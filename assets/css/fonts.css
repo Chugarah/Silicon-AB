@@ -1,50 +1,39 @@
-/* Lets import some Fonts */
+/* Lets import some vars */
+@import url(/assets/css/vars.css);
 
 /* Font For the menu*/
 @font-face {
-  font-family: "Manrope", sans-serif;
-  src: url("/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf");
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.font-size-standard {
-  font-size: 1rem;
-}
-
-.font-color-header-a {
-  color: 33354d;
-}
-
-.font-color-heading {
-  color: #131022;
+  font-family: var(--font-family);
+  src: var(--font-location-url);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-weight: var(--font-semi);
+  font-style: var(--font-style-primary);
 }
 
 .font-color-text {
-  color: #585c7b;
+  color: var(--font-text-color);
 }
 
-.font-color-prmotion-text {
-  color: #0b0f19;
+.font-color-heading-text {
+  color: var(--font-secondary);
 }
 
 .extra-bold {
-  font-weight: 800;
+  font-weight: var(--font-extra-bold);
 }
 
 .font-regular {
-  font-weight: 400;
+  font-weight: var(--font-regular);
 }
 
 .font-semi {
-  font-weight: 600;
+  font-weight: var(--font-semi);
 }
 
 /* Text */
 p,
 span {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-family);
 }
 
 .text-center {
@@ -53,37 +42,41 @@ span {
 
 /* Title's Headers */
 h1 {
-  font-size: 2.5rem;
+  font-size: var(--font-size-h1);
 }
 h2 {
-  font-size: 2rem;
+  font-size: var(--font-size-h2);
 }
 h3 {
-  font-size: 1.75rem;
+  font-size: var(--font-size-h3);
 }
 h4 {
-  font-size: 1.5rem;
+  font-size: var(--font-size-h4);
 }
 h5 {
-  font-size: 1.25rem;
+  font-size: var(--font-size-h5);
 }
 h6 {
-  font-size: 1rem;
+  font-size: var(--font-size-h6);
 }
 
 /* Font Sizes */
+.font-size-standard {
+  font-size: var(--font-size-primary);
+}
+
 .promo-size-text-a {
-  font-size: 2.13125rem;
+  font-size: var(--font-size-promotion-l);
 }
 
 .promo-size-text-b {
-  font-size: 3.5rem;
+  font-size: var(--font-size-promotion-xl);
 }
 
 .font-size-regular {
-  font-size: 1.125rem;
+  font-size: var(--font-size-text);
 }
 
 .font-link-small {
-  font-size: 0.875rem;
+  font-size: var(--font-size-link-xsm);
 }
