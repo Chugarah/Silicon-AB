@@ -1,0 +1,93 @@
+:root {
+  /* Fonts Vars */
+
+  /* Basic Font Var */
+  --font-family: "Manrope", sans-serif;
+  --font-location-url: url("/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf");
+  --font-regular: 400;
+  --font-semi: 600;
+  --font-extra-bold: 800;
+  --font-style-primary: normal;
+  --font-optical-sizing: auto;
+
+  /* Font Color */
+  --font-primary: #565973;
+  --font-secondary: #0b0f19;
+  --font-text-color: #585c7b;
+
+  /* Font Sizes */
+  --font-size-primary: 1rem;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.75rem;
+  --font-size-h4: 1.5rem;
+  --font-size-h5: 1.25rem;
+  --font-size-h6: 1rem;
+  --font-size-text: 1.125rem;
+  --font-size-promotion-xl: 3.5rem;
+  --font-size-promotion-x: 2.76875em;
+  --font-size-promotion-l: 2.13125rem;
+  --font-size-link-xsm: 0.875rem;
+
+  /* Fonts End */
+
+  /* Layout Vars */
+
+  /* Widths */
+  --max-content-width: 81.25rem;
+  --max-content-width-m-1: 24.375rem;
+  --max-content-width-s-1: 12.1875rem;
+  --min-header-height: 4.75rem;
+  --min-footer-height: 8.125rem;
+  --promotion-text-app: 32.875em;
+  --dark-mode-switch-size: 8.9375em;
+  --dark-mode-switch-size-s: 2.875em;
+  --width-4: 4rem;
+
+  /* Height */
+  --promotion-banner-height: 54.75rem;
+  --promotion-banner-height-t: 47rem;
+
+  /* Paddings */
+  --promotion-app-link-box-top: 3.125em;
+  --padding-113: 13em;
+  --padding-9: 9.75em;
+  --padding-3: 3.1em;
+  --padding-2: 2.5rem;
+  --padding17: 1.9375rem;
+  --padding-15: 1.875rem;
+  --padding-11: 1.25em;
+  --padding-1: 1.25em;
+  --padding-09: 1rem;
+  --padding-07: 1.09375rem;
+  --padding-056: 0.8625em;
+  --padding-05: 0.5em;
+
+  /* Gaps */
+  --header-dark-mode-gap-a: 2.5em;
+  --header-dark-mode-gap-b: 1.875em;
+
+  /* Screen Pixels */
+  --desktop-l: 1300px;
+  --mobile-pad: 768px;
+  --mobile-tiny: 400px;
+
+  /* Colors */
+
+  /* Root Colors */
+  --root-color: white;
+
+  /* Icons */
+  --icon-color-1: #3e4265;
+
+  /* Buttons */
+  --btn-primary-color: #6366f1;
+
+  /* Links */
+  --link-color: #33354d;
+  --link-color-hover: #6366f1;
+  --link-color-active: #33354d;
+  /* Colors End */
+
+  /* Layout Vars End*/
+}

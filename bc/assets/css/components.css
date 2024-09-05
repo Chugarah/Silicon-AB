@@ -1,0 +1,119 @@
+/* Lets import some vars */
+@import url(/assets/css/vars.css);
+
+.vertical-center {
+  align-items: center;
+}
+
+/* Header */
+/* Menu */
+.main-menu {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+.mobile-menu {
+  display: none;
+  color: var(--icon-color-1);
+}
+.main-menu li a {
+  font-family: var(--font-family);
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.main-menu li a:hover {
+  color: var(--link-color-hover);
+  transition: cubic-bezier(1, 0, 0, 1);
+}
+
+.main-menu li a:active {
+  color: var(--link-color-active);
+}
+
+/* Dark Mode Switch */
+.dark-mode-switch {
+  width: var(--dark-mode-switch-size);
+}
+/* Header End* /
+
+
+/* Form Elements */
+
+/* Label */
+.dark-mode-switch label {
+  font-family: var(--font-family);
+  color: var(--font-primary);
+}
+
+/* Button */
+.btn-sign-in-up {
+  padding: var(--padding-056) var(--padding-11);
+  background-color: var(--btn-primary-color);
+  color: var(--root-color);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  border-radius: 0.25em;
+}
+
+/* Images */
+.apps-image-links-small {
+  display: block;
+}
+.apps-image-links-normal {
+  display: none;
+}
+
+.iphone-1 {
+  position: absolute;
+  top: 9.5em;
+  right: 0em;
+  transform: translate(0%, 0%);
+}
+
+/* Buttons Promotion & Banner Content */
+
+.inline-block img {
+  height: auto;
+}
+
+/* Links */
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+/* Form Elements End *
+
+/* Responsive Design */
+/* Header */
+@container header (width < 1300px) {
+  .mobile-menu {
+    display: block;
+  }
+
+  .btn-sign-in-up {
+    display: none;
+  }
+}
+@container header (width < 768px) {
+  .mobile-menu {
+    display: block;
+  }
+  .dark-mode-switch {
+    width: var(--dark-mode-switch-size-s);
+  }
+  .dark-mode-label {
+    display: none;
+  }
+}
+
+/* Banner & Promotion */
+@container main (width < 1300px) {
+}
+@container main (width < 768px) {
+}
+
+/* Responsive Design END */

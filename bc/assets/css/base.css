@@ -1,0 +1,19 @@
+/* Lets make an UI reset, no spacing and correct size based on parents*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Standard Font size for most browsers */
+html {
+  font-size: 16px;
+}
+
+.margin-center {
+  margin: 0 auto;
+}
+
+.content-max-width {
+  max-width: 81.25rem;
+}

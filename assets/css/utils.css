@@ -1,0 +1,14 @@
+@import url(/assets/css/vars.css);
+/* Layout */
+
+/* Flex */
+.flex {
+  display: flex;
+}
+
+.fa-i-c {
+  align-items: center;
+}
+
+.gap-s {
+}
