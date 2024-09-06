@@ -27,6 +27,12 @@
   color: var(--link-color-active);
 }
 
+/* Links */
+.promotion-grid-apps-links,
+a {
+  text-decoration: none;
+}
+
 /* Button */
 .btn-sign-in-up {
   padding: var(--padding-056) var(--padding-12);
