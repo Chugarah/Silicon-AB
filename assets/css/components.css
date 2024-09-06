@@ -10,7 +10,6 @@
   justify-content: flex-start;
 }
 .mobile-menu {
-  display: none;
   color: var(--icon-color-1);
 }
 .main-menu li a {
@@ -26,6 +25,18 @@
 
 .main-menu li a:active {
   color: var(--link-color-active);
+}
+
+/* Button */
+.btn-sign-in-up {
+  padding: var(--padding-056) var(--padding-12);
+  background-color: var(--btn-primary-color);
+  color: var(--root-color);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  border-radius: 0.25em;
 }
 /* Header Content END */
 

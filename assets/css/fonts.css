@@ -80,3 +80,8 @@ h6 {
 .font-link-small {
   font-size: var(--font-size-link-xsm);
 }
+
+/* Forms */
+.label-header {
+  color: var(--font-label-color);
+}
