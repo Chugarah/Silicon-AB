@@ -51,12 +51,14 @@
 
   /* Paddings */
   --promotion-app-link-box-top: 3.125em;
+  --padding-1134: 13.4375em;
   --padding-113: 13em;
   --padding-111: 11.25em;
   --padding-9: 9.75em;
   --padding-7: 7.0625em;
   --padding-5: 5.625em;
   --padding-4: 4.375em;
+  --padding-44: 4em;
   --padding-31: 3.125em;
   --padding-3: 3em;
   --padding-288: 2.8125em;
@@ -65,6 +67,7 @@
   --padding-19: 2.1875em;
   --padding17: 1.9375em;
   --padding-15: 1.875em;
+  --padding-13: 1.75em;
   --padding-12: 1.625em;
   --padding-115: 1.125em;
   --padding-11: 1.25em;

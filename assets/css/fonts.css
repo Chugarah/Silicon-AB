@@ -65,12 +65,8 @@ h6 {
   font-size: var(--font-size-primary);
 }
 
-.promo-size-text-a {
+.promo-size-text {
   font-size: var(--font-size-promotion-l);
-}
-
-.promo-size-text-b {
-  font-size: var(--font-size-promotion-xl);
 }
 
 .font-size-regular {
