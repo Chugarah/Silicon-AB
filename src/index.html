@@ -5,13 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Manage All Your Money in One App" />
     <title>Silicon</title>
-    <link rel="stylesheet" href="./assets/css/layout.css" />
-    <link rel="stylesheet" href="./assets/css/vars.css" />
-    <link rel="stylesheet" href="./assets/css/base.css" />
-    <link rel="stylesheet" href="./assets/css/fonts.css" />
-    <link rel="stylesheet" href="./assets/css/components.css" />
-    <link rel="stylesheet" href="./assets/css/utils.css" />
-    <link rel="stylesheet" href="./assets/css/w3schools.css" />
+
     <script
       src="https://kit.fontawesome.com/4d2af45ec4.js"
       crossorigin="anonymous"
@@ -55,13 +49,21 @@
                     <div class="dark-mode-switch label-header">
                       <!-- Rounded switch -->
 
-                      <label class="switch">
-                        <input type="checkbox" />
+                      <label
+                        class="switch"
+                        for="slider-light-mode"
+                        title="Toggle dark mode"
+                      >
+                        <input
+                          type="checkbox"
+                          id="slider-light-mode"
+                          placeholder="Click here to Toggle"
+                        />
                         <span class="slider round"></span>
                       </label>
                     </div>
                     <div class="mobile-menu">
-                      <a href="#">
+                      <a href="#" title="Mobile Menu">
                         <i class="fa-solid fa-bars fa-lg icon-color"></i>
                       </a>
                     </div>
@@ -154,5 +156,7 @@
         <!-- Header & Promotion Area End-->
       </div>
     </div>
+    <!-- Inkluderar Native Javascript Stöd-->
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>

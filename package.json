@@ -1,0 +1,32 @@
+{
+  "name": "silicon-ab",
+  "version": "0.0.2",
+  "description": "Slutuppgift till HTML & CSS Kurs",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chugarah/Silicon-AB.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "scss",
+    "html5"
+  ],
+  "author": "Georgi Sundberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chugarah/Silicon-AB/issues"
+  },
+  "homepage": "https://github.com/Chugarah/Silicon-AB#readme",
+  "devDependencies": {
+    "sass": "^1.78.0",
+    "vite": "^5.4.3"
+  },
+   "type": "module"
+}

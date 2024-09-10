@@ -14,6 +14,7 @@
   --font-primary: #565973;
   --font-secondary: #0b0f19;
   --font-text-color: #585c7b;
+  --font-label-color: #131022;
 
   /* Font Sizes */
   --font-size-primary: 1rem;
@@ -50,17 +51,32 @@
 
   /* Paddings */
   --promotion-app-link-box-top: 3.125em;
+  --padding-1134: 13.4375em;
   --padding-113: 13em;
+  --padding-111: 11.25em;
   --padding-9: 9.75em;
-  --padding-3: 3.1em;
+  --padding-7: 7.0625em;
+  --padding-5: 5.625em;
+  --padding-4: 4.375em;
+  --padding-44: 4em;
+  --padding-31: 3.125em;
+  --padding-3: 3em;
+  --padding-288: 2.8125em;
+  --padding-28: 2.625em;
   --padding-2: 2.5rem;
-  --padding17: 1.9375rem;
-  --padding-15: 1.875rem;
+  --padding-19: 2.1875em;
+  --padding17: 1.9375em;
+  --padding-15: 1.875em;
+  --padding-13: 1.75em;
+  --padding-12: 1.625em;
+  --padding-115: 1.125em;
   --padding-11: 1.25em;
   --padding-1: 1.25em;
-  --padding-09: 1rem;
-  --padding-07: 1.09375rem;
+  --padding-09: 1em;
+  --padding-07: 1.09375em;
   --padding-056: 0.8625em;
+  --padding-059: 0.75em;
+  --padding-052: 0.625em;
   --padding-05: 0.5em;
 
   /* Gaps */
