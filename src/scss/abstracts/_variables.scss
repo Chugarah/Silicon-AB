@@ -4,6 +4,46 @@ $font-color-primary: #565973;
 $font-color-secondary: #0b0f19;
 $font-color-text: #585c7b;
 $font-color-label: #131022;
-
-
 /* Fonts END */
+
+
+
+// =============================================================================
+// Layout
+// =============================================================================
+
+/// @name content-width-percentage
+/// @group Utilities
+/// Description of the variable
+/// @type number
+/// @access public
+/// @since 0.0.2
+/// @example code-scss
+///   $variableName: example-value; $variableName: value;
+/// @example code-css
+///   <div class="gradient-container">Content here</div>
+/// @requires {map} a.$content-width - Map with width values
+$content-width-percentage: (
+    'full-width': 100%,
+    'half-width': 50%
+);
+
+
+/// @name display-type
+/// Map of display types for consistent usage across the project
+/// @type Map
+/// @group Layout
+/// @access public
+/// @prop {String} flex - Sets the display property to 'flex'
+/// @prop {String} grid - Sets the display property to 'grid'
+/// @prop {String} none - Sets the display property to 'none'
+/// @example code-scss
+///   .element {
+///     display: map-get($display-type, 'flex');
+///   }
+$display-type: (
+    'flex': flex,
+    'grid': grid,
+    'none': none
+);
+

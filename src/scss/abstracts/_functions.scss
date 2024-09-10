@@ -1,0 +1,21 @@
+@use 'sass:list';
+
+/// Inspired by https://sass-lang.com/documentation/values/functions/
+/// Description of function
+/// @param {string} $$parameter - String separated with comma
+/// @return {string} Return is an list of string with comma separation
+/// @group Layout
+/// @access public
+/// @since 0.02
+/// @example code-scss
+///   grid-template-columns: grid-add-column(1fr, 2fr, 1fr);
+@function create-list($values...){
+    $list: ();
+
+    /// Yeaeee first LOOPY!!
+    @each $value in $values{
+        $list: append($list, $value, space)
+    }
+
+    @return $list;
+}

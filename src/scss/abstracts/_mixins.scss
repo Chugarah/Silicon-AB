@@ -1,0 +1,50 @@
+
+/// @name container-query-wrapper
+/// @group Layout
+///
+/// Creates a container for container queries
+///
+/// This mixin sets up a container to be used with CSS Container Queries.
+/// It sets the container-type to inline-size and assigns a custom container-name.
+///
+/// @param {String} $container-name - The name of the container to be used in container queries
+///
+/// @example code-scss
+///   .my-component {
+///     @include container-query-wrapper('component-container');
+///   }
+///
+/// @example code-css
+///   .my-component {
+///     container-type: inline-size;
+///     container-name: component-container;
+///   }
+@mixin container-query-wrapper($container-name) {
+    container-type: inline-size;
+    container-name: $container-name;
+  }
+
+
+/// @name grid-auto-height
+/// @group Layout
+///
+/// Creates CSS Grid where auto size for height is based
+/// on the content
+///
+/// @param {String} $gah-display-type-value - Value, grid, flex or something else, display type
+/// @param {List} $gah-colums - List that is separated with space, amount of colums and size
+/// @param {Number} $grid-row-repeat - How many times row should repeat
+/// @param {Object} $gah-display-map - Contains Map for display type from vars
+/// @param {List} $gah-display-map - Contains Map for display type from vars
+/// @example code-scss
+/// @include a.grid-auto-height(grid, a.grid-add-colum(1fr), 3, a.$display-type)
+@mixin grid-row-colum($gah-display-type-value, $gah-colums, $grid-row-repeat, $gah-display-map, $gah-row-height){
+  display: map-get($map: $gah-display-map, $key: $gah-display-type-value);
+  grid-template-columns: $gah-colums;
+  grid-template-rows: $gah-row-height;
+}
+
+  
+
+
+  
