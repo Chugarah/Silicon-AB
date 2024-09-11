@@ -34,9 +34,6 @@ $content-width-percentage: (
 /// @type Map
 /// @group Layout
 /// @access public
-/// @prop {String} flex - Sets the display property to 'flex'
-/// @prop {String} grid - Sets the display property to 'grid'
-/// @prop {String} none - Sets the display property to 'none'
 /// @example code-scss
 ///   .element {
 ///     display: map-get($display-type, 'flex');
@@ -46,4 +43,19 @@ $display-type: (
     'grid': grid,
     'none': none
 );
+
+
+/// @name breakpoints
+/// Map of breakpoints regarding responsive
+/// @type Map
+/// @group Layout
+/// @access public
+/// @example code-scss
+///   .element {
+///     display: map-get($breakpoints, 'flex');
+///   }
+$breakpoints: (
+    'medium': 768px,
+    'xlarge': 1200px
+)
 

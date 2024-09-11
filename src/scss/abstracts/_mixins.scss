@@ -1,4 +1,3 @@
-
 /// @name container-query-wrapper
 /// @group Layout
 ///
@@ -20,9 +19,9 @@
 ///     container-name: component-container;
 ///   }
 @mixin container-query-wrapper($container-name) {
-    container-type: inline-size;
-    container-name: $container-name;
-  }
+  container-type: inline-size;
+  container-name: $container-name;
+}
 
 
 /// @name grid-auto-height
@@ -38,13 +37,24 @@
 /// @param {List} $gah-display-map - Contains Map for display type from vars
 /// @example code-scss
 /// @include a.grid-auto-height(grid, a.grid-add-colum(1fr), 3, a.$display-type)
-@mixin grid-row-colum($gah-display-type-value, $gah-colums, $grid-row-repeat, $gah-display-map, $gah-row-height){
+@mixin grid-row-colum($gah-display-type-value, $gah-colums, $grid-row-repeat, $gah-display-map, $gah-row-height) {
   display: map-get($map: $gah-display-map, $key: $gah-display-type-value);
   grid-template-columns: $gah-colums;
   grid-template-rows: $gah-row-height;
 }
 
-  
-
-
-  
+/// Ai Generated from Phind
+@mixin container-query($container-name, $min, $max: null) {
+  @if $max {
+    @container #{$container-name} (min-width: #{$min}) and (max-width: #{$max - 1}) {
+      /// Passing the content further
+      @content;
+    }
+  }
+  @else if $min {
+    @container #{$container-name} (min-width: #{$min}) {
+      /// Passing the content further
+      @content;
+    }
+  }
+}

@@ -4,9 +4,9 @@
 /* Kommentarerna är Genererade med AI */
 
 
-// =============================================================================
-// Skeleton Structure
-// =============================================================================
+/// =============================================================================
+/// Skeleton Structure
+/// =============================================================================
 
 /// @name skeleton-wrapper
 /// @group Layout
@@ -19,17 +19,67 @@
   height: 100vh;
 }
 
-// =============================================================================
-// Header & Navigation
-// =============================================================================
+/// @group Layout
+/// 
+/// Creating Container for later use in container queries
+/// 
 
-.header-navigation{
-  display: map-get($map: a.$display-type, $key: 'flex');
+.main-wrapper{
+  @include a.container-query-wrapper(main)
+}
+.footer-wrapper{
+  @include a.container-query-wrapper(footer)
 }
 
-// =============================================================================
-// Promotion Area
-// =============================================================================
+/// @name content-container
+/// @group Layout
+/// 
+/// Handles max with content and 
+/// also centers the content
+/// 
+.content-container{
+  max-width: 81.25rem;
+  margin: 0 auto;
+  width: 100%;
+
+}
+
+/// =============================================================================
+/// Header & Navigation
+/// =============================================================================
+
+/// Header where Navigation and Logo, 
+/// 
+.header-navigation{
+  display: map-get($map: a.$display-type, $key: 'flex');
+  background-color: blueviolet;
+}
+
+.header-wrapper{
+  @include a.container-query-wrapper(header);
+  /// Phones
+  @include a.container-query(header,0,map-get($map: a.$breakpoints, $key: 'medium')){
+    .header-navigation{
+      background-color: red;
+    }
+  }
+  /// Tablets, Smaller Laptops
+  @include a.container-query(header,
+  map-get($map: a.$breakpoints, $key: 'medium'),
+  map-get($map: a.$breakpoints, $key: 'xlarge')){
+    .header-navigation{
+      background-color: blue;
+    }
+  }
+  
+}
+
+
+
+
+/// =============================================================================
+/// Promotion Area
+/// =============================================================================
 
 /// @name gradient-container
 /// @group Layout
@@ -55,5 +105,3 @@
     );
 }
   
-
-
