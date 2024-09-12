@@ -44,6 +44,21 @@
 }
 
 /// Ai Generated from Phind
+/// @name container-query
+/// @group Layout
+///
+/// We are setting an container query and based on min and max values
+/// we are passing content further using @content code
+///
+/// @param {String} $container-name - Container name (Wrapper name)
+/// @param {String} $min - Minimum width of the container
+/// @param {String} $max - Maximum width of the container
+/// @example code-scss
+/// @include a.container-query(header,0, 768px){
+///  .header-navigation{
+///   background-color: blue;
+///  }
+/// }
 @mixin container-query($container-name, $min, $max: null) {
   @if $max {
     @container #{$container-name} (min-width: #{$min}) and (max-width: #{$max - 1}) {
@@ -57,4 +72,26 @@
       @content;
     }
   }
+}
+
+/// @name content-width
+/// @group Layout
+///
+/// Setting max with of content element and also the with
+///
+/// @param {String} $max-width - Max width for the content
+/// @param {String} $width - With of the content
+/// @example code-scss
+///   @include content-width(81.25rem, 100%)
+/// }
+@mixin content-width($max-width, $width){
+  max-width: $max-width;
+  margin: 0 auto;
+  width: $width;
+}
+
+
+@mixin flex($align-items){
+  display: flex;
+  align-items: $align-items;
 }

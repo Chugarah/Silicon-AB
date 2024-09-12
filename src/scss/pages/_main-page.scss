@@ -1,7 +1,11 @@
 @use "sass:map";
+@use "sass:meta";
 @use '../abstracts' as a;
 
-/* Kommentarerna är Genererade med AI */
+/* 
+  https://www.youtube.com/watch?v=SLjHSVwXYq4
+  https://www.reddit.com/r/css/comments/14f9o5l/using_bem_in_2023/
+*/
 
 
 /// =============================================================================
@@ -14,94 +18,87 @@
 /// This is our core, an grid that has 3 rows and 1 colum. This is where we also
 /// We are using an mixin to create the grid and functions that create an list
 ///
-.skeleton-wrapper{
-  @include a.grid-row-colum(grid, a.create-list(1fr), 3, a.$display-type, a.create-list(auto,2fr,auto));
-  height: 100vh;
-}
-
-/// @group Layout
-/// 
-/// Creating Container for later use in container queries
-/// 
-
-.main-wrapper{
-  @include a.container-query-wrapper(main)
-}
-.footer-wrapper{
-  @include a.container-query-wrapper(footer)
-}
-
-/// @name content-container
-/// @group Layout
-/// 
-/// Handles max with content and 
-/// also centers the content
-/// 
-.content-container{
-  max-width: 81.25rem;
+.skeleton-wrapper {
+  @include a.grid-row-colum(grid, a.create-list(1fr), 3, a.$display-type, a.create-list(auto, 2fr, auto));
+  height: 100dvh;
   margin: 0 auto;
-  width: 100%;
+
+  font-family: a.$font-family;
 
 }
 
 /// =============================================================================
 /// Header & Navigation
 /// =============================================================================
-
-/// Header where Navigation and Logo, 
-/// 
-.header-navigation{
-  display: map-get($map: a.$display-type, $key: 'flex');
-  background-color: blueviolet;
-}
-
-.header-wrapper{
+.header {
+  /// Activate Container Query Properties for header-wrapper
   @include a.container-query-wrapper(header);
-  /// Phones
-  @include a.container-query(header,0,map-get($map: a.$breakpoints, $key: 'medium')){
-    .header-navigation{
-      background-color: red;
+
+  /// Content Width
+  @include a.content-width(map-get($map: a.$max-content-width, $key: 'desktop'),
+    map-get($map: a.$content-width-percentage, $key: 'full-width'));
+
+  /// Common Styles for the navigation
+  &__nav {
+    background-color: purple;
+    display: map-get($map: a.$display-type, $key: 'flex');
+    gap: map-get($map: a.$gaps, $key: 'g-3-1');
+  }
+
+  /// Navigation
+  &__menu {
+    @include a.flex(center);
+
+    li {
+      list-style-type: none;
     }
   }
-  /// Tablets, Smaller Laptops
-  @include a.container-query(header,
-  map-get($map: a.$breakpoints, $key: 'medium'),
-  map-get($map: a.$breakpoints, $key: 'xlarge')){
-    .header-navigation{
-      background-color: blue;
-    }
-  }
-  
+
 }
 
 
 
 
 /// =============================================================================
-/// Promotion Area
+/// Main Area
 /// =============================================================================
+.main-wrapper {
+  /// Activate Container Query Properties for main-wrapper
+  @include a.container-query-wrapper(main);
 
-/// @name gradient-container
-/// @group Layout
-///
-/// Container with gradient background
-/// Uses a radial gradient to create a subtle color effect
-///
-/// @example code-scss
-///   <div class="gradient-container">Content here</div>
-///
-/// @requires {map} a.$content-width - Map with width values
+  /// Content Width
+  .content-container {
+    @include a.content-width(map-get($map: a.$max-content-width, $key: 'desktop'),
+      map-get($map: a.$content-width-percentage, $key: 'full-width'))
+  }
+}
+
+
+
+/// Background Gradient for Header and Promotion
 .gradient-container {
-    // Get full width from content-width map
-    width: map-get($map: a.$content-width-percentage, $key: 'full-width');
-  
-    // Radial gradient background
-    // Creates a subtle color transition from purple to pink to almost white
-    background: radial-gradient(
-      125% 125% at 50% 110%,
-      rgba(99, 102, 241, 0.1) 0%,    
-      rgba(218, 70, 239, 0.05) 42%,  
-      rgba(241, 244, 253, 0.07) 83% 
-    );
+  // Get full width from content-width map
+  width: map-get($map: a.$content-width-percentage, $key: 'full-width');
+
+  // Radial gradient background
+  // Creates a subtle color transition from purple to pink to almost white
+  background: radial-gradient(125% 125% at 50% 110%,
+      rgba(99, 102, 241, 0.1) 0%,
+      rgba(218, 70, 239, 0.05) 42%,
+      rgba(241, 244, 253, 0.07) 83%);
 }
-  
+
+
+/// =============================================================================
+/// Footer Area
+/// =============================================================================
+.footer-wrapper {
+  /// Activate Container Query Properties for main-wrapper
+  @include a.container-query-wrapper(main);
+
+  /// Content Width
+  .content-container {
+    @include a.content-width(map-get($map: a.$max-content-width, $key: 'desktop'),
+      map-get($map: a.$content-width-percentage, $key: 'full-width'))
+  }
+}
