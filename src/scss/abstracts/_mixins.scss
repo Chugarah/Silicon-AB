@@ -39,13 +39,11 @@
 /// @param {List} $gah-display-map - Contains Map for display type from vars
 /// @example code-scss
 /// @include a.grid-auto-height(grid, a.grid-add-colum(1fr), 3, a.$display-type)
-@mixin grid-row-colum(
-  $gah-display-type-value,
+@mixin grid-row-colum($gah-display-type-value,
   $gah-colums,
   $grid-row-repeat,
   $gah-display-map,
-  $gah-row-height
-) {
+  $gah-row-height) {
   display: map-get($map: $gah-display-map, $key: $gah-display-type-value);
   grid-template-columns: $gah-colums;
   grid-template-rows: $gah-row-height;
@@ -73,7 +71,9 @@
       /// Passing the content further
       @content;
     }
-  } @else if $min {
+  }
+
+  @else if $min {
     @container #{$container-name} (min-width: #{$min}) {
       /// Passing the content further
       @content;
@@ -152,6 +152,7 @@
     aspect-ratio: 1;
   }
 }
+
 /// A awesome way to hide the checkbox
 @mixin hide-check-box {
   width: 0;
@@ -192,12 +193,37 @@
 ///
 /// @param {String} $color - Color of the text
 /// @param {Float} $relative-value - How many percentage from the from color value
-/// @param {Float} $transition-time - How fast the animation should be in milliseconds
+/// @param {String} $transition-time - How fast the animation should be in milliseconds
+/// @param {String} $bg-color - Background color, that could be null
+/// @param {String} $fb-color - Fallback Color incase of not using HSL
 /// @example code-scss
 ///   @include a.link-nav-animation($color-primary, 0.2, 400ms);
 /// }
-@mixin link-nav-animation($color, $relative-value, $transition-time) {
-  color: hsl(from $color h s calc(l + $relative-value));
-  transition: all $transition-time;
+/// AI Some of the code is generated from Phind
+@mixin link-nav-animation($color, $relative-value, $transition-time, $bg-color: null, $use-hsl) {
+  transition: color $transition-time ease-in-out, background-color $transition-time ease-in-out;
   cursor: pointer;
+  outline: none;
+
+  /// Lets see if the bg is null or not
+  @if $bg-color !=null {
+    background-color: $bg-color;
+  }
+
+  /// Can we use relative colors
+  @if $use-hsl ==true {
+    color: hsl(from $color h s calc(l + $relative-value));
+
+    /// Lets see if the bg is null or not
+    @if $bg-color !=null {
+      background-color: hsl(from $bg-color h s calc(l + $relative-value));
+      
+    }
+
+  }
+
+  @else {
+    color: $color;
+  }
+
 }

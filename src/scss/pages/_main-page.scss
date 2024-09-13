@@ -60,16 +60,20 @@
       font-size:map-get($map: a.$font-sizes, $key: 't-m');
     }
 
+    &__navigation__li-items{
+      @include a.link-nav-animation(map-get($map: a.$links-color, $key: 'link-nav'), 0, 400ms, null, true);
+    }
+
     &__navigation__li-items:hover{
-      @include a.link-nav-animation(a.$color-primary, 0.2, 400ms);
+      @include a.link-nav-animation(a.$color-primary, 9.0, 400ms, null, true);
     }
     &__navigation__li-items:active{
-      @include a.link-nav-animation(a.$color-form, 0.1, 200ms);
+      @include a.link-nav-animation(a.$color-form, 2.1, 200ms, null, true);
     }
     &__navigation__li-items:focus-visible {
-      @include a.link-nav-animation(a.$color-form, 0.1, 200ms);
-      outline: none;
-  }
+      @include a.link-nav-animation(a.$color-form, 0.1, 200ms, null, true);
+    }
+
 
 
   }
@@ -97,7 +101,22 @@
       /// Some hack, took the slider distance (Theme switcher) + Padding to Sign in Button
       /// From the Switch and got 76ox
       margin-left: 1.875em;
+      @include a.link-nav-animation(a.$color-white, 0, 400ms, a.$color-primary, true);
     }
+
+  
+    // Adding some Hover, active stated
+    &__btn-sign-in-up:hover{
+      @include a.link-nav-animation(a.$color-white, 4.2, 400ms, a.$color-primary, true);
+    }
+    &__btn-sign-in-up:active{
+      @include a.link-nav-animation(a.$color-form, 0.1, 200ms, a.$color-primary, true);
+    }
+    &__btn-sign-in-up:focus-visible {
+      @include a.link-nav-animation(a.$color-form, 0.1, 200ms, a.$color-primary, true);
+    }
+
+
   }
 }
 
