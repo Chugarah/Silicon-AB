@@ -1,4 +1,3 @@
-
 /// =============================================================================
 /// Layout
 /// =============================================================================
@@ -173,9 +172,32 @@
 }
 
 /// Applying Button colors and border radios
-@mixin btn-props($text, $bg, $border-radius, $padding...){
+@mixin btn-props($text, $bg, $border-radius, $padding...) {
   background-color: $bg;
   color: $text;
-  border-radius: $border-radius; 
+  border-radius: $border-radius;
   padding: $padding;
+}
+
+/// =============================================================================
+/// Links
+/// =============================================================================
+
+/// @name link-nav-animation
+/// @group Text
+///
+/// https://caniuse.com/?search=hsl%20relative
+/// For links hover state, active and so on, color and pointer with
+/// animation.
+///
+/// @param {String} $color - Color of the text
+/// @param {Float} $relative-value - How many percentage from the from color value
+/// @param {Float} $transition-time - How fast the animation should be in milliseconds
+/// @example code-scss
+///   @include a.link-nav-animation($color-primary, 0.2, 400ms);
+/// }
+@mixin link-nav-animation($color, $relative-value, $transition-time) {
+  color: hsl(from $color h s calc(l + $relative-value));
+  transition: all $transition-time;
+  cursor: pointer;
 }

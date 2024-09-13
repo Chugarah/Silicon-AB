@@ -59,6 +59,19 @@
       color: map-get($map: a.$links-color, $key: 'link-nav');
       font-size:map-get($map: a.$font-sizes, $key: 't-m');
     }
+
+    &__navigation__li-items:hover{
+      @include a.link-nav-animation(a.$color-primary, 0.2, 400ms);
+    }
+    &__navigation__li-items:active{
+      @include a.link-nav-animation(a.$color-form, 0.1, 200ms);
+    }
+    &__navigation__li-items:focus-visible {
+      @include a.link-nav-animation(a.$color-form, 0.1, 200ms);
+      outline: none;
+  }
+
+
   }
 
   &__theme-btn-access{
