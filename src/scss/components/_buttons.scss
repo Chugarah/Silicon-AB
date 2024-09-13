@@ -1,11 +1,27 @@
+@use "../abstracts" as a;
+
 /* Button */
-.btn-sign-in-up {
-    padding: var(--padding-056) var(--padding-12);
-    background-color: var(--btn-primary-color);
-    color: var(--root-color);
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border: none;
-    border-radius: 0.25em;
+/// Header Login button
+.header__theme-btn-access {
+  &__btn-sign-in-up {
+    /// Basic Styling for BTN
+    @include a.btn;
+    
+    /// User Login Icon
+    &__user-icon{
+      padding-right: map-get($map: a.$spacing-distance, $key: 's-0-15');
+    }
+
+    /// Primary Btn specs
+    &--primary{
+     @include a.btn-props(
+      a.$color-white, 
+      a.$color-primary, 
+      map-get($map: a.$border-radius, $key: 'r-0-2'),
+      a.create-list(map-get($map: a.$spacing-distance, $key: 's-0-56') 
+      a.create-list(map-get($map: a.$spacing-distance, $key: 's-1-25'))
+      )
+      );
+    }
   }
+}

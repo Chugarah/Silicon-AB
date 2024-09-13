@@ -15,15 +15,34 @@
   <div class="skeleton-wrapper">
 
     <!-- Header & Navigation Inspired by Hans :)-->
-    <header aria-label="Navigation & Logo" class="header">
-      <nav class="header__nav">
-        <img class="header__img" src="./assets/images/svg/logo.svg" alt="Logo">
-        <ul class="header__menu">
-          <li class="header__menu-item">Features</li>
-        </ul>
+    <header aria-label="Navigation & Logo">
+      <nav class="header">
+        <div class="header__logo">
+          <img class="header__logo__img" src="./assets/images/svg/logo.svg" alt="Logo">
+        </div>
+        <div class="header__menu">
+          <ul class="header__menu__navigation">
+            <li class="header__menu__navigation__li-items">Features</li>
+          </ul>
+        </div>
+        <div class="header__theme-btn-access">
+          <span class="header__theme-btn-access__text-span"> Dark Mode </span>
+          <label class="header__theme-btn-access__toggle">
+            <input class="header__theme-btn-access__toggle__check-box" type="checkbox">
+            <span class="header__theme-btn-access__toggle__slider"></span>
+          </label>
+          <button type="submit"
+            class="header__theme-btn-access__btn-sign-in-up header__theme-btn-access__btn-sign-in-up--primary">
+            <i class="fa-regular fa-user header__theme-btn-access__btn-sign-in-up__user-icon"></i>
+            Sign in / up
+          </button>
+
+
+
+        </div>
       </nav>
       <section aria-label="Hero & Promotion Section">
-        <div class="promotion-area">Promotion
+        <div class="hero-section">Promotion
         </div>
       </section>
     </header>

@@ -1,0 +1,47 @@
+@use "../abstracts" as a;
+
+/// Switch
+/// Inspired by https://www.youtube.com/watch?v=uSQaJb2rPcw&t=1s
+/// Switch for Dark mode or light mode
+.header__theme-btn-access__toggle {
+    /// Common styles for the toggle
+    /// Including base Toggle Property
+    @include a.toggle;
+    --_primary-width: 2.875em;
+    --_primary-height: 2.5em;
+
+    width: var(--_primary-width);
+    /// Focused
+    :focus-visible+&__slider {
+        outline: 1px solid rgb(44, 47, 30);
+    }
+
+    /// Including the slider itself
+    &__slider {
+        @include a.slider(a.$color-form);
+        &::before {
+            background-color: white;
+            box-shadow: 0 0 0.2em rgb(0, 0, 0);
+            transition: all 400ms;
+        }
+    }
+
+    /// When checked, move the slider (ball) to the left
+    /// and we also change the background color
+
+    &__check-box {
+        @include a.hide-check-box;
+    }
+    &__check-box:checked+&__slider::before {
+        left: calc(100% - var(--_primary-height));
+        &::before{
+            transform: translate(80%, -50%);
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+    }
+    &__check-box:checked+&__slider {
+        background-color: a.$color-primary;
+        transition: ease-in-out 400ms;
+    }
+}
