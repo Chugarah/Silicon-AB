@@ -29,10 +29,16 @@
 /// =============================================================================
 /// Header & Navigation
 /// =============================================================================
-.header {
-  /// Activate Container Query Properties for header-wrapper
-  @include a.container-query-wrapper(header);
+/// 
+/// Local variabel :D
+$_container-name: header;
 
+.header_wrapper {
+  /// Activate Container Query Properties for header-wrapper
+  @include a.container-query-wrapper($_container-name);
+}
+
+.header {
   font-weight: map-get($map: a.$font-weight, $key: 'SemiBold');
   /// Content Width
   @include a.content-width(map-get($map: a.$max-content-width, $key: 'desktop'),
@@ -40,53 +46,92 @@
   display: map-get($map: a.$display-type, $key: 'flex');
   align-items: center;
   height: 4.75rem;
-  
-  &__logo{
-    padding-right: map-get($map: a.$spacing-distance, $key: 's-3-31');
+  justify-content: space-between;
+
+
+  /// Padding for header container
+  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'xlarge-2')) {
+    transition: all 200ms;
+    padding: map-get($map: a.$spacing-distance, $key: 's-2-50');
+  }
+  /// Remove the spacing to mobile link, because the text Dark-mode is out of space
+  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'small')) {
+    padding: map-get($map: a.$spacing-distance, $key: 's-0-62');
   }
 
+  /// Tablets, Small Laptops
+  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
+    /// Content Width
+    @include a.content-width(map-get($map: a.$max-content-width, $key: 'tablet'),
+      map-get($map: a.$content-width-percentage, $key: 'full-width'));
+    justify-content: space-between;
+  }
 
+  // Logo
+  &__logo {
+    padding-right: map-get($map: a.$spacing-distance, $key: 's-3-31');
+  }
 
   /// Menu Navigation
   &__menu {
     /// Spacing flex more :D
     flex: 1;
 
+    /// Tablets, Small Laptops
+    @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
+      display: none;
+    }
+
     /// Navigation Items
-    &__navigation{
+    &__navigation {
       @include a.flex(center);
       list-style-type: none;
       color: map-get($map: a.$links-color, $key: 'link-nav');
-      font-size:map-get($map: a.$font-sizes, $key: 't-m');
+      font-size: map-get($map: a.$font-sizes, $key: 't-m');
+
+
+
     }
 
-    &__navigation__li-items{
+    &__navigation__li-items {
       @include a.link-nav-animation(map-get($map: a.$links-color, $key: 'link-nav'), 0, 400ms, null, true);
     }
 
-    &__navigation__li-items:hover{
+    &__navigation__li-items:hover {
       @include a.link-nav-animation(a.$color-primary, 9.0, 400ms, null, true);
     }
-    &__navigation__li-items:active{
+
+    &__navigation__li-items:active {
       @include a.link-nav-animation(a.$color-form, 2.1, 200ms, null, true);
     }
+
     &__navigation__li-items:focus-visible {
       @include a.link-nav-animation(a.$color-form, 0.1, 200ms, null, true);
     }
-
-
-
   }
 
-  &__theme-btn-access{
+  /// Button Sign up Sign in
+  &__theme-btn-access {
     /// Added this to align with same height
     @include a.flex(center);
+
+    @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
+     flex: 1;
+     justify-content: flex-end;
+    }
+
     /// Adding some padding to span element
-    &__text-span{
+    &__text-span {
       padding-right: map-get($map: a.$spacing-distance, $key: 's-1-1');
       color: a.$font-color-primary;
-      font-size:map-get($map: a.$font-sizes, $key: 't-m');
+      font-size: map-get($map: a.$font-sizes, $key: 't-m');
       font-weight: map-get($map: a.$font-weight, $key: 'Bold');
+
+      /// Remove the spacing to mobile link, because the text Dark-mode is out of space
+      @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'mobile')) {
+        display: none;
+      }
+
     }
 
     /// Some padding Dark-mode switch
@@ -102,16 +147,49 @@
       /// From the Switch and got 76ox
       margin-left: 1.875em;
       @include a.link-nav-animation(a.$color-white, 0, 400ms, a.$color-primary, true);
+      /// Tablets, Small Laptops
+
+      @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
+        display: none;
+      }
     }
 
-  
+    /// Mobile Menu Link
+    &__bars {
+      height: 2.5em;
+      width: map-get($map: a.$spacing-distance, $key: 's-1-87');
+      text-align: center;
+      padding: 0.75em;
+      display: none;
+      cursor: pointer;
+
+      /// Show the mobile link
+      @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
+        padding-left: 15%;
+        display: block;
+      }
+      /// Remove the spacing to mobile link, because the text Dark-mode is out of space
+      @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'small')) {
+        padding-left: map-get($map: a.$spacing-distance, $key: 's-1-1');
+        padding-right: map-get($map: a.$spacing-distance, $key: 's-1-87');
+      }
+    }
+
+    &__bars__icon {
+      color: map-get($map: a.$links-color, $key: 'link-bar')
+    }
+
+
+
     // Adding some Hover, active stated
-    &__btn-sign-in-up:hover{
+    &__btn-sign-in-up:hover {
       @include a.link-nav-animation(a.$color-white, 4.2, 400ms, a.$color-primary, true);
     }
-    &__btn-sign-in-up:active{
+
+    &__btn-sign-in-up:active {
       @include a.link-nav-animation(a.$color-form, 0.1, 200ms, a.$color-primary, true);
     }
+
     &__btn-sign-in-up:focus-visible {
       @include a.link-nav-animation(a.$color-form, 0.1, 200ms, a.$color-primary, true);
     }
@@ -119,9 +197,6 @@
 
   }
 }
-
-
-
 
 /// =============================================================================
 /// Main Area

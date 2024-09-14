@@ -69,7 +69,8 @@ $headings:(
 ///     font-color: map-get($map: $links-color, $key: 'link-nav');
 ///   }
 $links-color:(
-    'link-nav' : #33354D
+    'link-nav' : #33354D,
+    'link-bar' : #3E4265
 );
 
 
@@ -134,8 +135,11 @@ $display-type: (
 ///         background-color: red;
 ///     }
 $breakpoints: (
+    'mobile': 390px,
+    'small': 500px,
     'medium': 768px,
-    'xlarge': 1200px
+    'xlarge': 1200px,
+    'xlarge-2': 1340px
 );
 
 
@@ -164,9 +168,11 @@ $max-content-width: (
 $spacing-distance:(
     's-0-15': 0.5em,
     's-0-56': 0.5625em,
+    's-0-62': 0.625em,
     's-1-1': 1em,
     's-1-25': 1.25em,
     's-1-87': 1.875em,
+    's-2-50': 2.5em,
     's-3-31': 3.125em
 );
 
