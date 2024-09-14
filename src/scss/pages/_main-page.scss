@@ -36,35 +36,48 @@ $_container-name: header;
 .header_wrapper {
   /// Activate Container Query Properties for header-wrapper
   @include a.container-query-wrapper($_container-name);
+
+  /// Radial gradient background
+  /// Creates a subtle color transition from purple to pink to almost white
+  /// Background Gradient for Header and Promotion
+  background: radial-gradient(125% 125% at 50% 110%,
+      rgba(99, 102, 241, 0.1) 0%,
+      rgba(218, 70, 239, 0.05) 42%,
+      rgba(241, 244, 253, 0.07) 83%);
+}
+
+/// Setting Content Width
+.header, .hero-section{
+    /// Content Width
+    justify-content: space-between;
+    @include a.content-width(map-get($map: a.$max-content-width, $key: 'desktop'),
+    map-get($map: a.$content-width-percentage, $key: 'full-width'));
+
+    /// Tablets, Small Laptops
+    @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
+      /// Content Width
+      @include a.content-width(map-get($map: a.$max-content-width, $key: 'tablet'),
+        map-get($map: a.$content-width-percentage, $key: 'full-width'));
+      justify-content: space-between;
+    }
+    
+    /// Padding for header container
+    @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-2')) {
+      transition: all 200ms;
+      padding: map-get($map: a.$spacing-distance, $key: 's-2-50');
+    }
 }
 
 .header {
+  /// Basic font, height and flex
   font-weight: map-get($map: a.$font-weight, $key: 'SemiBold');
-  /// Content Width
-  @include a.content-width(map-get($map: a.$max-content-width, $key: 'desktop'),
-    map-get($map: a.$content-width-percentage, $key: 'full-width'));
   display: map-get($map: a.$display-type, $key: 'flex');
   align-items: center;
   height: 4.75rem;
-  justify-content: space-between;
 
-
-  /// Padding for header container
-  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'xlarge-2')) {
-    transition: all 200ms;
-    padding: map-get($map: a.$spacing-distance, $key: 's-2-50');
-  }
   /// Remove the spacing to mobile link, because the text Dark-mode is out of space
   @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'small')) {
     padding: map-get($map: a.$spacing-distance, $key: 's-0-62');
-  }
-
-  /// Tablets, Small Laptops
-  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
-    /// Content Width
-    @include a.content-width(map-get($map: a.$max-content-width, $key: 'tablet'),
-      map-get($map: a.$content-width-percentage, $key: 'full-width'));
-    justify-content: space-between;
   }
 
   // Logo
@@ -211,22 +224,6 @@ $_container-name: header;
       map-get($map: a.$content-width-percentage, $key: 'full-width'))
   }
 }
-
-
-
-/// Background Gradient for Header and Promotion
-.gradient-container {
-  // Get full width from content-width map
-  width: map-get($map: a.$content-width-percentage, $key: 'full-width');
-
-  // Radial gradient background
-  // Creates a subtle color transition from purple to pink to almost white
-  background: radial-gradient(125% 125% at 50% 110%,
-      rgba(99, 102, 241, 0.1) 0%,
-      rgba(218, 70, 239, 0.05) 42%,
-      rgba(241, 244, 253, 0.07) 83%);
-}
-
 
 /// =============================================================================
 /// Footer Area
