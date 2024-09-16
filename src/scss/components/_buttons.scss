@@ -1,27 +1,65 @@
 @use "../abstracts" as a;
 
-/* Button */
+/// =============================================================================
+/// Primary Buttons
+/// =============================================================================
 /// Header Login button
 .header__theme-btn-access {
   &__btn-sign-in-up {
     /// Basic Styling for BTN
     @include a.btn;
-    
+
     /// User Login Icon
-    &__user-icon{
-      padding-right: map-get($map: a.$spacing-distance, $key: 's-0-15');
+    &__user-icon {
+      padding-right: map-get($map: a.$spacing-distance-relative, $key: 's-0-15');
     }
 
     /// Primary Btn specs
-    &--primary{
-     @include a.btn-props(
-      a.$color-white, 
-      a.$color-primary, 
-      map-get($map: a.$border-radius, $key: 'r-0-2'),
-      a.create-list(map-get($map: a.$spacing-distance, $key: 's-0-56') 
-      a.create-list(map-get($map: a.$spacing-distance, $key: 's-1-25'))
-      )
-      );
+    &--primary {
+      @include a.btn-props(a.$color-white,
+        a.$color-primary,
+        map-get($map: a.$border-radius, $key: 'r-0-2'),
+        a.create-list(map-get($map: a.$spacing-distance-relative, $key: 's-0-56') a.create-list(map-get($map: a.$spacing-distance-relative, $key: 's-1-25'))));
     }
   }
+}
+
+
+/// =============================================================================
+/// Other Buttons
+/// =============================================================================
+.hero-section__apps-links__link-item {
+  background-color: a.$color-button-black;
+  $image-width: 11.25em;
+  $image-height: 3.25em;
+
+  @include a.link-nav-animation(a.$color-white, 4.2, 400ms, a.$color-button-black, true);
+  /// Global styling for the button
+  text-align: center;
+  position: relative;
+  border-radius: map-get($map: a.$spacing-distance-relative, $key: 's-0-15');
+
+  /// Desktop sizes
+  &--desktop{
+    width: $image-width;
+    height:  $image-height;
+  }
+
+  /// Vector Image
+  & img{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: map-get($map: a.$spacing-distance-relative, $key: 's-0-62')
+    map-get($map: a.$spacing-distance-relative, $key: 's-1-25');
+    object-fit: contain;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    transform: scale(1/16);
+  }
+  &:hover{
+    @include a.link-nav-animation(a.$color-white, 4.2, 400ms, a.$color-primary, true);
+  }
+
 }

@@ -11,6 +11,7 @@ $font-color-label: #131022;
 $color-primary: #6366F1; 
 $color-white: #FFFFFF;
 $color-form: #9397AD;
+$color-button-black: #0B0F19;
 
 // =============================================================================
 // Fonts
@@ -26,6 +27,7 @@ $font-optical-sizing: auto;
 $font-weight:(
     'ExtraLight': 200,
     'Light': 300,
+    'Regular': 400,
     'Medium': 500,
     'SemiBold': 600,
     'Bold': 700,
@@ -34,9 +36,9 @@ $font-weight:(
 
 $font-sizes:(
     't-xs': 0.75rem,
-    't-s': 0.875rem,
+    't-s': 0.875rem, /// 14px
     't-m': 1rem,
-    't-l': 1.125rem,
+    't-l': 1.125rem, /// 18px
     't-xl': 125rem,
     't-lt': 1.5rem
 );
@@ -44,7 +46,7 @@ $display-heading:(
     'd-1': 5rem,
     'd-2': 4.5rem,
     'd-3': 4rem,
-    'd-4': 3.5rem,
+    'd-4': 3.5rem, /// 56px
     'd-5': 3rem,
     'd-6': 2.625em
 );
@@ -82,12 +84,6 @@ $links-color:(
 ///   .element {
 ///     font-color: map-get($map: $links-color, $key: 'link-nav');
 ///   }
-
-
-
-
-
-
 
 
 // =============================================================================
@@ -157,24 +153,42 @@ $max-content-width: (
     'mobile': 24.375rem
 );
 
-/// @name gaps
+/// @name spacing-distance-relative
 /// Maps for different gaps size based on the layout
+/// This is relative to the parent container
 /// @type Map
 /// @group Layout
 /// @example code-scss
 ///   .element {
-///     gap: map-get($map: $gaps, $key: 'g-3-1');
+///     gap: map-get($map: $spacing-distance-relative, $key: 's-0-15');
 ///   }
-$spacing-distance:(
+$spacing-distance-relative:(
     's-0-15': 0.5em,
     's-0-56': 0.5625em,
     's-0-62': 0.625em,
     's-1-1': 1em,
     's-1-25': 1.25em,
+    's-1-50': 1.5em,
     's-1-87': 1.875em,
     's-2-50': 2.5em,
-    's-3-31': 3.125em
+    's-3-31': 3.125em, /// 50px
+    's-8-12': 8.125em
 );
+
+/// @name spacing-distance-relative
+/// Maps for different gaps size based on the layout
+/// @type Map
+/// @group Layout
+/// @example code-scss
+///   .element {
+///     gap: map-get($map: $spacing-distance, $key: 'sb-0-15');
+///   }
+$spacing-distance-base:(
+    'sb-0-18': 0.1875rem,
+    'sb-1-50': 1.5rem,
+    'sb-3-00': 3rem /// 48px
+);
+
 
 
 /// @name border-radius

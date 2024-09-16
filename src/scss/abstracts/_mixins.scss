@@ -1,7 +1,7 @@
 /// =============================================================================
 /// Layout
 /// =============================================================================
- 
+
 /// @name container-query-wrapper
 /// @group Layout
 ///
@@ -27,7 +27,7 @@
   container-name: $container-name;
 }
 
-/// @name grid-auto-height
+/// @name grid-row-colum
 /// @group Layout
 ///
 /// Creates CSS Grid where auto size for height is based
@@ -39,17 +39,41 @@
 /// @param {Object} $gah-display-map - Contains Map for display type from vars
 /// @param {List} $gah-display-map - Contains Map for display type from vars
 /// @example code-scss
-/// @include a.grid-auto-height(grid, a.grid-add-colum(1fr), 3, a.$display-type)
+/// @include grid-auto-height(grid, grid-add-colum(1fr), 3, $display-type)
 
 @mixin grid-row-colum($gah-display-type-value,
   $gah-colums,
-  $grid-row-repeat,
-  $gah-display-map,
-  $gah-row-height) {
-  display: map-get($map: $gah-display-map, $key: $gah-display-type-value);
+  $gah-row-height,
+  $grid-row-repeat: null, ) {
+  display: $gah-display-type-value;
   grid-template-columns: $gah-colums;
-  grid-template-rows: $gah-row-height;
+
+  @if $grid-row-repeat !=null {
+    grid-template-rows: repeat($grid-row-repeat, auto)
+  }
+
+  @else {
+    grid-template-rows: $gah-row-height;
+  }
 }
+
+/// @name grid-position
+/// @group Layout
+///
+/// Sets the position of an element in the grid. Where to place it :D
+///
+/// @param {Number} $col-start - Starts from grid number in colum
+/// @param {Number} $col-end - End to grid number in colum
+/// @param {Number} $row-start - Starts from grid number in row
+/// @param {Number} $row-end - End to grid number in row
+/// @example code-scss
+/// @include grid-auto-height(grid, grid-add-colum(1fr), 3, $display-type)
+@mixin grid-position($col-start, $col-end, $row-start, $row-end) {
+  grid-column: #{$col-start} / #{$col-end};
+  grid-row: #{$row-start} / #{$row-end};
+}
+
+
 
 /// @name container-query
 /// @group Layout
@@ -84,15 +108,6 @@
     }
   }
 }
-
-
-
-
-
-
-
-
-
 
 
 /// Ai Generated from Phind
@@ -201,14 +216,20 @@
 /// Base Component's for an buttons
 ///
 
-@mixin btn {
+@mixin btn($position: null) {
   text-align: center;
   text-decoration: none;
   display: inline-block;
   border: none;
+
+  /// Extra props incase we want to add an example an image inside
+  @if $position !=null {
+    position: $position;
+  }
 }
 
 /// Applying Button colors and border radios
+/// Standard Button Props
 @mixin btn-props($text, $bg, $border-radius, $padding...) {
   background-color: $bg;
   color: $text;
@@ -249,11 +270,11 @@
   /// Can we use relative colors
   @if $use-hsl ==true {
     color: hsl(from $color h s calc(l + $relative-value));
-
+    
     /// Lets see if the bg is null or not
     @if $bg-color !=null {
       background-color: hsl(from $bg-color h s calc(l + $relative-value));
-      
+
     }
 
   }

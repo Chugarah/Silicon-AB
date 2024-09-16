@@ -8,8 +8,8 @@
   <title>Silicon</title>
 
   <script src="https://kit.fontawesome.com/4d2af45ec4.js" crossorigin="anonymous"></script>
-  <script type="module" crossorigin src="/assets/main-qEJHgMFg.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-zJqTZW8L.css">
+  <script type="module" crossorigin src="/assets/main-DNlfhzTC.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-BRT6e3Ff.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
   <div class="skeleton-wrapper">
 
     <!-- Header & Navigation Inspired by Hans :)-->
-    <header aria-label="Navigation & Logo">
+    <header aria-label="Navigation & Logo" class="header_wrapper">
       <nav class="header">
         <div class="header__logo">
           <img class="header__logo__img" src="/assets/logo-CB8VQuo7.svg" alt="Logo">
@@ -31,21 +31,42 @@
           <span class="header__theme-btn-access__text-span"> Dark Mode </span>
           <label class="header__theme-btn-access__toggle">
             <input class="header__theme-btn-access__toggle__check-box" type="checkbox">
-            <span class="header__theme-btn-access__toggle__slider"></span>
+            <span class="header__theme-btn-access__toggle__slider" aria-label="Slider for Theme" aria-valuenow="0"
+              tabindex="0" role="slider" title="Slider for Theme" aria-valuemin="0" aria-valuemax="1">
+            </span>
           </label>
           <button type="submit"
             class="header__theme-btn-access__btn-sign-in-up header__theme-btn-access__btn-sign-in-up--primary">
             <i class="fa-regular fa-user header__theme-btn-access__btn-sign-in-up__user-icon"></i>
             Sign in / up
           </button>
-
-
+          <a class="header__theme-btn-access__bars">
+            <i class="fa-solid fa-bars header__theme-btn-access__bars__icon"></i>
+          </a>
 
         </div>
       </nav>
       <section aria-label="Hero & Promotion Section">
-        <div class="hero-section">Promotion
-        </div>
+        <div class="hero-section">
+          <h1 class="hero-section__heading">Manage All Your Money in One App</h1>
+          <p class="hero-section__text-description">
+            We offer you a new generation of the mobile banking.
+            Save, spend & manage money in your pocket.
+          </p>
+          <div class="hero-section__apps-links">
+            <!-- Inspired by Hans for Dynamic Buttons ;)-->
+            <a href="#" title="Apple Store Link">
+              <img src="/src/assets/images/svg/app-store-btn-group.svg" alt="Apple Store Image">
+            </a>
+
+          </div>
+          <div class="hero-section__discover-more">
+            Discover More
+          </div>
+          <div class="hero-section__mobile-images">
+            Images 1
+            Images 2
+          </div>
       </section>
     </header>
     <!-- Header & Navigation End -->

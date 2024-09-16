@@ -19,11 +19,18 @@
 /// We are using an mixin to create the grid and functions that create an list
 ///
 .skeleton-wrapper {
-  @include a.grid-row-colum(grid, a.create-list(1fr), 3, a.$display-type, a.create-list(auto, 2fr, auto));
-  height: 100dvh;
-  margin: 0 auto;
-  /* https://sass-lang.com/documentation/style-rules/declarations/ */
-  font-family: #{meta.inspect(a.$font-family)};
+  @include a.grid-row-colum(map-get($map: a.$display-type, $key: 'grid'),
+    a.create-list(1fr),
+    a.create-list(auto, 2fr, auto),
+  );
+
+  /// Basic Settings
+  & {
+    height: 100dvh;
+    margin: 0 auto;
+    /* https://sass-lang.com/documentation/style-rules/declarations/ */
+    font-family: #{meta.inspect(a.$font-family)};
+  }
 }
 
 /// =============================================================================
@@ -33,6 +40,8 @@
 /// Local variabel :D
 $_container-name: header;
 
+/// Setting Background color
+/// and sets the container name for container query /responsive
 .header_wrapper {
   /// Activate Container Query Properties for header-wrapper
   @include a.container-query-wrapper($_container-name);
@@ -46,28 +55,31 @@ $_container-name: header;
       rgba(241, 244, 253, 0.07) 83%);
 }
 
-/// Setting Content Width
-.header, .hero-section{
-    /// Content Width
-    justify-content: space-between;
-    @include a.content-width(map-get($map: a.$max-content-width, $key: 'desktop'),
+/// Setting Content Width and activating some basic responsive settings
+/// for header and hero areas
+.header,
+.hero-section {
+  /// Content Width
+  justify-content: space-between;
+  @include a.content-width(map-get($map: a.$max-content-width, $key: 'desktop'),
     map-get($map: a.$content-width-percentage, $key: 'full-width'));
 
-    /// Tablets, Small Laptops
-    @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
-      /// Content Width
-      @include a.content-width(map-get($map: a.$max-content-width, $key: 'tablet'),
-        map-get($map: a.$content-width-percentage, $key: 'full-width'));
-      justify-content: space-between;
-    }
-    
-    /// Padding for header container
-    @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-2')) {
-      transition: all 200ms;
-      padding: map-get($map: a.$spacing-distance, $key: 's-2-50');
-    }
+  /// Tablets, Small Laptops
+  @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
+    /// Content Width
+    @include a.content-width(map-get($map: a.$max-content-width, $key: 'tablet'),
+      map-get($map: a.$content-width-percentage, $key: 'full-width'));
+    justify-content: space-between;
+  }
+
+  /// Padding for header container
+  @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-2')) {
+    transition: all 200ms;
+    padding: map-get($map: a.$spacing-distance-relative, $key: 's-2-50');
+  }
 }
 
+/// CSS regarding navigation and header, hero area not included
 .header {
   /// Basic font, height and flex
   font-weight: map-get($map: a.$font-weight, $key: 'SemiBold');
@@ -77,12 +89,12 @@ $_container-name: header;
 
   /// Remove the spacing to mobile link, because the text Dark-mode is out of space
   @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'small')) {
-    padding: map-get($map: a.$spacing-distance, $key: 's-0-62');
+    padding: map-get($map: a.$spacing-distance-relative, $key: 's-0-62');
   }
 
   // Logo
   &__logo {
-    padding-right: map-get($map: a.$spacing-distance, $key: 's-3-31');
+    padding-right: map-get($map: a.$spacing-distance-relative, $key: 's-3-31');
   }
 
   /// Menu Navigation
@@ -129,13 +141,13 @@ $_container-name: header;
     @include a.flex(center);
 
     @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
-     flex: 1;
-     justify-content: flex-end;
+      flex: 1;
+      justify-content: flex-end;
     }
 
     /// Adding some padding to span element
     &__text-span {
-      padding-right: map-get($map: a.$spacing-distance, $key: 's-1-1');
+      padding-right: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
       color: a.$font-color-primary;
       font-size: map-get($map: a.$font-sizes, $key: 't-m');
       font-weight: map-get($map: a.$font-weight, $key: 'Bold');
@@ -150,7 +162,7 @@ $_container-name: header;
     /// Some padding Dark-mode switch
     /// Magic Number rofl!
     &__toggle {
-      padding-left: map-get($map: a.$spacing-distance, $key: 's-1-1');
+      padding-left: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
       line-height: 1.4em;
     }
 
@@ -170,7 +182,7 @@ $_container-name: header;
     /// Mobile Menu Link
     &__bars {
       height: 2.5em;
-      width: map-get($map: a.$spacing-distance, $key: 's-1-87');
+      width: map-get($map: a.$spacing-distance-relative, $key: 's-1-87');
       text-align: center;
       padding: 0.75em;
       display: none;
@@ -181,10 +193,11 @@ $_container-name: header;
         padding-left: 15%;
         display: block;
       }
+
       /// Remove the spacing to mobile link, because the text Dark-mode is out of space
       @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'small')) {
-        padding-left: map-get($map: a.$spacing-distance, $key: 's-1-1');
-        padding-right: map-get($map: a.$spacing-distance, $key: 's-1-87');
+        padding-left: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
+        padding-right: map-get($map: a.$spacing-distance-relative, $key: 's-1-87');
       }
     }
 
@@ -209,6 +222,108 @@ $_container-name: header;
 
 
   }
+}
+
+/// Hero section CSS code
+.hero-section {
+  /// Local vars ohyeaa :D x2
+  $max-colums: 2;
+  $max-rows: 4;
+
+  $hero-max-width: 32.875rem;
+
+  /// Creating Grid
+  @include a.grid-row-colum(map-get($map: a.$display-type, $key: 'grid'),
+    a.create-list(1fr, 1fr),
+    a.create-list(auto, 2fr, auto),
+    $max-rows);
+
+  & {
+    /// Added top padding desktop, the padding starts from the image
+    padding-top: map-get($map: a.$spacing-distance-relative, $key: 's-8-12')
+  }
+
+
+  /// Main heading for hero-section
+  &__heading {
+    @include a.grid-position(1, 1, 1, 1);
+    & {
+      /// Some font settings for h1
+      color: a.$font-color-secondary;
+      font-weight: map-get($map: a.$font-weight, $key: 'ExtraBold');
+      font-size: map-get($map: a.$display-heading, $key: 'd-4');
+
+      /// We are hardcoding this one to rem and not to parent container
+      padding-top: map-get($map: a.$spacing-distance-base, $key: 'sb-0-18');
+      padding-bottom: map-get($map: a.$spacing-distance-base, $key: 'sb-1-50')
+    }
+  }
+
+  /// Some descriptive text for the hero section
+  &__text-description {
+    @include a.grid-position(1, 1, 2, 2);
+    // Setting some Max width stuff
+    max-width: $hero-max-width;
+    color: a.$font-color-primary;
+    font-weight: map-get($map: a.$font-weight, $key: 'Regular');
+    font-size: map-get($map: a.$font-sizes, $key: 't-l');
+    padding-bottom: map-get($map: a.$spacing-distance-base, $key: 'sb-3-00');
+  }
+
+  /// Apps links for the hero-section
+  &__apps-links {
+    @include a.grid-position(1, 1, 3, 3);
+    display: map-get($map: a.$display-type, $key: 'flex');
+    gap: map-get($map: a.$spacing-distance-relative, $key: 's-1-50');
+  }
+
+  /// Discover more...
+  &__discover-more {
+    @include a.grid-position(1, 1, 4, 4);
+    display: map-get($map: a.$display-type, $key: 'flex');
+    align-items: center;
+
+    /// Paddings and positions
+    padding-top: 13.4375em;
+    padding-bottom: 3.75em;
+    position: relative;
+    width: 252px;
+
+    /// Color and font
+    font-size: map-get($map: a.$font-sizes, $key: 't-s');
+    font-weight: map-get($map: a.$font-weight, $key: 'Regular');
+    color: a.$font-color-primary;
+
+    &__link-item{
+      /// Base Color ANimation :D
+      &{
+        @include a.link-nav-animation(map-get($map: a.$links-color, $key: 'link-nav'), 1.2, 400ms, null, false);
+      }
+
+      /// Setting up Icon :)
+      &__discover-more__icon{
+        background-color: a.$color-white;
+        padding:  map-get($map: a.$spacing-distance-relative, $key: 's-1-25');
+        border-radius: 100%;
+      }
+      /// Adding Hover State
+      &:hover{
+        @include a.link-nav-animation(a.$color-primary, 1.2, 400ms, null, false);
+      }
+
+      /// Activate State
+      &:active {
+        @include a.link-nav-animation(a.$color-form, 2.1, 200ms, null, true);
+      }
+    }
+  }
+
+  /// Mobile Images
+  &__mobile-images {
+    @include a.grid-position(2, 2, 1, 5);
+    position: relative;
+  }
+
 }
 
 /// =============================================================================
