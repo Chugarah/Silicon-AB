@@ -53,6 +53,11 @@ $_container-name: header;
       rgba(99, 102, 241, 0.1) 0%,
       rgba(218, 70, 239, 0.05) 42%,
       rgba(241, 244, 253, 0.07) 83%);
+
+  /// Adding overflow hidden, we dant want the phone images t
+  /// overflow until next area
+  overflow: hidden;
+
 }
 
 /// Setting Content Width and activating some basic responsive settings
@@ -226,10 +231,10 @@ $_container-name: header;
 
 /// Hero section CSS code
 .hero-section {
+  
   /// Local vars ohyeaa :D x2
   $max-colums: 2;
   $max-rows: 4;
-
   $hero-max-width: 32.875rem;
 
   /// Creating Grid
@@ -247,6 +252,7 @@ $_container-name: header;
   /// Main heading for hero-section
   &__heading {
     @include a.grid-position(1, 1, 1, 1);
+
     & {
       /// Some font settings for h1
       color: a.$font-color-secondary;
@@ -294,20 +300,22 @@ $_container-name: header;
     font-weight: map-get($map: a.$font-weight, $key: 'Regular');
     color: a.$font-color-primary;
 
-    &__link-item{
+    &__link-item {
+
       /// Base Color ANimation :D
-      &{
+      & {
         @include a.link-nav-animation(map-get($map: a.$links-color, $key: 'link-nav'), 1.2, 400ms, null, false);
       }
 
       /// Setting up Icon :)
-      &__discover-more__icon{
+      &__discover-more__icon {
         background-color: a.$color-white;
-        padding:  map-get($map: a.$spacing-distance-relative, $key: 's-1-25');
+        padding: map-get($map: a.$spacing-distance-relative, $key: 's-1-25');
         border-radius: 100%;
       }
+
       /// Adding Hover State
-      &:hover{
+      &:hover {
         @include a.link-nav-animation(a.$color-primary, 1.2, 400ms, null, false);
       }
 
@@ -322,6 +330,26 @@ $_container-name: header;
   &__mobile-images {
     @include a.grid-position(2, 2, 1, 5);
     position: relative;
+
+    text-align: center;
+
+    /// Lets write basic settings for both images
+    & img {
+      position: absolute;
+      transform: scale(1);
+      margin: 0 auto;
+    }
+
+    &__iphone-1{
+      z-index: 250;
+      top: -3.25em;
+    }
+    &__iphone-2{
+      top: 5.25em;
+      left: 6.0em;
+      z-index: 125;
+
+    }
   }
 
 }
