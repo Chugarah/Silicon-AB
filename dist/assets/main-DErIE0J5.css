@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+}
 .base-wrapper {
   container-type: inline-size;
   container-name: header;
@@ -22,31 +25,39 @@
   border-radius: 0.25em;
   padding: 0.5625em 1.25em;
 }
-.hero-section__apps-links__apple-store-btn {
+.hero-section__apps-links__link-item {
+  transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  cursor: pointer;
+  outline: none;
+  background-color: #0b0f19;
+  color: hsl(from #ffffff h s calc(l + 4.2));
+  background-color: hsl(from #0b0f19 h s calc(l + 4.2));
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border: none;
   position: relative;
+  border-radius: 0.5em;
 }
-.hero-section__apps-links__apple-store-btn--primary {
-  background-color: #6366f1;
-  color: #fff;
-  border-radius: 0.25em;
-  padding: 0.5625em 1.25em;
+.hero-section__apps-links__link-item--desktop {
+  width: 11.25em;
+  height: 3.25em;
 }
-.hero-section__apps-links__apple-store-btn--image {
-  position: relative;
-  height: 45px;
-  width: 245px;
-}
-.hero-section__apps-links__apple-store-btn--image:before {
-  content: "";
-  background-image: url(/src/assets/images/svg/app-store-btn-group.svg);
+.hero-section__apps-links__link-item img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: relative;
+  padding: 0.625em 1.25em;
+  object-fit: contain;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  transform: scale(1/16);
+}
+.hero-section__apps-links__link-item:hover {
+  transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  cursor: pointer;
+  outline: none;
+  background-color: #6366f1;
+  color: hsl(from #ffffff h s calc(l + 4.2));
+  background-color: hsl(from #6366f1 h s calc(l + 4.2));
 }
 .header__theme-btn-access__toggle {
   position: relative;
@@ -127,6 +138,7 @@
     #da46ef0d 42%,
     #f1f4fd12 83%
   );
+  overflow: hidden;
 }
 .header,
 .hero-section {
@@ -322,15 +334,65 @@
   grid-column: 1/1;
   grid-row: 3/3;
   display: flex;
+  gap: 1.5em;
 }
 .hero-section__discover-more {
   grid-column: 1/1;
   grid-row: 4/4;
+  display: flex;
+  align-items: center;
+  padding-top: 13.4375em;
+  padding-bottom: 3.75em;
+  position: relative;
+  width: 252px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #565973;
+}
+.hero-section__discover-more__link-item {
+  transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  cursor: pointer;
+  outline: none;
+  color: #33354d;
+}
+.hero-section__discover-more__link-item__discover-more__icon {
+  background-color: #fff;
+  padding: 1.25em;
+  border-radius: 100%;
+}
+.hero-section__discover-more__link-item:hover {
+  transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  cursor: pointer;
+  outline: none;
+  color: #6366f1;
+}
+.hero-section__discover-more__link-item:active {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  cursor: pointer;
+  outline: none;
+  color: hsl(from #9397ad h s calc(l + 2.1));
 }
 .hero-section__mobile-images {
   grid-column: 2/2;
   grid-row: 1/5;
   position: relative;
+  text-align: center;
+}
+.hero-section__mobile-images img {
+  position: absolute;
+  transform: scale(1);
+  margin: 0 auto;
+}
+.hero-section__mobile-images__iphone-1 {
+  z-index: 250;
+  top: -1.5em;
+  max-width: 23.5em;
+}
+.hero-section__mobile-images__iphone-2 {
+  max-width: 22.5em;
+  top: 7em;
+  left: 6em;
+  z-index: 125;
 }
 .main-wrapper {
   container-type: inline-size;
