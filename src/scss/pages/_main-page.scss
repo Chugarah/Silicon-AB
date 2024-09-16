@@ -342,10 +342,14 @@ $_container-name: header;
 
     &__iphone-1{
       z-index: 250;
-      top: -3.25em;
+      /// Magic Numbers ROFL!
+      top: -1.5em;
+      max-width: 23.5em;
     }
     &__iphone-2{
-      top: 5.25em;
+      /// Magic Numbers ROFL!
+      max-width: 22.50em;
+      top: 7em;
       left: 6.0em;
       z-index: 125;
 
