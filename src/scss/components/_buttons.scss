@@ -40,15 +40,20 @@
   width: 11.25em;
   height: 3.25em;
 
-  /// Tablet, Smaller laptop
+  /// Desktop preparation for smaller devices
   @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
     width: 7.875em;
     height: 2.74375em;
   }
+  /// Tablets smaller laptops
+  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
+    width: 22.9em;
+    height: 3.150625em;
+  }
+
   /// Mobile Phones
   @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'mobile')) {
-    width: 23.025em;
-    height: 3.150625em;
+    width: 100%
   }
 
   /// Vector Image
@@ -64,7 +69,7 @@
     height: auto;
     transform: scale(1/16);
       /// Mobile Phones
-    @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'mobile')) {
+    @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
       width:auto;
     }
   }
