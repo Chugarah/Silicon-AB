@@ -94,7 +94,7 @@ $_container-name: header;
 
   /// Remove the spacing to mobile link, because the text Dark-mode is out of space
   @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'small')) {
-    padding: map-get($map: a.$spacing-distance-relative, $key: 's-0-62');
+      padding-right: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
   }
 
   // Logo
@@ -142,9 +142,15 @@ $_container-name: header;
     /// Added this to align with same height
     @include a.flex(center);
 
+    /// Tablets & Smaller laptops
     @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
       flex: 1;
       justify-content: flex-end;
+      padding-right: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
+    }
+    /// Mobile devices
+    @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'small')) {
+      padding-right: 0;
     }
 
     /// Adding some padding to span element
@@ -155,7 +161,7 @@ $_container-name: header;
       font-weight: map-get($map: a.$font-weight, $key: 'Bold');
 
       /// Remove the spacing to mobile link, because the text Dark-mode is out of space
-      @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'mobile')) {
+      @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
         display: none;
       }
 
@@ -204,7 +210,7 @@ $_container-name: header;
     }
 
     &__bars__icon {
-      color: map-get($map: a.$links-color, $key: 'link-bar')
+      color: map-get($map: a.$links-color, $key: 'link-bar');
     }
 
 
@@ -326,7 +332,7 @@ $_container-name: header;
 
     /// Tablets & Smaller laptops
     @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
-      justify-content: center;
+
       gap: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
     }
     /// Mobile Phones :)
