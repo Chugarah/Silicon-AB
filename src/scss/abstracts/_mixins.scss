@@ -40,7 +40,7 @@
 /// @param {List} $gah-display-map - Contains Map for display type from vars
 /// @example code-scss
 /// @include grid-auto-height(grid, grid-add-colum(1fr), 3, $display-type)
-
+/// TODO: #1 Bugg, the mixin is not taking correct if statement based on wrong parameters
 @mixin grid-row-colum($gah-display-type-value,
   $gah-colums,
   $gah-row-height,

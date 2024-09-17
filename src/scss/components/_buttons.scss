@@ -30,8 +30,6 @@
 /// =============================================================================
 .hero-section__apps-links__link-item {
   background-color: a.$color-button-black;
-  $image-width: 11.25em;
-  $image-height: 3.25em;
 
   @include a.link-nav-animation(a.$color-white, 4.2, 400ms, a.$color-button-black, true);
   /// Global styling for the button
@@ -39,10 +37,18 @@
   position: relative;
   border-radius: map-get($map: a.$spacing-distance-relative, $key: 's-0-15');
 
-  /// Desktop sizes
-  &--desktop{
-    width: $image-width;
-    height:  $image-height;
+  width: 11.25em;
+  height: 3.25em;
+
+  /// Tablet, Smaller laptop
+  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
+    width: 7.875em;
+    height: 2.74375em;
+  }
+  /// Mobile Phones
+  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'mobile')) {
+    width: 23.025em;
+    height: 3.150625em;
   }
 
   /// Vector Image
@@ -52,11 +58,15 @@
     transform: translate(-50%, -50%);
     padding: map-get($map: a.$spacing-distance-relative, $key: 's-0-62')
     map-get($map: a.$spacing-distance-relative, $key: 's-1-25');
-    object-fit: contain;
+    object-fit:cover;
     position: absolute;
     width: 100%;
     height: auto;
     transform: scale(1/16);
+      /// Mobile Phones
+    @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'mobile')) {
+      width:auto;
+    }
   }
   &:hover{
     @include a.link-nav-animation(a.$color-white, 4.2, 400ms, a.$color-primary, true);

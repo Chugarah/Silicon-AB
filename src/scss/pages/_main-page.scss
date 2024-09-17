@@ -45,19 +45,13 @@ $_container-name: header;
 .header_wrapper {
   /// Activate Container Query Properties for header-wrapper
   @include a.container-query-wrapper($_container-name);
-
   /// Radial gradient background
   /// Creates a subtle color transition from purple to pink to almost white
   /// Background Gradient for Header and Promotion
   background: radial-gradient(125% 125% at 50% 110%,
       rgba(99, 102, 241, 0.1) 0%,
       rgba(218, 70, 239, 0.05) 42%,
-      rgba(241, 244, 253, 0.07) 83%);
-
-  /// Adding overflow hidden, we dant want the phone images t
-  /// overflow until next area
-  overflow: hidden;
-
+      rgba(241, 244, 253, 0.07) 83%);      
 }
 
 /// Setting Content Width and activating some basic responsive settings
@@ -80,7 +74,8 @@ $_container-name: header;
   /// Padding for header container
   @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-2')) {
     transition: all 200ms;
-    padding: map-get($map: a.$spacing-distance-relative, $key: 's-2-50');
+    padding-left: map-get($map: a.$spacing-distance-relative, $key: 's-2-50');
+    padding-right: map-get($map: a.$spacing-distance-relative, $key: 's-2-50');
   }
 }
 
@@ -93,7 +88,7 @@ $_container-name: header;
   height: 4.75rem;
 
   /// Remove the spacing to mobile link, because the text Dark-mode is out of space
-  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'small')) {
+  @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'small')) {
     padding: map-get($map: a.$spacing-distance-relative, $key: 's-0-62');
   }
 
@@ -194,13 +189,13 @@ $_container-name: header;
       cursor: pointer;
 
       /// Show the mobile link
-      @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
+      @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
         padding-left: 15%;
         display: block;
       }
 
       /// Remove the spacing to mobile link, because the text Dark-mode is out of space
-      @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'small')) {
+      @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'small')) {
         padding-left: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
         padding-right: map-get($map: a.$spacing-distance-relative, $key: 's-1-87');
       }
@@ -231,24 +226,29 @@ $_container-name: header;
 
 /// Hero section CSS code
 .hero-section {
+
   
   /// Local vars ohyeaa :D x2
   $max-colums: 2;
   $max-rows: 4;
-  $hero-max-width: 32.875rem;
+  $hero-max-width: 31.875rem;
 
   /// Creating Grid
-  @include a.grid-row-colum(map-get($map: a.$display-type, $key: 'grid'),
-    a.create-list(1fr, 1fr),
+  @include a.grid-row-colum(map-get(
+    $map: a.$display-type, $key: 'grid'),
+    a.create-list(auto, auto),
     a.create-list(auto, 2fr, auto),
     $max-rows);
 
   & {
     /// Added top padding desktop, the padding starts from the image
-    padding-top: map-get($map: a.$spacing-distance-relative, $key: 's-8-12')
+    padding-top: map-get($map: a.$spacing-distance-relative, $key: 's-9-37');
+    @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
+      padding-top: map-get($map: a.$spacing-distance-base, $key: 'sb-5-00');
+    }
+  
   }
-
-
+  
   /// Main heading for hero-section
   &__heading {
     @include a.grid-position(1, 1, 1, 1);
@@ -260,8 +260,16 @@ $_container-name: header;
       font-size: map-get($map: a.$display-heading, $key: 'd-4');
 
       /// We are hardcoding this one to rem and not to parent container
-      padding-top: map-get($map: a.$spacing-distance-base, $key: 'sb-0-18');
-      padding-bottom: map-get($map: a.$spacing-distance-base, $key: 'sb-1-50')
+      padding-top: map-get($map: a.$spacing-distance-base, $key: 'sb-3-31');
+      padding-bottom: map-get($map: a.$spacing-distance-base, $key: 'sb-1-50');
+    
+      @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
+        @include a.grid-position(1, 3, 1, 1);
+        padding-top: 0;
+        padding-bottom: map-get($map: a.$spacing-distance-base, $key: 'sb-2-18');
+        text-align: center;
+      }
+
     }
   }
 
@@ -274,6 +282,12 @@ $_container-name: header;
     font-weight: map-get($map: a.$font-weight, $key: 'Regular');
     font-size: map-get($map: a.$font-sizes, $key: 't-l');
     padding-bottom: map-get($map: a.$spacing-distance-base, $key: 'sb-3-00');
+
+    /// Tablet mode :)
+    @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
+      padding-top: map-get($map: a.$spacing-distance-relative, $key: 's-5-62');
+      padding-bottom: map-get($map: a.$spacing-distance-relative, $key: 's-2-50');
+    }
   }
 
   /// Apps links for the hero-section
@@ -281,6 +295,12 @@ $_container-name: header;
     @include a.grid-position(1, 1, 3, 3);
     display: map-get($map: a.$display-type, $key: 'flex');
     gap: map-get($map: a.$spacing-distance-relative, $key: 's-1-50');
+
+    @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
+      justify-content: center;
+      gap: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
+    }
+
   }
 
   /// Discover more...
@@ -293,12 +313,18 @@ $_container-name: header;
     padding-top: 13.4375em;
     padding-bottom: 3.75em;
     position: relative;
-    width: 252px;
+
 
     /// Color and font
     font-size: map-get($map: a.$font-sizes, $key: 't-s');
     font-weight: map-get($map: a.$font-weight, $key: 'Regular');
     color: a.$font-color-primary;
+
+    /// Tablets and smaller laptops
+    @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
+      padding-top: map-get($map: a.$spacing-distance-relative, $key: 's-2-50');
+      padding-bottom: map-get($map: a.$spacing-distance-relative, $key: 's-3-00');
+    }
 
     &__link-item {
 
@@ -328,31 +354,62 @@ $_container-name: header;
 
   /// Mobile Images
   &__mobile-images {
+    $_grid-max-width: 46.625rem;
     @include a.grid-position(2, 2, 1, 5);
     position: relative;
-
     text-align: center;
+    /// Magic number to make the image wrapper to 
+    /// start litle outside our max parent container size
+    margin-right: -7.5em;
+    overflow: hidden;
 
-    /// Lets write basic settings for both images
-    & img {
+    max-width: $_grid-max-width;
+    width: $_grid-max-width;
+
+    
+    @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-3')) {
+      /// This was added to avoid the images be hidden in to right side, now we see them all the time
+      /// even in smaller container size
+      margin-right: -1em;
+    }
+    @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
+      @include a.grid-position(2, 2, 2, 5);
+      max-width: 25.9375em;
+      margin-right: -1em;
+      margin-right: 0 auto;
+    }
+   
+    &__image-wrapper{
+      background-color: blueviolet;
+      width: 100%;
+    }
+
+    /// Common CSS for the images
+    &__image-wrapper__iphone-1,  &__image-wrapper__iphone-2{
       position: absolute;
-      transform: scale(1);
-      margin: 0 auto;
     }
 
-    &__iphone-1{
+    &__image-wrapper__iphone-1{
+      right: 4.375em;
       z-index: 250;
-      /// Magic Numbers ROFL!
-      top: -1.5em;
-      max-width: 23.5em;
+      width: 24.375em;
+      @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
+        width: 15.23375em;
+        right: 0;
+      }
     }
-    &__iphone-2{
-      /// Magic Numbers ROFL!
-      max-width: 22.50em;
-      top: 7em;
-      left: 7.5em;
+    &__image-wrapper__iphone-2{
+      right: 18em;
+      top: 8.5em;
       z-index: 125;
+      width: 23.5em;
+      @include a.container-query($_container-name, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
+        width: 15.23375em;
+        right: 8.8em;
+        top: 5.2em;
+      }
     }
+
   }
 
 }

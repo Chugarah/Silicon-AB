@@ -133,9 +133,11 @@ $display-type: (
 $breakpoints: (
     'mobile': 390px,
     'small': 500px,
-    'medium': 768px,
+    'medium': 769px,
     'xlarge': 1200px,
-    'xlarge-2': 1340px
+    'xlarge-1': 1299px,
+    'xlarge-2': 1340px,
+    'xlarge-3': 1420px
 );
 
 
@@ -170,9 +172,12 @@ $spacing-distance-relative:(
     's-1-25': 1.25em,
     's-1-50': 1.5em,
     's-1-87': 1.875em,
-    's-2-50': 2.5em,
+    's-3-00': 3rem,    /// 48px
+    's-2-50': 2.5em,   /// 40px
     's-3-31': 3.125em, /// 50px
-    's-8-12': 8.125em
+    's-5-62': 5.625em, /// 90px
+    's-8-12': 8.125em,
+    's-9-37': 9.375em   
 );
 
 /// @name spacing-distance-relative
@@ -186,7 +191,10 @@ $spacing-distance-relative:(
 $spacing-distance-base:(
     'sb-0-18': 0.1875rem,
     'sb-1-50': 1.5rem,
-    'sb-3-00': 3rem /// 48px
+    'sb-2-18': 2.1875rem, // 35px
+    'sb-3-00': 3rem, /// 48px
+    'sb-3-31': 3.125rem, // 50px
+    'sb-5-00': 5rem, // 80px;
 );
 
 
