@@ -22,6 +22,8 @@
 ///     container-type: inline-size;
 ///     container-name: component-container;
 ///   }
+@use "sass:list";
+
 @mixin container-query-wrapper($container-name) {
   container-type: inline-size;
   container-name: $container-name;
@@ -69,8 +71,8 @@
 /// @example code-scss
 /// @include grid-auto-height(grid, grid-add-colum(1fr), 3, $display-type)
 @mixin grid-position($col-start, $col-end, $row-start, $row-end) {
-  grid-column: #{$col-start} / #{$col-end};
-  grid-row: #{$row-start} / #{$row-end};
+  grid-column: list.slash($col-start, $col-end);
+  grid-row: list.slash($row-start, $row-end);
 }
 
 /// @name container-query
@@ -149,9 +151,13 @@
 /// @example code-scss
 ///   @include content-width(81.25rem, 100%)
 /// }
-@mixin flex($align-items) {
+@mixin flex($align-items, $flex-direction: null) {
   display: flex;
   align-items: $align-items;
+
+  @if $flex-direction !=null {
+    flex-direction: $flex-direction;
+  }
 }
 
 /// =============================================================================
@@ -306,4 +312,10 @@
   /// Border
   border-radius: $logo-border-radius;
   border: 1px $border-color solid;
+}
+
+@mixin icon($icon-bg-color, $icon-border-radius, $icon-padding...) {
+  background-color: $icon-bg-color;
+  padding: $icon-padding;
+  border-radius: $icon-border-radius;
 }

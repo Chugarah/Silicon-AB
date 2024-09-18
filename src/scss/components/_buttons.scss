@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @use "../abstracts" as a;
 
 /// =============================================================================
@@ -67,7 +69,7 @@
     position: absolute;
     width: 100%;
     height: auto;
-    transform: scale(1/16);
+    transform: scale(math.div(1, 16));
       /// Mobile Phones
     @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
       width:auto;

@@ -9,3 +9,12 @@ Detta är slutuppgiften för en av kurserna av det tvååriga yrkesutbildningen 
 * **Beskrivning:** Skapa en HTML/CSS-sida från en Figma-designmall (Silicon AB). En presentation för en app som håller koll på din ekonomi.
 * **Funktioner:** Responsivitet för mobila enheter, mörkt och ljust läge.
 * **Tekniker:** CSS,SCSS,HTML5, Tailwind, Javascript
+
+### Installation
+
+npx npm-check-updates -u
+npm install
+npm update
+
+För att se zombie paket
+npm install -g depcheck

@@ -3,11 +3,17 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
+  - brotli
   - colums
+  - fontawesome
+  - fortawesome
   - Georgi
+  - iconify
   - litle
   - ohyeaa
   - Phind
+  - svgr
+  - unplugin
   - wght
   - xlarge
   - Yeaeee

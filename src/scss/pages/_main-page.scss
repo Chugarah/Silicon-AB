@@ -39,7 +39,7 @@
 ///
 /// Local variabel :D
 $_container-name-header: header;
-
+$_grid-max-width: 46.625rem;
 /// Setting Background color
 /// and sets the container name for container query /responsive
 .header_wrapper {
@@ -532,9 +532,11 @@ $_container-name-header: header;
 
       /// Setting up Icon :)
       &__discover-more__icon {
-        background-color: a.$color-white;
-        padding: map-get($map: a.$spacing-distance-relative, $key: "s-1-25");
-        border-radius: 100%;
+        @include a.icon(
+          a.$color-white,
+          100%,
+          map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
+        );
       }
 
       /// Adding Hover State
@@ -557,7 +559,6 @@ $_container-name-header: header;
 
   /// Mobile Images
   &__mobile-images {
-    $_grid-max-width: 46.625rem;
     @include a.grid-position(2, 2, 1, 5);
     position: relative;
     text-align: center;
@@ -581,7 +582,7 @@ $_container-name-header: header;
     }
 
     /// Larger desktop screens
-    
+
     @include a.container-query(
       $_container-name-header,
       0,
@@ -659,6 +660,7 @@ $_container-name-main: main;
   @include a.container-query-wrapper($_container-name-main);
   background-color: white;
 
+  /// Adding Correct Full With for content
   /// Content Width
   @include a.content-width(
     map-get($map: a.$max-content-width, $key: "desktop"),
@@ -670,7 +672,7 @@ $_container-name-main: main;
     /// Lest's flex it and Gap it!
     @include a.flex(center);
     gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
-    padding-top: 4.6875em;
+    padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-4-68");
     padding-bottom: 6.875em;
     justify-content: center;
     text-align: center;
@@ -712,7 +714,6 @@ $_container-name-main: main;
         $map: a.$spacing-distance-relative,
         $key: "s-1-50"
       );
-      padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-3-43");
     }
 
     /// Setting
@@ -755,6 +756,43 @@ $_container-name-main: main;
         map-get($map: a.$breakpoints, $key: "medium")
       ) {
       }
+    }
+  }
+
+  /// App Features
+  &__app-features {
+    background-color: blueviolet;
+    /// Lest's flex it and Gap it!
+    @include a.flex(flex-start);
+    gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
+    padding-bottom: 7em;
+    gap: 12.75em;
+
+    /// Cards Container, holding everything fine and dandy ;)
+    &__app-features-cards {
+      @include a.flex(flex-start);
+      gap: map-get($map: a.$spacing-distance-relative, $key: "s-3-50");
+      padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-4-68");
+      background-color: blue;
+      max-width: $_grid-max-width;
+      flex-wrap: wrap;
+    }
+
+    /// Card Container in App features
+    &__app-features-cards__card-container {
+      @include a.flex(flex-start, row);
+      max-width: 746px;
+
+      flex-wrap: wrap;
+      gap: 1.5625em;
+    }
+    /// Card Items in App features
+    &__app-features-cards__card-container__card-item {
+      background-color: red;
+      max-width: 16.3125em;
+    }
+    &__app-features-cards__card-container__card-item h5 {
+      padding-bottom: 0.75em;
     }
   }
 }
