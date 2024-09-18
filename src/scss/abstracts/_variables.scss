@@ -6,63 +6,66 @@ $font-color-text: #585c7b;
 $font-color-label: #131022;
 /* Fonts END */
 
-
 /// Colors
-$color-primary: #6366F1; 
-$color-white: #FFFFFF;
-$color-form: #9397AD;
-$color-button-black: #0B0F19;
+$color-primary: #6366f1;
+$color-white: #ffffff;
+$color-form: #9397ad;
+$color-button-black: #0b0f19;
+
+/// Grayscale
+$color-gray-scale: #e2e5f1;
 
 // =============================================================================
 // Fonts
 // =============================================================================
 /* https://sass-lang.com/documentation/style-rules/declarations/ */
 
-/// 
+///
 /// Manrope
 $font-family: "Manrope", sans-serif;
 $font-location-url: url("/src/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf");
 $font-primary-style: normal;
 $font-optical-sizing: auto;
-$font-weight:(
-    'ExtraLight': 200,
-    'Light': 300,
-    'Regular': 400,
-    'Medium': 500,
-    'SemiBold': 600,
-    'Bold': 700,
-    'ExtraBold': 800
+$font-weight: (
+  "ExtraLight": 200,
+  "Light": 300,
+  "Regular": 400,
+  "Medium": 500,
+  "SemiBold": 600,
+  "Bold": 700,
+  "ExtraBold": 800,
 );
 
-$font-sizes:(
-    't-xs': 0.75rem,
-    't-s': 0.875rem, /// 14px
-    't-m': 1rem,
-    't-l': 1.125rem, /// 18px
-    't-xl': 125rem,
-    't-lt': 1.5rem
+$font-sizes: (
+  "t-xs": 0.75rem,
+  "t-s": 0.875rem,
+  /// 14px
+  "t-m": 1rem,
+  "t-l": 1.125rem,
+  /// 18px
+  "t-xl": 125rem,
+  "t-lt": 1.5rem,
 );
-$display-heading:(
-    'd-1': 5rem,
-    'd-2': 4.5rem,
-    'd-3': 4rem,
-    'd-4': 3.5rem,      /// 56px
-    'd-5': 3rem,
-    'd-6': 2.625em,
-    'd-7': 2.76875em,    /// 44.3ox
-    'd-8': 2.13125em    /// 34.1px
+$display-heading: (
+  "d-1": 5rem,
+  "d-2": 4.5rem,
+  "d-3": 4rem,
+  "d-4": 3.5rem,
+  /// 56px
+  "d-5": 3rem,
+  "d-6": 2.625em,
+  "d-7": 2.76875em,
+  /// 44.3ox
+  "d-8": 2.13125em /// 34.1px,
 );
-$headings:(
-    'h-1': 2.5rem,
-    'h-2': 2rem,
-    'h-3': 1.75rem,
-    'h-4': 1.5rem,
-    'h-5': 1.25rem,
-    'h-6': 1rem
+$headings: (
+  "h-1": 2.5rem,
+  "h-2": 2rem,
+  "h-3": 1.75rem,
+  "h-4": 1.5rem,
+  "h-5": 1.25rem,
+  "h-6": 1rem,
 );
-
-
-
 
 /// @name links-color
 /// Specifying Colors for all links in the website
@@ -72,11 +75,10 @@ $headings:(
 ///   .element {
 ///     font-color: map-get($map: $links-color, $key: 'link-nav');
 ///   }
-$links-color:(
-    'link-nav' : #33354D,
-    'link-bar' : #3E4265
+$links-color: (
+  "link-nav": #33354d,
+  "link-bar": #3e4265,
 );
-
 
 /// @name links-color
 /// Specifying Colors for all links in the website
@@ -86,7 +88,6 @@ $links-color:(
 ///   .element {
 ///     font-color: map-get($map: $links-color, $key: 'link-nav');
 ///   }
-
 
 // =============================================================================
 // Layout
@@ -102,10 +103,9 @@ $links-color:(
 ///      width: map-get($map: $content-width, $key: 'full-width');
 ///   }
 $content-width-percentage: (
-    'full-width': 100%,
-    'half-width': 50%
+  "full-width": 100%,
+  "half-width": 50%,
 );
-
 
 /// @name display-type
 /// Map of display types for consistent usage across the project
@@ -117,11 +117,10 @@ $content-width-percentage: (
 ///      display: map-get($map: $display-type, $key: 'flex');
 ///   }
 $display-type: (
-    'flex': flex,
-    'grid': grid,
-    'none': none
+  "flex": flex,
+  "grid": grid,
+  "none": none,
 );
-
 
 /// @name breakpoints
 /// Map of breakpoints regarding responsive
@@ -133,15 +132,14 @@ $display-type: (
 ///         background-color: red;
 ///     }
 $breakpoints: (
-    'mobile': 390px,
-    'small': 500px,
-    'medium': 768px,
-    'xlarge': 1200px,
-    'xlarge-1': 1299px,
-    'xlarge-2': 1340px,
-    'xlarge-3': 1420px
+  "mobile": 390px,
+  "small": 500px,
+  "medium": 768px,
+  "xlarge": 1200px,
+  "xlarge-1": 1299px,
+  "xlarge-2": 1340px,
+  "xlarge-3": 1420px,
 );
-
 
 /// @name max-content
 /// Max content width values depending on device
@@ -152,9 +150,9 @@ $breakpoints: (
 ///     max-width: map-get($map: $max-content-width, $key: 'desktop');
 ///   }
 $max-content-width: (
-    'desktop': 81.25rem,
-    'tablet': 48rem,
-    'mobile': 24.375rem
+  "desktop": 81.25rem,
+  "tablet": 48rem,
+  "mobile": 24.375rem,
 );
 
 /// @name spacing-distance-relative
@@ -166,20 +164,34 @@ $max-content-width: (
 ///   .element {
 ///     gap: map-get($map: $spacing-distance-relative, $key: 's-0-15');
 ///   }
-$spacing-distance-relative:(
-    's-0-15': 0.5em,
-    's-0-56': 0.5625em,
-    's-0-62': 0.625em,  /// 10px 
-    's-1-1': 1em,
-    's-1-25': 1.25em,   /// 20px
-    's-1-50': 1.5em,
-    's-1-87': 1.875em,  /// 30px
-    's-3-00': 3rem,     /// 48px
-    's-2-50': 2.5em,    /// 40px
-    's-3-31': 3.125em,  /// 50px
-    's-5-62': 5.625em,  /// 90px
-    's-8-12': 8.125em,
-    's-9-37': 9.375em   
+$spacing-distance-relative: (
+  "s-0-15": 0.5em,
+  "s-0-56": 0.5625em,
+  "s-0-62": 0.625em,
+  /// 10px
+  "s-1-1": 1em,
+  "s-1-25": 1.25em,
+  /// 20px
+  "s-1-37": 1.375em,
+  /// 22px
+  "s-1-50": 1.5em,
+  /// 24px
+  "s-1-87": 1.875em,
+  /// 30px
+  "s-2-25": 2.25em,
+  /// 36px
+  "s-3-00": 3rem,
+  /// 48px
+  "s-2-50": 2.5em,
+  /// 40px
+  "s-3-31": 3.125em,
+  /// 50px
+  's-3-43': 3.4375em,
+  /// 55px
+  "s-5-62": 5.625em,
+  /// 90px
+  "s-8-12": 8.125em,
+  "s-9-37": 9.375em,
 );
 
 /// @name spacing-distance-relative
@@ -190,19 +202,24 @@ $spacing-distance-relative:(
 ///   .element {
 ///     gap: map-get($map: $spacing-distance, $key: 'sb-0-15');
 ///   }
-$spacing-distance-base:(
-    'sb-0-18': 0.1875rem,
-    'sb-1-50': 1.5rem,
-    'sb-1-87': 1.875em,     /// 30px
-    'sb-2-18': 2.1875rem,   /// 35px
-    'sb-2-37': 2.375rem,    /// 38px
-    'sb-2-50': 2.5em,       /// 40px
-    'sb-3-00': 3rem,        /// 48px
-    'sb-3-31': 3.125rem,    // 50px
-    'sb-5-00': 5rem,        // 80px;
+$spacing-distance-base: (
+  "sb-0-18": 0.1875rem,
+  "sb-1-50": 1.5rem,
+  "sb-1-87": 1.875em,
+  /// 30px
+  "sb-2-18": 2.1875rem,
+  /// 35px
+  "sb-2-37": 2.375rem,
+  /// 38px
+  "sb-2-50": 2.5em,
+  /// 40px
+  "sb-3-00": 3rem,
+  /// 48px
+  "sb-3-31": 3.125rem,
+  // 50px
+  "sb-5-00": 5rem,
+  // 80px;
 );
-
-
 
 /// @name border-radius
 /// Border radius sizes :)
@@ -212,7 +229,9 @@ $spacing-distance-base:(
 ///   .element {
 ///     border-radius: map-get($map: $border-radius, $key: 'p-2-2');
 ///   }
-$border-radius:(
-    'r-0-2': 0.25em,
-    'r-2-2': 2.25em
+$border-radius: (
+  "r-0-2": 0.25em,
+  "r-0-5": 0.5em,
+  /// 8px
+  "r-2-2": 2.25em,
 );

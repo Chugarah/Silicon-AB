@@ -41,18 +41,18 @@
 /// @example code-scss
 /// @include grid-auto-height(grid, grid-add-colum(1fr), 3, $display-type)
 /// TODO: #1 Bugg, the mixin is not taking correct if statement based on wrong parameters
-@mixin grid-row-colum($gah-display-type-value,
+@mixin grid-row-colum(
+  $gah-display-type-value,
   $gah-colums,
   $gah-row-height,
-  $grid-row-repeat: null, ) {
+  $grid-row-repeat: null
+) {
   display: $gah-display-type-value;
   grid-template-columns: $gah-colums;
 
   @if $grid-row-repeat !=null {
-    grid-template-rows: repeat($grid-row-repeat, auto)
-  }
-
-  @else {
+    grid-template-rows: repeat($grid-row-repeat, auto);
+  } @else {
     grid-template-rows: $gah-row-height;
   }
 }
@@ -72,8 +72,6 @@
   grid-column: #{$col-start} / #{$col-end};
   grid-row: #{$row-start} / #{$row-end};
 }
-
-
 
 /// @name container-query
 /// @group Layout
@@ -99,16 +97,13 @@
       /// Passing the content further
       @content;
     }
-  }
-
-  @else if $min {
+  } @else if $min {
     @container #{$container-name} (min-width: #{$min}) {
       /// Passing the content further
       @content;
     }
   }
 }
-
 
 /// Ai Generated from Phind
 /// @name container-query
@@ -133,9 +128,6 @@
   width: $width;
 }
 
-
-
-
 /// @name content-width
 /// @group Layout
 ///
@@ -146,7 +138,6 @@
 /// @example code-scss
 ///   @include content-width(81.25rem, 100%)
 /// }
-
 
 /// @name flex
 /// @group Layout
@@ -257,8 +248,15 @@
 ///   @include a.link-nav-animation($color-primary, 0.2, 400ms);
 /// }
 /// AI Some of the code is generated from Phind
-@mixin link-nav-animation($color, $relative-value, $transition-time, $bg-color: null, $use-hsl) {
-  transition: color $transition-time ease-in-out, background-color $transition-time ease-in-out;
+@mixin link-nav-animation(
+  $color,
+  $relative-value,
+  $transition-time,
+  $bg-color: null,
+  $use-hsl
+) {
+  transition: color $transition-time ease-in-out,
+    background-color $transition-time ease-in-out;
   cursor: pointer;
   outline: none;
 
@@ -270,17 +268,42 @@
   /// Can we use relative colors
   @if $use-hsl ==true {
     color: hsl(from $color h s calc(l + $relative-value));
-    
+
     /// Lets see if the bg is null or not
     @if $bg-color !=null {
       background-color: hsl(from $bg-color h s calc(l + $relative-value));
-
     }
-
-  }
-
-  @else {
+  } @else {
     color: $color;
   }
+}
 
+/// =============================================================================
+/// Other Components
+/// =============================================================================
+
+/// @name logo-box
+/// @group Component
+///
+/// https://caniuse.com/?search=hsl%20relative
+/// For links hover state, active and so on, color and pointer with
+/// animation.
+///
+/// @param {String} $color - Color of the text
+/// @param {String} $color - Color of the text
+/// @param {String} $color - Color of the text
+
+/// @example code-scss
+///   @include a.link-nav-animation($color-primary, 0.2, 400ms);
+/// }
+/// AI Some of the code is generated from Phind
+@mixin logo-box($padding-h, $padding-w, $logo-border-radius, $border-color) {
+  padding: $padding-h $padding-w;
+  /// Hard coded with and height
+  width: 100%;
+  height: 100%;
+
+  /// Border
+  border-radius: $logo-border-radius;
+  border: 1px $border-color solid;
 }
