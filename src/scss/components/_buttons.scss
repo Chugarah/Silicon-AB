@@ -13,19 +13,28 @@
 
     /// User Login Icon
     &__user-icon {
-      padding-right: map-get($map: a.$spacing-distance-relative, $key: 's-0-15');
+      padding-right: map-get(
+        $map: a.$spacing-distance-relative,
+        $key: "s-0-15"
+      );
     }
 
     /// Primary Btn specs
     &--primary {
-      @include a.btn-props(a.$color-white,
+      @include a.btn-props(
+        a.$color-white,
         a.$color-primary,
-        map-get($map: a.$border-radius, $key: 'r-0-2'),
-        a.create-list(map-get($map: a.$spacing-distance-relative, $key: 's-0-56') a.create-list(map-get($map: a.$spacing-distance-relative, $key: 's-1-25'))));
+        map-get($map: a.$border-radius, $key: "r-0-2"),
+        a.create-list(
+          map-get($map: a.$spacing-distance-relative, $key: "s-0-56")
+            a.create-list(
+              map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
+            )
+        )
+      );
     }
   }
 }
-
 
 /// =============================================================================
 /// Other Buttons
@@ -33,50 +42,76 @@
 .hero-section__apps-links__link-item {
   background-color: a.$color-button-black;
 
-  @include a.link-nav-animation(a.$color-white, 4.2, 400ms, a.$color-button-black, true);
+  @include a.link-nav-animation(
+    a.$color-white,
+    4.2,
+    400ms,
+    a.$color-button-black,
+    true
+  );
   /// Global styling for the button
   text-align: center;
   position: relative;
-  border-radius: map-get($map: a.$spacing-distance-relative, $key: 's-0-15');
+  border-radius: map-get($map: a.$spacing-distance-relative, $key: "s-0-15");
 
   width: 11.25em;
   height: 3.25em;
 
   /// Desktop preparation for smaller devices
-  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'xlarge-1')) {
+  @include a.container-query(
+    header,
+    0,
+    map-get($map: a.$breakpoints, $key: "xlarge-1")
+  ) {
     width: 7.875em;
     height: 2.74375em;
   }
   /// Tablets smaller laptops
-  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
+  @include a.container-query(
+    header,
+    0,
+    map-get($map: a.$breakpoints, $key: "medium")
+  ) {
     width: 22.9em;
     height: 3.150625em;
   }
 
   /// Mobile Phones
-  @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'mobile')) {
-    width: 100%
+  @include a.container-query(
+    header,
+    0,
+    map-get($map: a.$breakpoints, $key: "mobile")
+  ) {
+    width: 100%;
   }
 
   /// Vector Image
-  & img{
+  & img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: map-get($map: a.$spacing-distance-relative, $key: 's-0-62')
-    map-get($map: a.$spacing-distance-relative, $key: 's-1-25');
-    object-fit:cover;
+    padding: map-get($map: a.$spacing-distance-relative, $key: "s-0-62")
+      map-get($map: a.$spacing-distance-relative, $key: "s-1-25");
+    object-fit: cover;
     position: absolute;
     width: 100%;
     height: auto;
-    transform: scale(math.div(1, 16));
-      /// Mobile Phones
-    @include a.container-query(header, 0, map-get($map: a.$breakpoints, $key: 'medium')) {
-      width:auto;
+    /// Mobile Phones
+    @include a.container-query(
+      header,
+      0,
+      map-get($map: a.$breakpoints, $key: "medium")
+    ) {
+      width: auto;
     }
   }
-  &:hover{
-    @include a.link-nav-animation(a.$color-white, 4.2, 400ms, a.$color-primary, true);
+  &:hover {
+    @include a.link-nav-animation(
+      a.$color-white,
+      4.2,
+      400ms,
+      a.$color-primary,
+      true
+    );
   }
-
 }
