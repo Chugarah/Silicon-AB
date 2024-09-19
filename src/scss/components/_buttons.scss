@@ -1,6 +1,7 @@
 @use "sass:math";
 
-@use "../abstracts" as a;
+@use "@scss/abstracts" as a;
+@use "@scss/layout" as l;
 
 /// =============================================================================
 /// Primary Buttons
@@ -58,7 +59,7 @@
   height: 3.25em;
 
   /// Desktop preparation for smaller devices
-  @include a.container-query(
+  @include l.container-query(
     header,
     0,
     map-get($map: a.$breakpoints, $key: "xlarge-1")
@@ -67,7 +68,7 @@
     height: 2.74375em;
   }
   /// Tablets smaller laptops
-  @include a.container-query(
+  @include l.container-query(
     header,
     0,
     map-get($map: a.$breakpoints, $key: "medium")
@@ -77,7 +78,7 @@
   }
 
   /// Mobile Phones
-  @include a.container-query(
+  @include l.container-query(
     header,
     0,
     map-get($map: a.$breakpoints, $key: "mobile")
@@ -97,7 +98,7 @@
     width: 100%;
     height: auto;
     /// Mobile Phones
-    @include a.container-query(
+    @include l.container-query(
       header,
       0,
       map-get($map: a.$breakpoints, $key: "medium")

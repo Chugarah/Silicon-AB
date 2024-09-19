@@ -20,10 +20,14 @@ $color-gray-scale: #e2e5f1;
 // =============================================================================
 /* https://sass-lang.com/documentation/style-rules/declarations/ */
 
-///
+/// Font-Awesome
+/// Look at your Web pack configuration, I am using Vite
+/// Look in Vite ALias where @fortawesome is point to.
+$fa-font-path: "@fortawesome/fontawesome-free/webfonts";
+
 /// Manrope
 $font-family: "Manrope", sans-serif;
-$font-location-url: url("/src/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf");
+$font-location-url: url("@assets/fonts/Manrope/Manrope-VariableFont_wght.ttf");
 $font-primary-style: normal;
 $font-optical-sizing: auto;
 $font-weight: (
@@ -34,6 +38,16 @@ $font-weight: (
   "SemiBold": 600,
   "Bold": 700,
   "ExtraBold": 800,
+  "ExtremeBold": 900,
+);
+
+/// Font-Awesome
+$font-family-font-awesome: "Font Awesome 6 Free";
+$font-awesome-src: (
+  "fa-brands-400-woff2": "@assets/fonts/Font-Awesome/fa-regular-400.woff2",
+  "fa-brands-400-ttf": "@assets/fonts/Font-Awesome/fa-regular-400.ttf",
+  "fa-solid-900-woff2": "@assets/fonts/Font-Awesome/fa-solid-900.woff2",
+  "fa-solid-900-ttf": "@assets/fonts/Font-Awesome/fa-solid-900.woff2",
 );
 
 $font-sizes: (
@@ -56,7 +70,7 @@ $display-heading: (
   "d-6": 2.625em,
   "d-7": 2.76875em,
   /// 44.3ox
-  "d-8": 2.13125em /// 34.1px,,,
+  "d-8": 2.13125em /// 34.1px,,,,,,,,,,,,,,,,,
 );
 $headings: (
   "h-1": 2.5rem,

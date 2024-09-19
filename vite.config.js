@@ -5,6 +5,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 import mkcert from "vite-plugin-mkcert";
 import viteCompression from "vite-plugin-compression";
 import sass from "sass";
+import path from "path";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
@@ -41,43 +42,42 @@ export default defineConfig(({ mode }) => {
               return "vendor";
             }
           },
+          assetFileNames: (assetInfo) => {
+            if (
+              assetInfo.name.endsWith(".woff2") ||
+              assetInfo.name.endsWith(".ttf")
+            ) {
+              return "webfonts/[name][extname]";
+            }
+            return "assets/[name]-[hash][extname]";
+          },
         },
       },
     },
 
     resolve: {
       alias: {
-        "@": resolve(__dirname, "./src"),
-        "@assets": resolve(__dirname, "./src/assets"),
-        "@js": resolve(__dirname, "./src/js"),
-        "@scss": resolve(__dirname, "./src/scss"),
-        "@fa": resolve(
+        "@": path.resolve(__dirname, "src"),
+        "@assets": path.resolve(__dirname, "src/assets"),
+        "@js": path.resolve(__dirname, "src/js"),
+        "@scss": path.resolve(__dirname, "src/scss"),
+        "@fa-scss": path.resolve(
           __dirname,
-          "./node_modules/@fortawesome/fontawesome-free"
+          "node_modules/@fortawesome/fontawesome-free/scss"
         ),
-        "@components": resolve(__dirname, "./src/components"),
-        "@views": resolve(__dirname, "./src/views"),
-        "@store": resolve(__dirname, "./src/store"),
-        "@utils": resolve(__dirname, "./src/utils"),
+        "@fortawesome": path.resolve(__dirname, "node_modules/@fortawesome"),
       },
     },
-
+    /// Tp Support Web-font
     css: {
       devSourcemap: true,
       preprocessorOptions: {
         scss: {
-          implementation: sass,
-          additionalData: (source, fp) => {
-            if (fp.endsWith("main.scss")) return source;
-            return `
-              @use "@scss/variables" as *;
-              @use "@scss/mixins" as *;
-              @use "@fa/scss/fontawesome" as fa;
-              @use "@fa/scss/solid" as fa-solid;
-              @use "@fa/scss/brands" as fa-brands;
-              ${source}
-            `;
-          },
+          additionalData: `$fa-font-path: "${path.resolve(
+            __dirname,
+            "node_modules/@fortawesome/fontawesome-free/webfonts"
+          )}";`,
+          includePaths: [path.resolve(__dirname, "node_modules")],
         },
       },
     },

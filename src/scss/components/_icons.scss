@@ -1,0 +1,93 @@
+@use "@scss/vendors" as v;
+
+@mixin icon(
+  $icon-bg-color,
+  $icon-border-radius,
+  $font-awesome: true,
+  $fa-icon,
+  $icon-padding...
+) {
+  padding: $icon-padding;
+  border-radius: $icon-border-radius;
+
+  /// Inspired by Phind to improve security and error handling
+  /// I will try to implement this style in further mixins
+  @if type-of($icon-bg-color) == color {
+    background-color: $icon-bg-color;
+  }
+
+  /// Adding Font Awesome Icons :)
+  @if $font-awesome == "true" {
+    @include fa-icon(fa.$fa-icon, "solid");
+  }
+}
+
+@mixin fa-icon-bubu(
+  $icon,
+  $icon-style: "solid",
+  $icon-animate: null,
+  $icon-size: null
+) {
+  @extend .fa-#{$icon};
+  /// Icon Style
+  @if $icon-style == "solid" {
+    @extend .fas;
+  } @else if $icon-style == "regular" {
+    @extend .far;
+  } @else if $icon-style == "light" {
+    @extend .fal;
+  } @else if $icon-style == "thin" {
+    @extend .fat;
+  }
+
+  /// Icon Animate
+  @if $icon-animate != null {
+    @if $icon-animate == "beat" {
+      @extend .fa-beat;
+    } @else if $icon-style == "beat fade" {
+      @extend .fa-beat-fade;
+    } @else if $icon-style == "bounce" {
+      @extend .fa-bounce;
+    } @else if $icon-style == "fade" {
+      @extend .fa-fade;
+    } @else if $icon-style == "flip" {
+      @extend .fa-flip;
+    } @else if $icon-style == "shale" {
+      @extend .fa-shake;
+    } @else if $icon-style == "spin" {
+      @extend .fa-spin;
+    } @else if $icon-style == "spin reverse" {
+      @extend .fa-spin-reverse;
+    } @else if $icon-style == "spin pulse" {
+      @extend .fa-spin-pulse;
+    }
+  }
+
+  /// Icon Size
+  @if $icon-size != null {
+    @if $icon-size == "2xs" {
+      @extend .fa-2xs;
+    } @else if $icon-size == "xs" {
+      @extend .fa-xs;
+    } @else if $icon-size == "sm" {
+      @extend .fa-sm;
+    } @else if $icon-size == "lg" {
+      @extend .fa-lg;
+    } @else if $icon-size == "xl" {
+      @extend .fa-xl;
+    } @else if $icon-size == "2xl" {
+      @extend .fa-2xl;
+    }
+  }
+
+  /// Adding Color
+  @if $icon-color != null {
+    color: $icon-color;
+  }
+}
+
+///  Ai Generated from Phind
+
+@mixin icon200() {
+  @include v.vendor-fa-icon();
+}

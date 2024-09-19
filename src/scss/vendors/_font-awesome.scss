@@ -1,0 +1,38 @@
+@use "sass:list";
+@use "../abstracts" as a;
+@use "@fortawesome/fontawesome-free/scss/fontawesome" as fa;
+// Importera andra stilar
+
+@mixin vendor-fa-icon() {
+  @include fa.fa-icon;
+  /// Include font
+  @include font-awesome-type(brand);
+
+  &::before {
+    font-family: fa.$fa-style-family;
+    content: fa.fa-content(fa.$fa-var-user);
+  }
+}
+
+@mixin font-awesome-type($font-awesome-style) {
+  /// Font Awesome Solid
+  @font-face {
+    font-family: nth($list: a.$font-family-font-awesome, $n: 1);
+    font-style: a.$font-primary-style;
+    font-weight: map-get($map: a.$font-weight, $key: "ExtremeBold");
+    font-display: fa.$fa-display;
+
+    @if ($font-awesome-style == solid) {
+      src: url(map-get($map: a.$font-awesome-src, $key: "fa-solid-900-woff2"))
+          format("woff2"),
+        url(map-get($map: a.$font-awesome-src, $key: "fa-solid-900-ttf"))
+          format("truetype");
+    } @else if($font-awesome-style == brand) {
+      src: url(map-get($map: a.$font-awesome-src, $key: "fa-brands-400-woff2"))
+          format("woff2"),
+        url(map-get($map: a.$font-awesome-src, $key: "fa-brands-400-ttf"))
+          format("truetype");
+      font-weight: map-get($map: a.$font-weight, $key: "Regular");
+    }
+  }
+}

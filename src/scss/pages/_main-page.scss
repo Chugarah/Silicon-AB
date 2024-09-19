@@ -1,7 +1,8 @@
 @use "sass:map";
 @use "sass:meta";
-@use "../abstracts" as a;
-
+@use "@scss/abstracts" as a;
+@use "@scss/layout" as l;
+@use "@scss/components" as c;
 /* 
   https://www.youtube.com/watch?v=SLjHSVwXYq4
   https://www.reddit.com/r/css/comments/14f9o5l/using_bem_in_2023/
@@ -18,7 +19,7 @@
 /// We are using an mixin to create the grid and functions that create an list
 ///
 .skeleton-wrapper {
-  @include a.grid-row-colum(
+  @include l.grid-row-colum(
     map-get($map: a.$display-type, $key: "grid"),
     a.create-list(1fr),
     a.create-list(auto, 2fr, auto)
@@ -44,7 +45,7 @@ $_grid-max-width: 46.625rem;
 /// and sets the container name for container query /responsive
 .header_wrapper {
   /// Activate Container Query Properties for header-wrapper
-  @include a.container-query-wrapper($_container-name-header);
+  @include l.container-query-wrapper($_container-name-header);
   /// Radial gradient background
   /// Creates a subtle color transition from purple to pink to almost white
   /// Background Gradient for Header and Promotion
@@ -62,19 +63,19 @@ $_grid-max-width: 46.625rem;
 .hero-section {
   /// Content Width
   justify-content: space-between;
-  @include a.content-width(
+  @include l.content-width(
     map-get($map: a.$max-content-width, $key: "desktop"),
     map-get($map: a.$content-width-percentage, $key: "full-width")
   );
 
   /// Tablets, Small Laptops
-  @include a.container-query(
+  @include l.container-query(
     $_container-name-header,
     0,
     map-get($map: a.$breakpoints, $key: "medium")
   ) {
     /// Content Width
-    @include a.content-width(
+    @include l.content-width(
       map-get($map: a.$max-content-width, $key: "tablet"),
       map-get($map: a.$content-width-percentage, $key: "full-width")
     );
@@ -82,7 +83,7 @@ $_grid-max-width: 46.625rem;
   }
 
   /// Padding for header container
-  @include a.container-query(
+  @include l.container-query(
     $_container-name-header,
     0,
     map-get($map: a.$breakpoints, $key: "xlarge-2")
@@ -93,7 +94,7 @@ $_grid-max-width: 46.625rem;
   }
 
   /// Mobile Phones :)
-  @include a.container-query(
+  @include l.container-query(
     $_container-name-header,
     0,
     map-get($map: a.$breakpoints, $key: "medium")
@@ -112,7 +113,7 @@ $_grid-max-width: 46.625rem;
   height: 4.75rem;
 
   /// Remove the spacing to mobile link, because the text Dark-mode is out of space
-  @include a.container-query(
+  @include l.container-query(
     $_container-name-header,
     0,
     map-get($map: a.$breakpoints, $key: "small")
@@ -131,7 +132,7 @@ $_grid-max-width: 46.625rem;
     flex: 1;
 
     /// Tablets, Small Laptops
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "medium")
@@ -141,7 +142,7 @@ $_grid-max-width: 46.625rem;
 
     /// Navigation Items
     &__navigation {
-      @include a.flex(center);
+      @include l.flex(center);
       list-style-type: none;
       color: map-get($map: a.$links-color, $key: "link-nav");
       font-size: map-get($map: a.$font-sizes, $key: "t-m");
@@ -173,10 +174,10 @@ $_grid-max-width: 46.625rem;
   /// Button Sign up Sign in
   &__theme-btn-access {
     /// Added this to align with same height
-    @include a.flex(center);
+    @include l.flex(center);
 
     /// Tablets & Smaller laptops
-    @include a.container-query(
+    @include l.container-query(
       header,
       0,
       map-get($map: a.$breakpoints, $key: "medium")
@@ -187,7 +188,7 @@ $_grid-max-width: 46.625rem;
     }
 
     /// Mobile devices
-    @include a.container-query(
+    @include l.container-query(
       header,
       0,
       map-get($map: a.$breakpoints, $key: "small")
@@ -203,7 +204,7 @@ $_grid-max-width: 46.625rem;
       font-weight: map-get($map: a.$font-weight, $key: "Bold");
 
       /// Remove the spacing to mobile link, because the text Dark-mode is out of space
-      @include a.container-query(
+      @include l.container-query(
         header,
         0,
         map-get($map: a.$breakpoints, $key: "medium")
@@ -233,7 +234,7 @@ $_grid-max-width: 46.625rem;
       );
       /// Tablets, Small Laptops
 
-      @include a.container-query(
+      @include l.container-query(
         header,
         0,
         map-get($map: a.$breakpoints, $key: "medium")
@@ -252,7 +253,7 @@ $_grid-max-width: 46.625rem;
       cursor: pointer;
 
       /// Show the mobile link
-      @include a.container-query(
+      @include l.container-query(
         $_container-name-header,
         0,
         map-get($map: a.$breakpoints, $key: "medium")
@@ -262,7 +263,7 @@ $_grid-max-width: 46.625rem;
       }
 
       /// Remove the spacing to mobile link, because the text Dark-mode is out of space
-      @include a.container-query(
+      @include l.container-query(
         $_container-name-header,
         0,
         map-get($map: a.$breakpoints, $key: "small")
@@ -323,7 +324,7 @@ $_grid-max-width: 46.625rem;
   $hero-max-width: 31.875rem;
 
   /// Creating Grid
-  @include a.grid-row-colum(
+  @include l.grid-row-colum(
     map-get($map: a.$display-type, $key: "grid"),
     a.create-list(auto, auto),
     a.create-list(auto, 2fr, auto),
@@ -334,7 +335,7 @@ $_grid-max-width: 46.625rem;
     /// Added top padding desktop, the padding starts from the image
     padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-9-37");
 
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "xlarge-1")
@@ -343,7 +344,7 @@ $_grid-max-width: 46.625rem;
     }
 
     /// Mobile Phones :)
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "medium")
@@ -355,7 +356,7 @@ $_grid-max-width: 46.625rem;
 
   /// Main heading for hero-section
   &__heading {
-    @include a.grid-position(1, 1, 1, 1);
+    @include l.grid-position(1, 1, 1, 1);
 
     & {
       /// Some font settings for h1
@@ -367,13 +368,15 @@ $_grid-max-width: 46.625rem;
       padding-top: map-get($map: a.$spacing-distance-base, $key: "sb-3-31");
       padding-bottom: map-get($map: a.$spacing-distance-base, $key: "sb-1-50");
 
+      @include c.icon200();
+
       /// Tablet mode :)
-      @include a.container-query(
+      @include l.container-query(
         $_container-name-header,
         0,
         map-get($map: a.$breakpoints, $key: "xlarge-1")
       ) {
-        @include a.grid-position(1, 3, 1, 1);
+        @include l.grid-position(1, 3, 1, 1);
         padding-top: 0;
         padding-bottom: map-get(
           $map: a.$spacing-distance-base,
@@ -386,7 +389,7 @@ $_grid-max-width: 46.625rem;
       }
 
       /// Mobile Phones :)
-      @include a.container-query(
+      @include l.container-query(
         $_container-name-header,
         0,
         map-get($map: a.$breakpoints, $key: "medium")
@@ -400,7 +403,7 @@ $_grid-max-width: 46.625rem;
 
   /// Some descriptive text for the hero section
   &__text-description {
-    @include a.grid-position(1, 1, 2, 2);
+    @include l.grid-position(1, 1, 2, 2);
     // Setting some Max width stuff
     max-width: $hero-max-width;
     color: a.$font-color-primary;
@@ -409,7 +412,7 @@ $_grid-max-width: 46.625rem;
     padding-bottom: map-get($map: a.$spacing-distance-base, $key: "sb-3-00");
 
     /// Tablet mode :)
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "xlarge-1")
@@ -422,12 +425,12 @@ $_grid-max-width: 46.625rem;
     }
 
     /// Mobile Phones :)
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "medium")
     ) {
-      @include a.grid-position(1, 3, 2, 2);
+      @include l.grid-position(1, 3, 2, 2);
       padding-top: 0;
       padding-bottom: map-get(
         $map: a.$spacing-distance-relative,
@@ -440,12 +443,12 @@ $_grid-max-width: 46.625rem;
 
   /// Apps links for the hero-section
   &__apps-links {
-    @include a.grid-position(1, 1, 3, 3);
+    @include l.grid-position(1, 1, 3, 3);
     display: map-get($map: a.$display-type, $key: "flex");
     gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
 
     /// Tablets & Smaller laptops
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "xlarge-1")
@@ -454,12 +457,12 @@ $_grid-max-width: 46.625rem;
     }
 
     /// Mobile Phones :)
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "medium")
     ) {
-      @include a.grid-position(1, 3, 3, 3);
+      @include l.grid-position(1, 3, 3, 3);
       flex-direction: column;
       align-items: center;
     }
@@ -467,7 +470,7 @@ $_grid-max-width: 46.625rem;
 
   /// Discover more...
   &__discover-more {
-    @include a.grid-position(1, 1, 4, 4);
+    @include l.grid-position(1, 1, 4, 4);
     display: map-get($map: a.$display-type, $key: "flex");
 
     /// Paddings and positions
@@ -480,8 +483,7 @@ $_grid-max-width: 46.625rem;
     font-weight: map-get($map: a.$font-weight, $key: "Regular");
     color: a.$font-color-primary;
 
-    /// Tablets and smaller laptops
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "xlarge-1")
@@ -494,12 +496,12 @@ $_grid-max-width: 46.625rem;
     }
 
     /// Mobile Devices
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "medium")
     ) {
-      @include a.grid-position(1, 3, 4, 4);
+      @include l.grid-position(1, 3, 4, 4);
       padding-bottom: map-get($map: a.$spacing-distance-base, $key: "sb-1-87");
       justify-content: center;
     }
@@ -520,7 +522,7 @@ $_grid-max-width: 46.625rem;
           margin: map-get($map: a.$spacing-distance-relative, $key: "s-1-1");
 
           /// Mobile Devices
-          @include a.container-query(
+          @include l.container-query(
             $_container-name-header,
             0,
             map-get($map: a.$breakpoints, $key: "medium")
@@ -532,11 +534,7 @@ $_grid-max-width: 46.625rem;
 
       /// Setting up Icon :)
       &__discover-more__icon {
-        @include a.icon(
-          a.$color-white,
-          100%,
-          map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
-        );
+        @include c.icon(a.$color-white, 100%, true, "fa-chevron-up", 3em 3em);
       }
 
       /// Adding Hover State
@@ -559,7 +557,7 @@ $_grid-max-width: 46.625rem;
 
   /// Mobile Images
   &__mobile-images {
-    @include a.grid-position(2, 2, 1, 5);
+    @include l.grid-position(2, 2, 1, 5);
     position: relative;
     text-align: center;
     /// Magic number to make the image wrapper to
@@ -571,7 +569,7 @@ $_grid-max-width: 46.625rem;
     width: $_grid-max-width;
 
     /// Preparing for Pad/Tablets
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "xlarge-3")
@@ -583,19 +581,19 @@ $_grid-max-width: 46.625rem;
 
     /// Larger desktop screens
 
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "xlarge-1")
     ) {
-      @include a.grid-position(2, 2, 2, 5);
+      @include l.grid-position(2, 2, 2, 5);
       max-width: 25.9375em;
       margin-right: -1em;
       margin-right: 0 auto;
     }
 
     /// Tablets & Smaller laptops
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-header,
       0,
       map-get($map: a.$breakpoints, $key: "medium")
@@ -619,7 +617,7 @@ $_grid-max-width: 46.625rem;
       z-index: 250;
       width: 24.375em;
 
-      @include a.container-query(
+      @include l.container-query(
         $_container-name-header,
         0,
         map-get($map: a.$breakpoints, $key: "xlarge-1")
@@ -635,7 +633,7 @@ $_grid-max-width: 46.625rem;
       z-index: 125;
       width: 23.5em;
 
-      @include a.container-query(
+      @include l.container-query(
         $_container-name-header,
         0,
         map-get($map: a.$breakpoints, $key: "xlarge-1")
@@ -657,12 +655,12 @@ $_container-name-main: main;
 .main-wrapper {
   /// Activate Container Query Properties for main-wrapper
 
-  @include a.container-query-wrapper($_container-name-main);
+  @include l.container-query-wrapper($_container-name-main);
   background-color: white;
 
   /// Adding Correct Full With for content
   /// Content Width
-  @include a.content-width(
+  @include l.content-width(
     map-get($map: a.$max-content-width, $key: "desktop"),
     map-get($map: a.$content-width-percentage, $key: "full-width")
   );
@@ -670,7 +668,7 @@ $_container-name-main: main;
   /// Company Logos
   &__company-logos {
     /// Lest's flex it and Gap it!
-    @include a.flex(center);
+    @include l.flex(center);
     gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
     padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-4-68");
     padding-bottom: 6.875em;
@@ -678,7 +676,7 @@ $_container-name-main: main;
     text-align: center;
 
     /// Mobile Devices
-    @include a.container-query(
+    @include l.container-query(
       /// Lets hide all the logo's in mobile mode
       $_container-name-main,
       0,
@@ -690,7 +688,7 @@ $_container-name-main: main;
     }
 
     /// Tablets smaller laptops
-    @include a.container-query(
+    @include l.container-query(
       /// We are hiding some of the logos in smaller tablet mode
       $_container-name-main,
       0,
@@ -703,7 +701,7 @@ $_container-name-main: main;
     }
     /// Larger desktop screens
     /// Adding some padding
-    @include a.container-query(
+    @include l.container-query(
       $_container-name-main,
       0,
       map-get($map: a.$breakpoints, $key: "xlarge-2")
@@ -718,7 +716,7 @@ $_container-name-main: main;
 
     /// Setting
     &__image-item {
-      @include a.flex(center);
+      @include l.flex(center);
       /// Local vars :D for padding
       $_padding-h: map-get(
         $map: a.$spacing-distance-relative,
@@ -750,7 +748,7 @@ $_container-name-main: main;
     img {
       width: 100%;
 
-      @include a.container-query(
+      @include l.container-query(
         $_container-name-header,
         0,
         map-get($map: a.$breakpoints, $key: "medium")
@@ -763,14 +761,14 @@ $_container-name-main: main;
   &__app-features {
     background-color: blueviolet;
     /// Lest's flex it and Gap it!
-    @include a.flex(flex-start);
+    @include l.flex(flex-start);
     gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
     padding-bottom: 7em;
     gap: 12.75em;
 
     /// Cards Container, holding everything fine and dandy ;)
     &__app-features-cards {
-      @include a.flex(flex-start);
+      @include l.flex(flex-start);
       gap: map-get($map: a.$spacing-distance-relative, $key: "s-3-50");
       padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-4-68");
       background-color: blue;
@@ -780,7 +778,7 @@ $_container-name-main: main;
 
     /// Card Container in App features
     &__app-features-cards__card-container {
-      @include a.flex(flex-start, row);
+      @include l.flex(flex-start, row);
       max-width: 746px;
 
       flex-wrap: wrap;
@@ -802,11 +800,11 @@ $_container-name-main: main;
 /// =============================================================================
 .footer-wrapper {
   /// Activate Container Query Properties for main-wrapper
-  @include a.container-query-wrapper(main);
+  @include l.container-query-wrapper(main);
 
   /// Content Width
   .content-container {
-    @include a.content-width(
+    @include l.content-width(
       map-get($map: a.$max-content-width, $key: "desktop"),
       map-get($map: a.$content-width-percentage, $key: "full-width")
     );

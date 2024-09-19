@@ -18,3 +18,10 @@ npm update
 
 För att se zombie paket
 npm install -g depcheck
+
+Kör denna om du får SCSS deprecation
+<https://sass-lang.com/documentation/breaking-changes/slash-div/>
+npm install -g sass-migrator
+sass-migrator division **/*.scss
+
+npm install --save @fortawesome/fontawesome-free
