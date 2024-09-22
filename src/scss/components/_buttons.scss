@@ -2,6 +2,8 @@
 
 @use "@scss/abstracts" as a;
 @use "@scss/layout" as l;
+@use "@scss/components/_icons" as c;
+@use "@scss/base" as b;
 
 /// =============================================================================
 /// Primary Buttons
@@ -14,6 +16,8 @@
 
     /// User Login Icon
     &__user-icon {
+      /// Using Font-Awesome CSS selectors in SCSS :)))
+      @extend .fa-regular, .fa-user, .fa-brand-base;
       padding-right: map-get(
         $map: a.$spacing-distance-relative,
         $key: "s-0-15"

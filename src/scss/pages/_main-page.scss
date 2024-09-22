@@ -1,17 +1,17 @@
 @use "sass:map";
 @use "sass:meta";
+@use "@scss/base" as b;
 @use "@scss/abstracts" as a;
 @use "@scss/layout" as l;
 @use "@scss/components" as c;
+@use "@scss/vendors" as v;
 /* 
   https://www.youtube.com/watch?v=SLjHSVwXYq4
   https://www.reddit.com/r/css/comments/14f9o5l/using_bem_in_2023/
 */
-
 /// =============================================================================
 /// Skeleton Structure
 /// =============================================================================
-
 /// @name skeleton-wrapper
 /// @group Layout
 ///
@@ -225,6 +225,7 @@ $_grid-max-width: 46.625rem;
       /// Some hack, took the slider distance (Theme switcher) + Padding to Sign in Button
       /// From the Switch and got 76ox
       margin-left: 1.875em;
+
       @include a.link-nav-animation(
         a.$color-white,
         0,
@@ -367,8 +368,6 @@ $_grid-max-width: 46.625rem;
       /// We are hardcoding this one to rem and not to parent container
       padding-top: map-get($map: a.$spacing-distance-base, $key: "sb-3-31");
       padding-bottom: map-get($map: a.$spacing-distance-base, $key: "sb-1-50");
-
-      @include c.icon200();
 
       /// Tablet mode :)
       @include l.container-query(
@@ -534,7 +533,14 @@ $_grid-max-width: 46.625rem;
 
       /// Setting up Icon :)
       &__discover-more__icon {
-        @include c.icon(a.$color-white, 100%, true, "fa-chevron-up", 3em 3em);
+        @include c.icon(
+          a.$color-white,
+          100%,
+          true,
+          "\f077",
+          solid,
+          map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
+        );
       }
 
       /// Adding Hover State

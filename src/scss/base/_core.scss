@@ -1,13 +1,14 @@
 @use "sass:map";
-@use '../abstracts' as a;
+@use "../abstracts" as a;
+@use "@scss/vendors" as v;
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /// Include font awesome
+}
 
-  a{
-    text-decoration: none;
-  }
-  
+a {
+  text-decoration: none;
+}
