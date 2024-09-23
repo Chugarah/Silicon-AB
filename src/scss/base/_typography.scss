@@ -21,10 +21,49 @@
       format("truetype");
 }
 
+/// Some selectors that will enable correct font depending on icon type
 .fa-solid-base {
   font-family: "Font Awesome 6 Free";
 }
 
 .fa-brand-base {
   font-family: "Font Awesome 6 Brands";
+}
+
+/// =============================================================================
+/// Default Font
+/// =============================================================================
+
+/// Font Settings
+@mixin font-settings($fs-size: null, $fs-color: null, $fs-weight: null) {
+  font-size: $fs-size;
+  color: $fs-color;
+  font-weight: $fs-weight;
+}
+
+/// Default H1 Font Settings
+h1 {
+  @include font-settings(
+    map-get($map: a.$headings, $key: "h-1"),
+    a.$font-color-secondary,
+    map-get($map: a.$font-weight, $key: "ExtraBold")
+  );
+}
+
+/// Default H5 Font Settings
+h5 {
+  @include font-settings(
+    map-get($map: a.$headings, $key: "h-5"),
+    a.$font-color-secondary,
+    map-get($map: a.$font-weight, $key: "ExtraBold")
+  );
+}
+
+/// Default p tag Font Settings
+p {
+  @include font-settings(
+    map-get($map: a.$font-sizes, $key: "t-l"),
+    a.$font-color-primary,
+    map-get($map: a.$font-weight, $key: "Regular")
+  );
 }

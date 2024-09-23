@@ -537,7 +537,7 @@ $_grid-max-width: 46.625rem;
           a.$color-white,
           100%,
           true,
-          "\f077",
+          "\f078",
           solid,
           map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
         );
@@ -765,19 +765,28 @@ $_container-name-main: main;
 
   /// App Features
   &__app-features {
-    background-color: blueviolet;
     /// Lest's flex it and Gap it!
     @include l.flex(flex-start);
     gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
     padding-bottom: 7em;
     gap: 12.75em;
 
+    & h1 {
+      padding-bottom: 1.375rem;
+    }
+    & p {
+      @include b.font-settings(
+        null,
+        a.$color-form,
+        map-get($map: a.$font-weight, $key: "Regular")
+      );
+    }
+
     /// Cards Container, holding everything fine and dandy ;)
     &__app-features-cards {
       @include l.flex(flex-start);
       gap: map-get($map: a.$spacing-distance-relative, $key: "s-3-50");
       padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-4-68");
-      background-color: blue;
       max-width: $_grid-max-width;
       flex-wrap: wrap;
     }
@@ -785,15 +794,22 @@ $_container-name-main: main;
     /// Card Container in App features
     &__app-features-cards__card-container {
       @include l.flex(flex-start, row);
-      max-width: 746px;
+      max-width: 46.625em;
 
       flex-wrap: wrap;
       gap: 1.5625em;
     }
+    /// Image Beside Card content
+    &__app-features-cards__card-container img {
+      background-color: a.$color-grey;
+      border-radius: map-get($map: a.$border-radius, $key: "r-0-5");
+      padding: map-get($map: a.$spacing-distance-relative, $key: "s-1-1")
+        map-get($map: a.$spacing-distance-relative, $key: "s-1-25");
+    }
+
     /// Card Items in App features
     &__app-features-cards__card-container__card-item {
-      background-color: red;
-      max-width: 16.3125em;
+      max-width: 15.75em;
     }
     &__app-features-cards__card-container__card-item h5 {
       padding-bottom: 0.75em;

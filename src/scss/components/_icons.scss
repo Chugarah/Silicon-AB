@@ -19,6 +19,7 @@
   /// Adding Font Awesome Icons :)
   @if $font-awesome == true {
     @include v.vendor-fa-icon($fa-icon, $font-awesome-style);
+  } @else {
   }
 }
 
