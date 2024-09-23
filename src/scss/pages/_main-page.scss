@@ -658,6 +658,29 @@ $_grid-max-width: 46.625rem;
 /// Local variabel :D
 $_container-name-main: main;
 
+/// Global Paddings Main Wrapper
+
+.main-wrapper {
+  /// Larger desktop screens
+  /// Adding some padding
+
+  &__company-logos,
+  &__app-features {
+    @include l.container-query(
+      $_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "xlarge-2")
+    ) {
+      /// Adding some Padding eh :D
+      padding-left: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
+      padding-right: map-get(
+        $map: a.$spacing-distance-relative,
+        $key: "s-1-50"
+      );
+    }
+  }
+}
+
 .main-wrapper {
   /// Activate Container Query Properties for main-wrapper
 
@@ -705,20 +728,6 @@ $_container-name-main: main;
         display: none;
       }
     }
-    /// Larger desktop screens
-    /// Adding some padding
-    @include l.container-query(
-      $_container-name-main,
-      0,
-      map-get($map: a.$breakpoints, $key: "xlarge-2")
-    ) {
-      /// Adding some Padding eh :D
-      padding-left: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
-      padding-right: map-get(
-        $map: a.$spacing-distance-relative,
-        $key: "s-1-50"
-      );
-    }
 
     /// Setting
     &__image-item {
@@ -765,6 +774,7 @@ $_container-name-main: main;
 
   /// App Features
   &__app-features {
+    /// TODO: Below 357 pixel the app features card not displaying correctly :),
     /// Lest's flex it and Gap it!
     @include l.flex(flex-start);
     gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
@@ -773,6 +783,14 @@ $_container-name-main: main;
 
     & h1 {
       padding-bottom: 1.375rem;
+      /// Mobile Phones
+      @include l.container-query(
+        $_container-name-main,
+        0,
+        map-get($map: a.$breakpoints, $key: "medium")
+      ) {
+        padding-top: 2.875rem;
+      }
     }
     & p {
       @include b.font-settings(
@@ -782,6 +800,35 @@ $_container-name-main: main;
       );
     }
 
+    /// Tablets smaller laptops
+    @include l.container-query(
+      $_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "xlarge-1")
+    ) {
+      /// Layout Settings Responsive
+      /// Text and Heading aliment
+      & div &__heading,
+      &__p-text {
+        text-align: center;
+      }
+
+      /// Removing Image
+      &__phone-image {
+        display: none;
+      }
+    }
+
+    /// Adding Responsive
+    /// Padding for header container
+    @include l.container-query(
+      $_container-name-header,
+      0,
+      map-get($map: a.$breakpoints, $key: "xlarge-2")
+    ) {
+      background-color: red;
+    }
+
     /// Cards Container, holding everything fine and dandy ;)
     &__app-features-cards {
       @include l.flex(flex-start);
@@ -789,15 +836,54 @@ $_container-name-main: main;
       padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-4-68");
       max-width: $_grid-max-width;
       flex-wrap: wrap;
+      justify-content: center;
+
+      /// Tablets smaller laptops
+      @include l.container-query(
+        $_container-name-main,
+        0,
+        map-get($map: a.$breakpoints, $key: "xlarge-1")
+      ) {
+        /// Layout Settings Responsive
+        & {
+          max-width: 100%;
+        }
+      }
+      /// Mobile Phones
+      @include l.container-query(
+        $_container-name-main,
+        0,
+        map-get($map: a.$breakpoints, $key: "medium")
+      ) {
+        margin: auto;
+      }
     }
 
     /// Card Container in App features
     &__app-features-cards__card-container {
       @include l.flex(flex-start, row);
-      max-width: 46.625em;
-
       flex-wrap: wrap;
       gap: 1.5625em;
+
+      /// Adding Responsive
+      /// Padding for header container
+      @include l.container-query(
+        $_container-name-main,
+        0,
+        map-get($map: a.$breakpoints, $key: "xlarge-1")
+      ) {
+        /// Got Inspired fro AI Solution Phind
+        flex-basis: calc(50% - 2em);
+      }
+      /// Mobile Phones
+      @include l.container-query(
+        $_container-name-main,
+        0,
+        map-get($map: a.$breakpoints, $key: "medium")
+      ) {
+        /// Got Inspired fro AI Solution Phind
+        flex-basis: calc(100%);
+      }
     }
     /// Image Beside Card content
     &__app-features-cards__card-container img {
@@ -809,7 +895,24 @@ $_container-name-main: main;
 
     /// Card Items in App features
     &__app-features-cards__card-container__card-item {
-      max-width: 15.75em;
+      max-width: 14.25em;
+      /// Adding Responsive
+      /// Padding for header container
+      @include l.container-query(
+        $_container-name-main,
+        0,
+        map-get($map: a.$breakpoints, $key: "xlarge-1")
+      ) {
+        max-width: 70%;
+      }
+      /// Mobile Phones
+      @include l.container-query(
+        $_container-name-main,
+        0,
+        map-get($map: a.$breakpoints, $key: "medium")
+      ) {
+        width: 100%;
+      }
     }
     &__app-features-cards__card-container__card-item h5 {
       padding-bottom: 0.75em;

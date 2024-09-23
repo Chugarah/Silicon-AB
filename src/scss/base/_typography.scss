@@ -34,7 +34,7 @@
 /// Default Font
 /// =============================================================================
 
-/// Font Settings
+/// Font Settings Mixin :)
 @mixin font-settings($fs-size: null, $fs-color: null, $fs-weight: null) {
   font-size: $fs-size;
   color: $fs-color;
