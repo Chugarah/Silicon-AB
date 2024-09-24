@@ -1,7 +1,98 @@
-/// @name content-container
+@use "@scss/abstracts/_functions" as f; /// @name content-container
 /// @group Utility
-/// 
-/// 
-.display-none{
-    display: none;
+///
+///
+.display-none {
+  display: none;
 }
+
+/// =============================================================================
+/// Box Shadow Mixin
+/// =============================================================================
+
+/// @name box-shadow
+/// @group Effects
+///
+/// Applies a customizable box shadow or filter drop shadow effect to an element.
+///
+/// @param {Boolean} $filter [null] - If true, applies a filter drop shadow instead of a box shadow
+/// @param {Length} $sh-x - Horizontal offset of the shadow
+/// @param {Length} $sh-y - Vertical offset of the shadow
+/// @param {Length} $sh-blur - Blur radius of the shadow
+/// @param {Length} $sh-spread [null] - Spread radius of the shadow (only for box-shadow)
+/// @param {Color} $sh-color - Color of the shadow in hexadecimal format
+/// @param {Number} $opacity - Opacity of the shadow color (0-1)
+///
+/// @example code-scss
+///   .element {
+///     @include box-shadow(false, 2px, 2px, 4px, 1px, #000000, 0.5);
+///   }
+///
+///   .filtered-element {
+///     @include box-shadow(true, 2px, 2px, 4px, null, #000000, 0.5);
+///   }
+///
+/// @link https://www.rapidtables.com/convert/color/hex-to-rgb.html
+///
+/// @description
+/// box-shadow: [offset-x] [offset-y] [blur-radius] [spread-radius] [color];
+/// The mixin uses the hex-to-rgb function to convert the shadow color from hex to rgba.
+/// Used AI Phind to generate the documentation
+/// Got Helped with filter-drop-shadow code AI Generated
+///  [offset-x] [offset-y] [blur-radius] [spread-radius] [color]
+@mixin box-shadow(
+  $filter: null,
+  $sh-x,
+  $sh-y,
+  $sh-blur,
+  $sh-spread: null,
+  $sh-color,
+  $opacity
+) {
+  @if ($filter == true) {
+    filter: drop-shadow(
+      #{$sh-x} #{$sh-y} #{$sh-blur} #{f.hex-to-rgb($sh-color, $opacity)}
+    );
+  } @else {
+    box-shadow: $sh-x
+      $sh-y
+      $sh-blur
+      $sh-spread
+      f.hex-to-rgb($sh-color, $opacity);
+  }
+}
+
+/// =============================================================================
+/// Image Background Mixin
+/// =============================================================================
+
+/// @name image-background
+/// @group Layout
+///
+/// Applies background styling to an element, typically used for image containers.
+///
+/// @param {Color} $bg-color-ib - Background color of the container
+/// @param {Length} $border-radius-ib - Border radius of the container
+/// @param {Length} $padding-x-ib - Horizontal padding of the container
+/// @param {Length} $padding-y-ib - Vertical padding of the container
+///
+/// @example code-scss
+///   .image-container {
+///     @include image-background(#f5f5f5, 10px, 15px, 20px);
+///   }
+///
+/// @description
+/// This mixin sets the background color, border radius, and padding for an element.
+/// It's commonly used to create consistent styling for image containers or background elements.
+@mixin image-background(
+  $bg-color-ib,
+  $border-radius-ib,
+  $padding-x-ib,
+  $padding-y-ib
+) {
+  background-color: $bg-color-ib;
+  border-radius: $border-radius-ib;
+  padding: $padding-y-ib $padding-x-ib;
+}
+
+/// =============================================================================

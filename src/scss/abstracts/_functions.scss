@@ -1,4 +1,4 @@
-@use 'sass:list';
+@use "sass:list";
 
 /// Inspired by https://sass-lang.com/documentation/values/functions/
 /// Description of function
@@ -9,13 +9,37 @@
 /// @since 0.02
 /// @example code-scss
 ///   grid-template-columns: grid-add-column(1fr, 2fr, 1fr);
-@function create-list($values...){
-    $list: ();
+@function create-list($values...) {
+  $list: ();
 
-    /// Yeaeee first LOOPY!!
-    @each $value in $values{
-        $list: append($list, $value, space)
-    }
+  /// Yeaeee first LOOPY!!
+  @each $value in $values {
+    $list: append($list, $value, space);
+  }
 
-    @return $list;
+  @return $list;
+}
+
+/// =============================================================================
+/// Color Functions
+/// =============================================================================
+
+/// @name hex-to-rgb
+/// @group Color
+///
+/// Converts a hexadecimal color value to an rgba color value with the specified opacity.
+///
+/// @param {Color} $color - The hexadecimal color to convert
+/// @param {Number} $opacity - The opacity value (0-1) to apply to the color
+///
+/// @return {Color} The rgba color value
+///
+/// @example code-scss
+///   $background-color: hex-to-rgb(#ff0000, 0.5);
+///   Returns: rgba(255, 0, 0, 0.5)
+/// used AI Phind to Generate Comments (Sass Doc)
+@function hex-to-rgb($color, $opacity) {
+  $rgb-color: rgba($color, $opacity);
+
+  @return $rgb-color;
 }

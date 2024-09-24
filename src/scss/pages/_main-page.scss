@@ -662,10 +662,10 @@ $_container-name-main: main;
 .main-wrapper {
   /// Larger desktop screens
   /// Adding some padding
-
   &__company-logos,
   &__app-features,
-  &__app-how-diw {
+  &__app-how-diw,
+  &__app-description {
     @include l.container-query(
       $_container-name-main,
       0,
@@ -680,6 +680,14 @@ $_container-name-main: main;
       padding-bottom: 0;
     }
   }
+
+  /// Background Colors
+  .main-wrapper__app-how-diw {
+    background-color: a.$color-grey;
+  }
+  main-wrapper__app-description {
+    background-color: white;
+  }
 }
 
 .main-wrapper {
@@ -690,7 +698,8 @@ $_container-name-main: main;
   /// Content Width
   &__company-logos__container,
   &__app-features__container,
-  &__app-how-diw__container {
+  &__app-how-diw__container,
+  &__app-description__container {
     /// Adding Correct Full With for content
     /// Content Width
     @include l.content-width(
@@ -700,7 +709,8 @@ $_container-name-main: main;
   }
   /// Flex it!
   &__app-how-diw__container,
-  &__app-how-diw__container__image-items {
+  &__app-how-diw__container__image-items,
+  &__app-description__container {
     @include l.flex(flex-start);
   }
   /// Company Logos
@@ -897,10 +907,12 @@ $_container-name-main: main;
     }
     /// Image Beside Card content
     &__app-features-cards__card-container img {
-      background-color: a.$color-grey;
-      border-radius: map-get($map: a.$border-radius, $key: "r-0-5");
-      padding: map-get($map: a.$spacing-distance-relative, $key: "s-1-1")
-        map-get($map: a.$spacing-distance-relative, $key: "s-1-25");
+      @include a.image-background(
+        a.$color-grey,
+        map-get($map: a.$border-radius, $key: "r-0-5"),
+        map-get($map: a.$spacing-distance-relative, $key: "s-1-1"),
+        map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
+      );
     }
 
     /// Card Items in App features
@@ -927,11 +939,6 @@ $_container-name-main: main;
     &__app-features-cards__card-container__card-item h5 {
       padding-bottom: 0.75em;
     }
-  }
-
-  /// Background Color
-  .main-wrapper__app-how-diw {
-    background-color: a.$color-grey;
   }
 
   /// How Does It Works?
@@ -1023,6 +1030,159 @@ $_container-name-main: main;
       #how-phone-3 {
         display: none;
       }
+    }
+  }
+
+  /// App Description
+  &__app-description__container {
+    padding-right: 6.26em;
+    padding-left: 6.25em;
+
+    /// Tablets, Smaller Laptops
+    @include l.container-query(
+      $_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "xlarge-1")
+    ) {
+      & {
+        display: none;
+      }
+    }
+    /// Mobile Phones
+    @include l.container-query(
+      $_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "medium")
+    ) {
+      & {
+        display: none;
+      }
+    }
+
+    /// Content Section
+    &__section {
+      /// With's and Paddings
+      width: map-get($map: a.$content-width-percentage, $key: "half-width");
+      padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-8-31");
+      position: relative;
+      padding-bottom: 5em;
+
+      /// Icon Modification
+      & .fa-circle-check {
+        color: a.$color-primary;
+        padding-bottom: 0.875em;
+        padding-right: map-get(
+          $map: a.$spacing-distance-relative,
+          $key: "s-0-62"
+        );
+      }
+
+      /// Image positioning
+      /// Global Image CSS
+      &__balance-image,
+      &__user-image,
+      &__credit-card-image,
+      &__full-users-image {
+        position: absolute;
+      }
+      &__balance-image {
+        left: 50%;
+        transform: translateX(-55%);
+      }
+      &__user-image {
+        right: 5%;
+        bottom: -175%;
+      }
+      &__credit-card-image {
+        top: 125%;
+        right: 5.5em;
+        object-fit: cover;
+
+        /// Our first Shadow here :);
+        @include a.box-shadow(
+          true,
+          -2.75em,
+          1.625em,
+          1.25em,
+          0em,
+          #060312,
+          0.34
+        );
+      }
+
+      /// Last Text element
+      &__lastp-p-element {
+        padding-bottom: 2.6875em;
+      }
+
+      &__text-wrapper {
+        /// Magic Number rofl, we are trying to get the same result as Figma
+        max-width: 28em;
+      }
+
+      &__text-wrapper h2 {
+        padding-bottom: 2.8125rem;
+        padding-top: 4rem;
+      }
+
+      /// Small modification for longer text wrapper :D
+      &__text-wrapper--longer {
+        /// Magic Number rofl, we are trying to get the same result as Figma
+        max-width: 32.875em;
+        padding-left: map-get(
+          $map: a.$spacing-distance-relative,
+          $key: "s-1-1"
+        );
+      }
+      &__text-wrapper--longer h2 {
+        padding-bottom: 2.8125rem;
+        padding-top: 1.5rem;
+      }
+
+      /// Adding some flex modification
+      &__text-wrapper--flex {
+        @include l.flex(flex-start);
+      }
+      &__text-wrapper__flex-box {
+        width: 50%;
+      }
+      &__text-wrapper__flex-box img {
+        @include a.image-background(
+          a.$color-grey,
+          map-get($map: a.$border-radius, $key: "r-0-5"),
+          map-get($map: a.$spacing-distance-relative, $key: "s-1-1"),
+          map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
+        );
+      }
+      &__text-wrapper__flex-box p {
+        padding-top: map-get(
+          $map: a.$spacing-distance-relative,
+          $key: "s-1-50"
+        );
+        padding-bottom: 2.875em;
+      }
+
+      /// Adding Button hover states
+      /// TODO: This functions i MVP, need testing for when we turn off relative colors and if fallback will work
+      @include c.btn-hover-states(
+        (".main-wrapper__app-description__container__section__learn-more-btn"),
+        a.$color-white,
+        4.2,
+        400ms,
+        a.$color-primary,
+        true,
+        a.$color-form,
+        0.1,
+        200ms,
+        a.$color-primary,
+        true,
+        a.$color-form,
+        0.1,
+        200ms,
+        a.$color-primary,
+        true,
+        0
+      );
     }
   }
 }

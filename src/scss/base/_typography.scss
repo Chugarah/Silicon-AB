@@ -49,6 +49,14 @@ h1 {
     map-get($map: a.$font-weight, $key: "ExtraBold")
   );
 }
+/// Default H2 Font Settings
+h2 {
+  @include font-settings(
+    map-get($map: a.$headings, $key: "h-2"),
+    a.$font-color-secondary,
+    map-get($map: a.$font-weight, $key: "ExtraBold")
+  );
+}
 /// Default H4 Font Settings
 h3 {
   @include font-settings(
