@@ -682,26 +682,24 @@ $_container-name-main: main;
   }
 
   /// Background Colors
+  /// Grey
   & .main-wrapper__app-how-diw,
   & .main-wrapper__clients-app {
     background-color: a.$color-grey;
   }
-  main-wrapper__app-description {
+  /// White
+  & .main-wrapper__app-description,
+  & .main-wrapper__faq {
     background-color: white;
   }
-}
 
-.main-wrapper {
-  /// Activate Container Query Properties for main-wrapper
-  @include l.container-query-wrapper($_container-name-main);
-
-  /// Global :)
   /// Content Width
   &__company-logos__container,
   &__app-features__container,
   &__app-how-diw__container,
   &__app-description__container,
-  &__clients-app__container {
+  &__clients-app__container,
+  &__faq__container {
     /// Adding Correct Full With for content
     /// Content Width
     @include l.content-width(
@@ -718,6 +716,12 @@ $_container-name-main: main;
   &__client-test-card {
     @include l.flex(flex-start);
   }
+}
+
+.main-wrapper {
+  /// Activate Container Query Properties for main-wrapper
+  @include l.container-query-wrapper($_container-name-main);
+
   /// Company Logos
   &__company-logos__container {
     /// Lest's flex it and Gap it!
@@ -1182,8 +1186,9 @@ $_container-name-main: main;
     /// Instead of settings paddings top and bottom as I did above
     /// I decided to add an height and center the content, this is because
     /// we are not doing responsive design on this section
-    height: 33.875em;
-    padding-top: 100px;
+
+    padding-top: 6.25em;
+    padding-bottom: 6.25em;
     gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
 
     /// Tablets, Smaller Laptops
@@ -1216,15 +1221,15 @@ $_container-name-main: main;
           map-get($map: a.$font-weight, $key: "ExtraBold")
         );
 
-        padding-right: 42px;
+        padding-right: 2.625rem;
       }
     }
 
     /// Client Testimonials card
     &__client-test-card {
       /// Setting max dimension for the cards
-      max-width: 416px;
-      max-height: 350px;
+      max-width: 26em;
+      max-height: 21.875em;
 
       @include a.background-generator(
         a.$color-white,
@@ -1252,9 +1257,37 @@ $_container-name-main: main;
         );
       }
 
-      /// Adding Star review styling :)
-      & i:first-child {
+      /// Quotas Icon
+      /// I made the choice to use image of icon because the free icon from
+      /// font awesome was so different.
+      &__icon {
+        /// Giving the image background and color
+        @include a.background-generator(
+          a.$color-primary,
+          map-get($map: a.$border-radius, $key: "r-0-5"),
+          map-get($map: a.$spacing-distance-relative, $key: "s-1-37"),
+          map-get($map: a.$spacing-distance-relative, $key: "s-1-37")
+        );
+        /// Giving color and some overriding bottom padding, wanted to use !important for the first time hehe
+        color: white;
         padding-bottom: map-get(
+          $map: a.$spacing-distance-relative,
+          $key: "s-1-37"
+        ) !important;
+        /// Adding Shadow
+        @include a.box-shadow(false, (0em 0.5em 1.125em -0.5em #6366f1 0.9));
+
+        /// Positioning
+        position: absolute;
+        top: -2.2em;
+      }
+
+      /// Adding Star review styling :)
+      /// Litle special here :), we used first i and last i to give it padding ;)
+      & i:last-of-type,
+      i:first-of-type {
+        padding-bottom: 2.5em;
+        padding-top: map-get(
           $map: a.$spacing-distance-relative,
           $key: "s-1-50"
         );

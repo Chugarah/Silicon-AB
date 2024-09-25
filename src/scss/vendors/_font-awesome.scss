@@ -12,6 +12,7 @@
     } @else if($font-awesome-style == brand) {
       @extend .fa-brand-base;
     }
+
     content: fa.fa-content($font-var);
   }
 }
