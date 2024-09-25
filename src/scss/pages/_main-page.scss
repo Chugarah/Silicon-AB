@@ -9,6 +9,22 @@
   https://www.youtube.com/watch?v=SLjHSVwXYq4
   https://www.reddit.com/r/css/comments/14f9o5l/using_bem_in_2023/
 */
+
+/// =============================================================================
+/// Pro Tip from Stackoverflow
+/// https://stackoverflow.com/questions/42660670/collapse-all-methods-in-visual-studio-code
+/// Collapse all methods in Visual Studio Code
+/// Fold All:
+/// Windows and Linux: Ctrl + K Ctrl + 0 (ZERO)
+/// Mac: ⌘ + K ⌘ + 0
+/// Unfold All:
+/// Windows and Linux: Ctrl + K Ctrl + J
+/// Mac: ⌘ + K ⌘ + J
+/// To see all available shortcuts in the editor:
+/// Windows and Linux: Ctrl + K Ctrl + S
+/// Mac: ⌘ + K ⌘ + S
+/// =============================================================================
+
 /// =============================================================================
 /// Skeleton Structure
 /// =============================================================================
@@ -539,6 +555,7 @@ $_grid-max-width: 46.625rem;
           true,
           "\f078",
           solid,
+          null,
           map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
         );
       }
@@ -665,7 +682,8 @@ $_container-name-main: main;
   &__company-logos,
   &__app-features,
   &__app-how-diw,
-  &__app-description {
+  &__app-description,
+  &__faq__container {
     @include l.container-query(
       $_container-name-main,
       0,
@@ -713,7 +731,8 @@ $_container-name-main: main;
   &__app-description__container,
   &__clients-app__container,
   &__clients-app__container__client-test-card__user-avatar,
-  &__client-test-card {
+  &__client-test-card,
+  &__faq__container__faq-accordion {
     @include l.flex(flex-start);
   }
 }
@@ -1328,6 +1347,60 @@ $_container-name-main: main;
           a.$font-color-secondary,
           map-get($map: a.$font-weight, $key: "Bold")
         );
+      }
+    }
+  }
+
+  /// Any Questions Check out the FAQ
+  &__faq__container {
+    /// Local Vars
+    $_faq-grid-max-rows: 1;
+    /// Lets create the grid!
+    @include l.grid-row-colum(
+      map-get($map: a.$display-type, $key: "grid"),
+      /// Colum here giddy
+      a.create-list(auto),
+      /// Row here giddy
+      a.create-list(repeat(2, auto)),
+      $_faq-grid-max-rows
+    );
+
+    /// Now I will try to use Mobile first Approach
+    /// Starting with container queries
+    /// Header with some text
+    &__faq-header {
+      @include l.container-query(
+        $_container-name-main,
+        0,
+        map-get($map: a.$breakpoints, $key: "medium")
+      ) {
+        & {
+          padding-top: 3.25em;
+          text-align: center;
+        }
+        & p:first-of-type {
+          padding-top: 2.125em;
+          padding-bottom: 3.5625em;
+        }
+      }
+    }
+    /// Accordion FAQ
+    &__faq-accordion {
+      /// Icon when Active Blue
+      &__icon {
+        @include c.icon(
+          a.$color-primary,
+          100%,
+          true,
+          "\f077",
+          solid,
+          a.$color-white,
+          14px 15px
+        );
+      }
+      /// Text Color's
+      &__title p {
+        color: a.$font-color-label;
       }
     }
   }

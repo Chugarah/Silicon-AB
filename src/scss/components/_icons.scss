@@ -6,7 +6,8 @@
   $font-awesome: true,
   $fa-icon,
   $font-awesome-style,
-  $icon-padding...
+  $icon-color: null,
+  $icon-padding
 ) {
   /// Inspired by Phind to improve security and error handling
   /// I will try to implement this style in further mixins
@@ -14,6 +15,10 @@
     background-color: $icon-bg-color;
     padding: $icon-padding;
     border-radius: $icon-border-radius;
+  }
+  /// Adding some Color
+  @if $icon-color !=null {
+    color: $icon-color;
   }
 
   /// Adding Font Awesome Icons :)
