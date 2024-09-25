@@ -12,6 +12,8 @@ $color-white: #ffffff;
 $color-form: #9397ad;
 $color-button-black: #0b0f19;
 $color-grey: #f3f6ff;
+$system-warning: #ffba08;
+$system-grey: #b4b7c9;
 
 /// Grayscale
 $color-gray-scale: #e2e5f1;
@@ -53,6 +55,7 @@ $font-awesome-src: (
 
 $font-sizes: (
   "t-xs": 0.75rem,
+  /// 14px 0.875
   "t-s": 0.875rem,
   /// 14px
   "t-m": 1rem,
@@ -71,7 +74,7 @@ $display-heading: (
   "d-6": 2.625em,
   "d-7": 2.76875em,
   /// 44.3ox
-  "d-8": 2.13125em /// 34.1px,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  "d-8": 2.13125em /// 34.1px,,,,
 );
 $headings: (
   "h-1": 2.5rem,
@@ -204,6 +207,8 @@ $spacing-distance-relative: (
   /// 48px
   "s-2-50": 2.5em,
   /// 40px
+  "s-2-68": 2.6875em,
+  /// 43px
   "s-3-31": 3.125em,
   /// 50px
   "s-3-43": 3.4375em,

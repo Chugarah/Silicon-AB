@@ -7,58 +7,97 @@
 }
 
 /// =============================================================================
-/// Box Shadow Mixin
+/// Box Shadow Mixin (Multiple Shadows)
 /// =============================================================================
 
 /// @name box-shadow
 /// @group Effects
 ///
-/// Applies a customizable box shadow or filter drop shadow effect to an element.
+/// Applies customizable box shadow or filter drop shadow effects to an element.
+/// Supports multiple stacked shadows for both box-shadow and filter: drop-shadow().
 ///
-/// @param {Boolean} $filter [null] - If true, applies a filter drop shadow instead of a box shadow
-/// @param {Length} $sh-x - Horizontal offset of the shadow
-/// @param {Length} $sh-y - Vertical offset of the shadow
-/// @param {Length} $sh-blur - Blur radius of the shadow
-/// @param {Length} $sh-spread [null] - Spread radius of the shadow (only for box-shadow)
-/// @param {Color} $sh-color - Color of the shadow in hexadecimal format
-/// @param {Number} $opacity - Opacity of the shadow color (0-1)
+/// @param {Boolean} $filter [false] - If true, applies filter drop shadow instead of box shadow
+/// @param {List} $shadows... - List of shadow parameters, each set enclosed in parentheses
 ///
 /// @example code-scss
-///   .element {
-///     @include box-shadow(false, 2px, 2px, 4px, 1px, #000000, 0.5);
+///   .element-with-multiple-shadows {
+///     @include box-shadow(
+///       false,
+///       (2px 2px 4px 1px #000000 0.5),
+///       (0 4px 6px null #0000FF 0.3),
+///       (-1px -1px 2px null #FF0000 0.2)
+///     );
 ///   }
 ///
-///   .filtered-element {
-///     @include box-shadow(true, 2px, 2px, 4px, null, #000000, 0.5);
+///   .filtered-element-with-multiple-shadows {
+///     @include box-shadow(
+///       true,
+///       (2px 2px 4px #000000 0.5),
+///       (0 4px 6px #0000FF 0.3),
+///       (-1px -1px 2px #FF0000 0.2)
+///     );
 ///   }
 ///
 /// @link https://www.rapidtables.com/convert/color/hex-to-rgb.html
 ///
 /// @description
-/// box-shadow: [offset-x] [offset-y] [blur-radius] [spread-radius] [color];
+/// For box-shadow: [offset-x] [offset-y] [blur-radius] [spread-radius] [color] [opacity]
+/// For filter: drop-shadow(): [offset-x] [offset-y] [blur-radius] [color] [opacity]
 /// The mixin uses the hex-to-rgb function to convert the shadow color from hex to rgba.
-/// Used AI Phind to generate the documentation
-/// Got Helped with filter-drop-shadow code AI Generated
-///  [offset-x] [offset-y] [blur-radius] [spread-radius] [color]
-@mixin box-shadow(
-  $filter: null,
-  $sh-x,
-  $sh-y,
-  $sh-blur,
-  $sh-spread: null,
-  $sh-color,
-  $opacity
-) {
-  @if ($filter == true) {
-    filter: drop-shadow(
-      #{$sh-x} #{$sh-y} #{$sh-blur} #{f.hex-to-rgb($sh-color, $opacity)}
-    );
+/// This mixin supports multiple stacked shadows and correctly handles both box-shadow
+/// and filter: drop-shadow(), ensuring proper CSS syntax for multiple drop-shadow filters.
+///
+/// @note
+/// For filter: drop-shadow(), each shadow is applied as a separate drop-shadow() function,
+/// allowing for correct stacking of multiple filter shadows.
+///
+/// @implementation
+/// The mixin loops through each provided shadow, constructs the appropriate string
+/// representation, and then combines them into either a single box-shadow property
+/// or multiple drop-shadow() functions within a filter property.
+///
+/// This implementation ensures compatibility with CSS specifications for both
+/// box-shadow and filter: drop-shadow(), providing maximum flexibility and correct
+/// rendering of multiple shadows in both contexts.
+/// The code below is 100% improved using AI Phind, Previous solution just supported one
+/// shadow now we can have unlimited stacked shadow both filter and box-shadow. AI even
+/// created the Documentation above :P
+@mixin box-shadow($filter: false, $shadows...) {
+  $result: ();
+
+  @each $shadow in $shadows {
+    $sh-x: nth($shadow, 1);
+    $sh-y: nth($shadow, 2);
+    $sh-blur: nth($shadow, 3);
+    $sh-spread: if(length($shadow) > 5, nth($shadow, 4), null);
+    $sh-color: nth($shadow, -2);
+    $opacity: nth($shadow, -1);
+
+    $shadow-string: "";
+    @if $filter {
+      $shadow-string: #{$sh-x}
+        #{$sh-y}
+        #{$sh-blur}
+        #{f.hex-to-rgb($sh-color, $opacity)};
+    } @else {
+      $shadow-string: #{$sh-x}
+        #{$sh-y}
+        #{$sh-blur}
+        #{$sh-spread}
+        #{f.hex-to-rgb($sh-color, $opacity)};
+    }
+
+    @if $filter {
+      $result: append($result, drop-shadow($shadow-string));
+    } @else {
+      $result: append($result, $shadow-string, comma);
+    }
+  }
+
+  @if $filter {
+    filter: $result;
   } @else {
-    box-shadow: $sh-x
-      $sh-y
-      $sh-blur
-      $sh-spread
-      f.hex-to-rgb($sh-color, $opacity);
+    box-shadow: $result;
   }
 }
 
@@ -84,15 +123,20 @@
 /// @description
 /// This mixin sets the background color, border radius, and padding for an element.
 /// It's commonly used to create consistent styling for image containers or background elements.
-@mixin image-background(
+@mixin background-generator(
   $bg-color-ib,
   $border-radius-ib,
   $padding-x-ib,
-  $padding-y-ib
+  $padding-y-ib,
+  $bg-position: null
 ) {
   background-color: $bg-color-ib;
   border-radius: $border-radius-ib;
   padding: $padding-y-ib $padding-x-ib;
+
+  @if $bg-position != null {
+    position: $bg-position;
+  }
 }
 
 /// =============================================================================

@@ -682,7 +682,8 @@ $_container-name-main: main;
   }
 
   /// Background Colors
-  .main-wrapper__app-how-diw {
+  & .main-wrapper__app-how-diw,
+  & .main-wrapper__clients-app {
     background-color: a.$color-grey;
   }
   main-wrapper__app-description {
@@ -699,7 +700,8 @@ $_container-name-main: main;
   &__company-logos__container,
   &__app-features__container,
   &__app-how-diw__container,
-  &__app-description__container {
+  &__app-description__container,
+  &__clients-app__container {
     /// Adding Correct Full With for content
     /// Content Width
     @include l.content-width(
@@ -710,7 +712,10 @@ $_container-name-main: main;
   /// Flex it!
   &__app-how-diw__container,
   &__app-how-diw__container__image-items,
-  &__app-description__container {
+  &__app-description__container,
+  &__clients-app__container,
+  &__clients-app__container__client-test-card__user-avatar,
+  &__client-test-card {
     @include l.flex(flex-start);
   }
   /// Company Logos
@@ -907,7 +912,7 @@ $_container-name-main: main;
     }
     /// Image Beside Card content
     &__app-features-cards__card-container img {
-      @include a.image-background(
+      @include a.background-generator(
         a.$color-grey,
         map-get($map: a.$border-radius, $key: "r-0-5"),
         map-get($map: a.$spacing-distance-relative, $key: "s-1-1"),
@@ -1048,16 +1053,6 @@ $_container-name-main: main;
         display: none;
       }
     }
-    /// Mobile Phones
-    @include l.container-query(
-      $_container-name-main,
-      0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
-      & {
-        display: none;
-      }
-    }
 
     /// Content Section
     &__section {
@@ -1099,20 +1094,15 @@ $_container-name-main: main;
         object-fit: cover;
 
         /// Our first Shadow here :);
-        @include a.box-shadow(
-          true,
-          -2.75em,
-          1.625em,
-          1.25em,
-          0em,
-          #060312,
-          0.34
-        );
+        @include a.box-shadow(true, -2.75em 1.625em 1.25em 0em #060312 0.34);
       }
 
       /// Last Text element
       &__lastp-p-element {
-        padding-bottom: 2.6875em;
+        padding-bottom: map-get(
+          $map: a.$spacing-distance-relative,
+          $key: "s-2-68"
+        );
       }
 
       &__text-wrapper {
@@ -1147,7 +1137,7 @@ $_container-name-main: main;
         width: 50%;
       }
       &__text-wrapper__flex-box img {
-        @include a.image-background(
+        @include a.background-generator(
           a.$color-grey,
           map-get($map: a.$border-radius, $key: "r-0-5"),
           map-get($map: a.$spacing-distance-relative, $key: "s-1-1"),
@@ -1183,6 +1173,129 @@ $_container-name-main: main;
         true,
         0
       );
+    }
+  }
+
+  /// Clients Are Loving Our App
+  &__clients-app__container {
+    /// Basic Settings for Client loving our app section
+    /// Instead of settings paddings top and bottom as I did above
+    /// I decided to add an height and center the content, this is because
+    /// we are not doing responsive design on this section
+    height: 33.875em;
+    padding-top: 100px;
+    gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
+
+    /// Tablets, Smaller Laptops
+    @include l.container-query(
+      $_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "xlarge-1")
+    ) {
+      & {
+        display: none;
+      }
+    }
+    /// Mobile Phones
+    @include l.container-query(
+      $_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "medium")
+    ) {
+      & {
+        display: none;
+      }
+    }
+
+    /// Clients header, setting up font, no heading from Figma
+    &__client-intro {
+      & p {
+        @include b.font-settings(
+          map-get($map: a.$headings, $key: "h-1"),
+          a.$font-color-secondary,
+          map-get($map: a.$font-weight, $key: "ExtraBold")
+        );
+
+        padding-right: 42px;
+      }
+    }
+
+    /// Client Testimonials card
+    &__client-test-card {
+      /// Setting max dimension for the cards
+      max-width: 416px;
+      max-height: 350px;
+
+      @include a.background-generator(
+        a.$color-white,
+        map-get($map: a.$border-radius, $key: "r-0-5"),
+        map-get($map: a.$spacing-distance-relative, $key: "s-1-50"),
+        map-get($map: a.$spacing-distance-relative, $key: "s-2-68"),
+        relative
+      );
+      padding-bottom: map-get(
+        $map: a.$spacing-distance-relative,
+        $key: "s-1-50"
+      );
+      /// Adding Shadow
+      @include a.box-shadow(
+        false,
+        (0em 0.275em 0.75em null #131022 0.06),
+        (0em 0.125em 0.4em null #131022 0.03)
+      );
+
+      & p {
+        @include b.font-settings(
+          map-get($map: a.$font-sizes, $key: "t-l"),
+          a.$font-color-primary,
+          map-get($map: a.$font-weight, $key: "Regular")
+        );
+      }
+
+      /// Adding Star review styling :)
+      & i:first-child {
+        padding-bottom: map-get(
+          $map: a.$spacing-distance-relative,
+          $key: "s-1-50"
+        );
+      }
+      & i.fa-star {
+        color: a.$system-warning;
+      }
+      & i.fa-regular {
+        color: a.$system-grey;
+      }
+
+      /// Text Padding
+      & p:first-of-type {
+        padding-bottom: map-get(
+          $map: a.$spacing-distance-relative,
+          $key: "s-1-50"
+        );
+      }
+      /// User Avatar
+      &__user-avatar {
+        height: 48px;
+        gap: 1em;
+        align-items: center;
+      }
+      /// Targeting P tag to remove padding
+      &__user-avatar div:first-of-type p {
+        padding-bottom: 0;
+        @include b.font-settings(
+          map-get($map: a.$font-sizes, $key: "t-s"),
+          a.$color-form,
+          map-get($map: a.$font-weight, $key: "Regular")
+        );
+      }
+      &__user-avatar div:first-of-type p:first-child {
+        padding-bottom: 0.3em;
+        @include b.font-settings(
+          map-get($map: a.$font-sizes, $key: "t-m"),
+          a.$font-color-secondary,
+          map-get($map: a.$font-weight, $key: "Bold")
+        );
+      }
     }
   }
 }
