@@ -96,6 +96,24 @@
   }
 }
 
+/// FAQ Button
+.main-wrapper__faq__container__faq-contact {
+  &__contact-us-now-btn {
+    /// Basic Styling for BTN
+    @include a.btn;
+
+    /// Primary Btn specs
+    &--primary {
+      @include a.btn-props(
+        a.$color-white,
+        a.$color-primary,
+        map-get($map: a.$border-radius, $key: "r-0-3"),
+        a.create-list(1.25em a.create-list(1.75em))
+      );
+    }
+  }
+}
+
 /// =============================================================================
 /// Other Buttons
 /// =============================================================================

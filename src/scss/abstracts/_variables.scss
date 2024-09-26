@@ -55,12 +55,10 @@ $font-awesome-src: (
 
 $font-sizes: (
   "t-xs": 0.75rem,
-  /// 14px 0.875
-  "t-s": 0.875rem,
   /// 14px
+  "t-s": 0.875rem,
   "t-m": 1rem,
   "t-l": 1.125rem,
-  /// 18px
   "t-xl": 125rem,
   "t-lt": 1.5rem,
 );
@@ -74,7 +72,7 @@ $display-heading: (
   "d-6": 2.625em,
   "d-7": 2.76875em,
   /// 44.3ox
-  "d-8": 2.13125em /// 34.1px,,,,,,,,,,,,
+  "d-8": 2.13125em /// 34.1px,,,,,,,,,,,,,,,,,,,,
 );
 $headings: (
   "h-1": 2.5rem,
@@ -184,6 +182,8 @@ $max-content-width: (
 ///     gap: map-get($map: $spacing-distance-relative, $key: 's-0-15');
 ///   }
 $spacing-distance-relative: (
+  /// 2px
+  "s-0-12": 0.125em,
   /// 8px
   "s-0-15": 0.5em,
   /// 9px
@@ -269,8 +269,8 @@ $spacing-distance-base: (
 ///   }
 $border-radius: (
   "r-0-2": 0.25em,
-  /// 8px
-  "r-0-3": 0.375em,
+  /// 6px
+  "r-0-3": 0.675em,
   /// 8px
   "r-0-5": 0.5em,
   "r-2-2": 2.25em,

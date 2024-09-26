@@ -683,18 +683,15 @@ $_container-name-main: main;
   &__app-features,
   &__app-how-diw,
   &__app-description,
-  &__faq__container {
+  &__faq__container__faq-header {
     @include l.container-query(
       $_container-name-main,
       0,
       map-get($map: a.$breakpoints, $key: "xlarge-1")
     ) {
       /// Adding some Padding eh :D
-      padding-left: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
-      padding-right: map-get(
-        $map: a.$spacing-distance-relative,
-        $key: "s-1-50"
-      );
+      padding-left: 1.375em;
+      padding-right: 1.375em;
       padding-bottom: 0;
     }
   }
@@ -732,7 +729,8 @@ $_container-name-main: main;
   &__clients-app__container,
   &__clients-app__container__client-test-card__user-avatar,
   &__client-test-card,
-  &__faq__container__faq-accordion {
+  &__faq__container__faq-accordion,
+  &__faq__container__faq-accordion__title {
     @include l.flex(flex-start);
   }
 }
@@ -1265,7 +1263,10 @@ $_container-name-main: main;
       @include a.box-shadow(
         false,
         (0em 0.275em 0.75em null #131022 0.06),
-        (0em 0.125em 0.4em null #131022 0.03)
+        (
+          0em map-get($map: a.$spacing-distance-relative, $key: "s-0-12") 0.4em
+            null #131022 0.03
+        )
       );
 
       & p {
@@ -1354,14 +1355,14 @@ $_container-name-main: main;
   /// Any Questions Check out the FAQ
   &__faq__container {
     /// Local Vars
-    $_faq-grid-max-rows: 1;
+    $_faq-grid-max-rows: 2;
     /// Lets create the grid!
     @include l.grid-row-colum(
       map-get($map: a.$display-type, $key: "grid"),
       /// Colum here giddy
       a.create-list(auto),
       /// Row here giddy
-      a.create-list(repeat(2, auto)),
+      a.create-list(auto, auto),
       $_faq-grid-max-rows
     );
 
@@ -1386,22 +1387,153 @@ $_container-name-main: main;
     }
     /// Accordion FAQ
     &__faq-accordion {
+      flex-direction: column;
+
+      /// Global CSS Mobile/Tablets
+      /// Adding Space between Paragrafs in mobile view
+      &__content p {
+        /// Font Settings
+        @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-s"));
+      }
+      &__title {
+        /// Flex Settings
+        justify-content: space-between;
+      }
+      &__title,
+      &__content {
+        /// Setting Content too 100%
+        width: 100%;
+      }
+
+      @include l.container-query(
+        $_container-name-main,
+        0,
+        map-get($map: a.$breakpoints, $key: "medium")
+      ) {
+        & {
+          justify-content: center;
+          /// Special Padding for Mobile versions
+          padding-left: 0.625em;
+          padding-right: 0.625em;
+        }
+
+        &__title,
+        &__content {
+          /// Borders
+          border-top: map-get(
+              $map: a.$spacing-distance-relative,
+              $key: "s-0-12"
+            )
+            solid a.$color-grey;
+          border-left: map-get(
+              $map: a.$spacing-distance-relative,
+              $key: "s-0-12"
+            )
+            solid a.$color-grey;
+          border-right: map-get(
+              $map: a.$spacing-distance-relative,
+              $key: "s-0-12"
+            )
+            solid a.$color-grey;
+
+          /// Text Positioning
+          padding: 1rem
+            map-get($map: a.$spacing-distance-relative, $key: "s-1-37");
+        }
+        /// Adding Space between Paragrafs in mobile view
+        &__content p {
+          padding-bottom: 1.75rem;
+        }
+        /// Border radius handling
+        &__title--border-radius {
+          border-radius: map-get($map: a.$border-radius, $key: "r-0-5")
+            map-get($map: a.$border-radius, $key: "r-0-5") 0 0;
+        }
+      }
+
       /// Icon when Active Blue
       &__icon {
         @include c.icon(
-          a.$color-primary,
+          a.$color-grey,
           100%,
           true,
-          "\f077",
+          "\f078",
           solid,
-          a.$color-white,
-          14px 15px
+          map-get($map: a.$links-color, $key: "link-bar"),
+          0.875rem 0.9375rem
         );
+        &--active {
+          @include c.icon(
+            a.$color-primary,
+            100%,
+            true,
+            "\f077",
+            solid,
+            a.$color-white,
+            0.875rem 0.9375rem
+          );
+          /// Adding Shadow
+          @include a.box-shadow(false, (0em -0.5em 1.125em -0.5em #6366f1 0.9));
+        }
       }
-      /// Text Color's
+
+      /// FAQ Title Area
+      &__title {
+        align-items: center;
+      }
       &__title p {
         color: a.$font-color-label;
       }
+    }
+
+    /// FAQ Contact Section
+    &__faq-contact {
+      /// Buttons
+      ///
+      @include l.container-query(
+        $_container-name-main,
+        0,
+        map-get($map: a.$breakpoints, $key: "medium")
+      ) {
+        & {
+          /// Adding Paddings
+          padding-top: 3.625em;
+          padding-bottom: 2.625em;
+          text-align: center;
+        }
+
+        &__contact-us-now-btn--primary {
+          /// Changing Font
+          @include b.font-settings(
+            map-get($map: a.$font-sizes, $key: "t-s"),
+            a.$color-white,
+            map-get($map: a.$font-weight, $key: "SemiBold")
+          );
+        }
+      }
+
+      /// Adding Button Hover
+      @include c.btn-hover-states(
+        (
+          ".main-wrapper__faq__container__faq-contact__contact-us-now-btn--primary"
+        ),
+        a.$color-white,
+        4.2,
+        400ms,
+        a.$color-primary,
+        true,
+        a.$color-form,
+        0.1,
+        200ms,
+        a.$color-primary,
+        true,
+        a.$color-form,
+        0.1,
+        200ms,
+        a.$color-primary,
+        true,
+        0
+      );
     }
   }
 }
