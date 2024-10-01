@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @use "sass:map";
 @use "sass:meta";
 @use "@scss/base" as b;
@@ -26,6 +28,11 @@
 /// =============================================================================
 
 /// =============================================================================
+/// Variables
+/// =============================================================================
+/// Icon Variables
+
+/// =============================================================================
 /// Skeleton Structure
 /// =============================================================================
 /// @name skeleton-wrapper
@@ -35,11 +42,9 @@
 /// We are using an mixin to create the grid and functions that create an list
 ///
 .skeleton-wrapper {
-  @include l.grid-row-colum(
-    map-get($map: a.$display-type, $key: "grid"),
+  @include l.grid-row-colum(map-get($map: a.$display-type, $key: "grid"),
     a.create-list(1fr),
-    a.create-list(auto, 2fr, auto)
-  );
+    a.create-list(auto, 2fr, auto));
 
   /// Basic Settings
   & {
@@ -57,6 +62,7 @@
 /// Local variabel :D
 $_container-name-header: header;
 $_grid-max-width: 46.625rem;
+
 /// Setting Background color
 /// and sets the container name for container query /responsive
 .header_wrapper {
@@ -65,12 +71,10 @@ $_grid-max-width: 46.625rem;
   /// Radial gradient background
   /// Creates a subtle color transition from purple to pink to almost white
   /// Background Gradient for Header and Promotion
-  background: radial-gradient(
-    125% 125% at 50% 110%,
-    rgba(99, 102, 241, 0.1) 0%,
-    rgba(218, 70, 239, 0.05) 42%,
-    rgba(241, 244, 253, 0.07) 83%
-  );
+  background: radial-gradient(125% 125% at 50% 110%,
+      rgba(99, 102, 241, 0.1) 0%,
+      rgba(218, 70, 239, 0.05) 42%,
+      rgba(241, 244, 253, 0.07) 83%);
 }
 
 /// Setting Content Width and activating some basic responsive settings
@@ -79,42 +83,32 @@ $_grid-max-width: 46.625rem;
 .hero-section {
   /// Content Width
   justify-content: space-between;
-  @include l.content-width(
-    map-get($map: a.$max-content-width, $key: "desktop"),
-    map-get($map: a.$content-width-percentage, $key: "full-width")
-  );
+  @include l.content-width(map-get($map: a.$max-content-width, $key: "desktop"),
+    map-get($map: a.$content-width-percentage, $key: "full-width"));
 
   /// Tablets, Small Laptops
-  @include l.container-query(
-    $_container-name-header,
+  @include l.container-query($_container-name-header,
     0,
-    map-get($map: a.$breakpoints, $key: "medium")
-  ) {
+    map-get($map: a.$breakpoints, $key: "medium")) {
     /// Content Width
-    @include l.content-width(
-      map-get($map: a.$max-content-width, $key: "tablet"),
-      map-get($map: a.$content-width-percentage, $key: "full-width")
-    );
+    @include l.content-width(map-get($map: a.$max-content-width, $key: "tablet"),
+      map-get($map: a.$content-width-percentage, $key: "full-width"));
     justify-content: space-between;
   }
 
   /// Padding for header container
-  @include l.container-query(
-    $_container-name-header,
+  @include l.container-query($_container-name-header,
     0,
-    map-get($map: a.$breakpoints, $key: "xlarge-2")
-  ) {
+    map-get($map: a.$breakpoints, $key: "xlarge-2")) {
     transition: all 200ms;
     padding-left: map-get($map: a.$spacing-distance-relative, $key: "s-2-50");
     padding-right: map-get($map: a.$spacing-distance-relative, $key: "s-2-50");
   }
 
   /// Mobile Phones :)
-  @include l.container-query(
-    $_container-name-header,
+  @include l.container-query($_container-name-header,
     0,
-    map-get($map: a.$breakpoints, $key: "medium")
-  ) {
+    map-get($map: a.$breakpoints, $key: "medium")) {
     padding-left: map-get($map: a.$spacing-distance-relative, $key: "s-0-62");
     padding-right: map-get($map: a.$spacing-distance-relative, $key: "s-0-62");
   }
@@ -129,11 +123,9 @@ $_grid-max-width: 46.625rem;
   height: 4.75rem;
 
   /// Remove the spacing to mobile link, because the text Dark-mode is out of space
-  @include l.container-query(
-    $_container-name-header,
+  @include l.container-query($_container-name-header,
     0,
-    map-get($map: a.$breakpoints, $key: "small")
-  ) {
+    map-get($map: a.$breakpoints, $key: "small")) {
     padding-right: map-get($map: a.$spacing-distance-relative, $key: "s-1-1");
   }
 
@@ -148,11 +140,9 @@ $_grid-max-width: 46.625rem;
     flex: 1;
 
     /// Tablets, Small Laptops
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
+      map-get($map: a.$breakpoints, $key: "medium")) {
       display: none;
     }
 
@@ -165,13 +155,11 @@ $_grid-max-width: 46.625rem;
     }
 
     &__navigation__li-items {
-      @include a.link-nav-animation(
-        map-get($map: a.$links-color, $key: "link-nav"),
+      @include a.link-nav-animation(map-get($map: a.$links-color, $key: "link-nav"),
         0,
         400ms,
         null,
-        true
-      );
+        true);
     }
 
     &__navigation__li-items:hover {
@@ -193,22 +181,18 @@ $_grid-max-width: 46.625rem;
     @include l.flex(center);
 
     /// Tablets & Smaller laptops
-    @include l.container-query(
-      header,
+    @include l.container-query(header,
       0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
+      map-get($map: a.$breakpoints, $key: "medium")) {
       flex: 1;
       justify-content: flex-end;
       padding-right: map-get($map: a.$spacing-distance-relative, $key: "s-1-1");
     }
 
     /// Mobile devices
-    @include l.container-query(
-      header,
+    @include l.container-query(header,
       0,
-      map-get($map: a.$breakpoints, $key: "small")
-    ) {
+      map-get($map: a.$breakpoints, $key: "small")) {
       padding-right: 0;
     }
 
@@ -220,11 +204,9 @@ $_grid-max-width: 46.625rem;
       font-weight: map-get($map: a.$font-weight, $key: "Bold");
 
       /// Remove the spacing to mobile link, because the text Dark-mode is out of space
-      @include l.container-query(
-        header,
+      @include l.container-query(header,
         0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
+        map-get($map: a.$breakpoints, $key: "medium")) {
         display: none;
       }
     }
@@ -242,20 +224,16 @@ $_grid-max-width: 46.625rem;
       /// From the Switch and got 76ox
       margin-left: 1.875em;
 
-      @include a.link-nav-animation(
-        a.$color-white,
+      @include a.link-nav-animation(a.$color-white,
         0,
         400ms,
         a.$color-primary,
-        true
-      );
+        true);
       /// Tablets, Small Laptops
 
-      @include l.container-query(
-        header,
+      @include l.container-query(header,
         0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
+        map-get($map: a.$breakpoints, $key: "medium")) {
         display: none;
       }
     }
@@ -270,29 +248,23 @@ $_grid-max-width: 46.625rem;
       cursor: pointer;
 
       /// Show the mobile link
-      @include l.container-query(
-        $_container-name-header,
+      @include l.container-query($_container-name-header,
         0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
+        map-get($map: a.$breakpoints, $key: "medium")) {
         padding-left: 15%;
         display: block;
       }
 
       /// Remove the spacing to mobile link, because the text Dark-mode is out of space
-      @include l.container-query(
-        $_container-name-header,
+      @include l.container-query($_container-name-header,
         0,
-        map-get($map: a.$breakpoints, $key: "small")
-      ) {
-        padding-left: map-get(
-          $map: a.$spacing-distance-relative,
-          $key: "s-1-1"
-        );
-        padding-right: map-get(
-          $map: a.$spacing-distance-relative,
-          $key: "s-1-87"
-        );
+        map-get($map: a.$breakpoints, $key: "small")) {
+        padding-left: map-get($map: a.$spacing-distance-relative,
+            $key: "s-1-1"
+          );
+        padding-right: map-get($map: a.$spacing-distance-relative,
+            $key: "s-1-87"
+          );
       }
     }
 
@@ -302,33 +274,27 @@ $_grid-max-width: 46.625rem;
 
     // Adding some Hover, active stated
     &__btn-sign-in-up:hover {
-      @include a.link-nav-animation(
-        a.$color-white,
+      @include a.link-nav-animation(a.$color-white,
         4.2,
         400ms,
         a.$color-primary,
-        true
-      );
+        true);
     }
 
     &__btn-sign-in-up:active {
-      @include a.link-nav-animation(
-        a.$color-form,
+      @include a.link-nav-animation(a.$color-form,
         0.1,
         200ms,
         a.$color-primary,
-        true
-      );
+        true);
     }
 
     &__btn-sign-in-up:focus-visible {
-      @include a.link-nav-animation(
-        a.$color-form,
+      @include a.link-nav-animation(a.$color-form,
         0.1,
         200ms,
         a.$color-primary,
-        true
-      );
+        true);
     }
   }
 }
@@ -341,31 +307,25 @@ $_grid-max-width: 46.625rem;
   $hero-max-width: 31.875rem;
 
   /// Creating Grid
-  @include l.grid-row-colum(
-    map-get($map: a.$display-type, $key: "grid"),
+  @include l.grid-row-colum(map-get($map: a.$display-type, $key: "grid"),
     a.create-list(auto, auto),
     a.create-list(auto, 2fr, auto),
-    $max-rows
-  );
+    $max-rows );
 
   & {
     /// Added top padding desktop, the padding starts from the image
     padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-9-37");
 
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge-1")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge-1")) {
       padding-top: map-get($map: a.$spacing-distance-base, $key: "sb-5-00");
     }
 
     /// Mobile Phones :)
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
+      map-get($map: a.$breakpoints, $key: "medium")) {
       padding-top: map-get($map: a.$spacing-distance-base, $key: "sb-2-50");
       padding-top: map-get($map: a.$spacing-distance-base, $key: "sb-2-37");
     }
@@ -386,17 +346,14 @@ $_grid-max-width: 46.625rem;
       padding-bottom: map-get($map: a.$spacing-distance-base, $key: "sb-1-50");
 
       /// Tablet mode :)
-      @include l.container-query(
-        $_container-name-header,
+      @include l.container-query($_container-name-header,
         0,
-        map-get($map: a.$breakpoints, $key: "xlarge-1")
-      ) {
+        map-get($map: a.$breakpoints, $key: "xlarge-1")) {
         @include l.grid-position(1, 3, 1, 1);
         padding-top: 0;
-        padding-bottom: map-get(
-          $map: a.$spacing-distance-base,
-          $key: "sb-2-18"
-        );
+        padding-bottom: map-get($map: a.$spacing-distance-base,
+            $key: "sb-2-18"
+          );
         text-align: center;
         font-size: map-get($map: a.$display-heading, $key: "d-7");
         max-width: 75%;
@@ -404,11 +361,9 @@ $_grid-max-width: 46.625rem;
       }
 
       /// Mobile Phones :)
-      @include l.container-query(
-        $_container-name-header,
+      @include l.container-query($_container-name-header,
         0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
+        map-get($map: a.$breakpoints, $key: "medium")) {
         font-size: map-get($map: a.$display-heading, $key: "d-8");
         max-width: 100%;
         margin: 0 auto;
@@ -427,30 +382,24 @@ $_grid-max-width: 46.625rem;
     padding-bottom: map-get($map: a.$spacing-distance-base, $key: "sb-3-00");
 
     /// Tablet mode :)
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge-1")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge-1")) {
       padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-5-62");
-      padding-bottom: map-get(
-        $map: a.$spacing-distance-relative,
-        $key: "s-2-50"
-      );
+      padding-bottom: map-get($map: a.$spacing-distance-relative,
+          $key: "s-2-50"
+        );
     }
 
     /// Mobile Phones :)
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
+      map-get($map: a.$breakpoints, $key: "medium")) {
       @include l.grid-position(1, 3, 2, 2);
       padding-top: 0;
-      padding-bottom: map-get(
-        $map: a.$spacing-distance-relative,
-        $key: "s-2-50"
-      );
+      padding-bottom: map-get($map: a.$spacing-distance-relative,
+          $key: "s-2-50"
+        );
       text-align: center;
       max-width: 100%;
     }
@@ -463,20 +412,16 @@ $_grid-max-width: 46.625rem;
     gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
 
     /// Tablets & Smaller laptops
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge-1")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge-1")) {
       gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-1");
     }
 
     /// Mobile Phones :)
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
+      map-get($map: a.$breakpoints, $key: "medium")) {
       @include l.grid-position(1, 3, 3, 3);
       flex-direction: column;
       align-items: center;
@@ -498,77 +443,75 @@ $_grid-max-width: 46.625rem;
     font-weight: map-get($map: a.$font-weight, $key: "Regular");
     color: a.$font-color-primary;
 
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge-1")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge-1")) {
       padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-2-50");
-      padding-bottom: map-get(
-        $map: a.$spacing-distance-relative,
-        $key: "s-3-00"
-      );
+      padding-bottom: map-get($map: a.$spacing-distance-relative,
+          $key: "s-3-00"
+        );
     }
 
     /// Mobile Devices
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
+      map-get($map: a.$breakpoints, $key: "medium")) {
       @include l.grid-position(1, 3, 4, 4);
       padding-bottom: map-get($map: a.$spacing-distance-base, $key: "sb-1-87");
       justify-content: center;
     }
 
     &__link-item {
+
       /// Base Color ANimation :D
       & {
-        @include a.link-nav-animation(
-          a.$font-color-primary,
+        @include a.link-nav-animation(a.$font-color-primary,
           1.2,
           400ms,
           null,
-          false
-        );
+          false);
 
         /// Text element
         & span {
           margin: map-get($map: a.$spacing-distance-relative, $key: "s-1-1");
 
           /// Mobile Devices
-          @include l.container-query(
-            $_container-name-header,
+          @include l.container-query($_container-name-header,
             0,
-            map-get($map: a.$breakpoints, $key: "medium")
-          ) {
+            map-get($map: a.$breakpoints, $key: "medium")) {
             margin: map-get($map: a.$spacing-distance-relative, $key: "s-1-2");
           }
         }
       }
 
       /// Setting up Icon :)
-      &__discover-more__icon {
-        @include c.icon(
-          a.$color-white,
-          100%,
-          true,
-          "\f078",
-          solid,
-          null,
-          map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
-        );
-      }
+      // &__discover-more__icon {
+      //   @include c.icon(
+      //     $icon-bg-color: a.$color-white,
+      //     $icon-border-radius: 100%,
+      //     $font-awesome: true,
+      //     $icon-width:
+      //       map-get($map: a.$spacing-distance-relative, $key: "s-2-75"),
+      //     $icon-height:
+      //       map-get($map: a.$spacing-distance-relative, $key: "s-2-75"),
+      //     $fa-icon: "\f078",
+      //     $font-awesome-style: solid,
+      //     $icon-color: null,
+      //     $icon-padding: null,
+      //     $fa-icon-width:
+      //       map-get($map: a.$spacing-distance-relative, $key: "s-0-62"),
+      //     $fa-icon-height:
+      //       map-get($map: a.$spacing-distance-relative, $key: "s-0-62")
+      //   );
+      // }
 
       /// Adding Hover State
       &:hover {
-        @include a.link-nav-animation(
-          a.$color-primary,
+        @include a.link-nav-animation(a.$color-primary,
           1.2,
           400ms,
           null,
-          false
-        );
+          false);
       }
 
       /// Activate State
@@ -592,11 +535,9 @@ $_grid-max-width: 46.625rem;
     width: $_grid-max-width;
 
     /// Preparing for Pad/Tablets
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge-3")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge-3")) {
       /// This was added to avoid the images be hidden in to right side, now we see them all the time
       /// even in smaller container size
       margin-right: -1em;
@@ -604,11 +545,9 @@ $_grid-max-width: 46.625rem;
 
     /// Larger desktop screens
 
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge-1")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge-1")) {
       @include l.grid-position(2, 2, 2, 5);
       max-width: 25.9375em;
       margin-right: -1em;
@@ -616,11 +555,9 @@ $_grid-max-width: 46.625rem;
     }
 
     /// Tablets & Smaller laptops
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
+      map-get($map: a.$breakpoints, $key: "medium")) {
       display: none;
     }
 
@@ -640,11 +577,9 @@ $_grid-max-width: 46.625rem;
       z-index: 250;
       width: 24.375em;
 
-      @include l.container-query(
-        $_container-name-header,
+      @include l.container-query($_container-name-header,
         0,
-        map-get($map: a.$breakpoints, $key: "xlarge-1")
-      ) {
+        map-get($map: a.$breakpoints, $key: "xlarge-1")) {
         width: 15.23375em;
         right: 0;
       }
@@ -656,11 +591,9 @@ $_grid-max-width: 46.625rem;
       z-index: 125;
       width: 23.5em;
 
-      @include l.container-query(
-        $_container-name-header,
+      @include l.container-query($_container-name-header,
         0,
-        map-get($map: a.$breakpoints, $key: "xlarge-1")
-      ) {
+        map-get($map: a.$breakpoints, $key: "xlarge-1")) {
         width: 15.23375em;
         right: 8.8em;
         top: 5.2em;
@@ -677,6 +610,7 @@ $_container-name-main: main;
 
 /// Global SCSS for Main wrapper and it's children
 .main-wrapper {
+
   /// Larger desktop screens
   /// Adding some padding
   &__company-logos,
@@ -684,11 +618,10 @@ $_container-name-main: main;
   &__app-how-diw,
   &__app-description,
   &__faq__container__faq-header {
-    @include l.container-query(
-      $_container-name-main,
+
+    @include l.container-query($_container-name-main,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge-1")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge-1")) {
       /// Adding some Padding eh :D
       padding-left: 1.375em;
       padding-right: 1.375em;
@@ -702,6 +635,7 @@ $_container-name-main: main;
   & .main-wrapper__clients-app {
     background-color: a.$color-grey;
   }
+
   /// White
   & .main-wrapper__app-description,
   & .main-wrapper__faq {
@@ -717,11 +651,10 @@ $_container-name-main: main;
   &__faq__container {
     /// Adding Correct Full With for content
     /// Content Width
-    @include l.content-width(
-      map-get($map: a.$max-content-width, $key: "desktop"),
-      map-get($map: a.$content-width-percentage, $key: "full-width")
-    );
+    @include l.content-width(map-get($map: a.$max-content-width, $key: "desktop"),
+      map-get($map: a.$content-width-percentage, $key: "full-width"));
   }
+
   /// Flex it!
   &__app-how-diw__container,
   &__app-how-diw__container__image-items,
@@ -729,8 +662,8 @@ $_container-name-main: main;
   &__clients-app__container,
   &__clients-app__container__client-test-card__user-avatar,
   &__client-test-card,
-  &__faq__container__faq-accordion,
-  &__faq__container__faq-accordion__title {
+  &__faq__container__faq-accordion__container,
+  &__faq__container__faq-accordion__container__title {
     @include l.flex(flex-start);
   }
 }
@@ -750,28 +683,28 @@ $_container-name-main: main;
     text-align: center;
 
     /// Mobile Devices
-    @include l.container-query(
-      /// Lets hide all the logo's in mobile mode
+    @include l.container-query( /// Lets hide all the logo's in mobile mode
+
       $_container-name-main,
       0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
+      map-get($map: a.$breakpoints, $key: "medium")) {
       & {
         display: none;
       }
     }
 
     /// Tablets smaller laptops
-    @include l.container-query(
-      /// We are hiding some of the logos in smaller tablet mode
+    @include l.container-query( /// We are hiding some of the logos in smaller tablet mode
+
       $_container-name-main,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge")) {
+
       #c-l-6,
       #c-l-5 {
         display: none;
       }
+
       padding-bottom: 3.875em;
     }
 
@@ -779,26 +712,21 @@ $_container-name-main: main;
     &__image-item {
       @include l.flex(center);
       /// Local vars :D for padding
-      $_padding-h: map-get(
-        $map: a.$spacing-distance-relative,
-        $key: "s-2-25",
-      );
-      $_padding-w: map-get(
-        $map: a.$spacing-distance-relative,
-        $key: "s-1-37",
-      );
-      $_logo-b-r: map-get(
-        $map: a.$border-radius,
-        $key: "r-0-5",
-      );
+      $_padding-h: map-get($map: a.$spacing-distance-relative,
+          $key: "s-2-25",
+        );
+      $_padding-w: map-get($map: a.$spacing-distance-relative,
+          $key: "s-1-37",
+        );
+      $_logo-b-r: map-get($map: a.$border-radius,
+          $key: "r-0-5",
+        );
 
       /// Including Mixin Component
-      @include a.logo-box(
-        $_padding-h,
+      @include a.logo-box($_padding-h,
         $_padding-w,
         $_logo-b-r,
-        a.$color-gray-scale
-      );
+        a.$color-gray-scale );
       width: 12.25em;
       height: map-get($map: a.$spacing-distance-relative, $key: "s-6-25");
 
@@ -809,12 +737,9 @@ $_container-name-main: main;
     img {
       width: 100%;
 
-      @include l.container-query(
-        $_container-name-header,
+      @include l.container-query($_container-name-header,
         0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
-      }
+        map-get($map: a.$breakpoints, $key: "medium")) {}
     }
   }
 
@@ -829,29 +754,26 @@ $_container-name-main: main;
 
     & h1 {
       padding-bottom: 1.375rem;
+
       /// Mobile Phones
-      @include l.container-query(
-        $_container-name-main,
+      @include l.container-query($_container-name-main,
         0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
+        map-get($map: a.$breakpoints, $key: "medium")) {
         padding-top: 2.875rem;
       }
     }
+
     & p {
-      @include b.font-settings(
-        null,
+      @include b.font-settings(null,
         a.$color-form,
-        map-get($map: a.$font-weight, $key: "Regular")
-      );
+        map-get($map: a.$font-weight, $key: "Regular"));
     }
 
     /// Tablets smaller laptops
-    @include l.container-query(
-      $_container-name-main,
+    @include l.container-query($_container-name-main,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge-1")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge-1")) {
+
       /// Layout Settings Responsive
       /// Text and Heading aliment
       & div &__heading,
@@ -867,11 +789,9 @@ $_container-name-main: main;
 
     /// Adding Responsive
     /// Padding for header container
-    @include l.container-query(
-      $_container-name-header,
+    @include l.container-query($_container-name-header,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge-2")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge-2")) {
       background-color: red;
     }
 
@@ -885,22 +805,20 @@ $_container-name-main: main;
       justify-content: center;
 
       /// Tablets smaller laptops
-      @include l.container-query(
-        $_container-name-main,
+      @include l.container-query($_container-name-main,
         0,
-        map-get($map: a.$breakpoints, $key: "xlarge-1")
-      ) {
+        map-get($map: a.$breakpoints, $key: "xlarge-1")) {
+
         /// Layout Settings Responsive
         & {
           max-width: 100%;
         }
       }
+
       /// Mobile Phones
-      @include l.container-query(
-        $_container-name-main,
+      @include l.container-query($_container-name-main,
         0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
+        map-get($map: a.$breakpoints, $key: "medium")) {
         margin: auto;
       }
     }
@@ -913,55 +831,50 @@ $_container-name-main: main;
 
       /// Adding Responsive
       /// Padding for header container
-      @include l.container-query(
-        $_container-name-main,
+      @include l.container-query($_container-name-main,
         0,
-        map-get($map: a.$breakpoints, $key: "xlarge-1")
-      ) {
+        map-get($map: a.$breakpoints, $key: "xlarge-1")) {
         /// Got Inspired fro AI Solution Phind
         flex-basis: calc(50% - 2em);
       }
+
       /// Mobile Phones
-      @include l.container-query(
-        $_container-name-main,
+      @include l.container-query($_container-name-main,
         0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
+        map-get($map: a.$breakpoints, $key: "medium")) {
         /// Got Inspired fro AI Solution Phind
         flex-basis: calc(100%);
       }
     }
+
     /// Image Beside Card content
     &__app-features-cards__card-container img {
-      @include a.background-generator(
-        a.$color-grey,
+      @include a.background-generator(a.$color-grey,
         map-get($map: a.$border-radius, $key: "r-0-5"),
         map-get($map: a.$spacing-distance-relative, $key: "s-1-1"),
-        map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
-      );
+        map-get($map: a.$spacing-distance-relative, $key: "s-1-25"));
     }
 
     /// Card Items in App features
     &__app-features-cards__card-container__card-item {
       max-width: 14.25em;
+
       /// Adding Responsive
       /// Padding for header container
-      @include l.container-query(
-        $_container-name-main,
+      @include l.container-query($_container-name-main,
         0,
-        map-get($map: a.$breakpoints, $key: "xlarge-1")
-      ) {
+        map-get($map: a.$breakpoints, $key: "xlarge-1")) {
         max-width: 70%;
       }
+
       /// Mobile Phones
-      @include l.container-query(
-        $_container-name-main,
+      @include l.container-query($_container-name-main,
         0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
+        map-get($map: a.$breakpoints, $key: "medium")) {
         width: 100%;
       }
     }
+
     &__app-features-cards__card-container__card-item h5 {
       padding-bottom: 0.75em;
     }
@@ -980,6 +893,7 @@ $_container-name-main: main;
       @include b.font-settings(null, a.$font-color-text, null);
       padding-bottom: 4.9375rem;
     }
+
     /// Text Centering
     & p,
     h4,
@@ -997,9 +911,9 @@ $_container-name-main: main;
       & img {
         height: 39.375em;
       }
+
       /// Spacing
-      padding-bottom: map-get(
-        $map: a.$spacing-distance-relative,
+      padding-bottom: map-get($map: a.$spacing-distance-relative,
         $key: "s-3-31"
       );
     }
@@ -1007,46 +921,46 @@ $_container-name-main: main;
     /// Adding some Gap
 
     /// Tablets, Smaller Laptops
-    @include l.container-query(
-      $_container-name-main,
+    @include l.container-query($_container-name-main,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge-1")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge-1")) {
       & h1 {
         @include b.font-settings(2.09375rem, null, null);
       }
+
       & p,
       h4 {
         max-width: 26.5em;
       }
+
       /// Setting image height
       & img {
         height: 23.625em;
       }
+
       & p {
-        padding-bottom: map-get(
-          $map: a.$spacing-distance-relative,
-          $key: "s-6-25"
-        );
+        padding-bottom: map-get($map: a.$spacing-distance-relative,
+            $key: "s-6-25"
+          );
       }
     }
+
     /// Mobile Phones
-    @include l.container-query(
-      $_container-name-main,
+    @include l.container-query($_container-name-main,
       0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
+      map-get($map: a.$breakpoints, $key: "medium")) {
+
       /// Font Modifications
       & h1 {
-        @include b.font-settings(
-          1.74375rem,
+        @include b.font-settings(1.74375rem,
           a.$font-color-label,
-          map-get($map: a.$font-weight, $key: "ExtraBold")
-        );
+          map-get($map: a.$font-weight, $key: "ExtraBold"));
       }
+
       & h4 {
         @include b.font-settings(1.35rem, null null);
       }
+
       & p {
         padding-bottom: 3.75em;
       }
@@ -1065,11 +979,9 @@ $_container-name-main: main;
     padding-left: 6.25em;
 
     /// Tablets, Smaller Laptops
-    @include l.container-query(
-      $_container-name-main,
+    @include l.container-query($_container-name-main,
       0,
-      map-get($map: a.$breakpoints, $key: "xlarge-1")
-    ) {
+      map-get($map: a.$breakpoints, $key: "xlarge-1")) {
       & {
         display: none;
       }
@@ -1087,10 +999,9 @@ $_container-name-main: main;
       & .fa-circle-check {
         color: a.$color-primary;
         padding-bottom: 0.875em;
-        padding-right: map-get(
-          $map: a.$spacing-distance-relative,
-          $key: "s-0-62"
-        );
+        padding-right: map-get($map: a.$spacing-distance-relative,
+            $key: "s-0-62"
+          );
       }
 
       /// Image positioning
@@ -1101,441 +1012,532 @@ $_container-name-main: main;
       &__full-users-image {
         position: absolute;
       }
+
       &__balance-image {
         left: 50%;
         transform: translateX(-55%);
       }
+
       &__user-image {
         right: 5%;
         bottom: -175%;
       }
+
       &__credit-card-image {
         top: 125%;
         right: 5.5em;
         object-fit: cover;
 
         /// Our first Shadow here :);
-        @include a.box-shadow(true, -2.75em 1.625em 1.25em 0em #060312 0.34);
-      }
+        @include a.box-shadow(true,
+          -#{map-get($map: a.$spacing-distance-relative, $key: "s-2-75"),
 
-      /// Last Text element
-      &__lastp-p-element {
-        padding-bottom: map-get(
-          $map: a.$spacing-distance-relative,
+        }
+
+        1.625em 1.25em 0em #060312 0.34);
+    }
+
+    /// Last Text element
+    &__lastp-p-element {
+      padding-bottom: map-get($map: a.$spacing-distance-relative,
           $key: "s-2-68"
         );
-      }
+    }
 
-      &__text-wrapper {
-        /// Magic Number rofl, we are trying to get the same result as Figma
-        max-width: 28em;
-      }
+    &__text-wrapper {
+      /// Magic Number rofl, we are trying to get the same result as Figma
+      max-width: 28em;
+    }
 
-      &__text-wrapper h2 {
-        padding-bottom: 2.8125rem;
-        padding-top: 4rem;
-      }
+    &__text-wrapper h2 {
+      padding-bottom: 2.8125rem;
+      padding-top: 4rem;
+    }
 
-      /// Small modification for longer text wrapper :D
-      &__text-wrapper--longer {
-        /// Magic Number rofl, we are trying to get the same result as Figma
-        max-width: 32.875em;
-        padding-left: map-get(
-          $map: a.$spacing-distance-relative,
+    /// Small modification for longer text wrapper :D
+    &__text-wrapper--longer {
+      /// Magic Number rofl, we are trying to get the same result as Figma
+      max-width: 32.875em;
+      padding-left: map-get($map: a.$spacing-distance-relative,
           $key: "s-1-1"
         );
-      }
-      &__text-wrapper--longer h2 {
-        padding-bottom: 2.8125rem;
-        padding-top: 1.5rem;
-      }
+    }
 
-      /// Adding some flex modification
-      &__text-wrapper--flex {
-        @include l.flex(flex-start);
-      }
-      &__text-wrapper__flex-box {
-        width: 50%;
-      }
-      &__text-wrapper__flex-box img {
-        @include a.background-generator(
-          a.$color-grey,
-          map-get($map: a.$border-radius, $key: "r-0-5"),
-          map-get($map: a.$spacing-distance-relative, $key: "s-1-1"),
-          map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
-        );
-      }
-      &__text-wrapper__flex-box p {
-        padding-top: map-get(
-          $map: a.$spacing-distance-relative,
+    &__text-wrapper--longer h2 {
+      padding-bottom: 2.8125rem;
+      padding-top: 1.5rem;
+    }
+
+    /// Adding some flex modification
+    &__text-wrapper--flex {
+      @include l.flex(flex-start);
+    }
+
+    &__text-wrapper__flex-box {
+      width: 50%;
+    }
+
+    &__text-wrapper__flex-box img {
+      @include a.background-generator(a.$color-grey,
+        map-get($map: a.$border-radius, $key: "r-0-5"),
+        map-get($map: a.$spacing-distance-relative, $key: "s-1-1"),
+        map-get($map: a.$spacing-distance-relative, $key: "s-1-25"));
+    }
+
+    &__text-wrapper__flex-box p {
+      padding-top: map-get($map: a.$spacing-distance-relative,
           $key: "s-1-50"
         );
-        padding-bottom: 2.875em;
-      }
+      padding-bottom: 2.875em;
+    }
 
-      /// Adding Button hover states
-      /// TODO: This functions i MVP, need testing for when we turn off relative colors and if fallback will work
-      @include c.btn-hover-states(
-        (".main-wrapper__app-description__container__section__learn-more-btn"),
-        a.$color-white,
-        4.2,
-        400ms,
-        a.$color-primary,
-        true,
-        a.$color-form,
-        0.1,
-        200ms,
-        a.$color-primary,
-        true,
-        a.$color-form,
-        0.1,
-        200ms,
-        a.$color-primary,
-        true,
-        0
-      );
+    /// Adding Button hover states
+    /// TODO: This functions i MVP, need testing for when we turn off relative colors and if fallback will work
+    @include c.btn-hover-states((".main-wrapper__app-description__container__section__learn-more-btn"),
+      a.$color-white,
+      4.2,
+      400ms,
+      a.$color-primary,
+      true,
+      a.$color-form,
+      0.1,
+      200ms,
+      a.$color-primary,
+      true,
+      a.$color-form,
+      0.1,
+      200ms,
+      a.$color-primary,
+      true,
+      0);
+  }
+}
+
+/// Clients Are Loving Our App
+&__clients-app__container {
+  /// Basic Settings for Client loving our app section
+  /// Instead of settings paddings top and bottom as I did above
+  /// I decided to add an height and center the content, this is because
+  /// we are not doing responsive design on this section
+
+  padding-top: 6.25em;
+  padding-bottom: 6.25em;
+  gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
+
+  /// Tablets, Smaller Laptops
+  @include l.container-query($_container-name-main,
+    0,
+    map-get($map: a.$breakpoints, $key: "xlarge-1")) {
+    & {
+      display: none;
     }
   }
 
-  /// Clients Are Loving Our App
-  &__clients-app__container {
-    /// Basic Settings for Client loving our app section
-    /// Instead of settings paddings top and bottom as I did above
-    /// I decided to add an height and center the content, this is because
-    /// we are not doing responsive design on this section
-
-    padding-top: 6.25em;
-    padding-bottom: 6.25em;
-    gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
-
-    /// Tablets, Smaller Laptops
-    @include l.container-query(
-      $_container-name-main,
-      0,
-      map-get($map: a.$breakpoints, $key: "xlarge-1")
-    ) {
-      & {
-        display: none;
-      }
+  /// Mobile Phones
+  @include l.container-query($_container-name-main,
+    0,
+    map-get($map: a.$breakpoints, $key: "medium")) {
+    & {
+      display: none;
     }
-    /// Mobile Phones
-    @include l.container-query(
-      $_container-name-main,
-      0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
-      & {
-        display: none;
-      }
+  }
+
+  /// Clients header, setting up font, no heading from Figma
+  &__client-intro {
+    & p {
+      @include b.font-settings(map-get($map: a.$headings, $key: "h-1"),
+        a.$font-color-secondary,
+        map-get($map: a.$font-weight, $key: "ExtraBold"));
+
+      padding-right: 2.625rem;
     }
+  }
 
-    /// Clients header, setting up font, no heading from Figma
-    &__client-intro {
-      & p {
-        @include b.font-settings(
-          map-get($map: a.$headings, $key: "h-1"),
-          a.$font-color-secondary,
-          map-get($map: a.$font-weight, $key: "ExtraBold")
-        );
+  /// Client Testimonials card
+  &__client-test-card {
+    /// Setting max dimension for the cards
+    max-width: map-get($map: a.$spacing-distance-relative, $key: "s-26-00");
+    max-height: 21.875em;
 
-        padding-right: 2.625rem;
-      }
-    }
-
-    /// Client Testimonials card
-    &__client-test-card {
-      /// Setting max dimension for the cards
-      max-width: 26em;
-      max-height: 21.875em;
-
-      @include a.background-generator(
-        a.$color-white,
-        map-get($map: a.$border-radius, $key: "r-0-5"),
-        map-get($map: a.$spacing-distance-relative, $key: "s-1-50"),
-        map-get($map: a.$spacing-distance-relative, $key: "s-2-68"),
-        relative
-      );
-      padding-bottom: map-get(
-        $map: a.$spacing-distance-relative,
+    @include a.background-generator(a.$color-white,
+      map-get($map: a.$border-radius, $key: "r-0-5"),
+      map-get($map: a.$spacing-distance-relative, $key: "s-1-50"),
+      map-get($map: a.$spacing-distance-relative, $key: "s-2-68"),
+      relative);
+    padding-bottom: map-get($map: a.$spacing-distance-relative,
         $key: "s-1-50"
       );
-      /// Adding Shadow
-      @include a.box-shadow(
-        false,
-        (0em 0.275em 0.75em null #131022 0.06),
-        (
-          0em map-get($map: a.$spacing-distance-relative, $key: "s-0-12") 0.4em
-            null #131022 0.03
-        )
-      );
+    /// Adding Shadow
+    @include a.box-shadow(false,
+      (0em 0.275em 0.75em null #131022 0.06),
+      (0em map-get($map: a.$spacing-distance-relative, $key: "s-0-12") 0.4em null #131022 0.03));
 
-      & p {
-        @include b.font-settings(
-          map-get($map: a.$font-sizes, $key: "t-l"),
-          a.$font-color-primary,
-          map-get($map: a.$font-weight, $key: "Regular")
-        );
-      }
+    & p {
+      @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-l"),
+        a.$font-color-primary,
+        map-get($map: a.$font-weight, $key: "Regular"));
+    }
 
-      /// Quotas Icon
-      /// I made the choice to use image of icon because the free icon from
-      /// font awesome was so different.
-      &__icon {
-        /// Giving the image background and color
-        @include a.background-generator(
-          a.$color-primary,
-          map-get($map: a.$border-radius, $key: "r-0-5"),
-          map-get($map: a.$spacing-distance-relative, $key: "s-1-37"),
-          map-get($map: a.$spacing-distance-relative, $key: "s-1-37")
-        );
-        /// Giving color and some overriding bottom padding, wanted to use !important for the first time hehe
-        color: white;
-        padding-bottom: map-get(
-          $map: a.$spacing-distance-relative,
+    /// Quotas Icon
+    /// I made the choice to use image of icon because the free icon from
+    /// font awesome was so different.
+    &__icon {
+      /// Giving the image background and color
+      @include a.background-generator(a.$color-primary,
+        map-get($map: a.$border-radius, $key: "r-0-5"),
+        map-get($map: a.$spacing-distance-relative, $key: "s-1-37"),
+        map-get($map: a.$spacing-distance-relative, $key: "s-1-37"));
+      /// Giving color and some overriding bottom padding, wanted to use !important for the first time hehe
+      color: white;
+      padding-bottom: map-get($map: a.$spacing-distance-relative,
           $key: "s-1-37"
         ) !important;
-        /// Adding Shadow
-        @include a.box-shadow(false, (0em 0.5em 1.125em -0.5em #6366f1 0.9));
+      /// Adding Shadow
+      @include a.box-shadow(false, (0em 0.5em 1.125em -0.5em #6366f1 0.9));
 
-        /// Positioning
-        position: absolute;
-        top: -2.2em;
-      }
+      /// Positioning
+      position: absolute;
+      top: -2.2em;
+    }
 
-      /// Adding Star review styling :)
-      /// Litle special here :), we used first i and last i to give it padding ;)
-      & i:last-of-type,
-      i:first-of-type {
-        padding-bottom: 2.5em;
-        padding-top: map-get(
-          $map: a.$spacing-distance-relative,
+    /// Adding Star review styling :)
+    /// Litle special here :), we used first i and last i to give it padding ;)
+    & i:last-of-type,
+    i:first-of-type {
+      padding-bottom: 2.5em;
+      padding-top: map-get($map: a.$spacing-distance-relative,
           $key: "s-1-50"
         );
-      }
-      & i.fa-star {
-        color: a.$system-warning;
-      }
-      & i.fa-regular {
-        color: a.$system-grey;
+    }
+
+    & i.fa-star {
+      color: a.$system-warning;
+    }
+
+    & i.fa-regular {
+      color: a.$system-grey;
+    }
+
+    /// Text Padding
+    & p:first-of-type {
+      padding-bottom: map-get($map: a.$spacing-distance-relative,
+          $key: "s-1-50"
+        );
+    }
+
+    /// User Avatar
+    &__user-avatar {
+      height: 48px;
+      gap: 1em;
+      align-items: center;
+    }
+
+    /// Targeting P tag to remove padding
+    &__user-avatar div:first-of-type p {
+      padding-bottom: 0;
+      @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-s"),
+        a.$color-form,
+        map-get($map: a.$font-weight, $key: "Regular"));
+    }
+
+    &__user-avatar div:first-of-type p:first-child {
+      padding-bottom: 0.3em;
+      @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-m"),
+        a.$font-color-secondary,
+        map-get($map: a.$font-weight, $key: "Bold"));
+    }
+  }
+}
+
+/// Any Questions Check out the FAQ
+&__faq__container {
+  /// Local Vars
+  $_faq-grid-max-rows: 2;
+
+  /// Lets create the grid!
+  @include l.grid-row-colum(map-get($map: a.$display-type, $key: "grid"),
+    /// Colum here giddy
+    a.create-list(auto),
+    /// Row here giddy
+    a.create-list(auto, auto),
+    $_faq-grid-max-rows );
+
+  /// Tablets & smaller laptops
+  @include l.container-query($_container-name-main,
+    0,
+    map-get($map: a.$breakpoints, $key: "xlarge")) {
+    & {
+      /// Content Grid positioning
+      justify-items: center;
+    }
+  }
+
+  /// Now I will try to use Mobile first Approach
+  /// Starting with container queries
+  /// Header with some text
+  &__faq-header {
+
+    ///----------- Responsive START -----------
+    /// Mobile devices
+    @include l.container-query($_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "medium")) {
+      & {
+        padding-top: 3.25em;
+        text-align: center;
       }
 
-      /// Text Padding
       & p:first-of-type {
-        padding-bottom: map-get(
-          $map: a.$spacing-distance-relative,
+        padding-top: 2.125em;
+        padding-bottom: 3.5625em;
+      }
+    }
+
+    /// Tablets & smaller laptops
+    @include l.container-query($_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "xlarge")) {
+      & {
+        padding-top: 3.75em;
+        text-align: center;
+
+        /// Apply Max width
+        max-width: map-get($map: a.$spacing-distance-relative,
+            $key: "s-26-00"
+          );
+      }
+
+      & p:first-of-type {
+        padding-top: map-get($map: a.$spacing-distance-relative,
+            $key: "s-3-00"
+          );
+        padding-bottom: map-get($map: a.$spacing-distance-relative,
+            $key: "s-3-00"
+          );
+      }
+    }
+
+    ///----------- Responsive END -----------
+  }
+
+  /// Accordion FAQ
+  &__faq-accordion {
+
+    ///----------- Responsive START -----------
+    @include l.container-query($_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "medium")) {
+      & {
+        /// Adding some padding to left and right side in mobile version
+        padding: 0 13px 0 13px;
+      }
+    }
+
+    ///----------- Responsive END -----------
+  }
+
+  &__faq-accordion__container {
+    ///----------- Starting CSS -----------
+    flex-direction: column;
+
+
+    ///----------- Global CSS START -----------
+    &__title {
+      /// Flex Settings
+
+      padding-bottom: map-get($map: a.$spacing-distance-relative,
+          $key: "s-1-1"
+        );
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__title p {
+      /// Font Settings Global
+      @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-m"),
+        null,
+        map-get($map: a.$font-weight, $key: "SemiBold"));
+      color: a.$font-color-label;
+    }
+
+    &__title p:first-of-type,
+    &__content {
+      /// Adding Padding to the container for faq
+      padding: map-get($map: a.$spacing-distance-relative, $key: "s-1-1");
+    }
+
+    &__title p:last-of-type {
+      /// Adding Padding to the container for faq
+      padding-right: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
+      padding-left: map-get($map: a.$spacing-distance-relative, $key: "s-1-50")
+    }
+
+    &__content {
+      /// Setting Content too 100%
+      width: 100%;
+      padding-bottom: map-get($map: a.$spacing-distance-relative,
           $key: "s-1-50"
         );
+      padding-top: 0;
+    }
+
+    /// Adding Space between Paragrafs in mobile view
+    &__content p {
+      /// Font Settings
+      @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-s"));
+    }
+
+    &__content p:last-child {
+      /// Adding some Padding in Content between Paragraph
+      padding-top: map-get($map: a.$spacing-distance-relative,
+          $key: "s-1-75"
+        );
+    }
+
+    &__icon {
+      /// Base Setting for the Icon
+      /// TODO: Don't forget to change this when adding Variables Correctly
+      --fa-icon-bg-color: #f3f6ff;
+      @include c.icon-base("\f078", solid, true);
+    }
+
+    &__icon--active {
+      /// Base Setting for the Icon
+      --fa-icon-bg-color: #{a.$color-primary};
+      --fa-icon-color: #{a.$color-white};
+
+      /// Base Setting for the Icon
+      @include c.icon-base("\f077", solid, true);
+
+      /// Adding Shadow
+      @include a.box-shadow(false, (0em -0.5em 1.125em -0.5em #6366f1 0.9));
+    }
+
+    ///----------- Global CSS END -----------
+
+    ///----------- Responsive START -----------
+    /// Mobile Devices
+    @include l.container-query($_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "medium")) {
+      & {
+        /// Borders
+        border-top: map-get($map: a.$spacing-distance-relative,
+            $key: "s-0-12"
+          ) solid a.$color-grey;
+        border-left: map-get($map: a.$spacing-distance-relative,
+            $key: "s-0-12"
+          ) solid a.$color-grey;
+        border-right: map-get($map: a.$spacing-distance-relative,
+            $key: "s-0-12"
+          ) solid a.$color-grey;
       }
-      /// User Avatar
-      &__user-avatar {
-        height: 48px;
-        gap: 1em;
-        align-items: center;
+
+      &--border-radius {
+        border-radius: map-get($map: a.$border-radius, $key: "r-0-5") map-get($map: a.$border-radius, $key: "r-0-5") 0 0;
       }
-      /// Targeting P tag to remove padding
-      &__user-avatar div:first-of-type p {
+
+      &__title {
         padding-bottom: 0;
-        @include b.font-settings(
-          map-get($map: a.$font-sizes, $key: "t-s"),
-          a.$color-form,
-          map-get($map: a.$font-weight, $key: "Regular")
-        );
       }
-      &__user-avatar div:first-of-type p:first-child {
-        padding-bottom: 0.3em;
-        @include b.font-settings(
-          map-get($map: a.$font-sizes, $key: "t-m"),
-          a.$font-color-secondary,
-          map-get($map: a.$font-weight, $key: "Bold")
-        );
+
+      &__title--inner-shadow {
+        /// Add Inner Shadow
+        @include a.box-shadow(false, (inset 0 -0.0625em 0 0 #e2e5f1 1));
       }
-    }
-  }
 
-  /// Any Questions Check out the FAQ
-  &__faq__container {
-    /// Local Vars
-    $_faq-grid-max-rows: 2;
-    /// Lets create the grid!
-    @include l.grid-row-colum(
-      map-get($map: a.$display-type, $key: "grid"),
-      /// Colum here giddy
-      a.create-list(auto),
-      /// Row here giddy
-      a.create-list(auto, auto),
-      $_faq-grid-max-rows
-    );
-
-    /// Now I will try to use Mobile first Approach
-    /// Starting with container queries
-    /// Header with some text
-    &__faq-header {
-      @include l.container-query(
-        $_container-name-main,
-        0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
-        & {
-          padding-top: 3.25em;
-          text-align: center;
-        }
-        & p:first-of-type {
-          padding-top: 2.125em;
-          padding-bottom: 3.5625em;
-        }
+      &__title--border-bottom {
+        border-bottom: map-get($map: a.$spacing-distance-relative,
+            $key: "s-0-12"
+          ) solid a.$color-grey;
       }
-    }
-    /// Accordion FAQ
-    &__faq-accordion {
-      flex-direction: column;
 
-      /// Global CSS Mobile/Tablets
       /// Adding Space between Paragrafs in mobile view
-      &__content p {
-        /// Font Settings
-        @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-s"));
-      }
-      &__title {
-        /// Flex Settings
-        justify-content: space-between;
-      }
-      &__title,
       &__content {
-        /// Setting Content too 100%
-        width: 100%;
-      }
-
-      @include l.container-query(
-        $_container-name-main,
-        0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
-        & {
-          justify-content: center;
-          /// Special Padding for Mobile versions
-          padding-left: 0.625em;
-          padding-right: 0.625em;
-        }
-
-        &__title,
-        &__content {
-          /// Borders
-          border-top: map-get(
-              $map: a.$spacing-distance-relative,
-              $key: "s-0-12"
-            )
-            solid a.$color-grey;
-          border-left: map-get(
-              $map: a.$spacing-distance-relative,
-              $key: "s-0-12"
-            )
-            solid a.$color-grey;
-          border-right: map-get(
-              $map: a.$spacing-distance-relative,
-              $key: "s-0-12"
-            )
-            solid a.$color-grey;
-
-          /// Text Positioning
-          padding: 1rem
-            map-get($map: a.$spacing-distance-relative, $key: "s-1-37");
-        }
-        /// Adding Space between Paragrafs in mobile view
-        &__content p {
-          padding-bottom: 1.75rem;
-        }
-        /// Border radius handling
-        &__title--border-radius {
-          border-radius: map-get($map: a.$border-radius, $key: "r-0-5")
-            map-get($map: a.$border-radius, $key: "r-0-5") 0 0;
-        }
-      }
-
-      /// Icon when Active Blue
-      &__icon {
-        @include c.icon(
-          a.$color-grey,
-          100%,
-          true,
-          "\f078",
-          solid,
-          map-get($map: a.$links-color, $key: "link-bar"),
-          0.875rem 0.9375rem
-        );
-        &--active {
-          @include c.icon(
-            a.$color-primary,
-            100%,
-            true,
-            "\f077",
-            solid,
-            a.$color-white,
-            0.875rem 0.9375rem
+        padding-top: map-get($map: a.$spacing-distance-relative,
+            $key: "s-1-50"
           );
-          /// Adding Shadow
-          @include a.box-shadow(false, (0em -0.5em 1.125em -0.5em #6366f1 0.9));
-        }
       }
 
-      /// FAQ Title Area
-      &__title {
-        align-items: center;
+      &__content p {
+        padding-bottom: map-get($map: a.$spacing-distance-relative,
+            $key: "s-0-87"
+          );
       }
+    }
+
+    /// Tablets & smaller laptops
+    @include l.container-query($_container-name-main,
+      map-get($map: a.$breakpoints, $key: "medium"),
+      map-get($map: a.$breakpoints, $key: "xlarge")) {
+      /// Adding some Paddings
+      padding: 0 1.6875em 0 1.6875em;
+
       &__title p {
-        color: a.$font-color-label;
+        /// Font Settings Global
+        padding: 1.75em 0 1.75em 0;
+      }
+
+      /// Dropping Shadows
+      &__title {
+        /// Adding Shadow
+        @include a.box-shadow(false,
+          (0 0.275em 0.75em 0em #131022 0.06),
+          (0 0.125em 0.4em 0em #131022 0.03));
+
+        /// Adding Border-radius
+        border-radius: map-get($map: a.$border-radius, $key: "r-0-5") map-get($map: a.$border-radius, $key: "r-0-5") 0 0;
       }
     }
 
-    /// FAQ Contact Section
-    &__faq-contact {
-      /// Buttons
-      ///
-      @include l.container-query(
-        $_container-name-main,
-        0,
-        map-get($map: a.$breakpoints, $key: "medium")
-      ) {
-        & {
-          /// Adding Paddings
-          padding-top: 3.625em;
-          padding-bottom: 2.625em;
-          text-align: center;
-        }
-
-        &__contact-us-now-btn--primary {
-          /// Changing Font
-          @include b.font-settings(
-            map-get($map: a.$font-sizes, $key: "t-s"),
-            a.$color-white,
-            map-get($map: a.$font-weight, $key: "SemiBold")
-          );
-        }
-      }
-
-      /// Adding Button Hover
-      @include c.btn-hover-states(
-        (
-          ".main-wrapper__faq__container__faq-contact__contact-us-now-btn--primary"
-        ),
-        a.$color-white,
-        4.2,
-        400ms,
-        a.$color-primary,
-        true,
-        a.$color-form,
-        0.1,
-        200ms,
-        a.$color-primary,
-        true,
-        a.$color-form,
-        0.1,
-        200ms,
-        a.$color-primary,
-        true,
-        0
-      );
-    }
+    ///----------- Responsive END -----------
   }
+
+  /// FAQ Contact Section
+  &__faq-contact {
+
+    /// Buttons
+    ///
+    @include l.container-query($_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "medium")) {
+      & {
+        /// Adding Paddings
+        padding-top: 3.625em;
+        padding-bottom: 2.625em;
+        text-align: center;
+      }
+
+      &__contact-us-now-btn--primary {
+        /// Changing Font
+        @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-s"),
+          a.$color-white,
+          map-get($map: a.$font-weight, $key: "SemiBold"));
+      }
+    }
+
+    /// Adding Button Hover
+    @include c.btn-hover-states((".main-wrapper__faq__container__faq-contact__contact-us-now-btn--primary"
+      ),
+      a.$color-white,
+      4.2,
+      400ms,
+      a.$color-primary,
+      true,
+      a.$color-form,
+      0.1,
+      200ms,
+      a.$color-primary,
+      true,
+      a.$color-form,
+      0.1,
+      200ms,
+      a.$color-primary,
+      true,
+      0);
+  }
+}
 }
 
 /// =============================================================================
@@ -1547,9 +1549,7 @@ $_container-name-main: main;
 
   /// Content Width
   .content-container {
-    @include l.content-width(
-      map-get($map: a.$max-content-width, $key: "desktop"),
-      map-get($map: a.$content-width-percentage, $key: "full-width")
-    );
+    @include l.content-width(map-get($map: a.$max-content-width, $key: "desktop"),
+      map-get($map: a.$content-width-percentage, $key: "full-width"));
   }
 }

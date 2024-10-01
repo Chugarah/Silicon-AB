@@ -1,3 +1,5 @@
+@charset "UTF-8";
+@use "sass:meta";
 /* Fonts */
 /* Font Colors */
 $font-color-primary: #565973;
@@ -26,7 +28,20 @@ $color-gray-scale: #e2e5f1;
 /// Font-Awesome
 /// Look at your Web pack configuration, I am using Vite
 /// Look in Vite ALias where @fortawesome is point to.
-$fa-font-path: "@fortawesome/fontawesome-free/webfonts";
+$font-awesome-icon-size: (
+  /// 10px
+  "fa-2xs": 0.625em,
+  /// 12px
+  "fa-xs": 0.75em,
+  /// 14px
+  "fa-sm": 0.875em,
+  /// 20px
+  "fa-lg": 1.25em,
+  /// 24px
+  "fa-xl": 1.5em,
+  /// 32px
+  "fa-2xl": 2em
+);
 
 /// Manrope
 $font-family: "Manrope", sans-serif;
@@ -72,7 +87,7 @@ $display-heading: (
   "d-6": 2.625em,
   "d-7": 2.76875em,
   /// 44.3ox
-  "d-8": 2.13125em /// 34.1px,,,,,,,,,,,,,,,,,,,,
+  "d-8": 2.13125em /// 34.1px,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 );
 $headings: (
   "h-1": 2.5rem,
@@ -200,6 +215,8 @@ $spacing-distance-relative: (
   "s-1-37": 1.375em,
   /// 24px
   "s-1-50": 1.5em,
+  /// 28px
+  "s-1-75": 1.75em,
   /// 30px
   "s-1-87": 1.875em,
   /// 32px
@@ -212,6 +229,8 @@ $spacing-distance-relative: (
   "s-3-00": 3rem,
   /// 43px
   "s-2-68": 2.6875em,
+  /// 44px
+  "s-2-75": 2.75em,
   /// 50px
   "s-3-31": 3.125em,
   /// 55px
@@ -229,7 +248,9 @@ $spacing-distance-relative: (
   /// 133px
   "s-8-31": 8.3125em,
   /// 150px
-  "s-9-37": 9.375em
+  "s-9-37": 9.375em,
+  /// 416px
+  "s-26-00": 26em
 );
 
 /// @name spacing-distance-relative
@@ -242,6 +263,10 @@ $spacing-distance-relative: (
 ///   }
 $spacing-distance-base: (
   "sb-0-18": 0.1875rem,
+  /// 10px
+  "sb-0-62": 0.625rem,
+  /// 20px
+  "sb-1-25": 1.25rem,
   "sb-1-50": 1.5rem,
   "sb-1-87": 1.875em,
   /// 30px
@@ -275,3 +300,22 @@ $border-radius: (
   "r-0-5": 0.5em,
   "r-2-2": 2.25em,
 );
+
+$dir: "\f078";
+$test: true;
+
+// =============================================================================
+// CSS Variables
+// =============================================================================
+
+:root {
+  /// Bas Icon Settings
+  --icon-width: 2.25rem;
+  --icon-height: 2.25rem;
+  --fa-icon-width: #{map-get($map: $spacing-distance-base, $key: "sb-0-62")};
+  --fa-icon-height: #{map-get($map: $spacing-distance-base, $key: "sb-0-62")};
+  --fa-icon-bg-color: #{$color-grey};
+  --fa-icon-color: #{map-get($map: $links-color, $key: "link-nav")};
+  --fa-icon-style-default: solid;
+  --icon-border-radius: 50%;
+}
