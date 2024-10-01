@@ -1324,13 +1324,28 @@ $_container-name-main: main;
   &__faq-accordion {
 
     ///----------- Responsive START -----------
+    /// Mobile Devices
+    /// We are setting container padding parent container
+    /// for FAQ
     @include l.container-query($_container-name-main,
       0,
       map-get($map: a.$breakpoints, $key: "medium")) {
       & {
         /// Adding some padding to left and right side in mobile version
-        padding: 0 13px 0 13px;
+        padding: 0 0.8125em 0 0.8125em;
       }
+    }
+
+    /// Tablets & smaller laptops
+    @include l.container-query($_container-name-main,
+      map-get($map: a.$breakpoints, $key: "medium"),
+      map-get($map: a.$breakpoints, $key: "xlarge")) {
+      & {
+        padding-left: map-get($map: a.$spacing-distance-relative, $key: 's-1-87');
+        padding-right: map-get($map: a.$spacing-distance-relative, $key: 's-1-87');
+      }
+
+
     }
 
     ///----------- Responsive END -----------
@@ -1345,9 +1360,6 @@ $_container-name-main: main;
     &__title {
       /// Flex Settings
 
-      padding-bottom: map-get($map: a.$spacing-distance-relative,
-          $key: "s-1-1"
-        );
       width: 100%;
       justify-content: space-between;
       align-items: center;
@@ -1470,25 +1482,31 @@ $_container-name-main: main;
     /// Tablets & smaller laptops
     @include l.container-query($_container-name-main,
       map-get($map: a.$breakpoints, $key: "medium"),
-      map-get($map: a.$breakpoints, $key: "xlarge")) {
-      /// Adding some Paddings
-      padding: 0 1.6875em 0 1.6875em;
+    ) {
+      & {
+        gap: map-get($map: a.$spacing-distance-relative, $key: 's-1-50');
+        /// Adding some Paddings
+        padding-top: map-get($map: a.$spacing-distance-relative, $key: 's-0-56');
+        padding-bottom: map-get($map: a.$spacing-distance-relative, $key: 's-0-56');
+        border-radius: map-get($map: a.$spacing-distance-relative, $key: 's-0-15');
 
-      &__title p {
-        /// Font Settings Global
-        padding: 1.75em 0 1.75em 0;
-      }
-
-      /// Dropping Shadows
-      &__title {
         /// Adding Shadow
         @include a.box-shadow(false,
           (0 0.275em 0.75em 0em #131022 0.06),
           (0 0.125em 0.4em 0em #131022 0.03));
 
-        /// Adding Border-radius
-        border-radius: map-get($map: a.$border-radius, $key: "r-0-5") map-get($map: a.$border-radius, $key: "r-0-5") 0 0;
+        margin-bottom: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
       }
+
+      /// Setting up fonts and color
+      &__content p {
+        color: a.$font-color-primary;
+      }
+
+      &__title p {
+        color: a.$font-color-secondary;
+      }
+
     }
 
     ///----------- Responsive END -----------
@@ -1498,7 +1516,6 @@ $_container-name-main: main;
   &__faq-contact {
 
     /// Buttons
-    ///
     @include l.container-query($_container-name-main,
       0,
       map-get($map: a.$breakpoints, $key: "medium")) {
