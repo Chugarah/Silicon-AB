@@ -5,6 +5,9 @@
 @use "@scss/components/_icons" as c;
 @use "@scss/base" as b;
 
+
+
+
 /// =============================================================================
 /// Primary Buttons
 /// =============================================================================
@@ -33,10 +36,9 @@
     &__user-icon {
       /// Using Font-Awesome CSS selectors in SCSS :)))
       @extend .fa-regular, .fa-user, .fa-brand-base;
-      padding-right: map-get(
-        $map: a.$spacing-distance-relative,
-        $key: "s-0-15"
-      );
+      padding-right: map-get($map: a.$spacing-distance-relative,
+          $key: "s-0-15"
+        );
     }
 
     /// @name primary
@@ -51,23 +53,25 @@
     /// AI Phind Generated the Documentation above
     /// Primary Btn specs
     &--primary {
-      @include a.btn-props(
-        a.$color-white,
+      @include a.btn-props(a.$color-white,
         a.$color-primary,
         map-get($map: a.$border-radius, $key: "r-0-2"),
-        a.create-list(
-          map-get($map: a.$spacing-distance-relative, $key: "s-0-56")
-            a.create-list(
-              map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
-            )
-        )
-      );
+        a.create-list(map-get($map: a.$spacing-distance-relative, $key: "s-0-56") a.create-list(map-get($map: a.$spacing-distance-relative, $key: "s-1-25"))));
+
+      /// Adding hover state
+      /// Adding styles just because :D
+      --interactive-relative-hover: 4;
+      --interactive-transition-hover: 200;
+
+      @include a.interactive-states('&');
+
     }
   }
 }
 
 /// App Description Button
 .main-wrapper__app-description__container__section {
+
   &__learn-more-btn {
     /// Basic Styling for BTN
     @include a.btn;
@@ -81,20 +85,17 @@
 
     /// Primary Btn specs
     &--primary {
-      @include a.btn-props(
-        a.$color-white,
+      @include a.btn-props(a.$color-white,
         a.$color-primary,
         map-get($map: a.$border-radius, $key: "r-0-3"),
-        a.create-list(
-          map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
-            a.create-list(
-              map-get($map: a.$spacing-distance-relative, $key: "s-2-00")
-            )
-        )
-      );
+        a.create-list(map-get($map: a.$spacing-distance-relative, $key: "s-1-25") a.create-list(map-get($map: a.$spacing-distance-relative, $key: "s-2-00"))));
+
+      /// Adding Hover States
+      @include a.interactive-states("&");
     }
   }
 }
+
 
 /// FAQ Button
 .main-wrapper__faq__container__faq-contact {
@@ -104,12 +105,14 @@
 
     /// Primary Btn specs
     &--primary {
-      @include a.btn-props(
-        a.$color-white,
+      @include a.btn-props(a.$color-white,
         a.$color-primary,
         map-get($map: a.$border-radius, $key: "r-0-3"),
-        a.create-list(1.25em a.create-list(1.75em))
-      );
+        a.create-list(1.25em a.create-list(1.75em)));
+
+      /// Adding hover state
+      @include a.interactive-states('&');
+
     }
   }
 }
@@ -120,13 +123,11 @@
 .hero-section__apps-links__link-item {
   background-color: a.$color-button-black;
 
-  @include a.link-nav-animation(
-    a.$color-white,
+  /*   @include a.link-nav-animation(a.$color-white,
     4.2,
     400ms,
     a.$color-button-black,
-    true
-  );
+    true); */
   /// Global styling for the button
   text-align: center;
   position: relative;
@@ -136,30 +137,25 @@
   height: 3.25em;
 
   /// Desktop preparation for smaller devices
-  @include l.container-query(
-    header,
+  @include l.container-query(header,
     0,
-    map-get($map: a.$breakpoints, $key: "xlarge-1")
-  ) {
+    map-get($map: a.$breakpoints, $key: "xlarge-1")) {
     width: 7.875em;
     height: 2.74375em;
   }
+
   /// Tablets smaller laptops
-  @include l.container-query(
-    header,
+  @include l.container-query(header,
     0,
-    map-get($map: a.$breakpoints, $key: "medium")
-  ) {
+    map-get($map: a.$breakpoints, $key: "medium")) {
     width: 22.9em;
     height: 3.150625em;
   }
 
   /// Mobile Phones
-  @include l.container-query(
-    header,
+  @include l.container-query(header,
     0,
-    map-get($map: a.$breakpoints, $key: "mobile")
-  ) {
+    map-get($map: a.$breakpoints, $key: "mobile")) {
     width: 100%;
   }
 
@@ -168,144 +164,21 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: map-get($map: a.$spacing-distance-relative, $key: "s-0-62")
-      map-get($map: a.$spacing-distance-relative, $key: "s-1-25");
+    padding: map-get($map: a.$spacing-distance-relative, $key: "s-0-62") map-get($map: a.$spacing-distance-relative, $key: "s-1-25");
     object-fit: cover;
     position: absolute;
     width: 100%;
     height: auto;
+
     /// Mobile Phones
-    @include l.container-query(
-      header,
+    @include l.container-query(header,
       0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
+      map-get($map: a.$breakpoints, $key: "medium")) {
       width: auto;
     }
   }
-  &:hover {
-    @include a.link-nav-animation(
-      a.$color-white,
-      4.2,
-      400ms,
-      a.$color-primary,
-      true
-    );
-  }
+
+  /// Adding Hover States
+  @include a.interactive-states("&");
+
 }
-
-/// =============================================================================
-/// Mixins
-/// =============================================================================
-///
-///
-
-/// @name btn-hover-states
-/// @group Buttons
-///
-/// https://caniuse.com/?search=hsl%20relative
-/// Applies hover, active, and focus-visible states to buttons with color
-/// and background transitions.
-///
-/// @param {String} $btn - Button selector
-/// @param {Color} $tx-color-hover - Text color on hover
-/// @param {Number} $rt-color-hover - Relative color change on hover
-/// @param {Time} $an-time-hover - Animation time for hover
-/// @param {Color} $bg-color-hover - Background color on hover
-/// @param {Boolean} $rt-color-toggle-hover - Toggle relative color on hover
-/// @param {Color} $tx-color-active - Text color on active
-/// @param {Number} $rt-color-active - Relative color change on active
-/// @param {Time} $an-time-active - Animation time for active
-/// @param {Color} $bg-color-active - Background color on active
-/// @param {Boolean} $rt-color-toggle-active - Toggle relative color on active
-/// @param {Color} $tx-color-focus-visible - Text color on focus-visible
-/// @param {Number} $rt-color-focus-visible - Relative color change on focus-visible
-/// @param {Time} $an-time-focus-visible - Animation time for focus-visible
-/// @param {Color} $bg-color-focus-visible - Background color on focus-visible
-/// @param {Boolean} $rt-color-toggle-focus-visible - Toggle relative color on focus-visible
-/// @param {Number} $rt-color-hover-mouse-out - Relative color change on mouse out
-///
-/// @example scss
-///   @include a.btn-hover-states(
-///     '.btn',
-///     $color-primary,
-///     0.1,
-///     300ms,
-///     $color-secondary,
-///     true,
-///     $color-accent,
-///     0.2,
-///     200ms,
-///     $color-tertiary,
-///     false,
-///     $color-focus,
-///     0.15,
-///     250ms,
-///     $color-focus-bg,
-///     true,
-///     0.05
-///   );
-///
-/// AI Phind Generated the Documentation above
-@mixin btn-hover-states(
-  $btn,
-  $tx-color-hover,
-  $rt-color-hover,
-  $an-time-hover,
-  $bg-color-hover,
-  $rt-color-toggle-hover,
-  $tx-color-active,
-  $rt-color-active,
-  $an-time-active,
-  $bg-color-active,
-  $rt-color-toggle-active,
-  $tx-color-focus-visible,
-  $rt-color-focus-visible,
-  $an-time-focus-visible,
-  $bg-color-focus-visible,
-  $rt-color-toggle-focus-visible,
-  $rt-color-hover-mouse-out
-) {
-  /// Added Animation on hover out, leaving the button
-  & #{$btn} {
-    @include a.link-nav-animation(
-      $tx-color-hover,
-      $rt-color-hover-mouse-out,
-      $an-time-hover,
-      $bg-color-hover,
-      true
-    );
-  }
-
-  // Adding some Hover, active stated
-  & #{$btn}:hover {
-    @include a.link-nav-animation(
-      $tx-color-hover,
-      $rt-color-hover,
-      $an-time-hover,
-      $bg-color-hover,
-      $rt-color-toggle-hover
-    );
-  }
-
-  & #{$btn}:active {
-    @include a.link-nav-animation(
-      $tx-color-active,
-      $rt-color-active,
-      $an-time-active,
-      $bg-color-active,
-      $rt-color-toggle-active
-    );
-  }
-
-  & #{$btn}:focus-visible {
-    @include a.link-nav-animation(
-      $tx-color-focus-visible,
-      $rt-color-focus-visible,
-      $an-time-focus-visible,
-      $bg-color-focus-visible,
-      $rt-color-toggle-focus-visible
-    );
-  }
-}
-/// =============================================================================

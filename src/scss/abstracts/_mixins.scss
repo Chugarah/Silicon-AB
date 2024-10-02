@@ -76,51 +76,113 @@
 /// Links
 /// =============================================================================
 
-/// @name link-nav-animation
-/// @group Text
+/// Interactive Element Styles
+/// Implemented by AI Phind, for this code
+/// to handle different pseudo states of an object
+/// Interactive Element Styles
+/// Applies interactive states (hover, active, focus-visible) to a given selector
 ///
-/// https://caniuse.com/?search=hsl%20relative
-/// For links hover state, active and so on, color and pointer with
-/// animation.
+/// @param {String} $selector - The selector to apply the interactive states to
 ///
-/// @param {String} $color - Color of the text
-/// @param {Float} $relative-value - How many percentage from the from color value
-/// @param {String} $transition-time - How fast the animation should be in milliseconds
-/// @param {String} $bg-color - Background color, that could be null
-/// @param {String} $fb-color - Fallback Color incase of not using HSL
 /// @example code-scss
-///   @include a.link-nav-animation($color-primary, 0.2, 400ms);
-/// }
-/// AI Some of the code is generated from Phind
-@mixin link-nav-animation(
-  $color,
+///   @include interactive-states('.button') {
+///     // Button styles
+///   }
+///
+/// @requires {mixin} link-nav-animation
+///
+/// @access public
+@mixin interactive-states($selector) {
+  #{$selector} {
+
+    /// Adding Animation when mouse is out
+    transition: color var(--interactive-transition-base) ease-in-out,
+      background-color var(--interactive-transition-base) ease-in-out;
+    cursor: pointer;
+    outline: none;
+
+    // Hover state
+    &:hover {
+      @include link-nav-animation(var(--interactive-color-hover),
+        var(--interactive-relative-hover),
+        var(--interactive-transition-hover),
+        var(--interactive-bg-hover),
+        var(--interactive-use-hsl-hover));
+    }
+
+    // Active state
+    &:active {
+      @include link-nav-animation(var(--interactive-color-active),
+        var(--interactive-relative-active),
+        var(--interactive-transition-active),
+        var(--interactive-bg-active),
+        var(--interactive-use-hsl-active));
+    }
+
+    // Focus-visible state
+    &:focus-visible {
+      @include link-nav-animation(var(--interactive-color-focus-visible),
+        var(--interactive-relative-focus-visible),
+        var(--interactive-transition-focus-visible),
+        var(--interactive-bg-focus-visible),
+        var(--interactive-use-hsl-focus-visible));
+    }
+  }
+}
+
+
+/// Animation Mixin
+/// Used AI Phind to improve this code section
+/// Applies color and background-color animations to interactive elements
+///
+/// @param {Color} $color - The color to be applied
+/// @param {Number} $relative-value - The relative lightness value for HSL calculation
+/// @param {Time} $transition-time - The duration of the transition
+/// @param {Color} $bg-color [null] - The background color to be applied (optional)
+/// @param {Boolean} $use-hsl [true] - Whether to use HSL color calculations
+///
+/// @example code-scss
+///   .button {
+///     @include link-nav-animation(#007bff, 10, 0.3s, #f8f9fa, true);
+///   }
+///
+/// @access public
+@mixin link-nav-animation($color,
   $relative-value,
   $transition-time,
   $bg-color: null,
-  $use-hsl
-) {
-  transition: color $transition-time ease-in-out,
-    background-color $transition-time ease-in-out;
-  cursor: pointer;
-  outline: none;
+  $use-hsl: true) {
 
-  /// Lets see if the bg is null or not
   @if $bg-color !=null {
     background-color: $bg-color;
   }
 
-  /// Can we use relative colors
-  @if $use-hsl ==true {
-    color: hsl(from $color h s calc(l + $relative-value));
+  @if $use-hsl {
+    /// SCSS code is read from top to bottom
+    /// We are setting the fallback color
+    /// If the browser supports HSL than it will overide this one :D
+    $_fallback-color: $color;
 
-    /// Lets see if the bg is null or not
     @if $bg-color !=null {
-      background-color: hsl(from $bg-color h s calc(l + $relative-value));
+      background-color: $bg-color;
     }
-  } @else {
+
+    /// Modern Browsers will use this baby :D
+    /// Remember we are taking in floats and not strings here
+    @supports (color: hsl(from var(--color) h s l)) {
+      color: hsl(from #{$color} h s calc(l + #{$relative-value}));
+
+      @if $bg-color !=null {
+        background-color: hsl(from #{$bg-color} h s calc(l + #{$relative-value}));
+      }
+    }
+  }
+
+  @else {
     color: $color;
   }
 }
+
 
 /// =============================================================================
 /// Other Components

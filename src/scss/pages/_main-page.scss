@@ -155,23 +155,23 @@ $_grid-max-width: 46.625rem;
     }
 
     &__navigation__li-items {
-      @include a.link-nav-animation(map-get($map: a.$links-color, $key: "link-nav"),
-        0,
-        400ms,
-        null,
-        true);
-    }
-
-    &__navigation__li-items:hover {
-      @include a.link-nav-animation(a.$color-primary, 9, 400ms, null, true);
-    }
-
-    &__navigation__li-items:active {
-      @include a.link-nav-animation(a.$color-form, 2.1, 200ms, null, true);
-    }
-
-    &__navigation__li-items:focus-visible {
-      @include a.link-nav-animation(a.$color-form, 0.1, 200ms, null, true);
+      ///Adding Hover states :)
+      color: map-get($map: a.$links-color, $key: "link-nav");
+      /// Hover :)
+      --interactive-bg-hover: null;
+      --interactive-color-hover: #{a.$color-primary};
+      --interactive-relative-hover: 9;
+      /// Active
+      --interactive-bg-active: null;
+      --interactive-color-active: #{a.$color-primary};
+      --interactive-relative-active: 9;
+      /// Focus
+      --interactive-bg-focus-visible: null;
+      --interactive-color-focus-visible: #{a.$color-form};
+      --interactive-relative-focus-visible: 0.1;
+      --interactive-transition-focus-visible: 200ms;
+      --interactive-use-hsl-focus-visible: true;
+      @include a.interactive-states('&');
     }
   }
 
@@ -270,31 +270,6 @@ $_grid-max-width: 46.625rem;
 
     &__bars__icon {
       color: map-get($map: a.$links-color, $key: "link-bar");
-    }
-
-    // Adding some Hover, active stated
-    &__btn-sign-in-up:hover {
-      @include a.link-nav-animation(a.$color-white,
-        4.2,
-        400ms,
-        a.$color-primary,
-        true);
-    }
-
-    &__btn-sign-in-up:active {
-      @include a.link-nav-animation(a.$color-form,
-        0.1,
-        200ms,
-        a.$color-primary,
-        true);
-    }
-
-    &__btn-sign-in-up:focus-visible {
-      @include a.link-nav-animation(a.$color-form,
-        0.1,
-        200ms,
-        a.$color-primary,
-        true);
     }
   }
 }
@@ -465,11 +440,23 @@ $_grid-max-width: 46.625rem;
 
       /// Base Color ANimation :D
       & {
-        @include a.link-nav-animation(a.$font-color-primary,
-          1.2,
-          400ms,
-          null,
-          false);
+        /// Adding Shadow
+        @include a.box-shadow(true,
+          (0 0.275em 0.75em 0em #131022 0.06),
+          (0 0.125em 0.4em 0em #131022 0.03));
+
+        /// Adding Hover States
+        --interactive-bg-hover: null;
+        --interactive-bg-active: null;
+        --interactive-color-hover: #{a.$color-primary};
+        --interactive-color-active: #{a.$font-color-primary};
+        @include a.interactive-states("&");
+
+        /// Setting up Icon :)
+        &__discover-more__icon {
+          --fa-icon-bg-color: #{a.$color-white};
+          @include c.icon-base("\f078", solid, true);
+        }
 
         /// Text element
         & span {
@@ -482,41 +469,6 @@ $_grid-max-width: 46.625rem;
             margin: map-get($map: a.$spacing-distance-relative, $key: "s-1-2");
           }
         }
-      }
-
-      /// Setting up Icon :)
-      // &__discover-more__icon {
-      //   @include c.icon(
-      //     $icon-bg-color: a.$color-white,
-      //     $icon-border-radius: 100%,
-      //     $font-awesome: true,
-      //     $icon-width:
-      //       map-get($map: a.$spacing-distance-relative, $key: "s-2-75"),
-      //     $icon-height:
-      //       map-get($map: a.$spacing-distance-relative, $key: "s-2-75"),
-      //     $fa-icon: "\f078",
-      //     $font-awesome-style: solid,
-      //     $icon-color: null,
-      //     $icon-padding: null,
-      //     $fa-icon-width:
-      //       map-get($map: a.$spacing-distance-relative, $key: "s-0-62"),
-      //     $fa-icon-height:
-      //       map-get($map: a.$spacing-distance-relative, $key: "s-0-62")
-      //   );
-      // }
-
-      /// Adding Hover State
-      &:hover {
-        @include a.link-nav-animation(a.$color-primary,
-          1.2,
-          400ms,
-          null,
-          false);
-      }
-
-      /// Activate State
-      &:active {
-        @include a.link-nav-animation(a.$color-form, 2.1, 200ms, null, true);
       }
     }
   }
@@ -802,7 +754,6 @@ $_container-name-main: main;
       padding-top: map-get($map: a.$spacing-distance-relative, $key: "s-4-68");
       max-width: $_grid-max-width;
       flex-wrap: wrap;
-      justify-content: center;
 
       /// Tablets smaller laptops
       @include l.container-query($_container-name-main,
@@ -836,6 +787,7 @@ $_container-name-main: main;
         map-get($map: a.$breakpoints, $key: "xlarge-1")) {
         /// Got Inspired fro AI Solution Phind
         flex-basis: calc(50% - 2em);
+        justify-content: center;
       }
 
       /// Mobile Phones
@@ -1093,7 +1045,7 @@ $_container-name-main: main;
 
     /// Adding Button hover states
     /// TODO: This functions i MVP, need testing for when we turn off relative colors and if fallback will work
-    @include c.btn-hover-states((".main-wrapper__app-description__container__section__learn-more-btn"),
+    /*     @include c.btn-hover-states((".main-wrapper__app-description__container__section__learn-more-btn"),
       a.$color-white,
       4.2,
       400ms,
@@ -1109,7 +1061,7 @@ $_container-name-main: main;
       200ms,
       a.$color-primary,
       true,
-      0);
+      0); */
   }
 }
 
@@ -1412,6 +1364,9 @@ $_container-name-main: main;
       /// TODO: Don't forget to change this when adding Variables Correctly
       --fa-icon-bg-color: #f3f6ff;
       @include c.icon-base("\f078", solid, true);
+
+      /// Adding Hover States
+      @include a.interactive-states("&");
     }
 
     &__icon--active {
@@ -1486,8 +1441,8 @@ $_container-name-main: main;
       & {
         gap: map-get($map: a.$spacing-distance-relative, $key: 's-1-50');
         /// Adding some Paddings
-        padding-top: map-get($map: a.$spacing-distance-relative, $key: 's-0-56');
-        padding-bottom: map-get($map: a.$spacing-distance-relative, $key: 's-0-56');
+        padding-top: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
+        padding-bottom: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
         border-radius: map-get($map: a.$spacing-distance-relative, $key: 's-0-15');
 
         /// Adding Shadow
@@ -1516,6 +1471,12 @@ $_container-name-main: main;
   &__faq-contact {
 
     /// Buttons
+    &__contact-us-now-btn {
+      display: none;
+
+    }
+
+
     @include l.container-query($_container-name-main,
       0,
       map-get($map: a.$breakpoints, $key: "medium")) {
@@ -1524,35 +1485,23 @@ $_container-name-main: main;
         padding-top: 3.625em;
         padding-bottom: 2.625em;
         text-align: center;
+
       }
 
       &__contact-us-now-btn--primary {
+        /// Show the button
+        display: block;
         /// Changing Font
         @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-s"),
           a.$color-white,
           map-get($map: a.$font-weight, $key: "SemiBold"));
+
+
       }
     }
 
-    /// Adding Button Hover
-    @include c.btn-hover-states((".main-wrapper__faq__container__faq-contact__contact-us-now-btn--primary"
-      ),
-      a.$color-white,
-      4.2,
-      400ms,
-      a.$color-primary,
-      true,
-      a.$color-form,
-      0.1,
-      200ms,
-      a.$color-primary,
-      true,
-      a.$color-form,
-      0.1,
-      200ms,
-      a.$color-primary,
-      true,
-      0);
+    /// Adding hover state
+    ///   @include c.action-hover(".main-wrapper__faq__container__faq-contact__contact-us-now-btn--primary");
   }
 }
 }

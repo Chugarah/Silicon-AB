@@ -311,13 +311,42 @@ $test: true;
 // =============================================================================
 
 :root {
-  /// Bas Icon Settings
-  --icon-width: 2.25rem;
-  --icon-height: 2.25rem;
+  /// =============================================================================
+  /// Components
+  /// =============================================================================
+  /// Icon Settings
+  --icon-width: #{2.25rem};
+  --icon-height: #{2.25rem};
   --fa-icon-width: #{map-get($map: $spacing-distance-base, $key: "sb-0-62")};
   --fa-icon-height: #{map-get($map: $spacing-distance-base, $key: "sb-0-62")};
   --fa-icon-bg-color: #{$color-grey};
   --fa-icon-color: #{map-get($map: $links-color, $key: "link-nav")};
-  --fa-icon-style-default: solid;
-  --icon-border-radius: 50%;
+  --fa-icon-style-default: #{solid};
+  --icon-border-radius: #{50%};
+
+
+  /// Basvariabel för transition
+  --interactive-transition-base: 300ms;
+
+  // Hover state
+  --interactive-color-hover: #{$color-white};
+  --interactive-relative-hover: 4.2;
+  --interactive-transition-hover: 400ms;
+  --interactive-bg-hover: #{$color-primary};
+  --interactive-use-hsl-hover: true;
+
+  // Active state
+  --interactive-color-active: #{$color-white};
+  --interactive-relative-active: 1;
+  --interactive-transition-active: 200ms;
+  --interactive-bg-active: #{$color-form};
+  --interactive-use-hsl-active: true;
+
+  // Focus-visible state
+  --interactive-color-focus-visible: #{$color-white};
+  --interactive-relative-focus-visible: 1;
+  --interactive-transition-focus-visible: 200ms;
+  --interactive-bg-focus-visible: #{$color-form};
+  --interactive-use-hsl-focus-visible: true;
+
 }
