@@ -1,4 +1,5 @@
 @use "@scss/abstracts/_functions" as f; /// @name content-container
+
 /// @group Utility
 ///
 ///
@@ -74,50 +75,48 @@
 /// shadow now we can have unlimited stacked shadow both filter and box-shadow. AI even
 /// created the Documentation above :P, Added now to support inner shadow using Inset :)
 @mixin box-shadow($filter: false, $shadows...) {
-  $result: ();
+  $result: (
+  );
 
-  @each $shadow in $shadows {
-    $inset: if(nth($shadow, 1) == inset, inset, null);
-    $start-index: if($inset, 2, 1);
+@each $shadow in $shadows {
+  $inset: if(nth($shadow, 1)==inset, inset, null);
+  $start-index: if($inset, 2, 1);
 
-    $sh-x: nth($shadow, $start-index);
-    $sh-y: nth($shadow, $start-index + 1);
-    $sh-blur: nth($shadow, $start-index + 2);
-    $sh-spread: if(
-      length($shadow) > $start-index + 4,
+  $sh-x: nth($shadow, $start-index);
+  $sh-y: nth($shadow, $start-index + 1);
+  $sh-blur: nth($shadow, $start-index + 2);
+  $sh-spread: if(length($shadow) > $start-index + 4,
       nth($shadow, $start-index + 3),
-      null
-    );
-    $sh-color: nth($shadow, -2);
-    $opacity: nth($shadow, -1);
+      null);
+  $sh-color: nth($shadow, -2);
+  $opacity: nth($shadow, -1);
 
-    $shadow-string: "";
-    @if $filter {
-      $shadow-string: #{$sh-x}
-        #{$sh-y}
-        #{$sh-blur}
-        #{f.hex-to-rgb($sh-color, $opacity)};
-    } @else {
-      $shadow-string: #{$inset}
-        #{$sh-x}
-        #{$sh-y}
-        #{$sh-blur}
-        #{$sh-spread}
-        #{f.hex-to-rgb($sh-color, $opacity)};
-    }
+  $shadow-string: "";
 
-    @if $filter {
-      $result: append($result, drop-shadow($shadow-string));
-    } @else {
-      $result: append($result, $shadow-string, comma);
-    }
+  @if $filter {
+    $shadow-string: #{$sh-x} #{$sh-y} #{$sh-blur} #{f.hex-to-rgb($sh-color, $opacity)};
+  }
+
+  @else {
+    $shadow-string: #{$inset} #{$sh-x} #{$sh-y} #{$sh-blur} #{$sh-spread} #{f.hex-to-rgb($sh-color, $opacity)};
   }
 
   @if $filter {
-    filter: $result;
-  } @else {
-    box-shadow: $result;
+    $result: append($result, drop-shadow($shadow-string));
   }
+
+  @else {
+    $result: append($result, $shadow-string, comma);
+  }
+}
+
+@if $filter {
+  filter: $result;
+}
+
+@else {
+  box-shadow: $result;
+}
 }
 
 /// =============================================================================
@@ -142,20 +141,33 @@
 /// @description
 /// This mixin sets the background color, border radius, and padding for an element.
 /// It's commonly used to create consistent styling for image containers or background elements.
-@mixin background-generator(
-  $bg-color-ib,
+@mixin background-generator($bg-color-ib,
   $border-radius-ib,
   $padding-x-ib,
   $padding-y-ib,
-  $bg-position: null
-) {
+  $bg-position: null) {
   background-color: $bg-color-ib;
   border-radius: $border-radius-ib;
   padding: $padding-y-ib $padding-x-ib;
 
-  @if $bg-position != null {
+  @if $bg-position !=null {
     position: $bg-position;
   }
 }
 
 /// =============================================================================
+
+
+/// =============================================================================
+/// Padding & Spacing Helpers
+/// =============================================================================
+
+@mixin padding-left-right($padding-left, $padding-right) {
+  padding-left: $padding-left;
+  padding-right: $padding-right;
+}
+
+@mixin padding-top-bottom($padding-top, $padding-bottom) {
+  padding-top: $padding-top;
+  padding-bottom: $padding-bottom;
+}

@@ -171,7 +171,7 @@ $_grid-max-width: 46.625rem;
       --interactive-relative-focus-visible: 0.1;
       --interactive-transition-focus-visible: 200ms;
       --interactive-use-hsl-focus-visible: true;
-      @include a.interactive-states('&');
+      @include a.interactive-states("&");
     }
   }
 
@@ -615,7 +615,9 @@ $_container-name-main: main;
   &__clients-app__container__client-test-card__user-avatar,
   &__client-test-card,
   &__faq__container__faq-accordion__container,
-  &__faq__container__faq-accordion__container__title {
+  &__faq__container__faq-accordion__container__title,
+  &__faq__container__faq-contact,
+  &__faq__container__faq-contact__contact-card {
     @include l.flex(flex-start);
   }
 }
@@ -1293,11 +1295,9 @@ $_container-name-main: main;
       map-get($map: a.$breakpoints, $key: "medium"),
       map-get($map: a.$breakpoints, $key: "xlarge")) {
       & {
-        padding-left: map-get($map: a.$spacing-distance-relative, $key: 's-1-87');
-        padding-right: map-get($map: a.$spacing-distance-relative, $key: 's-1-87');
+        @include a.padding-left-right(map-get($map: a.$spacing-distance-relative, $key: "s-1-87"),
+          map-get($map: a.$spacing-distance-relative, $key: "s-1-87"));
       }
-
-
     }
 
     ///----------- Responsive END -----------
@@ -1306,7 +1306,6 @@ $_container-name-main: main;
   &__faq-accordion__container {
     ///----------- Starting CSS -----------
     flex-direction: column;
-
 
     ///----------- Global CSS START -----------
     &__title {
@@ -1333,8 +1332,12 @@ $_container-name-main: main;
 
     &__title p:last-of-type {
       /// Adding Padding to the container for faq
-      padding-right: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
-      padding-left: map-get($map: a.$spacing-distance-relative, $key: "s-1-50")
+      padding-right: map-get($map: a.$spacing-distance-relative,
+          $key: "s-1-50"
+        );
+      padding-left: map-get($map: a.$spacing-distance-relative,
+          $key: "s-1-50"
+        );
     }
 
     &__content {
@@ -1435,22 +1438,32 @@ $_container-name-main: main;
     }
 
     /// Tablets & smaller laptops
+    /// This one starts from medium without any max container with
+    /// Basically we could just put all code here if we don't need some
+    /// global css
     @include l.container-query($_container-name-main,
-      map-get($map: a.$breakpoints, $key: "medium"),
-    ) {
+      map-get($map: a.$breakpoints, $key: "medium")) {
       & {
-        gap: map-get($map: a.$spacing-distance-relative, $key: 's-1-50');
+        gap: map-get($map: a.$spacing-distance-relative, $key: "s-1-50");
         /// Adding some Paddings
-        padding-top: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
-        padding-bottom: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
-        border-radius: map-get($map: a.$spacing-distance-relative, $key: 's-0-15');
+        padding-top: map-get($map: a.$spacing-distance-relative,
+            $key: "s-1-1"
+          );
+        padding-bottom: map-get($map: a.$spacing-distance-relative,
+            $key: "s-1-1"
+          );
+        border-radius: map-get($map: a.$spacing-distance-relative,
+            $key: "s-0-15"
+          );
 
         /// Adding Shadow
         @include a.box-shadow(false,
           (0 0.275em 0.75em 0em #131022 0.06),
           (0 0.125em 0.4em 0em #131022 0.03));
 
-        margin-bottom: map-get($map: a.$spacing-distance-relative, $key: 's-1-1');
+        margin-bottom: map-get($map: a.$spacing-distance-relative,
+            $key: "s-1-1"
+          );
       }
 
       /// Setting up fonts and color
@@ -1461,7 +1474,6 @@ $_container-name-main: main;
       &__title p {
         color: a.$font-color-secondary;
       }
-
     }
 
     ///----------- Responsive END -----------
@@ -1469,14 +1481,59 @@ $_container-name-main: main;
 
   /// FAQ Contact Section
   &__faq-contact {
+    ///----------- Global CSS END -----------
+    width: 100%;
+    gap: 1.125em;
+    padding: map-get($map: a.$spacing-distance-relative, $key: "s-2-00");
 
-    /// Buttons
+    /// Button Contact us now
     &__contact-us-now-btn {
       display: none;
-
     }
 
+    /// Contact Card
+    &__contact-card {
+      flex-direction: column;
+      padding: 1.5em;
+      gap: 1.875em;
+      border: 1px solid a.$color-gray-scale;
+      border-radius: map-get($map: a.$border-radius, $key: "r-0-5");
 
+      & a {
+        /// Changing Font
+        @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-s"),
+          null,
+          map-get($map: a.$font-weight, $key: "SemiBold"));
+        padding-bottom: map-get($map: a.$spacing-distance-relative,
+            $key: "s-1-1"
+          );
+      }
+
+      /// Styling the link and adding some spacing
+      &--color-primary {
+        color: a.$color-primary;
+        @include a.is-base-links(a.$color-primary,
+          a.$color-primary,
+          a.$color-form );
+      }
+
+      & i {
+        margin-left: 13px;
+      }
+
+      /// Green link
+      &--color-green {
+        color: a.$color-system-success;
+        @include a.is-base-links(a.$color-system-success,
+          a.$color-system-success,
+          a.$color-form );
+      }
+    }
+
+    ///----------- Global CSS END -----------
+
+    ///----------- Responsive START -----------
+    /// Mobile Devices
     @include l.container-query($_container-name-main,
       0,
       map-get($map: a.$breakpoints, $key: "medium")) {
@@ -1485,7 +1542,12 @@ $_container-name-main: main;
         padding-top: 3.625em;
         padding-bottom: 2.625em;
         text-align: center;
+        justify-content: center;
 
+        /// Hide Contact Card
+        &__contact-card {
+          display: none;
+        }
       }
 
       &__contact-us-now-btn--primary {
@@ -1495,13 +1557,27 @@ $_container-name-main: main;
         @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-s"),
           a.$color-white,
           map-get($map: a.$font-weight, $key: "SemiBold"));
-
-
       }
     }
 
-    /// Adding hover state
-    ///   @include c.action-hover(".main-wrapper__faq__container__faq-contact__contact-us-now-btn--primary");
+    /// Tablets Smaller laptops
+    @include l.container-query($_container-name-main,
+      0,
+      map-get($map: a.$breakpoints, $key: "xlarge-1")) {
+      & {
+        @include a.padding-left-right(map-get($map: a.$spacing-distance-relative, $key: "s-1-87"),
+          map-get($map: a.$spacing-distance-relative, $key: "s-1-87"));
+      }
+
+      /// Contact Card
+      &__contact-card {
+        flex: 1;
+        padding: map-get($map: a.$spacing-distance-relative, $key: "s-2-50");
+        gap: 1.875em;
+      }
+    }
+
+    ///----------- Responsive END -----------
   }
 }
 }

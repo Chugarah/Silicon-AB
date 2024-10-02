@@ -1,3 +1,4 @@
+@use "@scss/abstracts/_variables" as a;
 /// =============================================================================
 /// Form Elements
 /// =============================================================================
@@ -128,6 +129,19 @@
         var(--interactive-use-hsl-focus-visible));
     }
   }
+}
+
+/// AN basic interactive states for links
+@mixin is-base-links($color-hover, $color-active, $color-focus) {
+  --interactive-bg-hover: null;
+  --interactive-bg-active: null;
+  --interactive-bg-focus-visible: null;
+  --interactive-color-hover: #{$color-hover};
+  --interactive-color-active: #{$color-active};
+  --interactive-color-focus-visible: #{$color-focus};
+  --interactive-relative-hover: 10;
+  --interactive-relative-focus-visible: 10;
+  @include interactive-states("&")
 }
 
 
