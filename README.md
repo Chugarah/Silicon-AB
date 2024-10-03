@@ -25,3 +25,7 @@ npm install -g sass-migrator
 sass-migrator division **/*.scss
 
 npm install --save @fortawesome/fontawesome-free
+
+
+Expornera din lokala server
+ngrok http http://localhost:3000
