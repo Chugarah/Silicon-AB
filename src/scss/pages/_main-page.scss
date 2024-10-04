@@ -634,7 +634,8 @@ $_grid-max-width: 46.625rem;
 $_container-name-main: main;
 
 /// Global SCSS for Main wrapper and it's children
-.main-wrapper {
+.main-wrapper,
+.footer-wrapper {
   /// Larger desktop screens
   /// Adding some padding
   &__company-logos,
@@ -664,7 +665,8 @@ $_container-name-main: main;
   /// White
   & .main-wrapper__app-description,
   & .main-wrapper__faq,
-  & .main-wrapper__subscribe {
+  & .main-wrapper__subscribe,
+  & .footer-wrapper {
     background-color: white;
   }
 
@@ -675,7 +677,8 @@ $_container-name-main: main;
   &__app-description__container,
   &__clients-app__container,
   &__faq__container,
-  &__subscribe__container {
+  &__subscribe__container,
+  &__footer-container {
     /// Adding Correct Full With for content
     /// Content Width
     @include l.content-width(
@@ -2028,15 +2031,47 @@ $_container-name-main: main;
 /// =============================================================================
 /// Footer Area
 /// =============================================================================
+$_container-name-footer: footer;
 .footer-wrapper {
   /// Activate Container Query Properties for main-wrapper
-  @include l.container-query-wrapper(main);
+  @include l.container-query-wrapper($_container-name-footer);
 
-  /// Content Width
-  .content-container {
-    @include l.content-width(
-      map-get($map: a.$max-content-width, $key: "desktop"),
-      map-get($map: a.$content-width-percentage, $key: "full-width")
-    );
+  ///----------- Global CSS START -----------
+
+  /// Duuuhhh only one simple footer eh
+  &__footer-container {
+    text-align: center;
+    @include a.padding-top-bottom(3.5em, 3.5em);
+
+    & p {
+      @include b.font-settings(
+        map-get($map: a.$font-sizes, $key: "t-s"),
+        a.$grey-600,
+        map-get($map: a.$font-weight, $key: "Regular")
+      );
+    }
+    ///----------- Global CSS END -----------
+    ///----------- Responsive START -----------
+    /// Mobile Devices
+    @include l.container-query(
+      $_container-name-footer,
+      0,
+      map-get($map: a.$breakpoints, $key: "medium")
+    ) {
+      & {
+        @include a.padding-top-bottom(2.1875em, 2.1875em);
+        @include a.padding-left-right(5.375em, 5.375em);
+      }
+    }
+
+    /// Tablet and smaller laptops
+    @include l.container-query(
+      $_container-name-footer,
+      map-get($map: a.$breakpoints, $key: "medium"),
+      map-get($map: a.$breakpoints, $key: "xlarge-1")
+    ) {
+      @include a.padding-top-bottom(2.1875em, 2.1875em);
+    }
+    ///----------- Responsive START -----------
   }
 }
