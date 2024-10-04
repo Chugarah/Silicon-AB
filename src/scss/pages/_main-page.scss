@@ -2009,10 +2009,14 @@ $_container-name-main: main;
         display: block;
       }
       &__flex--form {
-        flex: 1;
+        flex: 1.1;
         padding-left: 4.625em;
         & i {
           left: 18%;
+        }
+        & button {
+          padding-left: 2.65em;
+          padding-right: 2.65em;
         }
       }
     }
