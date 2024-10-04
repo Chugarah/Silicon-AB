@@ -5,9 +5,6 @@
 @use "@scss/components/_icons" as c;
 @use "@scss/base" as b;
 
-
-
-
 /// =============================================================================
 /// Primary Buttons
 /// =============================================================================
@@ -36,9 +33,10 @@
     &__user-icon {
       /// Using Font-Awesome CSS selectors in SCSS :)))
       @extend .fa-regular, .fa-user, .fa-brand-base;
-      padding-right: map-get($map: a.$spacing-distance-relative,
-          $key: "s-0-15"
-        );
+      padding-right: map-get(
+        $map: a.$spacing-distance-relative,
+        $key: "s-0-15"
+      );
     }
 
     /// @name primary
@@ -53,25 +51,30 @@
     /// AI Phind Generated the Documentation above
     /// Primary Btn specs
     &--primary {
-      @include a.btn-props(a.$color-white,
+      @include a.btn-props(
+        a.$color-white,
         a.$color-primary,
         map-get($map: a.$border-radius, $key: "r-0-2"),
-        a.create-list(map-get($map: a.$spacing-distance-relative, $key: "s-0-56") a.create-list(map-get($map: a.$spacing-distance-relative, $key: "s-1-25"))));
+        a.create-list(
+          map-get($map: a.$spacing-distance-relative, $key: "s-0-56")
+            a.create-list(
+              map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
+            )
+        )
+      );
 
       /// Adding hover state
       /// Adding styles just because :D
       --interactive-relative-hover: 4;
       --interactive-transition-hover: 200;
 
-      @include a.interactive-states('&');
-
+      @include a.interactive-states("&");
     }
   }
 }
 
 /// App Description Button
 .main-wrapper__app-description__container__section {
-
   &__learn-more-btn {
     /// Basic Styling for BTN
     @include a.btn;
@@ -85,17 +88,23 @@
 
     /// Primary Btn specs
     &--primary {
-      @include a.btn-props(a.$color-white,
+      @include a.btn-props(
+        a.$color-white,
         a.$color-primary,
         map-get($map: a.$border-radius, $key: "r-0-3"),
-        a.create-list(map-get($map: a.$spacing-distance-relative, $key: "s-1-25") a.create-list(map-get($map: a.$spacing-distance-relative, $key: "s-2-00"))));
+        a.create-list(
+          map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
+            a.create-list(
+              map-get($map: a.$spacing-distance-relative, $key: "s-2-00")
+            )
+        )
+      );
 
       /// Adding Hover States
       @include a.interactive-states("&");
     }
   }
 }
-
 
 /// FAQ Button
 .main-wrapper__faq__container__faq-contact {
@@ -105,15 +114,35 @@
 
     /// Primary Btn specs
     &--primary {
-      @include a.btn-props(a.$color-white,
+      @include a.btn-props(
+        a.$color-white,
         a.$color-primary,
         map-get($map: a.$border-radius, $key: "r-0-3"),
-        a.create-list(1.25em a.create-list(1.75em)));
+        a.create-list(1.25em a.create-list(1.75em))
+      );
 
       /// Adding hover state
-      @include a.interactive-states('&');
-
+      @include a.interactive-states("&");
     }
+  }
+}
+
+/// Subscribe
+.main-wrapper__subscribe__container__wrapper__flex__button {
+  /// Basic Styling for BTN
+  @include a.btn;
+
+  /// Primary Btn specs
+  &--primary {
+    @include a.btn-props(
+      a.$color-white,
+      a.$color-primary,
+      map-get($map: a.$border-radius, $key: "r-0-3"),
+      a.create-list(map-get(a.$spacing-distance-relative, $key: "s-1-25"))
+    );
+
+    /// Adding hover state
+    @include a.interactive-states("&");
   }
 }
 
@@ -137,25 +166,31 @@
   height: 3.25em;
 
   /// Desktop preparation for smaller devices
-  @include l.container-query(header,
+  @include l.container-query(
+    header,
     0,
-    map-get($map: a.$breakpoints, $key: "xlarge-1")) {
+    map-get($map: a.$breakpoints, $key: "xlarge-1")
+  ) {
     width: 7.875em;
     height: 2.74375em;
   }
 
   /// Tablets smaller laptops
-  @include l.container-query(header,
+  @include l.container-query(
+    header,
     0,
-    map-get($map: a.$breakpoints, $key: "medium")) {
+    map-get($map: a.$breakpoints, $key: "medium")
+  ) {
     width: 22.9em;
     height: 3.150625em;
   }
 
   /// Mobile Phones
-  @include l.container-query(header,
+  @include l.container-query(
+    header,
     0,
-    map-get($map: a.$breakpoints, $key: "mobile")) {
+    map-get($map: a.$breakpoints, $key: "mobile")
+  ) {
     width: 100%;
   }
 
@@ -164,21 +199,23 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: map-get($map: a.$spacing-distance-relative, $key: "s-0-62") map-get($map: a.$spacing-distance-relative, $key: "s-1-25");
+    padding: map-get($map: a.$spacing-distance-relative, $key: "s-0-62")
+      map-get($map: a.$spacing-distance-relative, $key: "s-1-25");
     object-fit: cover;
     position: absolute;
     width: 100%;
     height: auto;
 
     /// Mobile Phones
-    @include l.container-query(header,
+    @include l.container-query(
+      header,
       0,
-      map-get($map: a.$breakpoints, $key: "medium")) {
+      map-get($map: a.$breakpoints, $key: "medium")
+    ) {
       width: auto;
     }
   }
 
   /// Adding Hover States
   @include a.interactive-states("&");
-
 }
