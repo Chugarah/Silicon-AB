@@ -1,2 +1,9 @@
+# Folders
 node_modules
-bc
+dist
+dev-dist
+
+# Env files
+.env
+.env.local
+.env.*.local

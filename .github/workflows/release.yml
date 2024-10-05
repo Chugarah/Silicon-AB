@@ -1,0 +1,60 @@
+//// IN PROGRESS DO START THIS EXPLOSION BATTLE CRUSER!! :_D
+
+
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+
+      - run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
+
+      - name: Zip dist folder
+        run: zip -r dist.zip dist
+
+      - name: Generate changelog
+        run: |
+          echo "## What's Changed" > ${{ github.workspace }}-CHANGELOG.txt
+          git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %s" >> ${{ github.workspace }}-CHANGELOG.txt
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist.zip
+          body_path: ${{ github.workspace }}-CHANGELOG.txt
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist

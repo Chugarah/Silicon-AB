@@ -1,5 +1,2 @@
 import "@scss/main.scss";
-
-console.log(
-  getComputedStyle(document.documentElement).getPropertyValue("--icon-width")
-);
+document.documentElement.style.setProperty("--theme-color", "#ffffff");

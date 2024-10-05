@@ -1,45 +1,54 @@
 {
   "name": "silicon-ab",
-  "version": "0.0.5",
-  "description": "Slutuppgift till HTML & CSS Kurs",
-  "main": "index.html",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Chugarah/Silicon-AB.git"
-  },
-  "keywords": [
-    "html",
-    "css",
-    "scss",
-    "html5"
-  ],
-  "author": "Georgi Sundberg",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Chugarah/Silicon-AB/issues"
-  },
-  "homepage": "https://github.com/Chugarah/Silicon-AB#readme",
-  "devDependencies": {
-    "@iconify/json": "^2.2.251",
-    "@rollup/plugin-babel": "^6.0.4",
-    "rollup": "^4.22.4",
-    "rollup-plugin-visualizer": "^5.12.0",
-    "sass": "^1.79.3",
-    "unplugin-icons": "^0.19.3",
-    "vite": "^5.4.7",
-    "vite-plugin-chunk-split": "^0.5.0",
-    "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-mkcert": "^1.17.6",
-    "vite-plugin-svgr": "^4.2.0"
-  },
+  "private": true,
+  "version": "0.7.5",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./vite.config.js"
+    }
+  },
+  "scripts": {
+    "dev": "set NODE_ENV=development && vite",
+    "build:windows": "vite build --mode windows",
+    "build:unix": "vite build --mode unix",
+    "preview": "vite preview",
+    "start": "vite",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.1",
+    "globals": "^15.10.0",
+    "prettier": "^3.3.3",
+    "rollup": "^4.24.0",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "sass-embedded": "^1.79.4",
+    "sharp": "^0.33.5",
+    "svgo": "^3.3.2",
+    "terser": "^5.34.1",
+    "vite": "^5.4.8",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-html": "^3.2.2",
+    "vite-plugin-image-optimizer": "^1.1.8",
+    "vite-plugin-mkcert": "^1.17.6",
+    "vite-plugin-preload": "^0.4.2",
+    "vite-plugin-pwa": "^0.20.5"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
-    "font-awesome": "^4.7.0"
+    "@jridgewell/sourcemap-codec": "^1.5.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "font-awesome": "^4.7.0",
+    "lru-cache": "^11.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vite-plugin-environment": "^1.1.3",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^5.0.1"
   }
 }

@@ -1,169 +1,695 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Manage All Your Money in One App" />
+    <title>Silicon</title>
+    <!-- https://favicon.io/favicon-generator/ -->
+    <link rel="icon" type="image/x-icon" href="./img/favicon.BpulF3pj.ico" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
+    />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/masked-icon.svg" color="#FFFFFF" />
+    <script type="module" crossorigin="" src="./js/index.eY7uP5jO.js"></script>
+    <link rel="stylesheet" crossorigin="" href="./css/index.BFpdtnt3.css" />
+  <link rel="manifest" href="./manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="./registerSW.js"></script></head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Manage All Your Money in One App" />
-  <title>Silicon</title>
-
-
-  <script type="module" crossorigin src="/assets/main-95sbTNi2.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-C8_AdG3z.css">
-</head>
-
-<body>
-  <!-- Container Queries & Skeleton Structure -->
-  <div class="skeleton-wrapper">
-    <!-- Header & Navigation Inspired by Hans :)-->
-    <header aria-label="Navigation & Logo" class="header_wrapper">
-      <nav class="header" aria-label="Menu Navigation">
-        <div class="header__logo">
-          <img class="header__logo__img" src="/assets/logo-CB8VQuo7.svg" alt="Logo" />
-        </div>
-        <div class="header__menu">
-          <ul class="header__menu__navigation">
-            <li class="header__menu__navigation__li-items" tabindex="0">
-              Features
-            </li>
-          </ul>
-        </div>
-        <div class="header__theme-btn-access">
-          <span class="header__theme-btn-access__text-span"> Dark Mode </span>
-          <label class="header__theme-btn-access__toggle">
-            <input class="header__theme-btn-access__toggle__check-box" type="checkbox" />
-            <span class="header__theme-btn-access__toggle__slider" aria-label="Slider for Theme" aria-valuenow="0"
-              tabindex="0" role="slider" title="Slider for Theme" aria-valuemin="0" aria-valuemax="1">
-            </span>
-          </label>
-          <button type="submit"
-            class="header__theme-btn-access__btn-sign-in-up header__theme-btn-access__btn-sign-in-up--primary">
-            <i class="fa-regular fa-user header__theme-btn-access__btn-sign-in-up__user-icon"></i>
-            Sign in / up
-          </button>
-          <a class="header__theme-btn-access__bars">
-            <i class="fa-solid fa-bars header__theme-btn-access__bars__icon"></i>
-          </a>
-        </div>
-      </nav>
-      <section aria-label="Hero & Promotion Section">
-        <div class="hero-section">
-          <p class="hero-section__heading">
-            Manage All Your Money in One App
-          </p>
-          <p class="hero-section__text-description">
-            We offer you a new generation of the mobile banking. Save, spend &
-            manage money in your pocket.
-          </p>
-          <div class="hero-section__apps-links">
-            <!-- Inspired by Hans for Dynamic Buttons ;)-->
-            <a href="#" title="Apple Store Link" class="hero-section__apps-links__link-item">
-              <img src="/assets/app-store-btn-group-GxT1G4dG.svg" alt="Apple Store Image" />
+  <body>
+    <!-- Container Queries & Skeleton Structure -->
+    <div class="skeleton-wrapper">
+      <!-- Header & Navigation Inspired by Hans :)-->
+      <header aria-label="Navigation &amp; Logo" class="header_wrapper">
+        <nav class="header" aria-label="Menu Navigation">
+          <div class="header__logo">
+            <img
+              class="header__logo__img"
+              src="./img/logo.CB8VQuo7.svg"
+              alt="Logo"
+            />
+          </div>
+          <div class="header__menu">
+            <ul class="header__menu__navigation">
+              <li class="header__menu__navigation__li-items" tabindex="0">
+                Features
+              </li>
+            </ul>
+          </div>
+          <div class="header__theme-btn-access">
+            <span class="header__theme-btn-access__text-span"> Dark Mode </span>
+            <label class="header__theme-btn-access__toggle">
+              <input
+                class="header__theme-btn-access__toggle__check-box"
+                type="checkbox"
+              />
+              <span
+                class="header__theme-btn-access__toggle__slider"
+                aria-label="Slider for Theme"
+                aria-valuenow="0"
+                tabindex="0"
+                role="slider"
+                title="Slider for Theme"
+                aria-valuemin="0"
+                aria-valuemax="1"
+              >
+              </span>
+            </label>
+            <button
+              type="submit"
+              class="header__theme-btn-access__btn-sign-in-up header__theme-btn-access__btn-sign-in-up--primary"
+            >
+              <i
+                class="header__theme-btn-access__btn-sign-in-up__user-icon"
+              ></i>
+              Sign in / up
+            </button>
+            <a class="header__theme-btn-access__bars">
+              <i
+                class="fa-solid fa-bars header__theme-btn-access__bars__icon"
+              ></i>
             </a>
-            <a href="#" title="Android Store Link" class="hero-section__apps-links__link-item">
-              <img src="/assets/app-android-store-btn-group-pzpz2XXR.svg" alt="Android Store Image" />
-            </a>
           </div>
-          <div class="hero-section__discover-more">
-            <a href="#" title="Discover more link" tabindex="0" class="hero-section__discover-more__link-item">
-              <i class="fa-solid fa-chevron-down hero-section__discover-more__link-item__discover-more__icon"></i>
-              <span>Discover more</span></a>
-          </div>
-          <div class="hero-section__mobile-images">
-            <div class="hero-section__mobile-images__image-wrapper">
-              <img class="hero-section__mobile-images__image-wrapper__iphone-1" src="/assets/iphone-1-BOWG-zJU.svg"
-                alt="Iphone showing my cards section from Silicon AB app" />
-              <img class="hero-section__mobile-images__image-wrapper__iphone-2" src="/assets/iphone-2-CQT2arFq.svg"
-                alt="Iphone showing my budget section from Silicon AB app" />
+        </nav>
+        <section aria-label="Hero &amp; Promotion Section">
+          <div class="hero-section">
+            <p class="hero-section__heading">
+              Manage All Your Money in One App
+            </p>
+            <p class="hero-section__text-description">
+              We offer you a new generation of the mobile banking. Save, spend
+              &amp; manage money in your pocket.
+            </p>
+            <div class="hero-section__apps-links">
+              <!-- Inspired by Hans for Dynamic Buttons ;)-->
+              <a
+                href="#"
+                title="Apple Store Link"
+                class="hero-section__apps-links__link-item"
+              >
+                <img src="./img/app-store-btn-group.GxT1G4dG.svg" alt="Apple Store Image" />
+              </a>
+              <a
+                href="#"
+                title="Android Store Link"
+                class="hero-section__apps-links__link-item"
+              >
+                <img src="./img/app-android-store-btn-group.pzpz2XXR.svg" alt="Android Store Image" />
+              </a>
             </div>
-          </div>
-        </div>
-      </section>
-    </header>
-    <!-- Header & Navigation End -->
-    <!-- Main Content -->
-    <main class="main-wrapper" aria-label="Main Section of the page">
-      <section aria-label="Company Logos" class="main-wrapper__company-logos">
-        <div class="main-wrapper__company-logos__image-item" id="c-l-1">
-          <img src="data:image/svg+xml,%3csvg%20width='119'%20height='30'%20viewBox='0%200%20119%2030'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M2.94141%2027.8251H28.5914V2.17505H2.94141V27.8251ZM23.6544%2012.532H18.2344V7.11205H23.6544V12.532ZM7.87741%207.11205H13.3004V17.468H23.6544V22.8881H7.87741V7.11205ZM45.2944%202.17505C42.7578%202.17505%2040.2782%202.92723%2038.1692%204.33646C36.0601%205.74569%2034.4163%207.74868%2033.4456%2010.0921C32.4749%2012.4356%2032.221%2015.0142%2032.7158%2017.502C33.2107%2019.9898%2034.4321%2022.275%2036.2257%2024.0686C38.0193%2025.8623%2040.3045%2027.0837%2042.7923%2027.5786C45.2802%2028.0735%2047.8588%2027.8195%2050.2023%2026.8489C52.5458%2025.8782%2054.5487%2024.2344%2055.958%2022.1252C57.3672%2020.0161%2058.1194%2017.5365%2058.1194%2015C58.1154%2011.5998%2056.7629%208.34009%2054.3586%205.9358C51.9543%203.5315%2048.6946%202.17902%2045.2944%202.17505ZM45.2944%2022.8881C43.7343%2022.8881%2042.2092%2022.4254%2040.912%2021.5586C39.6149%2020.6919%2038.6038%2019.46%2038.0068%2018.0186C37.4098%2016.5773%2037.2536%2014.9913%2037.5579%2013.4611C37.8623%2011.931%2038.6136%2010.5255%2039.7167%209.42239C40.8199%208.31924%2042.2254%207.56798%2043.7555%207.26362C45.2856%206.95926%2046.8716%207.11547%2048.313%207.71249C49.7543%208.30951%2050.9863%209.32054%2051.853%2010.6177C52.7198%2011.9148%2053.1824%2013.4399%2053.1824%2015C53.1792%2017.0911%2052.3471%2019.0956%2050.8685%2020.5742C49.3899%2022.0528%2047.3854%2022.8848%2045.2944%2022.8881ZM104.013%202.17505C101.476%202.17486%2098.9971%202.92686%2096.8879%204.33597C94.7787%205.74508%2093.1348%207.748%2092.1639%2010.0914C91.1931%2012.4348%2090.9389%2015.0136%2091.4337%2017.5014C91.9284%2019.9893%2093.1498%2022.2747%2094.9434%2024.0683C96.7369%2025.862%2099.0221%2027.0837%20101.51%2027.5786C103.997%2028.0735%20106.576%2027.8195%20108.92%2026.8489C111.263%2025.8783%20113.266%2024.2344%20114.675%2022.1253C116.085%2020.0162%20116.837%2017.5366%20116.837%2015C116.833%2011.6%20115.481%208.34041%20113.077%205.93615C110.673%203.53188%20107.413%202.17929%20104.013%202.17505ZM104.013%2022.8881C102.453%2022.8883%20100.928%2022.4257%2099.6308%2021.5591C98.3335%2020.6925%2097.3223%2019.4606%2096.7251%2018.0193C96.1279%2016.578%2095.9716%2014.9919%2096.2758%2013.4617C96.5801%2011.9316%2097.3313%2010.526%2098.4344%209.42275C99.5375%208.31949%20100.943%207.56813%20102.473%207.26369C104.003%206.95925%20105.589%207.1154%20107.03%207.7124C108.472%208.30939%20109.704%209.32041%20110.571%2010.6176C111.437%2011.9148%20111.9%2013.4399%20111.9%2015C111.897%2017.0909%20111.065%2019.0952%20109.586%2020.5738C108.108%2022.0524%20106.104%2022.8846%20104.013%2022.8881ZM74.6534%202.17505C72.1168%202.17505%2069.6372%202.92723%2067.5282%204.33646C65.4191%205.74569%2063.7753%207.74868%2062.8046%2010.0921C61.8339%2012.4356%2061.58%2015.0142%2062.0748%2017.502C62.5697%2019.9898%2063.7911%2022.275%2065.5847%2024.0686C67.3783%2025.8623%2069.6635%2027.0837%2072.1513%2027.5786C74.6391%2028.0735%2077.2178%2027.8195%2079.5613%2026.8489C81.9048%2025.8782%2083.9077%2024.2344%2085.317%2022.1252C86.7262%2020.0161%2087.4784%2017.5365%2087.4784%2015C87.4744%2011.5998%2086.1219%208.34009%2083.7176%205.9358C81.3133%203.5315%2078.0536%202.17902%2074.6534%202.17505ZM74.6534%2022.8881C73.1998%2022.8888%2071.7744%2022.4879%2070.5343%2021.7295C69.2943%2020.9712%2068.2878%2019.8852%2067.6261%2018.591C66.9645%2017.2968%2066.6732%2015.8448%2066.7846%2014.3956C66.896%2012.9463%2067.4056%2011.556%2068.2573%2010.3781C69.109%209.20031%2070.2696%208.28066%2071.6109%207.72076C72.9523%207.16085%2074.4223%206.98247%2075.8586%207.20529C77.295%207.42812%2078.6418%208.04348%2079.7505%208.98347C80.8592%209.92345%2081.6866%2011.1515%2082.1414%2012.532H74.6534V17.468H82.1414C81.6205%2019.0433%2080.6169%2020.4148%2079.2728%2021.3876C77.9288%2022.3605%2076.3126%2022.8853%2074.6534%2022.8881Z'%20fill='%23B4B7C9'/%3e%3c/svg%3e" alt="Company logo 1" />
-        </div>
-        <div class="main-wrapper__company-logos__image-item" id="c-l-2">
-          <img src="/assets/company-2-DT2i62hO.svg" alt="Company logo 2" />
-        </div>
-        <div class="main-wrapper__company-logos__image-item" id="c-l-3">
-          <img src="/assets/company-3-GkpScZ5P.svg" alt="Company logo 3" />
-        </div>
-        <div class="main-wrapper__company-logos__image-item" id="c-l-4">
-          <img src="/assets/company-4-B9AerZEh.svg" alt="Company logo 4" />
-        </div>
-        <div class="main-wrapper__company-logos__image-item" id="c-l-5">
-          <img src="/assets/company-5-nrgl4ylH.svg" alt="Company logo 5" />
-        </div>
-        <div class="main-wrapper__company-logos__image-item" id="c-l-6">
-          <img src="/assets/company-6-Cpv3F3c2.svg" alt="Company logo 6" />
-        </div>
-      </section>
-      <section aria-label="App Features" class="main-wrapper__app-features">
-        <img src="/assets/phone-app-features-D25y3DBh.svg" alt="Iphone showing App features" />
-        <div>
-          <h1>App Features</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-            volutpat mollis egestas. Nam luctus facilisis ultrices.
-            Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.
-          </p>
-          <div class="main-wrapper__app-features__app-features-cards">
-            <div class="main-wrapper__app-features__app-features-cards__card-container">
-              <i class="fa-solid fa-credit-card hero-section__discover-more__link-item__discover-more__icon"
-                aria-hidden="true"></i>
-              <div class="main-wrapper__app-features__app-features-cards__card-container__card-item">
-                <h5>Easy Payments</h5>
-                <p>
-                  Id mollis consectetur congue egestas egestas suspendisse
-                  blandit justo.
-                </p>
-              </div>
+            <div class="hero-section__discover-more">
+              <a
+                href="#"
+                title="Discover more link"
+                tabindex="0"
+                class="hero-section__discover-more__link-item"
+              >
+                <i
+                  class="fa-solid fa-chevron-down hero-section__discover-more__link-item__discover-more__icon"
+                ></i>
+                <span>Discover more</span></a
+              >
             </div>
-            <div class="main-wrapper__app-features__app-features-cards__card-container">
-              <i class="fa-solid fa-chevron-down hero-section__discover-more__link-item__discover-more__icon"
-                aria-hidden="true"></i>
-              <div class="main-wrapper__app-features__app-features-cards__card-container__card-item">
-                <h5>Easy Payments</h5>
-                <p>
-                  Id mollis consectetur congue egestas egestas suspendisse
-                  blandit justo.
-                </p>
-              </div>
-            </div>
-            <div class="main-wrapper__app-features__app-features-cards__card-container">
-              <i class="fa-solid fa-chevron-down hero-section__discover-more__link-item__discover-more__icon"
-                aria-hidden="true"></i>
-              <div class="main-wrapper__app-features__app-features-cards__card-container__card-item">
-                <h5>Easy Payments</h5>
-                <p>
-                  Id mollis consectetur congue egestas egestas suspendisse
-                  blandit justo.
-                </p>
-              </div>
-            </div>
-            <div class="main-wrapper__app-features__app-features-cards__card-container">
-              <i class="fa-solid fa-chevron-down hero-section__discover-more__link-item__discover-more__icon"
-                aria-hidden="true"></i>
-              <div class="main-wrapper__app-features__app-features-cards__card-container__card-item">
-                <h5>Easy Payments</h5>
-                <p>
-                  Id mollis consectetur congue egestas egestas suspendisse
-                  blandit justo.
-                </p>
+            <div class="hero-section__mobile-images">
+              <div class="hero-section__mobile-images__image-wrapper">
+                <img
+                  class="hero-section__mobile-images__image-wrapper__iphone-1"
+                  src="./img/iphone-1.BOWG-zJU.svg"
+                  alt="Iphone showing my cards section from Silicon AB app"
+                />
+                <img
+                  class="hero-section__mobile-images__image-wrapper__iphone-2"
+                  src="./img/iphone-2.CQT2arFq.svg"
+                  alt="Iphone showing my budget section from Silicon AB app"
+                />
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
-    <!-- Main Content End -->
-  </div>
-
-</body>
+        </section>
+      </header>
+      <!-- Header & Navigation End -->
+      <!-- Main Content -->
+      <main class="main-wrapper" aria-label="Main Section of the page">
+        <!-- Company Logos -->
+        <section aria-label="Company Logos" class="main-wrapper__company-logos">
+          <div class="main-wrapper__company-logos__container">
+            <div
+              class="main-wrapper__company-logos__container__image-item"
+              id="c-l-1"
+            >
+              <img src="./img/company-1.BoAZ89Eb.svg" alt="Company logo 1" />
+            </div>
+            <div
+              class="main-wrapper__company-logos__container__image-item"
+              id="c-l-2"
+            >
+              <img src="./img/company-2.DT2i62hO.svg" alt="Company logo 2" />
+            </div>
+            <div
+              class="main-wrapper__company-logos__container__image-item"
+              id="c-l-3"
+            >
+              <img src="./img/company-3.GkpScZ5P.svg" alt="Company logo 3" />
+            </div>
+            <div
+              class="main-wrapper__company-logos__container__image-item"
+              id="c-l-4"
+            >
+              <img src="./img/company-4.B9AerZEh.svg" alt="Company logo 4" />
+            </div>
+            <div
+              class="main-wrapper__company-logos__container__image-item"
+              id="c-l-5"
+            >
+              <img src="./img/company-5.nrgl4ylH.svg" alt="Company logo 5" />
+            </div>
+            <div
+              class="main-wrapper__company-logos__container__image-item"
+              id="c-l-6"
+            >
+              <img src="./img/company-6.Cpv3F3c2.svg" alt="Company logo 6" />
+            </div>
+          </div>
+        </section>
+        <!-- App Features -->
+        <section aria-label="App Features" class="main-wrapper__app-features">
+          <div class="main-wrapper__app-features__container">
+            <img
+              class="main-wrapper__app-features__container__phone-image"
+              src="./img/phone-app-features.D25y3DBh.svg"
+              alt="Iphone showing App features"
+            />
+            <div>
+              <h1 class="main-wrapper__app-features__container__heading">
+                App Features
+              </h1>
+              <p class="main-wrapper__app-features__container__p-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+                volutpat mollis egestas. Nam luctus facilisis ultrices.
+                Pellentesque volutpat ligula est. Mattis fermentum, at nec
+                lacus.
+              </p>
+              <div
+                class="main-wrapper__app-features__container__app-features-cards"
+              >
+                <div
+                  class="main-wrapper__app-features__container__app-features-cards__card-container"
+                >
+                  <img src="./img/credit-card.BCRP_TjK.svg" alt="Easy Payment" />
+                  <div
+                    class="main-wrapper__app-features__container__app-features-cards__card-container__card-item"
+                  >
+                    <h5>Easy Payments</h5>
+                    <p>
+                      Id mollis consectetur congue egestas egestas suspendisse
+                      blandit justo.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="main-wrapper__app-features__container__app-features-cards__card-container"
+                >
+                  <img src="./img/shield.BNhpkxmq.svg" alt="Security" />
+                  <div
+                    class="main-wrapper__app-features__container__app-features-cards__card-container__card-item"
+                  >
+                    <h5>Data Security</h5>
+                    <p>
+                      Augue pulvinar justo, fermentum fames aliquam accumsan
+                      vestibulum non.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="main-wrapper__app-features__container__app-features-cards__card-container"
+                >
+                  <img src="./img/bars-graphic.DORVkv_p.svg" alt="Cost Statistics" />
+                  <div
+                    class="main-wrapper__app-features__container__app-features-cards__card-container__card-item"
+                  >
+                    <h5>Cost Statistics</h5>
+                    <p>
+                      Mattis urna ultricies non amet, purus in auctor non. Odio
+                      vulputate ac nibh.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="main-wrapper__app-features__container__app-features-cards__card-container"
+                >
+                  <img src="./img/communication.CwlgE18N.svg" alt="Support 24/7" />
+                  <div
+                    class="main-wrapper__app-features__container__app-features-cards__card-container__card-item"
+                  >
+                    <h5>Support 24/7</h5>
+                    <p>
+                      A elementum, imperdiet enim, pretium etiam facilisi in
+                      aenean quam mauris.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="main-wrapper__app-features__container__app-features-cards__card-container"
+                >
+                  <img src="./img/wallet.CKmJ9w_X.svg" alt="Regular Cashback" />
+                  <div
+                    class="main-wrapper__app-features__container__app-features-cards__card-container__card-item"
+                  >
+                    <h5>Regular Cashback</h5>
+                    <p>
+                      Sit facilisis dolor arcu, fermentum vestibulum arcu
+                      elementum imperdiet eleifend.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="main-wrapper__app-features__container__app-features-cards__card-container"
+                >
+                  <img src="./img/happy.HeyOpQhH.svg" alt="Regular Cashback" />
+                  <div
+                    class="main-wrapper__app-features__container__app-features-cards__card-container__card-item"
+                  >
+                    <h5>Top Standards</h5>
+                    <p>
+                      Faucibus cursus maecenas lorem cursus nibh. Sociis sit
+                      risus id. Sit facilisis dolor arcu.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- How it Works -->
+        <section
+          aria-label="How Does it Work?"
+          class="main-wrapper__app-how-diw"
+        >
+          <div class="main-wrapper__app-how-diw__container">
+            <h1>How Does It Work?</h1>
+            <div class="main-wrapper__app-how-diw__container__image-items">
+              <img
+                id="how-phone-2"
+                src="./img/how-phone-2.Cq1SgwZb.svg"
+                alt="How does it work Phone 2"
+              />
+              <img
+                src="./img/how-phone-1.jWlh6FV9.svg"
+                alt="How does it work Phone 1"
+              />
+              <img
+                id="how-phone-3"
+                src="./img/how-phone-3.DjWiqhvs.svg"
+                alt="How does it work Phone 3"
+              />
+            </div>
+            <h4>Transfers to people from your contact list</h4>
+            <p>
+              Proin volutpat mollis egestas. Nam luctus facilisis ultrices.
+              Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.
+            </p>
+          </div>
+        </section>
+        <!-- App Description -->
+        <section
+          aria-label="App Description"
+          class="main-wrapper__app-description"
+        >
+          <div class="main-wrapper__app-description__container">
+            <div class="main-wrapper__app-description__container__section">
+              <div
+                class="main-wrapper__app-description__container__section__text-wrapper"
+              >
+                <h2>Make your money transfer simple and clear</h2>
+                <div>
+                  <p>
+                    <i class="fa-regular fa-brand-base fa-circle-check"></i>
+                    Banking transactions are free for you
+                  </p>
+                  <p>
+                    <i class="fa-regular fa-brand-base fa-circle-check"></i> No
+                    monthly cash commission
+                  </p>
+                  <p
+                    class="main-wrapper__app-description__container__section__lastp-p-element"
+                  >
+                    <i class="fa-regular fa-brand-base fa-circle-check"></i>
+                    Manage payments and transactions online
+                  </p>
+                </div>
+                <button
+                  data-btn="howdy"
+                  type="submit"
+                  class="main-wrapper__app-description__container__section__learn-more-btn main-wrapper__app-description__container__section__learn-more-btn--primary"
+                >
+                  Learn more
+                  <i
+                    class="main-wrapper__app-description__container__section__learn-more-btn__arrow-icon"
+                  ></i>
+                </button>
+              </div>
+            </div>
+            <div class="main-wrapper__app-description__container__section">
+              <img
+                class="main-wrapper__app-description__container__section__balance-image"
+                src="./img/app-description-balance.DlpS1eVX.svg"
+                alt="App Balance Image"
+              />
+              <img
+                class="main-wrapper__app-description__container__section__user-image"
+                src="./img/app-description-balance-user.Dtel3TAA.svg"
+                alt="App User Image"
+              />
+            </div>
+          </div>
+          <div class="main-wrapper__app-description__container">
+            <div class="main-wrapper__app-description__container__section">
+              <img
+                class="main-wrapper__app-description__container__section__full-users-image"
+                src="./img/app-description-users.COfOP2va.svg"
+                alt="App Balance Image"
+              />
+              <img
+                class="main-wrapper__app-description__container__section__credit-card-image"
+                src="./img/app-description-credit-card.dj39IS9R.svg"
+                alt="App User Image"
+              />
+            </div>
+            <div class="main-wrapper__app-description__container__section">
+              <div
+                class="main-wrapper__app-description__container__section__text-wrapper main-wrapper__app-description__container__section__text-wrapper--longer"
+              >
+                <h2>Receive payment from international bank details</h2>
+                <div
+                  class="main-wrapper__app-description__container__section__text-wrapper--flex"
+                >
+                  <div
+                    class="main-wrapper__app-description__container__section__text-wrapper__flex-box"
+                  >
+                    <img src="./img/credit-card.BCRP_TjK.svg" alt="Easy Payment" />
+                    <p>
+                      Manage your payments online. Mollis congue egestas egestas
+                      fermentum fames.
+                    </p>
+                  </div>
+                  <div
+                    class="main-wrapper__app-description__container__section__text-wrapper__flex-box"
+                  >
+                    <img src="./img/wallet.CKmJ9w_X.svg" alt="Easy Payment" />
+                    <p>
+                      A elementur and imperdiet enim, pretium etiam facilisi
+                      aenean quam mauris.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  data-btn="howdy"
+                  type="submit"
+                  class="main-wrapper__app-description__container__section__learn-more-btn main-wrapper__app-description__container__section__learn-more-btn--primary"
+                >
+                  Learn more
+                  <i
+                    class="main-wrapper__app-description__container__section__learn-more-btn__arrow-icon"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Clients are Loving Our APp -->
+        <section
+          aria-label="Clients Are Loving Our App"
+          class="main-wrapper__clients-app"
+        >
+          <div class="main-wrapper__clients-app__container">
+            <div class="main-wrapper__clients-app__container__client-intro">
+              <p>Clients Are Loving Our App</p>
+            </div>
+            <div class="main-wrapper__clients-app__container__client-test-card">
+              <img
+                class="main-wrapper__clients-app__container__client-test-card__icon"
+                src="./img/quoto-icon.CeoZcEsP.svg"
+                alt="Quote Icon"
+              />
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star fa-brand-base"></i>
+              <p>
+                Sit pretium aliquam tempor, orci dolor sed maecenas rutrum
+                sagittis. Laoreet posuere rhoncus, egestas lacus, egestas justo
+                aliquam vel. Nisi vitae lectus hac hendrerit. Montes justo
+                turpis sit amet.
+              </p>
+              <div
+                class="main-wrapper__clients-app__container__client-test-card__user-avatar"
+              >
+                <img src="./img/avatar-female.SHpe1ghJ.svg" alt="Female Avatar" />
+                <div>
+                  <p>Fannie Summers</p>
+                  <p>Designer</p>
+                </div>
+              </div>
+            </div>
+            <div class="main-wrapper__clients-app__container__client-test-card">
+              <img
+                class="main-wrapper__clients-app__container__client-test-card__icon"
+                src="./img/quoto-icon.CeoZcEsP.svg"
+                alt="Quote Icon"
+              />
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <p>
+                Nunc senectus leo vel venenatis accumsan vestibulum sollicitudin
+                amet porttitor. Nisl bibendum nulla tincidunt eu enim ornare
+                dictumst sit amet. Dictum pretium dolor tincidunt egestas eget
+                nunc.
+              </p>
+              <div
+                class="main-wrapper__clients-app__container__client-test-card__user-avatar"
+              >
+                <img src="./img/avatar-male.2edgULNn.svg" alt="Female Avatar" />
+                <div>
+                  <p>Albert Flores</p>
+                  <p>Developer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Any Questions Check out the FAQs-->
+        <section
+          aria-label="Any questions? Check out the FAQs"
+          class="main-wrapper__faq"
+        >
+          <div class="main-wrapper__faq__container">
+            <div class="main-wrapper__faq__container__faq-header">
+              <h2>Any questions? Check out the FAQs</h2>
+              <p>Still have unanswered questions and need to get in touch?</p>
+            </div>
+            <div class="main-wrapper__faq__container__faq-accordion">
+              <div
+                class="main-wrapper__faq__container__faq-accordion__container main-wrapper__faq__container__faq-accordion__container--border-radius"
+              >
+                <div
+                  class="main-wrapper__faq__container__faq-accordion__container__title main-wrapper__faq__container__faq-accordion__container__title--inner-shadow"
+                >
+                  <p>Is any of my personal information stored in the App?</p>
+                  <p>
+                    <i
+                      class="main-wrapper__faq__container__faq-accordion__container__icon main-wrapper__faq__container__faq-accordion__container__icon--active"
+                    ></i>
+                  </p>
+                </div>
+                <div
+                  class="main-wrapper__faq__container__faq-accordion__container__content"
+                >
+                  <p>
+                    Nunc duis id aenean gravida tincidunt eu, tempor
+                    ullamcorper. Viverra aliquam arcu, viverra et, cursus.
+                    Aliquet pretium cursus adipiscing gravida et consequat
+                    lobortis arcu velit. Nibh pharetra fermentum duis accumsan
+                    lectus non. Massa cursus molestie lorem scelerisque
+                    pellentesque. Nisi, enim, arcu purus gravida adipiscing
+                    euismod montes, duis egestas. Vehicula eu etiam quam
+                    tristique tincidunt suspendisse ut consequat.
+                  </p>
+                  <p>
+                    Ornare senectus fusce dignissim ut. Integer consequat in eu
+                    tortor, faucibus et lacinia posuere. Turpis sit viverra
+                    lorem suspendisse lacus aliquam auctor vulputate. Quis
+                    egestas aliquam nunc purus lacus, elit leo elit facilisi.
+                    Dignissim amet adipiscing massa integer.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="main-wrapper__faq__container__faq-accordion__container"
+              >
+                <div
+                  class="main-wrapper__faq__container__faq-accordion__container__title"
+                >
+                  <p>What formats can I download my transaction history in?</p>
+                  <p>
+                    <i
+                      class="main-wrapper__faq__container__faq-accordion__container__icon"
+                    ></i>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="main-wrapper__faq__container__faq-accordion__container"
+              >
+                <div
+                  class="main-wrapper__faq__container__faq-accordion__container__title"
+                >
+                  <p>Can I schedule future transfers?</p>
+                  <p>
+                    <i
+                      class="main-wrapper__faq__container__faq-accordion__container__icon"
+                    ></i>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="main-wrapper__faq__container__faq-accordion__container"
+              >
+                <div
+                  class="main-wrapper__faq__container__faq-accordion__container__title"
+                >
+                  <p>When can I use Banking App services?</p>
+                  <p>
+                    <i
+                      class="main-wrapper__faq__container__faq-accordion__container__icon"
+                    ></i>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="main-wrapper__faq__container__faq-accordion__container"
+              >
+                <div
+                  class="main-wrapper__faq__container__faq-accordion__container__title"
+                >
+                  <p>
+                    Can I create my own password that is easy for me to
+                    remember?
+                  </p>
+                  <p>
+                    <i
+                      class="main-wrapper__faq__container__faq-accordion__container__icon"
+                    ></i>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="main-wrapper__faq__container__faq-accordion__container"
+              >
+                <div
+                  class="main-wrapper__faq__container__faq-accordion__container__title main-wrapper__faq__container__faq-accordion__container__title--border-bottom"
+                >
+                  <p>What happens if I forget or lose my password?</p>
+                  <p>
+                    <i
+                      class="main-wrapper__faq__container__faq-accordion__container__icon"
+                    ></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="main-wrapper__faq__container__faq-contact">
+              <button
+                data-btn="howdy"
+                type="submit"
+                class="main-wrapper__faq__container__faq-contact__contact-us-now-btn main-wrapper__faq__container__faq-contact__contact-us-now-btn--primary"
+              >
+                Contact us now
+              </button>
+              <div
+                class="main-wrapper__faq__container__faq-contact__contact-card"
+              >
+                <img src="./img/contact-phone-icon.DLGEV5Cm.svg" alt="Contact Phone Icon" />
+                <p>Still have questions?</p>
+                <a
+                  class="main-wrapper__faq__container__faq-contact__contact-card--color-primary"
+                  href="#"
+                  title="Contact us"
+                  >Contact Us
+                  <i class="fa-solid fa-arrow-right fa-solid-base"></i
+                ></a>
+              </div>
 
+              <div
+                class="main-wrapper__faq__container__faq-contact__contact-card"
+              >
+                <img src="./img/contact-chat.CMDe6l6A.svg" alt="Contact Phone Icon" />
+                <p>Don't like phone calls?</p>
+                <a
+                  class="main-wrapper__faq__container__faq-contact__contact-card--color-green"
+                  href="#"
+                  title="Contact us"
+                  >Contact Us
+                  <i class="fa-solid fa-arrow-right fa-solid-base"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Subscription Section -->
+        <section
+          aria-label="Subscribe to our newsletter"
+          class="main-wrapper__subscribe"
+        >
+          <div class="main-wrapper__subscribe__container">
+            <div class="main-wrapper__subscribe__container__wrapper">
+              <div
+                class="main-wrapper__subscribe__container__wrapper__flex main-wrapper__subscribe__container__wrapper__flex--display-flex"
+              >
+                <img src="./img/subscribe-bell.DsfPk2ds.svg" alt="Image Bell" />
+                <h4>Subscribe to our newsletter</h4>
+                <h4>
+                  Subscribe to our newsletter to stay informed about latest
+                  updates
+                </h4>
+              </div>
+
+              <div
+                class="main-wrapper__subscribe__container__wrapper__flex main-wrapper__subscribe__container__wrapper__flex--display-flex main-wrapper__subscribe__container__wrapper__flex--form"
+              >
+                <i class="fa-regular fa-lg fa-envelope fa-brand-base"></i>
+                <input
+                  placeholder="Your email"
+                  type="text"
+                  name="subscribe-form"
+                  title="Subscribe Form"
+                />
+                <button
+                  data-btn="howdy"
+                  type="submit"
+                  class="main-wrapper__subscribe__container__wrapper__flex__button main-wrapper__subscribe__container__wrapper__flex__button--primary"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- Main Content End -->
+
+      <!-- Footer Start -->
+      <footer class="footer-wrapper" aria-label="Footer Section">
+        <div class="footer-wrapper__footer-container">
+          <p>© 2024 Silicon. All rights reserved. Credit MadrasThemes</p>
+        </div>
+      </footer>
+      <!-- Footer End -->
+    </div>
+  </body>
 </html>

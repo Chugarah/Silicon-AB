@@ -16,11 +16,13 @@ words:
   - bibendum
   - blandit
   - brotli
+  - cacheable
   - colums
   - congue
   - consectetur
   - consequat
   - cursus
+  - designfil
   - dictumst
   - dignissim
   - Dignissim
@@ -29,6 +31,7 @@ words:
   - eleifend
   - elementum
   - elementur
+  - Elems
   - enim
   - etiam
   - euismod
@@ -41,9 +44,13 @@ words:
   - fusce
   - fvisible
   - Georgi
+  - gifsicle
   - hendrerit
   - iconify
+  - Ikonfilen
+  - ikontext
   - imperdiet
+  - jridgewell
   - justo
   - lacinia
   - lacus
@@ -70,12 +77,15 @@ words:
   - porttitor
   - posuere
   - pretium
+  - produktionsfiler
   - Proin
   - Quis
+  - repositoryn
   - rhoncus
   - sagittis
   - scelerisque
   - senectus
+  - Sidspecifika
   - Sociis
   - sollicitudin
   - Stackoverflow
@@ -87,13 +97,16 @@ words:
   - tortor
   - tristique
   - turpis
+  - typsnittsfiler
   - ullamcorper
   - ultrices
   - ultricies
   - unplugin
+  - utvecklingskod
   - Vehicula
   - velit
   - venenatis
+  - versioneringssystemet
   - vestibulum
   - viverra
   - Viverra
@@ -101,6 +114,7 @@ words:
   - vulputate
   - webfonts
   - wght
+  - workern
   - xlarge
   - Yeaeee
 ignoreWords: []
