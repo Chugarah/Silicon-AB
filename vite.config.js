@@ -1,6 +1,5 @@
 // Import necessary modules and plugins
 import { defineConfig, loadEnv } from "vite";
-
 import path from "path";
 import mkcert from "vite-plugin-mkcert";
 import viteCompression from "vite-plugin-compression";
@@ -20,7 +19,6 @@ import { execSync } from "child_process";
 export default defineConfig(({ mode }) => {
   // Load environment variables
   const env = loadEnv(mode, process.cwd(), "");
-
   const isProd = mode === "production";
   const isDev = mode === "development";
 
@@ -172,9 +170,20 @@ export default defineConfig(({ mode }) => {
                 color: "#FFFFFF",
               },
             },
+            // Add the script tag for main.js
+            {
+              // Adding SCSS Javascript
+              injectTo: "body",
+              tag: "script",
+              attrs: {
+                type: "module",
+                src: "./src/js/main.js",
+              },
+            },
           ],
         },
       }),
+
       ViteImageOptimizer({
         // Configure image optimization
         png: { quality: 80 },

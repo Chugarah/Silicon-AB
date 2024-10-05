@@ -26,10 +26,16 @@ Detta om du vill utveckla vidare eller bara leka med projektet.
 1. Klona repositoryn:
 
     ```powershell
-    git clone https://github.com/Chugarah/Silicon-AB.git cd Silicon-AB
+    git clone https://github.com/Chugarah/Silicon-AB.git
     ```
 
-2. Installera NPM paketen:
+2. Klona repositoryn:
+
+    ```powershell
+    cd Silicon-AB
+    ```
+
+3. Installera NPM paketen:
 
     ```powershell
     npm install --save
