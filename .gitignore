@@ -2,8 +2,3 @@
 node_modules
 dist
 dev-dist
-
-# Env files
-.env
-.env.local
-.env.*.local
