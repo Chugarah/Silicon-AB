@@ -1121,7 +1121,7 @@ $_container-name-main: main;
 
       &__text-wrapper__flex-box img {
         @include a.background-generator(
-          a.theme-color(section-color),
+          a.theme-color(icon-bg-color-b),
           map-get($map: a.$border-radius, $key: "r-0-5"),
           1em,
           1.25em

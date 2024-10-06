@@ -6,6 +6,12 @@ html {
   font-size: t.$core-font-size;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /// Theme Settings
 :root {
   --logo-image: url("@assets/images/svg/logo.svg");

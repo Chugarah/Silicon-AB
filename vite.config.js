@@ -142,9 +142,18 @@ export default defineConfig(({ mode }) => {
               attrs: {
                 "http-equiv": "Content-Security-Policy",
                 content:
-                  "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';",
+                  "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;",
               },
             },
+            {
+              injectTo: "head",
+              tag: "link",
+              attrs: {
+                rel: "stylesheet",
+                href: "https://fonts.googleapis.com/css2?family=Lato&display=swap",
+              },
+            },
+
             {
               injectTo: "head",
               tag: "link",
@@ -186,6 +195,7 @@ export default defineConfig(({ mode }) => {
               injectTo: "body",
               tag: "script",
               attrs: {
+                type: "module",
                 src: "./src/js/themeSwitch.js",
               },
             },
@@ -209,18 +219,19 @@ export default defineConfig(({ mode }) => {
           "apple-touch-icon.png",
           "masked-icon.svg",
         ],
+        /// THIS IS IN PROGRESS, WILL TAKE CARE OF THIS LATER
         manifest: {
           name: env.VITE_APP_TITLE,
           short_name: env.VITE_SHORT_APP_TITLE,
           theme_color: "#ffffff",
           icons: [
             {
-              src: "/android-chrome-192x192.png",
+              src: "./android-chrome-192x192.png",
               sizes: "192x192",
               type: "image/png",
             },
             {
-              src: "/android-chrome-512x512.png",
+              src: "./android-chrome-512x512.png",
               sizes: "512x512",
               type: "image/png",
             },
