@@ -213,7 +213,7 @@
     0,
     map-get($map: a.$breakpoints, $key: "medium")
   ) {
-    width: 9cqh;
+    width: 90%;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -227,7 +227,7 @@
     &__android {
       width: 75%;
       height: 65%;
-      left: 68%;
+      left: 72%;
       top: 52%;
     }
   }
