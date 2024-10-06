@@ -66,6 +66,7 @@ export default defineConfig(({ mode }) => {
 
     // Configure CSS processing
     css: {
+      devSourcemap: true,
       preprocessorOptions: {
         scss: {
           sourceMap: isDev,
@@ -178,6 +179,14 @@ export default defineConfig(({ mode }) => {
               attrs: {
                 type: "module",
                 src: "./src/js/main.js",
+              },
+            },
+            {
+              // Adding SCSS Javascript Theme JS
+              injectTo: "body",
+              tag: "script",
+              attrs: {
+                src: "./src/js/themeSwitch.js",
               },
             },
           ],

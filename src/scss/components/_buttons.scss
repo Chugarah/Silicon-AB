@@ -32,11 +32,8 @@
     /// User Login Icon
     &__user-icon {
       /// Using Font-Awesome CSS selectors in SCSS :)))
-      @extend .fa-regular, .fa-user, .fa-brand-base;
-      padding-right: map-get(
-        $map: a.$spacing-distance-relative,
-        $key: "s-0-15"
-      );
+      @extend .fa-regular, .fa-user, .fa-regular-base, .fa-brand-base;
+      @include a.spacing-mixin(padding-right, "xs", em);
     }
 
     /// @name primary
@@ -55,12 +52,7 @@
         a.$color-white,
         a.$color-primary,
         map-get($map: a.$border-radius, $key: "r-0-2"),
-        a.create-list(
-          map-get($map: a.$spacing-distance-relative, $key: "s-0-56")
-            a.create-list(
-              map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
-            )
-        )
+        a.create-list(0.5625em a.create-list(1.25em))
       );
 
       /// Adding hover state
@@ -92,12 +84,7 @@
         a.$color-white,
         a.$color-primary,
         map-get($map: a.$border-radius, $key: "r-0-3"),
-        a.create-list(
-          map-get($map: a.$spacing-distance-relative, $key: "s-1-25")
-            a.create-list(
-              map-get($map: a.$spacing-distance-relative, $key: "s-2-00")
-            )
-        )
+        a.create-list(1.25em a.create-list(2em))
       );
 
       /// Adding Hover States
@@ -138,7 +125,7 @@
       a.$color-white,
       a.$color-primary,
       map-get($map: a.$border-radius, $key: "r-0-3"),
-      a.create-list(map-get(a.$spacing-distance-relative, $key: "s-1-25"))
+      1.25em
     );
 
     /// Adding hover state
@@ -150,20 +137,65 @@
 /// Other Buttons
 /// =============================================================================
 .hero-section__apps-links__link-item {
-  background-color: a.$color-button-black;
+  background-color: a.theme-color(display-headings);
 
-  /*   @include a.link-nav-animation(a.$color-white,
-    4.2,
-    400ms,
-    a.$color-button-black,
-    true); */
-  /// Global styling for the button
   text-align: center;
   position: relative;
-  border-radius: map-get($map: a.$spacing-distance-relative, $key: "s-0-15");
+  border-radius: map-get($map: a.$border-radius, $key: "r-0-5");
 
   width: 11.25em;
   height: 3.25em;
+
+  /// Vector Image
+  &__android {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.6em 1em;
+    position: absolute;
+    width: 75%;
+    height: 55%;
+    background-repeat: no-repeat;
+    background-image: var(--app-image-android);
+    background-size: contain;
+    object-fit: none;
+    font-size: 0;
+    color: transparent;
+
+    /// Mobile Phones
+    @include l.container-query(
+      header,
+      0,
+      map-get($map: a.$breakpoints, $key: "medium")
+    ) {
+      width: auto;
+    }
+  }
+
+  &__apple {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.625em 1.25em;
+    position: absolute;
+    width: 75%;
+    height: 55%;
+    background-repeat: no-repeat;
+    background-image: var(--app-image-apple);
+    background-size: contain;
+    object-fit: none;
+    font-size: 0;
+    color: transparent;
+
+    /// Mobile Phones
+    @include l.container-query(
+      header,
+      0,
+      map-get($map: a.$breakpoints, $key: "medium")
+    ) {
+      width: auto;
+    }
+  }
 
   /// Desktop preparation for smaller devices
   @include l.container-query(
@@ -183,36 +215,21 @@
   ) {
     width: 22.9em;
     height: 3.150625em;
-  }
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-  /// Mobile Phones
-  @include l.container-query(
-    header,
-    0,
-    map-get($map: a.$breakpoints, $key: "mobile")
-  ) {
-    width: 100%;
-  }
-
-  /// Vector Image
-  & img {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: map-get($map: a.$spacing-distance-relative, $key: "s-0-62")
-      map-get($map: a.$spacing-distance-relative, $key: "s-1-25");
-    object-fit: cover;
-    position: absolute;
-    width: 100%;
-    height: auto;
-
-    /// Mobile Phones
-    @include l.container-query(
-      header,
-      0,
-      map-get($map: a.$breakpoints, $key: "medium")
-    ) {
-      width: auto;
+    &__apple {
+      width: 75%;
+      height: 65%;
+      left: 72%;
+      top: 52%;
+    }
+    &__android {
+      width: 75%;
+      height: 65%;
+      left: 68%;
+      top: 52%;
     }
   }
 

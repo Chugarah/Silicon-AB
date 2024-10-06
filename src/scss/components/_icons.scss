@@ -61,7 +61,8 @@
 ///       Custom padding can be provided to override the dynamic calculation if needed.
 ///       The use of calc() allows for more flexible and dynamic sizing, especially when using different units.
 /// Used AI Phind to Generate Documentation
-@mixin icon($icon-width,
+@mixin icon(
+  $icon-width,
   $icon-height,
   $fa-icon-width,
   $fa-icon-height,
@@ -71,7 +72,8 @@
   $font-awesome-style,
   $icon-border-radius: null,
   $icon-color: null,
-  $icon-padding: null) {
+  $icon-padding: null
+) {
   /// Making the calculation
   $padding-horizontal: calc((#{$icon-width} - #{$fa-icon-width}) / 2);
   $padding-vertical: calc((#{$icon-height} - #{$fa-icon-height}) / 2);
@@ -82,9 +84,7 @@
 
   @if $icon-padding !=null {
     padding: #{$icon-padding};
-  }
-
-  @else {
+  } @else {
     padding: #{$padding-vertical} #{$padding-horizontal};
   }
 
@@ -110,18 +110,20 @@
   }
 
   @if $font-awesome ==true {
-    $fa-icon-value: if(type-of($fa-icon)==string and str-index($fa-icon, "var(") !=null,
-        unquote(#{$fa-icon}),
-        $fa-icon );
+    $fa-icon-value: if(
+      type-of($fa-icon) ==string and str-index($fa-icon, "var(") !=null,
+      unquote(#{$fa-icon}),
+      $fa-icon
+    );
 
     @if $icon-width !=null and $icon-height !=null {
-      @include v.vendor-fa-icon($font-var: $fa-icon-value,
+      @include v.vendor-fa-icon(
+        $font-var: $fa-icon-value,
         $font-awesome-style: #{$font-awesome-style},
         $fa-icon-width: #{$fa-icon-width},
-        $fa-icon-height: #{$fa-icon-height});
-    }
-
-    @else {
+        $fa-icon-height: #{$fa-icon-height}
+      );
+    } @else {
       @include v.vendor-fa-icon($fa-icon-value, #{$font-awesome-style});
     }
   }
@@ -158,8 +160,14 @@
 ///       To use a variable for `$font-awesome`, you would need to use JavaScript to
 ///       set a CSS custom property.
 /// Used AI Phind to Generate Documentation
-@mixin icon-base($font-icon-var, $fa-icon-style, $font-awesome-flag, $animation: null) {
-  @include icon($icon-width: #{var(--icon-width)},
+@mixin icon-base(
+  $font-icon-var,
+  $fa-icon-style,
+  $font-awesome-flag,
+  $animation: null
+) {
+  @include icon(
+    $icon-width: #{var(--icon-width)},
     $icon-height: #{var(--icon-height)},
     $fa-icon-width: var(--fa-icon-width),
     $fa-icon-height: var(--fa-icon-height),
@@ -170,14 +178,11 @@
     $fa-icon: $font-icon-var,
     $font-awesome-style: $fa-icon-style,
     $icon-border-radius: #{var(--icon-border-radius)},
-    $icon-color: #{var(--fa-icon-color)});
+    $icon-color: #{var(--fa-icon-color)}
+  );
 
   @if $animation !=null {
     /// Adding Hover States
     @include a-m.interactive-states("&");
   }
-
-
-
-
 }

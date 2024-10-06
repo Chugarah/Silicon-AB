@@ -1,4 +1,5 @@
-@use "../abstracts/" as a;
+@use "@scss/abstracts/_variables" as a;
+@use "@scss/abstracts/_colors" as c;
 /// =============================================================================
 /// Font Awesome
 /// =============================================================================
@@ -6,16 +7,28 @@
 @font-face {
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
-  src: url(map-get($map: a.$font-awesome-src, $key: "fa-solid-900-woff2"))
+  src:
+    url(map-get($map: a.$font-awesome-src, $key: "fa-solid-900-woff2"))
       format("woff2"),
     url(map-get($map: a.$font-awesome-src, $key: "fa-solid-900-ttf"))
       format("truetype");
 }
 
 @font-face {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 400;
+  src:
+    url(map-get($map: a.$font-awesome-src, $key: "fa-regular-400-woff2"))
+      format("woff2"),
+    url(map-get($map: a.$font-awesome-src, $key: "fa-regular-400-ttf"))
+      format("truetype");
+}
+
+@font-face {
   font-family: "Font Awesome 6 Brands";
   font-weight: 400;
-  src: url(map-get($map: a.$font-awesome-src, $key: "fa-brands-400-woff2"))
+  src:
+    url(map-get($map: a.$font-awesome-src, $key: "fa-brands-400-woff2"))
       format("woff2"),
     url(map-get($map: a.$font-awesome-src, $key: "fa-brands-400-ttf"))
       format("truetype");
@@ -24,15 +37,23 @@
 /// Some selectors that will enable correct font depending on icon type
 .fa-solid-base {
   font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.fa-regular-base {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 400;
 }
 
 .fa-brand-base {
   font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
 }
 
 /// =============================================================================
 /// Default Font
 /// =============================================================================
+$core-font-size: 16px;
 
 /// Font Settings Mixin :)
 @mixin font-settings($fs-size: null, $fs-color: null, $fs-weight: null) {
@@ -45,7 +66,7 @@
 h1 {
   @include font-settings(
     map-get($map: a.$headings, $key: "h-1"),
-    a.$font-color-secondary,
+    c.$grey-900,
     map-get($map: a.$font-weight, $key: "ExtraBold")
   );
 }
@@ -53,7 +74,7 @@ h1 {
 h2 {
   @include font-settings(
     map-get($map: a.$headings, $key: "h-2"),
-    a.$font-color-secondary,
+    c.$grey-900,
     map-get($map: a.$font-weight, $key: "ExtraBold")
   );
 }
@@ -61,7 +82,7 @@ h2 {
 h3 {
   @include font-settings(
     map-get($map: a.$headings, $key: "h-3"),
-    a.$font-color-label,
+    c.$grey-300,
     map-get($map: a.$font-weight, $key: "ExtraBold")
   );
 }
@@ -69,7 +90,7 @@ h3 {
 h4 {
   @include font-settings(
     map-get($map: a.$headings, $key: "h-4"),
-    a.$font-color-secondary,
+    c.$grey-900,
     map-get($map: a.$font-weight, $key: "ExtraBold")
   );
 }
@@ -78,7 +99,7 @@ h4 {
 h5 {
   @include font-settings(
     map-get($map: a.$headings, $key: "h-5"),
-    a.$font-color-secondary,
+    c.$grey-900,
     map-get($map: a.$font-weight, $key: "ExtraBold")
   );
 }
@@ -87,7 +108,7 @@ h5 {
 p {
   @include font-settings(
     map-get($map: a.$font-sizes, $key: "t-l"),
-    a.$font-color-primary,
+    c.$grey-700,
     map-get($map: a.$font-weight, $key: "Regular")
   );
 }

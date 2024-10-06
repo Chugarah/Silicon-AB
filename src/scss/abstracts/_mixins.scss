@@ -1,4 +1,7 @@
 @use "@scss/abstracts/_variables" as a;
+
+@use "@scss/abstracts/_functions" as f;
+
 /// =============================================================================
 /// Form Elements
 /// =============================================================================
@@ -77,11 +80,17 @@
 /// Links
 /// =============================================================================
 
+/// This module provides mixins for handling interactive states of elements,
+/// particularly useful for links and buttons.
+/// Implemented by AI Phind
+///
+/// @group links
+/// @author AI Phind
+
 /// Interactive Element Styles
-/// Implemented by AI Phind, for this code
-/// to handle different pseudo states of an object
-/// Interactive Element Styles
-/// Applies interactive states (hover, active, focus-visible) to a given selector
+///
+/// Applies interactive states (hover, active, focus-visible) to a given selector.
+/// This mixin handles different pseudo states of an object.
 ///
 /// @param {String} $selector - The selector to apply the interactive states to
 ///
@@ -95,43 +104,61 @@
 /// @access public
 @mixin interactive-states($selector) {
   #{$selector} {
-
     /// Adding Animation when mouse is out
-    transition: color var(--interactive-transition-base) ease-in-out,
+    transition:
+      color var(--interactive-transition-base) ease-in-out,
       background-color var(--interactive-transition-base) ease-in-out;
     cursor: pointer;
     outline: none;
 
     // Hover state
     &:hover {
-      @include link-nav-animation(var(--interactive-color-hover),
+      @include link-nav-animation(
+        var(--interactive-color-hover),
         var(--interactive-relative-hover),
         var(--interactive-transition-hover),
         var(--interactive-bg-hover),
-        var(--interactive-use-hsl-hover));
+        var(--interactive-use-hsl-hover)
+      );
     }
 
     // Active state
     &:active {
-      @include link-nav-animation(var(--interactive-color-active),
+      @include link-nav-animation(
+        var(--interactive-color-active),
         var(--interactive-relative-active),
         var(--interactive-transition-active),
         var(--interactive-bg-active),
-        var(--interactive-use-hsl-active));
+        var(--interactive-use-hsl-active)
+      );
     }
 
     // Focus-visible state
     &:focus-visible {
-      @include link-nav-animation(var(--interactive-color-focus-visible),
+      @include link-nav-animation(
+        var(--interactive-color-focus-visible),
         var(--interactive-relative-focus-visible),
         var(--interactive-transition-focus-visible),
         var(--interactive-bg-focus-visible),
-        var(--interactive-use-hsl-focus-visible));
+        var(--interactive-use-hsl-focus-visible)
+      );
     }
   }
 }
-
-/// AN basic interactive states for links
+/// Basic interactive states for links
+///
+/// Applies basic interactive states to links with customizable colors.
+///
+/// @param {Color} $color-hover - The color to apply on hover
+/// @param {Color} $color-active - The color to apply on active state
+/// @param {Color} $color-focus - The color to apply on focus
+///
+/// @example code-scss
+///   .link {
+///     @include is-base-links(blue, darkblue, lightblue);
+///   }
+///
+/// @access public
 @mixin is-base-links($color-hover, $color-active, $color-focus) {
   --interactive-bg-hover: null;
   --interactive-bg-active: null;
@@ -141,89 +168,136 @@
   --interactive-color-focus-visible: #{$color-focus};
   --interactive-relative-hover: 10;
   --interactive-relative-focus-visible: 10;
-  @include interactive-states("&")
+  @include interactive-states("&");
 }
 
+/// Navigation Link Animation Module
+/// =============================================================================
+/// This module provides a mixin for creating animated navigation links with color transitions.
+///
+/// @group navigation
+/// @author [Georgi]
 
-/// Animation Mixin
-/// Used AI Phind to improve this code section
-/// Applies color and background-color animations to interactive elements
+/// Link Navigation Animation Mixin
 ///
-/// @param {Color} $color - The color to be applied
-/// @param {Number} $relative-value - The relative lightness value for HSL calculation
-/// @param {Time} $transition-time - The duration of the transition
-/// @param {Color} $bg-color [null] - The background color to be applied (optional)
-/// @param {Boolean} $use-hsl [true] - Whether to use HSL color calculations
+/// Applies color and background-color animations to navigation links, with support for HSL color adjustments.
 ///
-/// @example code-scss
-///   .button {
-///     @include link-nav-animation(#007bff, 10, 0.3s, #f8f9fa, true);
+/// @param {Color} $color - The base color for the link text
+/// @param {Number} $relative-value - The relative lightness adjustment value for the HSL color
+/// @param {Time} $transition-time - The duration of the color transition animation
+/// @param {Color} $bg-color [null] - The background color of the link (optional)
+/// @param {Boolean} $use-hsl [true] - Whether to use HSL color adjustments (default: true)
+///
+/// @example scss
+///   .nav-link {
+///     @include link-nav-animation(#007bff, 0.2, 0.3s);
 ///   }
 ///
-/// @access public
-@mixin link-nav-animation($color,
+/// @example scss
+///   .nav-link-with-bg {
+///     @include link-nav-animation(#007bff, 0.2, 0.3s, #f8f9fa);
+///   }
+@mixin link-nav-animation(
+  $color,
   $relative-value,
   $transition-time,
   $bg-color: null,
-  $use-hsl: true) {
-
-  @if $bg-color !=null {
+  $use-hsl: true
+) {
+  @if $bg-color != null {
     background-color: $bg-color;
   }
 
   @if $use-hsl {
-    /// SCSS code is read from top to bottom
-    /// We are setting the fallback color
-    /// If the browser supports HSL than it will overide this one :D
+    /// Set the fallback color for browsers that don't support HSL
     $_fallback-color: $color;
 
-    @if $bg-color !=null {
+    @if $bg-color != null {
       background-color: $bg-color;
     }
 
-    /// Modern Browsers will use this baby :D
-    /// Remember we are taking in floats and not strings here
+    /// Use HSL color adjustments for modern browsers
     @supports (color: hsl(from var(--color) h s l)) {
       color: hsl(from #{$color} h s calc(l + #{$relative-value}));
 
-      @if $bg-color !=null {
-        background-color: hsl(from #{$bg-color} h s calc(l + #{$relative-value}));
+      @if $bg-color != null {
+        background-color: hsl(
+          from #{$bg-color} h s calc(l + #{$relative-value})
+        );
       }
     }
-  }
-
-  @else {
+  } @else {
     color: $color;
   }
 }
-
 
 /// =============================================================================
 /// Other Components
 /// =============================================================================
 
-/// @name logo-box
+/// This module provides mixins for various components, including a logo box.
+///
 /// @group Component
-///
-/// https://caniuse.com/?search=hsl%20relative
-/// For links hover state, active and so on, color and pointer with
-/// animation.
-///
-/// @param {String} $color - Color of the text
-/// @param {String} $color - Color of the text
-/// @param {String} $color - Color of the text
+/// @author AI (Some of the code is generated from Phind)
 
+/// Logo Box Mixin
+///
+/// Creates a styled container for a logo with customizable padding, border radius, and border color.
+///
+/// @param {Length} $padding-h - Vertical padding
+/// @param {Length} $padding-w - Horizontal padding
+/// @param {Length} $logo-border-radius - Border radius of the logo box
+/// @param {Color} $border-color - Color of the border
+///
 /// @example code-scss
-///   @include a.link-nav-animation($color-primary, 0.2, 400ms);
-/// }
-/// AI Some of the code is generated from Phind
+///   .logo-container {
+///     @include logo-box(10px, 20px, 5px, #000000);
+///   }
 @mixin logo-box($padding-h, $padding-w, $logo-border-radius, $border-color) {
   padding: $padding-h $padding-w;
-  /// Hard coded with and height
+  /// Hard coded width and height
   width: 100%;
   height: 100%;
 
   /// Border
   border-radius: $logo-border-radius;
   border: 1px $border-color solid;
+}
+
+/// =============================================================================
+/// Layout
+/// =============================================================================
+
+/// Layout Module
+/// =============================================================================
+/// This module provides a flexible spacing mixin for consistent layout management.
+///
+/// @group layout
+
+/// Spacing mixin
+///
+/// Applies spacing to an element, with options for different top and bottom padding.
+///
+/// @param {String} $property - The CSS property to apply the spacing to (e.g., 'padding')
+/// @param {String|Number} $size - The size for the spacing (top padding if $bottom-size is provided)
+/// @param {String} $unit [em] - The unit to use for the spacing value (default: em)
+/// @param {String|Number} $bottom-size [null] - The size for bottom padding (optional)
+///
+/// @example code-scss
+///   .element {
+///     @include spacing-mixin(padding, 'medium');
+///   }
+///
+/// @example code-scss
+///   .element {
+///     @include spacing-mixin(padding, 'large', 'rem', 'small');
+///   }
+/// I got inspired by Phind to finish this code
+@mixin spacing-mixin($property, $size, $unit: em, $bottom-size: null) {
+  @if $bottom-size == null {
+    #{$property}: f.spacing($size, $unit);
+  } @else {
+    padding-top: f.spacing($size, $unit);
+    padding-bottom: f.spacing($bottom-size, $unit);
+  }
 }

@@ -16,8 +16,8 @@
     <!-- Header & Navigation Inspired by Hans :)-->
     <header aria-label="Navigation & Logo" class="header_wrapper">
       <nav class="header" aria-label="Menu Navigation">
-        <div class="header__logo">
-          <img class="header__logo__img" src="./src/assets/images/svg/logo.svg" alt="Logo" />
+        <div class="header__logo" aria-label="Logo">
+
         </div>
         <div class="header__menu">
           <ul class="header__menu__navigation">
@@ -56,10 +56,10 @@
           <div class="hero-section__apps-links">
             <!-- Inspired by Hans for Dynamic Buttons ;)-->
             <a href="#" title="Apple Store Link" class="hero-section__apps-links__link-item">
-              <img src="./src/assets/images/svg/app-store-btn-group.svg" alt="Apple Store Image" />
+              <img class="hero-section__apps-links__link-item__apple" src="#" alt="Apple Store Image" />
             </a>
             <a href="#" title="Android Store Link" class="hero-section__apps-links__link-item">
-              <img src="./src/assets/images/svg/app-android-store-btn-group.svg" alt="Android Store Image" />
+              <img class="hero-section__apps-links__link-item__android" src="#" alt="Android Store Image" />
             </a>
           </div>
           <div class="hero-section__discover-more">
@@ -330,10 +330,12 @@
             <p>Still have unanswered questions and need to get in touch?</p>
           </div>
           <div class="main-wrapper__faq__container__faq-accordion">
-            <div
-              class="main-wrapper__faq__container__faq-accordion__container main-wrapper__faq__container__faq-accordion__container--border-radius">
-              <div
-                class="main-wrapper__faq__container__faq-accordion__container__title main-wrapper__faq__container__faq-accordion__container__title--inner-shadow">
+            <div class="
+              main-wrapper__faq__container__faq-accordion__container 
+              main-wrapper__faq__container__faq-accordion__container--border-radius
+              main-wrapper__faq__container__faq-accordion__container--active">
+              <div class="main-wrapper__faq__container__faq-accordion__container__title 
+                main-wrapper__faq__container__faq-accordion__container__title--inner-shadow">
                 <p>Is any of my personal information stored in the App?</p>
                 <p>
                   <i
@@ -368,6 +370,7 @@
                 </p>
               </div>
             </div>
+
             <div class="main-wrapper__faq__container__faq-accordion__container">
               <div class="main-wrapper__faq__container__faq-accordion__container__title">
                 <p>Can I schedule future transfers?</p>
@@ -465,8 +468,6 @@
     </footer>
     <!-- Footer End -->
   </div>
-
-  <script type="module" src="./src/js/main.js"></script>
 </body>
 
 </html>
