@@ -1,3 +1,8 @@
+// Tailwind imports
+@use "tailwindcss/base" as tw-base; 
+@use "tailwindcss/components" as tw-components;
+@use "tailwindcss/utilities" as tw-utilities;
+
 /* https://gist.github.com/rveitch/84cea9650092119527bc */
 /* https://sass-guidelin.es/#the-7-1-pattern */
 /* http://sassdoc.com/upgrading/ */
@@ -29,3 +34,9 @@
 
 /// Vendors, libraries like bootstrap, Tailwind or other like Font-Awesome
 @use "@scss/vendors";
+
+
+/// Tailwind
+@layer tw-base.base;
+@layer tw-components.components;
+@layer tw-utilities.utilities;

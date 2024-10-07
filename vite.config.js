@@ -14,6 +14,9 @@ import preloadPlugin from "vite-plugin-preload";
 import svgr from "vite-plugin-svgr";
 import ViteEnv from "vite-plugin-environment";
 import { execSync } from "child_process";
+import postcssNesting from "postcss-nesting";
+import tailwindcss from "tailwindcss";
+import autoprefixer from "autoprefixer";
 
 // Export the Vite configuration
 export default defineConfig(({ mode }) => {
@@ -74,13 +77,23 @@ export default defineConfig(({ mode }) => {
           outputStyle: isProd ? "compressed" : "expanded",
         },
       },
+      postcss: {
+        plugins: [
+          postcssNesting(),
+          tailwindcss(),
+          autoprefixer(),
+          isProd &&
+            tailwindcss({
+              content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
+            }),
+        ].filter(Boolean),
+      },
       extract: isProd
         ? {
             filename: "css/[name].[contenthash].css",
           }
         : false,
     },
-
     // Configure plugins
     plugins: [
       // React plugin with fast refresh

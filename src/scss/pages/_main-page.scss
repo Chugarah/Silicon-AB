@@ -457,6 +457,7 @@ $_grid-max-width: 46.625rem;
     padding-top: 13.4375em;
     padding-bottom: 3.75em;
     position: relative;
+    ///  @apply bg-blue-500 text-white py-2 px-4 rounded;
 
     /// Color and font
     font-size: map-get($map: a.$font-sizes, $key: "t-s");
