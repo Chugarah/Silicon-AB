@@ -26,8 +26,11 @@ $font-awesome-icon-size: (
 );
 
 /// Manrope
+/// Need other fonts from Fontsource
+/// npm install @fontsource/manrope
+
 $font-family: "Manrope", sans-serif;
-$font-location-url: url("@assets/fonts/Manrope/Manrope-VariableFont_wght.ttf");
+
 $font-primary-style: normal;
 $font-optical-sizing: auto;
 $font-weight: (
@@ -50,38 +53,6 @@ $font-awesome-src: (
   "fa-solid-900-ttf": "@assets/fonts/Font-Awesome/fa-solid-900.ttf",
   "fa-brands-400-woff2": "@assets/fonts/Font-Awesome/fa-brands-400.woff2",
   "fa-brands-400-ttf": "@assets/fonts/Font-Awesome/fa-brands-400.ttf",
-);
-
-$font-sizes: (
-  "t-xs": 0.75rem,
-  /// 14px
-  "t-s": 0.875rem,
-  "t-m": 1rem,
-  "t-l": 1.125rem,
-  "t-xl": 125rem,
-  "t-lt": 1.5rem,
-);
-$display-heading: (
-  "d-1": 5rem,
-  "d-2": 4.5rem,
-  "d-3": 4rem,
-  "d-4": 3.5rem,
-  /// 56px
-  "d-5": 3rem,
-  "d-6": 2.625em,
-  "d-7": 2.76875em,
-  /// 44.3ox
-  "d-8": 2.13125em
-    /// 34.1px,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-);
-$headings: (
-  "h-1": 2.5rem,
-  "h-2": 2rem,
-  /// 28px
-  "h-3": 1.75rem,
-  "h-4": 1.5rem,
-  "h-5": 1.25rem,
-  "h-6": 1rem,
 );
 
 // =============================================================================

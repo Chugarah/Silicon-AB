@@ -178,7 +178,7 @@ $_grid-max-width: 46.625rem;
       @include l.flex(center);
       list-style-type: none;
       color: a.theme-color(section-color);
-      font-size: map-get($map: a.$font-sizes, $key: "t-m");
+      @apply text-t-m;
     }
 
     &__navigation__li-items {
@@ -231,8 +231,8 @@ $_grid-max-width: 46.625rem;
     &__text-span {
       @include a.spacing-mixin(padding-right, "sm", em);
       color: a.theme-color(forms);
-      font-size: map-get($map: a.$font-sizes, $key: "t-m");
-      font-weight: map-get($map: a.$font-weight, $key: "Bold");
+      /// TEST HERE
+      @apply text-t-m font-bold;
 
       /// Remove the spacing to mobile link, because the text Dark-mode is out of space
       @include l.container-query(
@@ -355,8 +355,7 @@ $_grid-max-width: 46.625rem;
     & {
       /// Some font settings for h1
       color: a.theme-color(display-headings);
-      font-weight: map-get($map: a.$font-weight, $key: "ExtraBold");
-      font-size: map-get($map: a.$display-heading, $key: "d-4");
+      @apply text-d-4 font-ExtraBold;
       @include a.spacing-mixin(padding, "48px", rem, "md");
 
       /// Tablet mode :)
@@ -370,7 +369,7 @@ $_grid-max-width: 46.625rem;
 
         @include a.spacing-mixin(padding-bottom, "30px", rem);
         text-align: center;
-        font-size: map-get($map: a.$display-heading, $key: "d-7");
+        @apply text-d-7;
         max-width: 75%;
         margin: 0 auto;
       }
@@ -381,7 +380,7 @@ $_grid-max-width: 46.625rem;
         0,
         map-get($map: a.$breakpoints, $key: "medium")
       ) {
-        font-size: map-get($map: a.$display-heading, $key: "d-8");
+        @apply text-d-8;
         max-width: 100%;
         margin: 0 auto;
       }
@@ -394,8 +393,7 @@ $_grid-max-width: 46.625rem;
     // Setting some Max width stuff
     max-width: $hero-max-width;
     color: a.theme-color(forms);
-    font-weight: map-get($map: a.$font-weight, $key: "Regular");
-    font-size: map-get($map: a.$font-sizes, $key: "t-l");
+    @apply text-t-l font-Regular;
     @include a.spacing-mixin(padding-bottom, "40px", rem);
 
     /// Tablet mode :)
@@ -460,8 +458,7 @@ $_grid-max-width: 46.625rem;
     ///  @apply bg-blue-500 text-white py-2 px-4 rounded;
 
     /// Color and font
-    font-size: map-get($map: a.$font-sizes, $key: "t-s");
-    font-weight: map-get($map: a.$font-weight, $key: "Regular");
+    @apply text-t-s font-Regular;
     color: a.theme-color(forms);
 
     @include l.container-query(
@@ -1131,11 +1128,8 @@ $_container-name-main: main;
 
       &__text-wrapper__flex-box p {
         @include a.spacing-mixin(null, "md", em, "46px");
-        @include b.font-settings(
-          map-get($map: a.$font-sizes, $key: "t-m"),
-          a.theme-color(forms),
-          map-get($map: a.$font-weight, $key: "Regular")
-        );
+        color: a.theme-color(forms);
+        @apply text-t-m font-Regular;
       }
     }
   }
@@ -1175,12 +1169,8 @@ $_container-name-main: main;
     /// Clients header, setting up font, no heading from Figma
     &__client-intro {
       & p {
-        @include b.font-settings(
-          map-get($map: a.$headings, $key: "h-1"),
-          a.theme-color(display-headings),
-          map-get($map: a.$font-weight, $key: "ExtraBold")
-        );
-
+        color: a.theme-color(display-headings);
+        @apply text-h-1 font-ExtraBold;
         padding-right: 2.625rem;
       }
     }
@@ -1207,11 +1197,8 @@ $_container-name-main: main;
       );
 
       & p {
-        @include b.font-settings(
-          map-get($map: a.$font-sizes, $key: "t-l"),
-          a.theme-color(forms),
-          map-get($map: a.$font-weight, $key: "Regular")
-        );
+        color: a.theme-color(forms);
+        @apply text-t-l font-Regular;
       }
 
       /// Quotas Icon
@@ -1266,20 +1253,13 @@ $_container-name-main: main;
       /// Targeting P tag to remove padding
       &__user-avatar div:first-of-type p {
         padding-bottom: 0;
-        @include b.font-settings(
-          map-get($map: a.$font-sizes, $key: "t-s"),
-          a.$grey-600,
-          map-get($map: a.$font-weight, $key: "Regular")
-        );
+        @apply text-t-s font-Regular text-grey-600;
       }
 
       &__user-avatar div:first-of-type p:first-child {
         padding-bottom: 0.3em;
-        @include b.font-settings(
-          map-get($map: a.$font-sizes, $key: "t-m"),
-          a.theme-color(display-headings),
-          map-get($map: a.$font-weight, $key: "Bold")
-        );
+        color: a.theme-color(display-headings);
+        @apply text-t-m font-Bold;
       }
     }
   }
@@ -1461,11 +1441,7 @@ $_container-name-main: main;
 
       &__title p {
         /// Font Settings Global
-        @include b.font-settings(
-          map-get($map: a.$font-sizes, $key: "t-m"),
-          null,
-          map-get($map: a.$font-weight, $key: "SemiBold")
-        );
+        @apply text-t-m font-SemiBold;
         color: a.theme-color(forms);
       }
 
@@ -1491,7 +1467,7 @@ $_container-name-main: main;
       /// Adding Space between Paragrafs in mobile view
       &__content p {
         /// Font Settings
-        @include b.font-settings(map-get($map: a.$font-sizes, $key: "t-s"));
+        @apply text-t-s;
       }
 
       &__content p:last-child {
@@ -1618,11 +1594,8 @@ $_container-name-main: main;
         display: none;
       }
       &__contact-card p {
-        @include b.font-settings(
-          map-get($map: a.$font-sizes, $key: "t-s"),
-          a.theme-color(forms),
-          map-get($map: a.$font-weight, $key: "Regular")
-        );
+        color: a.theme-color(forms);
+        @apply text-t-s font-Regular;
       }
 
       /// Contact Card
@@ -1635,11 +1608,7 @@ $_container-name-main: main;
 
         & a {
           /// Changing Font
-          @include b.font-settings(
-            map-get($map: a.$font-sizes, $key: "t-s"),
-            null,
-            map-get($map: a.$font-weight, $key: "SemiBold")
-          );
+          @apply text-t-s font-SemiBold;
           @include a.spacing-mixin(padding-bottom, "md", em);
         }
 
@@ -1693,11 +1662,8 @@ $_container-name-main: main;
           /// Show the button
           display: block;
           /// Changing Font
-          @include b.font-settings(
-            map-get($map: a.$font-sizes, $key: "t-s"),
-            a.$color-white,
-            map-get($map: a.$font-weight, $key: "SemiBold")
-          );
+          color: a.$color-white;
+          @apply text-t-s font-SemiBold;
         }
       }
 
@@ -1781,10 +1747,7 @@ $_container-name-main: main;
       button {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
-        @include b.font-settings(
-          map-get($map: a.$font-sizes, $key: "t-s"),
-          null
-        );
+        @apply text-t-s;
       }
       & input {
         width: 100%;
@@ -1929,11 +1892,7 @@ $_container-name-footer: footer;
     @include a.padding-top-bottom(3.5em, 3.5em);
 
     & p {
-      @include b.font-settings(
-        map-get($map: a.$font-sizes, $key: "t-s"),
-        a.$grey-600,
-        map-get($map: a.$font-weight, $key: "Regular")
-      );
+      @apply text-t-s font-Regular text-grey-600;
     }
     ///----------- Global CSS END -----------
     ///----------- Responsive START -----------

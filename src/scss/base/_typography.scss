@@ -64,51 +64,27 @@ $core-font-size: 16px;
 
 /// Default H1 Font Settings
 h1 {
-  @include font-settings(
-    map-get($map: a.$headings, $key: "h-1"),
-    c.$grey-900,
-    map-get($map: a.$font-weight, $key: "ExtraBold")
-  );
+  @apply text-d-1 text-grey-900 font-ExtraBold;
 }
 /// Default H2 Font Settings
 h2 {
-  @include font-settings(
-    map-get($map: a.$headings, $key: "h-2"),
-    c.$grey-900,
-    map-get($map: a.$font-weight, $key: "ExtraBold")
-  );
+  @apply text-h-2 text-grey-900 font-ExtraBold;
 }
 /// Default H4 Font Settings
 h3 {
-  @include font-settings(
-    map-get($map: a.$headings, $key: "h-3"),
-    c.$grey-300,
-    map-get($map: a.$font-weight, $key: "ExtraBold")
-  );
+  @apply text-h-3 text-grey-300 font-ExtraBold;
 }
 /// Default H4 Font Settings
 h4 {
-  @include font-settings(
-    map-get($map: a.$headings, $key: "h-4"),
-    c.$grey-900,
-    map-get($map: a.$font-weight, $key: "ExtraBold")
-  );
+  @apply text-h-4 text-grey-900 font-ExtraBold;
 }
 
 /// Default H5 Font Settings
 h5 {
-  @include font-settings(
-    map-get($map: a.$headings, $key: "h-5"),
-    c.$grey-900,
-    map-get($map: a.$font-weight, $key: "ExtraBold")
-  );
+  @apply text-h-5 text-grey-900 font-ExtraBold;
 }
 
 /// Default p tag Font Settings
 p {
-  @include font-settings(
-    map-get($map: a.$font-sizes, $key: "t-l"),
-    c.$grey-700,
-    map-get($map: a.$font-weight, $key: "Regular")
-  );
+  @apply text-t-l text-grey-700 font-Regular;
 }
