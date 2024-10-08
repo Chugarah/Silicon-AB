@@ -1,4 +1,5 @@
-@use "@scss/abstracts/_functions" as f; /// @name content-container
+@use "sass:color";
+/// @name content-container
 
 /// @group Utility
 ///
@@ -98,14 +99,14 @@
       $shadow-string: #{$sh-x}
         #{$sh-y}
         #{$sh-blur}
-        #{f.hex-to-rgb($sh-color, $opacity)};
+        #{hex-to-rgb($sh-color, $opacity)};
     } @else {
       $shadow-string: #{$inset}
         #{$sh-x}
         #{$sh-y}
         #{$sh-blur}
         #{$sh-spread}
-        #{f.hex-to-rgb($sh-color, $opacity)};
+        #{hex-to-rgb($sh-color, $opacity)};
     }
 
     @if $filter {
@@ -221,4 +222,16 @@
 @mixin padding-top-bottom($padding-top, $padding-bottom) {
   padding-top: $padding-top;
   padding-bottom: $padding-bottom;
+}
+
+/// Inspired by this
+/// https://sass-lang.com/documentation/modules/color/
+/// And debugged with Phind AI
+@function to-hsla($color, $alpha: 1) {
+  @return hsla(
+    color.hue($color),
+    color.saturation($color),
+    color.lightness($color),
+    $alpha
+  );
 }

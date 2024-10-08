@@ -1,3 +1,5 @@
 # Custom Dictionary Words
+callout
+Edgi
 fontsource
 stylelint
