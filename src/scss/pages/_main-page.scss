@@ -257,13 +257,7 @@ $_grid-max-width: 46.625rem;
       /// From the Switch and got 76ox
       margin-left: 1.875em;
 
-      @include a.link-nav-animation(
-        a.$color-white,
-        0,
-        400ms,
-        a.$color-primary,
-        true
-      );
+      @include a.link-nav-animation(a.$color-white, 0, 400ms, a.$color-primary);
       /// Tablets, Small Laptops
 
       @include l.container-query(
@@ -923,7 +917,7 @@ $_container-name-main: main;
   /// How Does It Works?
   &__app-how-diw__container {
     @include a.spacing-mixin(gap, "md", em);
-    @include a.spacing-mixin(null, "73px", rem, "35px");
+    @include a.spacing-mixin(null, "73px", rem, "110px");
     flex-direction: column;
     align-items: center;
 
@@ -938,6 +932,7 @@ $_container-name-main: main;
     h1 {
       text-align: center;
       max-width: 39.75em;
+      @include a.spacing-mixin(padding-bottom, "sm", em);
     }
     & h1 {
       @include b.font-settings(null, a.theme-color(display-headings), null);
@@ -979,6 +974,7 @@ $_container-name-main: main;
       /// Setting image height
       & img {
         height: 23.625em;
+        width: 100%;
       }
 
       & p {
@@ -993,6 +989,9 @@ $_container-name-main: main;
       0,
       map-get($map: a.$breakpoints, $key: "medium")
     ) {
+      & {
+        @include a.spacing-mixin(null, "73px", rem, "43px");
+      }
       /// Font Modifications
       & h1 {
         @include b.font-settings(
@@ -1528,7 +1527,7 @@ $_container-name-main: main;
         &__title--inner-shadow {
           /// Add Inner Shadow
           /// TODO: ISSUE not working in dark-mode, need Javascript for faster refactoring
-          @include a.box-shadow(false, (inset 0 -0.0625em 0 0 #e2e5f1 1));
+          @include a.box-shadow(false, (inset 0 -0.0625em 0 0 #e2e5f1));
         }
 
         &__title--border-bottom {

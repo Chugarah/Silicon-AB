@@ -146,7 +146,6 @@
 
   width: 11.25em;
   height: 3.25em;
-  cursor: pointer; // Add cursor pointer to indicate clickable area
 
   &__android,
   &__apple {
@@ -178,8 +177,8 @@
     0,
     map-get($map: a.$breakpoints, $key: "xlarge-1")
   ) {
-    width: 7.875em;
-    height: 2.74375em;
+    width: 70%;
+    height: 3.25em;
   }
 
   /// Tablets smaller laptops

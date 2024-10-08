@@ -1,6 +1,7 @@
 @use "sass:list";
 @use "sass:math";
 @use "sass:meta";
+@use "sass:color";
 @use "@scss/base/_core" as b;
 @use "@scss/base/_typography" as t;
 @use "@scss/abstracts/_spacing" as s;
@@ -57,8 +58,10 @@
 ///   $background-color: hex-to-rgb(#ff0000, 0.5);
 ///   // Returns: rgba(255, 0, 0, 0.5)
 @function hex-to-rgb($color, $opacity) {
-  $rgb-color: rgba($color, $opacity);
-  @return $rgb-color;
+  $red: red($color);
+  $green: green($color);
+  $blue: blue($color);
+  @return "rgba(#{$red}, #{$green}, #{$blue}, #{$opacity})";
 }
 
 /// =============================================================================
@@ -144,4 +147,21 @@
   }
 
   @return $number;
+}
+
+/// Inspired by this
+/// https://sass-lang.com/documentation/modules/color/
+/// And debugged with Phind AI
+
+@function to-hsla($color, $alpha: 1) {
+  // Konvertera till RGB-format
+  $rgb-color: color.to-space($color, rgb);
+
+  // Extrahera RGB-värden med color.channel()
+  $red: color.channel($rgb-color, "red");
+  $green: color.channel($rgb-color, "green");
+  $blue: color.channel($rgb-color, "blue");
+
+  // Returnera som RGBA
+  @return rgba($red, $green, $blue, $alpha);
 }

@@ -267,24 +267,21 @@ $test: true;
 
   // Hover state
   --interactive-color-hover: #{c.$color-white};
-  --interactive-relative-hover: 4.2;
+  --interactive-color-strength-hover: 15%;
   --interactive-transition-hover: 400ms;
   --interactive-bg-hover: #{c.$color-primary};
-  --interactive-use-hsl-hover: true;
 
   // Active state
   --interactive-color-active: #{c.$color-white};
-  --interactive-relative-active: 1;
+  --interactive-color-strength-active: 10%;
   --interactive-transition-active: 200ms;
   --interactive-bg-active: #{c.$grey-600};
-  --interactive-use-hsl-active: true;
 
   // Focus-visible state
   --interactive-color-focus-visible: #{c.$color-white};
-  --interactive-relative-focus-visible: 1;
+  --interactive--color-strength-focus-visible: 7%;
   --interactive-transition-focus-visible: 200ms;
   --interactive-bg-focus-visible: #{c.$grey-600};
-  --interactive-use-hsl-focus-visible: true;
 
   --theme-color: #ffffff;
 }
