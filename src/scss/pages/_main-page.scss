@@ -1422,6 +1422,7 @@ $_container-name-main: main;
     &__faq-accordion__container {
       ///----------- Starting CSS -----------
       flex-direction: column;
+      @apply drop-shadow-md;
 
       /// When Container is open we want an dark border in
       /// dark mode
