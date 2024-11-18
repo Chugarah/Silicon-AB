@@ -1,5 +1,13 @@
 # Silicon AB - Slutuppgift - HTML och CSS
 
+Nu är Silicon 2.0.0 ute :)
+
+Repo:
+<https://github.com/Chugarah/MonoConnect/blob/main/apps/silicon-ab-2/README.md>
+
+Webbsida
+<https://mono-connect.vercel.app/>
+
 ## Beskrivning
 
 Silicon AB är ett projekt som utvecklades som en slutuppgift för HTML & CSS-kursen. Det är en webbplats byggd med moderna webbteknologier och verktyg. Jag har använt AI-verktyget Phind för att utveckla och skriva en del av koden, men framför allt dokumentationen. Jag har även använt Phind AI för att skriva 100% av Vite-konfigurationen, då jag inte har tillräcklig kunskap om detta i nuläget.

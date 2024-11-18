@@ -8,7 +8,7 @@
 @use "@scss/components" as c;
 @use "@scss/vendors" as v;
 
-/* 
+/*
   https://www.youtube.com/watch?v=SLjHSVwXYq4
   https://www.reddit.com/r/css/comments/14f9o5l/using_bem_in_2023/
 */
@@ -1187,6 +1187,7 @@ $_container-name-main: main;
     /// Client Testimonials card
     &__client-test-card {
       /// Setting max dimension for the cards
+
       @include a.spacing-mixin(max-width, "416px", em);
       max-height: 21.875em;
 
@@ -1924,8 +1925,7 @@ $_container-name-footer: footer;
 
   /// Duuuhhh only one simple footer eh
   &__footer-container {
-    text-align: center;
-    @include a.padding-top-bottom(3.5em, 3.5em);
+
 
     & p {
       @include b.font-settings(
