@@ -1,19 +1,24 @@
 // Import necessary modules and plugins
-import { defineConfig, loadEnv } from "vite";
-import path from "path";
-import mkcert from "vite-plugin-mkcert";
-import viteCompression from "vite-plugin-compression";
-import { visualizer } from "rollup-plugin-visualizer";
-import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
-import { createHtmlPlugin } from "vite-plugin-html";
-import { VitePWA } from "vite-plugin-pwa";
-import eslintPlugin from "vite-plugin-eslint";
 import react from "@vitejs/plugin-react";
-import tsconfigPaths from "vite-tsconfig-paths";
-import preloadPlugin from "vite-plugin-preload";
-import svgr from "vite-plugin-svgr";
-import ViteEnv from "vite-plugin-environment";
+import autoprefixer from "autoprefixer";
 import { execSync } from "child_process";
+import path from "path";
+import postcssNesting from "postcss-nesting";
+import { visualizer } from "rollup-plugin-visualizer";
+import tailwindcss from "tailwindcss";
+import { fileURLToPath } from "url";
+import { defineConfig, loadEnv } from "vite";
+import viteCompression from "vite-plugin-compression";
+import ViteEnv from "vite-plugin-environment";
+import eslintPlugin from "vite-plugin-eslint";
+import { createHtmlPlugin } from "vite-plugin-html";
+import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+import mkcert from "vite-plugin-mkcert";
+import preloadPlugin from "vite-plugin-preload";
+import { VitePWA } from "vite-plugin-pwa";
+import stylelint from "vite-plugin-stylelint";
+import svgr from "vite-plugin-svgr";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 // Export the Vite configuration
 export default defineConfig(({ mode }) => {
@@ -21,6 +26,9 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const isProd = mode === "production";
   const isDev = mode === "development";
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
 
   // Helper function to resolve file paths
   const resolvePath = (relativePath) => {
@@ -42,6 +50,7 @@ export default defineConfig(({ mode }) => {
           "./node_modules/@fortawesome/fontawesome-free/scss"
         ),
         "@fortawesome": resolvePath("./node_modules/@fortawesome"),
+        "@fontsource": path.resolve(__dirname, "./node_modules/@fontsource"),
       },
     },
 
@@ -74,18 +83,34 @@ export default defineConfig(({ mode }) => {
           outputStyle: isProd ? "compressed" : "expanded",
         },
       },
+      postcss: {
+        plugins: [
+          postcssNesting(),
+          tailwindcss(),
+          autoprefixer(),
+          isProd &&
+            tailwindcss({
+              content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
+            }),
+        ].filter(Boolean),
+      },
       extract: isProd
         ? {
             filename: "css/[name].[contenthash].css",
           }
         : false,
     },
-
     // Configure plugins
     plugins: [
       // React plugin with fast refresh
       react({
         fastRefresh: true,
+      }),
+      stylelint({
+        fix: true,
+        cache: false,
+        include: ["src/**/*.{css,scss,vue}"],
+        exclude: ["node_modules/**", "dist/**"],
       }),
       tsconfigPaths(), // Add TypeScript paths support
       mkcert(), // Generate SSL certificates for local development
@@ -141,7 +166,7 @@ export default defineConfig(({ mode }) => {
               tag: "meta",
               attrs: {
                 "http-equiv": "Content-Security-Policy",
-                content:
+                "content":
                   "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;",
               },
             },

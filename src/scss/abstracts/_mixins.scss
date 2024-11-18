@@ -1,6 +1,6 @@
 @use "@scss/abstracts/_variables" as a;
-
 @use "@scss/abstracts/_functions" as f;
+@use "@scss/abstracts/_utilities" as u;
 
 /// =============================================================================
 /// Form Elements
@@ -115,10 +115,9 @@
     &:hover {
       @include link-nav-animation(
         var(--interactive-color-hover),
-        var(--interactive-relative-hover),
+        var(--interactive-color-strength-hover),
         var(--interactive-transition-hover),
-        var(--interactive-bg-hover),
-        var(--interactive-use-hsl-hover)
+        var(--interactive-bg-hover)
       );
     }
 
@@ -126,10 +125,9 @@
     &:active {
       @include link-nav-animation(
         var(--interactive-color-active),
-        var(--interactive-relative-active),
+        var(--interactive-color-strength-active),
         var(--interactive-transition-active),
-        var(--interactive-bg-active),
-        var(--interactive-use-hsl-active)
+        var(--interactive-bg-active)
       );
     }
 
@@ -137,10 +135,9 @@
     &:focus-visible {
       @include link-nav-animation(
         var(--interactive-color-focus-visible),
-        var(--interactive-relative-focus-visible),
+        var(--interactive-color-strength-visible),
         var(--interactive-transition-focus-visible),
-        var(--interactive-bg-focus-visible),
-        var(--interactive-use-hsl-focus-visible)
+        var(--interactive-bg-focus-visible)
       );
     }
   }
@@ -166,8 +163,8 @@
   --interactive-color-hover: #{$color-hover};
   --interactive-color-active: #{$color-active};
   --interactive-color-focus-visible: #{$color-focus};
-  --interactive-relative-hover: 10;
-  --interactive-relative-focus-visible: 10;
+  --interactive-color-strength: 10;
+  --interactive-color-strength-focus-visible: 10;
   @include interactive-states("&");
 }
 
@@ -176,7 +173,7 @@
 /// This module provides a mixin for creating animated navigation links with color transitions.
 ///
 /// @group navigation
-/// @author [Georgi]
+/// @author Georgi
 
 /// Link Navigation Animation Mixin
 ///
@@ -186,49 +183,33 @@
 /// @param {Number} $relative-value - The relative lightness adjustment value for the HSL color
 /// @param {Time} $transition-time - The duration of the color transition animation
 /// @param {Color} $bg-color [null] - The background color of the link (optional)
-/// @param {Boolean} $use-hsl [true] - Whether to use HSL color adjustments (default: true)
 ///
-/// @example scss
+/// @example code-scss
 ///   .nav-link {
 ///     @include link-nav-animation(#007bff, 0.2, 0.3s);
 ///   }
 ///
-/// @example scss
+/// @example code-scss
 ///   .nav-link-with-bg {
 ///     @include link-nav-animation(#007bff, 0.2, 0.3s, #f8f9fa);
 ///   }
 @mixin link-nav-animation(
   $color,
-  $relative-value,
+  $color-strength,
   $transition-time,
-  $bg-color: null,
-  $use-hsl: true
+  $bg-color: null
 ) {
-  @if $bg-color != null {
-    background-color: $bg-color;
-  }
-
-  @if $use-hsl {
-    /// Set the fallback color for browsers that don't support HSL
-    $_fallback-color: $color;
-
+  & {
     @if $bg-color != null {
-      background-color: $bg-color;
+      @include u.lighten-color-background(
+        background-color,
+        $bg-color,
+        $color-strength
+      );
     }
-
-    /// Use HSL color adjustments for modern browsers
-    @supports (color: hsl(from var(--color) h s l)) {
-      color: hsl(from #{$color} h s calc(l + #{$relative-value}));
-
-      @if $bg-color != null {
-        background-color: hsl(
-          from #{$bg-color} h s calc(l + #{$relative-value})
-        );
-      }
-    }
-  } @else {
-    color: $color;
   }
+
+  // Implementation details would go here
 }
 
 /// =============================================================================

@@ -26,15 +26,3 @@ html {
   --app-image-apple: url("@assets/images/svg/app-apple-store-btn-group-dark.svg");
   @include th.generate-theme-vars(th.$dark-theme);
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-  /// Include font awesome
-}
-
-a {
-  text-decoration: none;
-}

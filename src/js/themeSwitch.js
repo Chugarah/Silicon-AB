@@ -5,6 +5,10 @@ const themeToggle = document.querySelector(
 );
 const body = document.body;
 
+// New function to update background images
+// This is written 100% by Phind AI this part
+
+// Updated event listener for theme switching
 themeToggle.addEventListener("change", () => {
   if (themeToggle.checked) {
     body.classList.add("dark-theme");
@@ -15,7 +19,7 @@ themeToggle.addEventListener("change", () => {
   }
 });
 
-// Kontrollera sparad temainställning vid sidladdning
+// Check saved theme setting on page load
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
   body.classList.add("dark-theme");

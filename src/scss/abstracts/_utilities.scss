@@ -1,4 +1,6 @@
-@use "@scss/abstracts/_functions" as f; /// @name content-container
+@use "sass:color";
+@use "sass:meta";
+/// @name content-container
 
 /// @group Utility
 ///
@@ -98,14 +100,14 @@
       $shadow-string: #{$sh-x}
         #{$sh-y}
         #{$sh-blur}
-        #{f.hex-to-rgb($sh-color, $opacity)};
+        #{hex-to-rgb($sh-color, $opacity)};
     } @else {
       $shadow-string: #{$inset}
         #{$sh-x}
         #{$sh-y}
         #{$sh-blur}
         #{$sh-spread}
-        #{f.hex-to-rgb($sh-color, $opacity)};
+        #{hex-to-rgb($sh-color, $opacity)};
     }
 
     @if $filter {
@@ -221,4 +223,55 @@
 @mixin padding-top-bottom($padding-top, $padding-bottom) {
   padding-top: $padding-top;
   padding-bottom: $padding-bottom;
+}
+
+/// Color Utilities Module
+/// =============================================================================
+/// This module provides a mixin for lightening colors, supporting both direct color values and CSS variables.
+/// Created with assistance from Phind AI
+///
+/// @group color-utilities
+/// @author [Your Name]
+
+/// Lighten Color Mixin
+///
+/// Lightens a given color or CSS variable by mixing it with a second color.
+///
+/// @param {Color|String} $color - The color to lighten. Can be a direct color value or a CSS variable.
+/// @param {Percentage} $amount [20%] - The amount of the second color to mix in (default: 20%)
+/// @param {Color} $second-color [white] - The color to mix with the base color (default: white)
+///
+/// @example scss
+///   .element {
+///     @include lighten-color(#3366cc);
+///   }
+///
+/// @example scss
+///   .element {
+///     @include lighten-color(var(--primary-color), 30%, #f0f0f0);
+///   }
+@mixin lighten-color-background(
+  $property,
+  $color,
+  $amount: 20%,
+  $second-color: white
+) {
+  @if meta.type-of($color) == "color" {
+    // For direct color values
+    #{$property}: color.adjust($color);
+  } @else {
+    // For CSS variables or other values
+
+    // Fallback first
+    background-color: $color;
+
+    // Check for color-mix support
+    @supports (background: color-mix(in srgb, red, blue)) {
+      #{$property}: color-mix(
+        in srgb,
+        $color calc(100% - #{$amount}),
+        $second-color $amount
+      );
+    }
+  }
 }
